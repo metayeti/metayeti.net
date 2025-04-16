@@ -1,0 +1,13 @@
+/* Default theme colors */
+
+:root {
+	--my-global-background: #1d1d1d;
+
+	--my-navbar-background: #131313;
+}
+
+/* Light theme colors */
+
+:root.let-there-be-light {
+	--my-global-background: #efefef;
+}

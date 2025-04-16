@@ -1,0 +1,28 @@
+/* NOTE: This file is for reference only and isn't actually used anywhere. */
+
+/* -- responsive breakpoints -- */
+
+/* Small (sm): 640px and up */
+@media (min-width: 640px) {
+  /* sm breakpoint styles */
+}
+
+/* Medium (md): 768px and up */
+@media (min-width: 768px) {
+  /* md breakpoint styles */
+}
+
+/* Large (lg): 1024px and up */
+@media (min-width: 1024px) {
+  /* lg breakpoint styles */
+}
+
+/* Extra Large (xl): 1280px and up */
+@media (min-width: 1280px) {
+  /* xl breakpoint styles */
+}
+
+/* 2XL (2xl): 1536px and up */
+@media (min-width: 1536px) {
+  /* 2xl breakpoint styles */
+}

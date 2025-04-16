@@ -1,0 +1,26 @@
+@import './base.css';
+@import './colors.css';
+
+body {
+	background-color: var(--my-global-background);
+}
+
+.pixelated {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+.wrap {
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+@media (max-width: 960px) {
+	.wrap {
+		width: auto;
+		padding: 0 4px;
+	}
+}
