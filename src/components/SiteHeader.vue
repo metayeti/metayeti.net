@@ -30,9 +30,9 @@ const switchSiteTheme = (lightMode) => {
 		<div class="wrap flex flex-row">
 			<div class="flex flex-row flex-none">
 				<RouterLink class="nav-button active" to="/">home</RouterLink>
-				<RouterLink class="nav-button" to="/">projects</RouterLink>
-				<RouterLink class="nav-button" to="/">blog</RouterLink>
-				<RouterLink class="nav-button" to="/">about</RouterLink>
+				<RouterLink class="nav-button" to="/projects">projects</RouterLink>
+				<RouterLink class="nav-button" to="/blog">blog</RouterLink>
+				<RouterLink class="nav-button" to="/about">about</RouterLink>
 			</div>
 			<div class="flex flex-grow justify-end items-center">
 				<div class="flex flex-row items-center gap-1.5">
@@ -102,6 +102,9 @@ nav {
 			height: 14px;
 			top: 38px;
 			border-left: 1px solid #2a2a2a;
+		}
+		&:first-child::before {
+			border-color: transparent;
 		}
 		&::after {
 			display: block;
