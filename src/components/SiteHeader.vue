@@ -40,17 +40,17 @@ const switchSiteTheme = (lightMode) => {
 	</header>
 	<nav class="navigation-top">
 		<div class="wrap social-link-row">
-			<a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-facebook" />
 				<span class="tooltip-text">FriendFace</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-x-twitter" />
 				<span class="tooltip-text">Twitter</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-github" />
 				<span class="tooltip-text">Code</span>
 				<div class="tooltip-arrow"></div>
@@ -60,7 +60,7 @@ const switchSiteTheme = (lightMode) => {
 				<span class="tooltip-text">Link me later</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="https://www.reddit.com/user/metayeti2/" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-reddit-alien" />
 				<span class="tooltip-text">Read it</span>
 				<div class="tooltip-arrow"></div>
@@ -70,7 +70,7 @@ const switchSiteTheme = (lightMode) => {
 				<span class="tooltip-text">Cloud sound</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="https://www.youtube.com/@metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-youtube" />
 				<span class="tooltip-text">Ye Olde Tube</span>
 				<div class="tooltip-arrow"></div>
