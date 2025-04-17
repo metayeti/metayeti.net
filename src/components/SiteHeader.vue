@@ -1,7 +1,4 @@
 <script setup>
-import IconFacebook from './icons/IconFacebook.vue';
-import IconX from './icons/IconX.vue';
-import IconGitHub from './icons/IconGitHub.vue';
 import IconFlame from './icons/IconFlame.vue';
 
 import RockerSwitch from './RockerSwitch.vue';
@@ -30,14 +27,34 @@ const switchSiteTheme = (lightMode) => {
 		</div>
 		<nav class="navigation-top">
 			<div class="wrap social-link-row">
-				<a class="social-link" href="#" target="_blank">
-					<IconFacebook />
+				<a class="social-link tooltip" href="#" target="_blank">
+					<font-awesome-icon icon="fa-brands fa-facebook" />
+					<span class="tooltip-text">FriendFace</span>
+					<div class="tooltip-arrow"></div>
 				</a>
-				<a class="social-link" href="#" target="_blank">
-					<IconX />
+				<a class="social-link tooltip" href="#" target="_blank">
+					<font-awesome-icon icon="fa-brands fa-x-twitter" />
+					<span class="tooltip-text">Twitter</span>
+					<div class="tooltip-arrow"></div>
 				</a>
-				<a class="social-link" href="#" target="_blank">
-					<IconGitHub />
+				<a class="social-link tooltip" href="#" target="_blank">
+					<font-awesome-icon icon="fa-brands fa-github" />
+					<span class="tooltip-text">Code</span>
+					<div class="tooltip-arrow"></div>
+				</a>
+				<a class="social-link tooltip" href="#" target="_blank">
+					<font-awesome-icon icon="fa-brands fa-linkedin" />
+					<span class="tooltip-text">Ego</span>
+					<div class="tooltip-arrow"></div>
+				</a>
+				<a class="social-link tooltip" href="#" target="_blank">
+					<font-awesome-icon icon="fa-brands fa-reddit-alien" />
+					<span class="tooltip-text">Read it</span>
+					<div class="tooltip-arrow"></div>
+				</a>
+				<a class="social-link tooltip" href="#" target="_blank">
+					<font-awesome-icon icon="fa-brands fa-youtube" />
+					<span class="tooltip-text">Ye Olde Tube</span>
 				</a>
 			</div>
 		</nav>
@@ -54,7 +71,7 @@ const switchSiteTheme = (lightMode) => {
 				<div class="flex flex-row items-center gap-1.5 pr-1">
 
 					<div class="size-5">
-						<IconFlame class="text-gray-600" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
+						<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
 					</div>
 
 					<RockerSwitch @switch-toggle="switchSiteTheme" />
@@ -98,16 +115,61 @@ header > nav.navigation-top {
 		justify-content: end;
 		align-items: center;
 		flex-direction: row;
-		gap: 10px;
+		gap: 1px;
 		padding-right: 14px;
 
 		.social-link {
-			width: 18px;
-			height: 14px;
-			color: #aaa;
+			width: 32px;
+			height: 32px;
+			font-size: 19px;
+			line-height: 34px;
+			text-align: center;
+			color: #4a5565;
 		}
 		.social-link:hover {
+			font-size: 21px;
+			line-height: 33px;
+			color: #e5ebf7;
+		}
+
+	}
+	.tooltip {
+		position: relative;
+
+		.tooltip-text {
+			position: absolute;
+			visibility: hidden;
+			padding: 0px 20px;
+			height: 28px;
+			line-height: 26px;
+			left: 40px;
+			top: 0;
+			transform: translate(-100%, -41px);
+			background-color: rgba(0,0,0,0.8);
+			border-bottom: 2px solid #000;
 			color: #fff;
+			font-family: "Inter", sans-serif;
+			font-size: 11px;
+			/* border-radius: 7px; */
+			clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
+			white-space: nowrap;
+			z-index: 99;
+		}
+
+		.tooltip-arrow {
+			position: absolute;
+			visibility: hidden;
+			top: -14px;
+			left: 9px;
+			border-width: 7px;
+			border-style: solid;
+			border-color: black transparent transparent transparent;
+		}
+
+		&:hover {
+			.tooltip-text, .tooltip-arrow {
+				visibility: visible;
+			}
 		}
 
 	}
