@@ -1,7 +1,8 @@
 /* Default theme colors */
 
 :root {
-	--my-global-background: #1d1d1d;
+	--my-global-background: #131313;
+	--my-content-background :#1d1d1d;
 
 	--my-navbar-background: #141414;
 }
@@ -9,5 +10,5 @@
 /* Light theme colors */
 
 :root.let-there-be-light {
-	--my-global-background: #dadada;
+	--my-content-background: #dadada;
 }

@@ -3,19 +3,31 @@ import IconFlame from './icons/IconFlame.vue';
 
 import RockerSwitch from './RockerSwitch.vue';
 
-import { RouterLink } from 'vue-router';
-import { ref } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
+import { ref, watch } from 'vue';
+
+const route = useRoute();
+const navItemActive = ref(0);
+
+const routeMap = {
+	'/': 0,
+	'/projects': 1,
+	'/blog': 2,
+	'/about': 3
+};
+
+watch(() => route.path, (nextPath) => {
+	navItemActive.value = routeMap[nextPath] ?? -1;
+});
+
 
 const lightModeIcon = ref(false);
 
 const switchSiteTheme = (lightMode) => {
 	lightModeIcon.value = lightMode;
-	if (lightMode) {
-		document.documentElement.classList.add('let-there-be-light');
-	}
-	else {
-		document.documentElement.classList.remove('let-there-be-light');
-	}
+	const lightModeClass = 'let-there-be-light';
+	if (lightMode) { document.documentElement.classList.add(lightModeClass); }
+	else { document.documentElement.classList.remove(lightModeClass); }
 }
 </script>
 
@@ -25,60 +37,65 @@ const switchSiteTheme = (lightMode) => {
 			<div class="pixelated background"></div>
 			<div class="pixelated yeti"></div>
 		</div>
-		<nav class="navigation-top">
-			<div class="wrap social-link-row">
-				<a class="social-link tooltip" href="#" target="_blank">
-					<font-awesome-icon icon="fa-brands fa-facebook" />
-					<span class="tooltip-text">FriendFace</span>
-					<div class="tooltip-arrow"></div>
-				</a>
-				<a class="social-link tooltip" href="#" target="_blank">
-					<font-awesome-icon icon="fa-brands fa-x-twitter" />
-					<span class="tooltip-text">Twitter</span>
-					<div class="tooltip-arrow"></div>
-				</a>
-				<a class="social-link tooltip" href="#" target="_blank">
-					<font-awesome-icon icon="fa-brands fa-github" />
-					<span class="tooltip-text">Code</span>
-					<div class="tooltip-arrow"></div>
-				</a>
-				<a class="social-link tooltip" href="#" target="_blank">
-					<font-awesome-icon icon="fa-brands fa-linkedin" />
-					<span class="tooltip-text">Ego</span>
-					<div class="tooltip-arrow"></div>
-				</a>
-				<a class="social-link tooltip" href="#" target="_blank">
-					<font-awesome-icon icon="fa-brands fa-reddit-alien" />
-					<span class="tooltip-text">Read it</span>
-					<div class="tooltip-arrow"></div>
-				</a>
-				<a class="social-link tooltip" href="#" target="_blank">
-					<font-awesome-icon icon="fa-brands fa-youtube" />
-					<span class="tooltip-text">Ye Olde Tube</span>
-					<div class="tooltip-arrow"></div>
-				</a>
-			</div>
-		</nav>
-		<nav class="navigation-main">
-			<div class="wrap flex flex-row gap-1.5">
-				<div class="nav-button-row">
-					<RouterLink class="nav-button active" to="/">home</RouterLink>
-					<RouterLink class="nav-button" to="/projects">projects</RouterLink>
-					<RouterLink class="nav-button" to="/blog">blog</RouterLink>
-					<RouterLink class="nav-button" to="/about">about</RouterLink>
-				</div>
-
-				<div class="flex flex-row items-center gap-1.5">
-
-					<div class="size-5">
-						<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
-					</div>
-
-					<RockerSwitch @switch-toggle="switchSiteTheme" />
-				</div>
-			</div>
-		</nav>
 	</header>
+	<nav class="navigation-top">
+		<div class="wrap social-link-row">
+			<a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-facebook" />
+				<span class="tooltip-text">FriendFace</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-x-twitter" />
+				<span class="tooltip-text">Twitter</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-github" />
+				<span class="tooltip-text">Code</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-linkedin" />
+				<span class="tooltip-text">Link me later</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-reddit-alien" />
+				<span class="tooltip-text">Read it</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="https://soundcloud.com/metayeti" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-soundcloud" />
+				<span class="tooltip-text">Cloud sound</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-youtube" />
+				<span class="tooltip-text">Ye Olde Tube</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+		</div>
+	</nav>
+	<nav class="navigation-main">
+		<div class="wrap flex flex-row gap-1.5">
+			<div class="nav-button-row">
+				<RouterLink class="nav-button" to="/" :class="{ active: navItemActive === 0}">home</RouterLink>
+				<RouterLink class="nav-button" to="/projects" :class="{ active: navItemActive === 1}">projects</RouterLink>
+				<RouterLink class="nav-button" to="/blog" :class="{ active: navItemActive === 2}">blog</RouterLink>
+				<RouterLink class="nav-button" to="/about" :class="{ active: navItemActive === 3}">about</RouterLink>
+			</div>
+
+			<div class="flex flex-row items-center gap-1.5">
+
+				<div class="size-5">
+					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
+				</div>
+
+				<RockerSwitch @switch-toggle="switchSiteTheme" />
+			</div>
+		</div>
+	</nav>
 </template>
 
 <style scoped>
@@ -103,7 +120,7 @@ header > .banner {
 }
 
 /* -- top navigation -- */
-header > nav.navigation-top {
+nav.navigation-top {
 	position: sticky;
 	top: 0;
 	height: 32px;
@@ -174,7 +191,7 @@ header > nav.navigation-top {
 }
 
 /* -- main navigation -- */
-header > nav.navigation-main {
+nav.navigation-main {
 	position: sticky;
 	top: 0;
 	height: 55px;
@@ -242,7 +259,7 @@ header > nav.navigation-main {
 /* -- responsive breakpoints -- */
 
 @media (min-width: 500px) {
-	header > nav.navigation-main {
+	nav.navigation-main {
 		.nav-button-row {
 			.nav-button {
 				height: 55px;
@@ -256,7 +273,6 @@ header > nav.navigation-main {
 					display: block;
 					position: relative;
 					float: left;
-					content: '';
 					width: 30px;
 					height: 14px;
 					top: 38px;
@@ -266,9 +282,6 @@ header > nav.navigation-main {
 					border-color: transparent;
 				}
 				&::after {
-					display: block;
-					content: '';
-					position: absolute;
 					left: 16px;
 					top: 0;
 					bottom: 0;
@@ -276,11 +289,6 @@ header > nav.navigation-main {
 					width: 5px;
 					height: 5px;
 					background-color: #555;
-					border-radius: 50%;
-				}
-				&.active::after {
-					background-color: rgb(26, 214, 26);
-					box-shadow: 0 0 10px 2px rgb(26, 214, 26);
 				}
 			}
 		}

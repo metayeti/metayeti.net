@@ -1,5 +1,2 @@
 <template>
 </template>
-
-<style>
-</style>

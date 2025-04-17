@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /*
 import { 
+	faEnvelope
 } from '@fortawesome/free-solid-svg-icons'
  */
  
@@ -23,16 +24,20 @@ import {
 	faGithub,
 	faLinkedin,
 	faRedditAlien,
+	faSoundcloud,
 	faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
+	// icons
+	//faEnvelope,
 	// brands
 	faFacebook,
 	faXTwitter,
 	faGithub,
 	faLinkedin,
 	faRedditAlien,
+	faSoundcloud,
 	faYoutube
 );
 
