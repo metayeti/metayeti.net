@@ -1,9 +1,9 @@
 <template>
 	<footer>
-		<div class="wrap h-full py-5 flex flex-col justify-center items-end gap-1">
-			<span class="text-neutral-400">Coded and designed by Danijel Durakovic</span>
+		<div class="wrap h-full py-5 flex flex-col justify-center items-center min-[1020px]:items-end gap-1">
+			<span class="text-neutral-400">Code and design by Danijel Durakovic</span>
 			<span class="text-neutral-600">&copy; 2025 metayeti.net</span>
-			<span class="text-neutral-600">Built with <a href="https://github.com/metayeti/metayeti.net" target="_blank"><img class="vue-icon" src="@/assets/images/vue.png" alt> Vue.js</a></span>
+			<span class="text-neutral-600">Built with <a href="https://github.com/metayeti/metayeti.net" target="_blank"><img class="vue-icon" src="@/assets/images/vue.png" alt=""> Vue.js</a></span>
 		</div>
 	</footer>
 </template>
@@ -22,6 +22,8 @@ footer {
 	}
 	a:hover {
 		text-decoration: underline;
+		text-decoration-color: rgba(65, 184, 131, 0.8);
+		text-underline-offset: 4px;
 	}
 	img.vue-icon {
 		display: inline-block;
