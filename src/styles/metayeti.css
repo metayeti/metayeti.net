@@ -5,6 +5,10 @@ body {
 	background-color: var(--my-global-background);
 }
 
+#metayeti-root {
+	min-width: 300px;
+}
+
 .pixelated {
 	image-rendering: -moz-crisp-edges;
 	image-rendering: -webkit-crisp-edges;

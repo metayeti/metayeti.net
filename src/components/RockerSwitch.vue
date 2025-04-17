@@ -51,6 +51,7 @@ button.rocker-switch {
 	background-color: #151515;
 	border-radius: 3px;
 	box-shadow: 0 0 5px 2px #151515;
+	touch-action: manipulation;
 	cursor: pointer;
 
 	.rocker-inner {
@@ -90,7 +91,7 @@ button.rocker-switch {
 				&:before, &:after {
 					transition: height 1000ms ease-in-out;
 				}
-					*/
+				*/
 			}
 
 			.left-side {
@@ -133,6 +134,9 @@ button.rocker-switch {
 					height: 100%;
 					background-color: var(--color-rocker-light);
 
+					/* top/bottom depth simulation could be worked in like this, but it really doesn't look good at this size because
+					   of nasty jagged pixels */
+
 					/*
 					&::before {
 						position: absolute;
@@ -152,7 +156,7 @@ button.rocker-switch {
 						height: var(--rocker-depth);
 						background: linear-gradient(to top right, transparent 50%, var(--color-rocker-light) 70%) bottom right;
 					}
-						*/
+					*/
 				}
 				.r-depth {
 					position: relative;
@@ -179,7 +183,7 @@ button.rocker-switch {
 						height: var(--rocker-depth);
 						background: linear-gradient(to bottom right, var(--color-rocker-dark) 50%, transparent 70%) bottom right;
 					}
-						*/
+					*/
 				}
 
 				:is(button.rocker-switch).toggled & {

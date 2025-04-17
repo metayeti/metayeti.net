@@ -1,11 +1,12 @@
 <script setup>
-import IconLighterBody from './icons/IconLighterBody.vue';
-import IconLighterFlame from './icons/IconLighterFlame.vue';
-
-import { RouterLink } from 'vue-router';
+import IconFacebook from './icons/IconFacebook.vue';
+import IconX from './icons/IconX.vue';
+import IconGitHub from './icons/IconGitHub.vue';
+import IconFlame from './icons/IconFlame.vue';
 
 import RockerSwitch from './RockerSwitch.vue';
 
+import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
 
 const lightModeIcon = ref(false);
@@ -23,34 +24,53 @@ const switchSiteTheme = (lightMode) => {
 
 <template>
 	<header>
-		<div class="pixelated background"></div>
-		<div class="pixelated yeti"></div>
-	</header>
-	<nav>
-		<div class="wrap flex flex-row">
-			<div class="flex flex-row flex-none">
-				<RouterLink class="nav-button active" to="/">home</RouterLink>
-				<RouterLink class="nav-button" to="/projects">projects</RouterLink>
-				<RouterLink class="nav-button" to="/blog">blog</RouterLink>
-				<RouterLink class="nav-button" to="/about">about</RouterLink>
+		<div class="banner">
+			<div class="pixelated background"></div>
+			<div class="pixelated yeti"></div>
+		</div>
+		<nav class="navigation-top">
+			<div class="wrap social-link-row">
+				<a class="social-link" href="#" target="_blank">
+					<IconFacebook />
+				</a>
+				<a class="social-link" href="#" target="_blank">
+					<IconX />
+				</a>
+				<a class="social-link" href="#" target="_blank">
+					<IconGitHub />
+				</a>
 			</div>
-			<div class="flex flex-grow justify-end items-center">
-				<div class="flex flex-row items-center gap-1.5">
-					<div class="relative size-5">
-						<IconLighterBody class="absolute transition-colors duration-200" :class="lightModeIcon ? 'text-gray-700' : 'text-gray-600'" />
-						<IconLighterFlame class="absolute transition-colors duration-200" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
+		</nav>
+		<nav class="navigation-main">
+			<!-- <div class="wrap flex flex-row"> -->
+			<div class="wrap flex flex-row gap-1.5">
+				<div class="nav-button-row">
+					<RouterLink class="nav-button active" to="/">home</RouterLink>
+					<RouterLink class="nav-button" to="/projects">projects</RouterLink>
+					<RouterLink class="nav-button" to="/blog">blog</RouterLink>
+					<RouterLink class="nav-button" to="/about">about</RouterLink>
+				</div>
+
+				<div class="flex flex-row items-center gap-1.5 pr-1">
+
+					<div class="size-5">
+						<IconFlame class="text-gray-600" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
 					</div>
+
 					<RockerSwitch @switch-toggle="switchSiteTheme" />
 				</div>
 			</div>
-		</div>
-
-	</nav>
+		</nav>
+	</header>
 </template>
 
 <style scoped>
-/* -- yeti header -- */
 header {
+	user-select: none;
+}
+
+/* -- yeti banner -- */
+header > .banner {
 	height: 150px;
 	overflow: hidden;
 
@@ -65,64 +85,184 @@ header {
 	}
 }
 
-/* -- main site navigation -- */
-nav {
+/* -- top navigation -- */
+header > nav.navigation-top {
+	position: sticky;
+	top: 0;
+	height: 32px;
+	background-color: #000;
+
+	.social-link-row {
+		display: flex;
+		height: 100%;
+		justify-content: end;
+		align-items: center;
+		flex-direction: row;
+		gap: 10px;
+		padding-right: 14px;
+
+		.social-link {
+			width: 18px;
+			height: 14px;
+			color: #aaa;
+		}
+		.social-link:hover {
+			color: #fff;
+		}
+
+	}
+}
+
+/* -- main navigation -- */
+header > nav.navigation-main {
 	position: sticky;
 	top: 0;
 	height: 55px;
 	background-color: var(--my-navbar-background);
 	border-bottom: 3px solid #111;
+	box-shadow: 0 2px 15px 0 #111;
 	z-index: 99;
 
-	.nav-button {
-		position: relative;
-		height: 55px;
-		padding-right: 25px;
-		line-height: 55px;
-		font-family: "Titillium Web", sans-serif;
-		font-size: 12px;
-		text-transform: uppercase;
-		color: #ccc;
+	.nav-button-row {
+		display: flex;
+		flex-direction: row;
+		flex-grow: 1;
 
-		&.active {
-			background-color: #0a0a0a;
-			color: #fff;
-		}
-		&:hover {
-			background-color: #0a0a0a;
-			color: #fff;
-		}
-
-		&::before {
-			display: block;
+		.nav-button {
 			position: relative;
-			float: left;
-			content: '';
-			width: 29px;
-			height: 14px;
-			top: 38px;
-			border-left: 1px solid #2a2a2a;
-		}
-		&:first-child::before {
-			border-color: transparent;
-		}
-		&::after {
-			display: block;
-			content: '';
-			position: absolute;
-			left: 13px;
-			top: 0;
-			bottom: 0;
-			margin: auto 0;
-			width: 5px;
-			height: 5px;
-			background-color: #555;
-			border-radius: 50%;
-		}
-		&.active::after {
-			background-color: rgb(26, 214, 26);
-			box-shadow: 0 0 10px 1px rgb(26, 214, 26);
+			height: 55px;
+			line-height: 40px;
+			padding: 0 7px;
+			color: #ccc;
+			font-family: "Titillium Web", sans-serif;
+			font-size: 12px;
+			text-align: center;
+			text-transform: uppercase;
+			flex-grow: 1;
+
+			&.active, &:hover {
+				background-color: #000;
+				color: #fff;
+			}
+
+			/*
+			&::before {
+				display: block;
+				position: relative;
+				float: left;
+				content: '';
+				width: 29px;
+				height: 14px;
+				top: 38px;
+				border-left: 1px solid #2a2a2a;
+			}
+			&:first-child::before {
+				border-color: transparent;
+			}
+				*/
+			&::before {
+				display: block;
+				position: absolute;
+				content: '';
+				width: 10px;
+				height: 15px;
+				left: 0;
+				top: 38px;
+				border-left: 1px solid #2a2a2a;
+			}
+			&:first-child::before {
+				border-color: transparent;
+			}
+			&::after {
+				display: block;
+				content: '';
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 36px;
+				width: 5px;
+				height: 5px;
+				background-color: #505050;
+				border-radius: 50%;
+			}
+			&.active::after {
+				background-color: rgb(26, 214, 26);
+				box-shadow: 0 0 10px 2px rgb(26, 214, 26);
+			}
 		}
 	}
+}
+
+/* -- responsive breakpoints -- */
+
+@media (min-width: 500px) {
+	header > nav.navigation-main {
+		.nav-button-row {
+			.nav-button {
+				height: 55px;
+				padding: 0 25px 0 0;
+				line-height: 55px;
+				font-size: 13px;
+				text-align: left;
+				flex-grow: 0;
+
+				&::before {
+					display: block;
+					position: relative;
+					float: left;
+					content: '';
+					width: 29px;
+					height: 14px;
+					top: 38px;
+					border-left: 1px solid #2a2a2a;
+				}
+				&:first-child::before {
+					border-color: transparent;
+				}
+				&::after {
+					display: block;
+					content: '';
+					position: absolute;
+					left: 13px;
+					top: 0;
+					bottom: 0;
+					margin: auto 0;
+					width: 5px;
+					height: 5px;
+					background-color: #555;
+					border-radius: 50%;
+				}
+				&.active::after {
+					background-color: rgb(26, 214, 26);
+					box-shadow: 0 0 10px 1px rgb(26, 214, 26);
+				}
+			}
+		}
+	}
+}
+
+/* Small (sm): 640px and up */
+@media (min-width: 640px) {
+  /* sm breakpoint styles */
+}
+
+/* Medium (md): 768px and up */
+@media (min-width: 768px) {
+  /* md breakpoint styles */
+}
+
+/* Large (lg): 1024px and up */
+@media (min-width: 1024px) {
+  /* lg breakpoint styles */
+}
+
+/* Extra Large (xl): 1280px and up */
+@media (min-width: 1280px) {
+  /* xl breakpoint styles */
+}
+
+/* 2XL (2xl): 1536px and up */
+@media (min-width: 1536px) {
+  /* 2xl breakpoint styles */
 }
 </style>
