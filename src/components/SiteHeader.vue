@@ -60,7 +60,6 @@ const switchSiteTheme = (lightMode) => {
 			</div>
 		</nav>
 		<nav class="navigation-main">
-			<!-- <div class="wrap flex flex-row"> -->
 			<div class="wrap flex flex-row gap-1.5">
 				<div class="nav-button-row">
 					<RouterLink class="nav-button active" to="/">home</RouterLink>
@@ -69,7 +68,7 @@ const switchSiteTheme = (lightMode) => {
 					<RouterLink class="nav-button" to="/about">about</RouterLink>
 				</div>
 
-				<div class="flex flex-row items-center gap-1.5 pr-[8px]">
+				<div class="flex flex-row items-center gap-1.5">
 
 					<div class="size-5">
 						<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
@@ -117,7 +116,6 @@ header > nav.navigation-top {
 		align-items: center;
 		flex-direction: row;
 		gap: 1px;
-		padding-right: 8px;
 
 		.social-link {
 			width: 32px;
@@ -189,6 +187,7 @@ header > nav.navigation-main {
 		display: flex;
 		flex-direction: row;
 		flex-grow: 1;
+		margin-left: -10px;
 
 		.nav-button {
 			position: relative;
@@ -258,7 +257,7 @@ header > nav.navigation-main {
 					position: relative;
 					float: left;
 					content: '';
-					width: 29px;
+					width: 30px;
 					height: 14px;
 					top: 38px;
 					border-left: 1px solid #2a2a2a;
@@ -270,7 +269,7 @@ header > nav.navigation-main {
 					display: block;
 					content: '';
 					position: absolute;
-					left: 13px;
+					left: 16px;
 					top: 0;
 					bottom: 0;
 					margin: auto 0;
@@ -281,7 +280,7 @@ header > nav.navigation-main {
 				}
 				&.active::after {
 					background-color: rgb(26, 214, 26);
-					box-shadow: 0 0 10px 1px rgb(26, 214, 26);
+					box-shadow: 0 0 10px 2px rgb(26, 214, 26);
 				}
 			}
 		}

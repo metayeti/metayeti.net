@@ -1,6 +1,6 @@
 # metayeti.net
 
-My homesite
+Personal homesite/blog/etc.
 
 ## Legal
 

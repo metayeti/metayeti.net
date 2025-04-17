@@ -1,3 +1,4 @@
+// global css imports
 import './styles/fonts.css'; // font imports
 import './styles/metayeti.css'; // main site styles
 import './styles/tw.css'; // tailwind styles
@@ -7,7 +8,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-// setup fontawesome
+// setup font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -26,6 +27,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
+	// brands
 	faFacebook,
 	faXTwitter,
 	faGithub,
