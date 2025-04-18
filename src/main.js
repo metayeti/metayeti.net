@@ -21,6 +21,7 @@ import {
 import {
 	faFacebook,
 	faXTwitter,
+	faBluesky,
 	faGithub,
 	faLinkedin,
 	faRedditAlien,
@@ -34,6 +35,7 @@ library.add(
 	// brands
 	faFacebook,
 	faXTwitter,
+	faBluesky,
 	faGithub,
 	faLinkedin,
 	faRedditAlien,

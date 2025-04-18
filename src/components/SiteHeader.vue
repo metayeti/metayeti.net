@@ -35,44 +35,53 @@ const switchSiteTheme = (lightMode) => {
 	<header>
 		<div class="banner">
 			<div class="pixelated background"></div>
-			<div class="pixelated yeti"></div>
+			<div class="wrap">
+				<h1 class="site-branding">
+					<span class="highlight">meta</span><span>yeti.net</span>
+				</h1>
+			</div>
 		</div>
 	</header>
 	<nav class="navigation-top">
 		<div class="wrap social-link-row">
 			<a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-facebook" />
-				<span class="tooltip-text">FriendFace</span>
+				<span class="tooltip-text">Facebook</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-x-twitter" />
-				<span class="tooltip-text">Twitter</span>
+				<span class="tooltip-text">X</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="https://bsky.app/profile/metayeti.bsky.social" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-bluesky" />
+				<span class="tooltip-text">Bluesky</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-github" />
-				<span class="tooltip-text">Code</span>
+				<span class="tooltip-text">GitHub</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="#" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-linkedin" />
-				<span class="tooltip-text">Link me later</span>
+				<span class="tooltip-text">LinkedIn</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="https://www.reddit.com/user/metayeti2/" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-reddit-alien" />
-				<span class="tooltip-text">Read it</span>
+				<span class="tooltip-text">Reddit</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="https://soundcloud.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-soundcloud" />
-				<span class="tooltip-text">Cloud sound</span>
+				<span class="tooltip-text">Soundcloud</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="https://www.youtube.com/@metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-youtube" />
-				<span class="tooltip-text">Ye Olde Tube</span>
+				<span class="tooltip-text">YouTube</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 		</div>
@@ -100,22 +109,44 @@ const switchSiteTheme = (lightMode) => {
 
 <style scoped>
 header {
+	position: relative;
 	user-select: none;
 }
 
 /* -- yeti banner -- */
 header > .banner {
-	height: 150px;
+	position: relative;
+	height: 78px;
 	overflow: hidden;
+	z-index: 1;
 
 	.background {
-		position: fixed;
+		position: absolute;
 		width: 2000px;
 		height: 150px;
 		left: 50%;
+		top: -25px;
 		margin-left: -1000px;
 		background-image: url('@/assets/images/header.png');
-		background-size: contain;
+		background-size: 2000px 150px;
+		background-position: center top;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+	}
+
+	h1.site-branding {
+		position: absolute;
+		top: 26px;
+		color: #fff;
+		font-family: "Sintony", sans-serif;
+		font-weight: 700;
+		font-size: 19px;
+
+
+		.highlight {
+			color: rgb(135, 121, 145);
+		}
+
 	}
 }
 
@@ -125,6 +156,7 @@ nav.navigation-top {
 	top: 0;
 	height: 32px;
 	background-color: #000;
+	z-index: 2;
 
 	.social-link-row {
 		display: flex;
@@ -151,6 +183,7 @@ nav.navigation-top {
 	}
 	.tooltip {
 		position: relative;
+		user-select: none;
 
 		.tooltip-text {
 			position: absolute;
@@ -216,6 +249,7 @@ nav.navigation-main {
 			font-size: 12px;
 			text-align: center;
 			text-transform: uppercase;
+			user-select: none;
 			flex-grow: 1;
 
 			&.active, &:hover {

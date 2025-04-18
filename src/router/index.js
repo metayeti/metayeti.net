@@ -5,35 +5,30 @@ import AboutView from '../views/AboutView.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
+const routes = [
+	{ path: '/', name: 'Home', component: HomeView },
+	{ path: '/projects', name: 'projects', component: ProjectsView },
+	{ path: '/blog', name: 'blog', component: BlogView },
+	{ path: '/about', name: 'about', component: AboutView },
+];
+
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
-	routes: [
-		{
-			path: '/',
-			name: 'home',
-			component: HomeView,
-		},
-		{
-			path: '/projects',
-			name: 'projects',
-			component: ProjectsView,
-		},
-		{
-			path: '/blog',
-			name: 'blog',
-			component: BlogView,
-		},
-		{
-			path: '/about',
-			name: 'about',
-			component: AboutView,
+	routes,
+	scrollBehavior(to, from, savedPosition) {
 
-			// route level code-splitting
-			// this generates a separate chunk (About.[hash].js) for this route
-			// which is lazy-loaded when the route is visited.
-			//component: () => import('../views/AboutView.vue'),
-		},
-	],
+		if (savedPosition) {
+			return savedPosition;
+		}
+
+		const isInitialLoad = !from.name;
+		const toPosition = (to.path === '/') ? 0 : 110;
+
+		return {
+			top: toPosition,
+			behavior: isInitialLoad ? undefined : 'smooth'
+		};
+	}
 });
 
 export default router;
