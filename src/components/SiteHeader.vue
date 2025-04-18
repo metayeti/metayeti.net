@@ -123,12 +123,20 @@ header > .banner {
 	.background {
 		position: absolute;
 		width: 2000px;
+		height: 78px;
+		background-image: url('@/assets/images/header.png');
+		background-size: cover;
+		left: 50%;
+		margin-left: -1000px;
+		/*
+		position: absolute;
+		width: 2000px;
 		height: 150px;
 		left: 50%;
-		top: -24px;
 		margin-left: -1000px;
 		background-image: url('@/assets/images/header.png');
 		background-size: cover;
+		*/
 	}
 
 	h1.site-branding {

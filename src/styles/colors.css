@@ -1,3 +1,9 @@
+
+::selection {
+	color: #fff;
+	background: rgb(77, 55, 102);
+}
+
 /* Default theme colors */
 
 :root {
