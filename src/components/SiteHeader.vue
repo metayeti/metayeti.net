@@ -125,22 +125,19 @@ header > .banner {
 		width: 2000px;
 		height: 150px;
 		left: 50%;
-		top: -25px;
+		top: -24px;
 		margin-left: -1000px;
 		background-image: url('@/assets/images/header.png');
-		background-size: 2000px 150px;
-		background-position: center top;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
+		background-size: cover;
 	}
 
 	h1.site-branding {
 		position: absolute;
-		top: 26px;
+		top: 25px;
 		color: #fff;
 		font-family: "Sintony", sans-serif;
 		font-weight: 700;
-		font-size: 19px;
+		font-size: 18px;
 
 
 		.highlight {
