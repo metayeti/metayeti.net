@@ -34,6 +34,10 @@ const switchSiteTheme = (lightMode) => {
 <template>
 	<header>
 		<div class="banner">
+			<div class="back">
+				<div class="bg1"></div>
+				<div class="bg2"></div>
+			</div>
 			<div class="pixelated background"></div>
 			<div class="wrap">
 				<h1 class="site-branding">
@@ -120,6 +124,30 @@ header > .banner {
 	overflow: hidden;
 	z-index: 1;
 
+	.back {
+		/* header backgrounds that make sure the correct colors continue past
+		   the banner on very wide screens or client zoom-out */
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+
+		.bg1 {
+			position: absolute;
+			width: 50%;
+			height: 100%;
+			left: 0;
+			background-color: #292130;
+		}
+		.bg2 {
+			position: absolute;
+			width: 50%;
+			height: 100%;
+			right: 0;
+			background-color: #b9e6fb;
+		}
+	}
+
 	.background {
 		position: absolute;
 		width: 2000px;
@@ -128,15 +156,6 @@ header > .banner {
 		background-size: cover;
 		left: 50%;
 		margin-left: -1000px;
-		/*
-		position: absolute;
-		width: 2000px;
-		height: 150px;
-		left: 50%;
-		margin-left: -1000px;
-		background-image: url('@/assets/images/header.png');
-		background-size: cover;
-		*/
 	}
 
 	h1.site-branding {
