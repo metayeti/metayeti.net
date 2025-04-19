@@ -8,9 +8,13 @@
 
 :root {
 	--my-global-background: #131313;
-	--my-content-background :#1d1d1d;
 
-	--my-navbar-background: #141414;
+	--my-content-background :#1d1d1d;
+	--my-content-color: #ddd;
+	--my-content-heading: #ccc;
+	--my-content-underline: #333;
+	--my-content-link: #ff2176;
+
 
 	--my-soft-border: #2a2a2a;
 }
@@ -18,5 +22,9 @@
 /* Light theme colors */
 
 :root.let-there-be-light {
-	--my-content-background: #dadada;
+	--my-content-background: #fff;
+	--my-content-color: #000000;
+	--my-content-heading: #000;
+	--my-content-underline: #ebf0f3;
+	--my-content-link: #28aeec;
 }

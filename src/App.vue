@@ -7,17 +7,10 @@ import SiteFooter from './components/SiteFooter.vue';
 
 <template>
 	<SiteHeader />
-	<main class="site-content">
-		<RouterView />
+	<main class="main-content">
+		<div class="wrap site-content">
+			<RouterView />
+		</div>
 	</main>
 	<SiteFooter />
 </template>
-
-<style scoped>
-main.site-content {
-	position: relative;
-	padding: 10px 0;
-	background-color: var(--my-content-background);
-	z-index: 5;
-}
-</style>

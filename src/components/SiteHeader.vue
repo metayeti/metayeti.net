@@ -161,11 +161,11 @@ header > .banner {
 	h1.site-branding {
 		position: absolute;
 		top: 25px;
+		margin-left: -5px;
 		color: #fff;
 		font-family: "Sintony", sans-serif;
 		font-weight: 700;
 		font-size: 18px;
-
 
 		.highlight {
 			color: rgb(135, 121, 145);
@@ -252,7 +252,7 @@ nav.navigation-main {
 	position: sticky;
 	top: 0;
 	height: 55px;
-	background-color: var(--my-navbar-background);
+	background-color: #141414;
 	border-bottom: 3px solid #111;
 	box-shadow: 0 2px 15px 0 #111;
 	z-index: 99;
@@ -261,7 +261,7 @@ nav.navigation-main {
 		display: flex;
 		flex-direction: row;
 		flex-grow: 1;
-		margin-left: -10px;
+		margin-left: -20px;
 
 		.nav-button {
 			position: relative;
@@ -312,6 +312,9 @@ nav.navigation-main {
 			}
 		}
 	}
+}
+.let-there-be-light nav.navigation-main {
+	box-shadow: none;
 }
 
 /* -- responsive breakpoints -- */
