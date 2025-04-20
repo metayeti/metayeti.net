@@ -23,7 +23,13 @@ const router = createRouter({
 		}
 
 		const isInitialLoad = !from.name;
-		const toPosition = (to.path === '/') ? 0 : ((to.path === '/about') ? 79 : 110);
+		const toPosition = (to.path === '/') ? 0 : 100;
+		/*
+		let toPosition;
+		if (to.path === '/') toPosition = 0;
+		else if (to.path === '/about') toPosition = 79;
+		else toPosition = 110;
+		*/
 
 		return {
 			top: toPosition,

@@ -30,7 +30,7 @@ body {
 
 .main-content {
 	position: relative;
-	padding: 30px 0;
+	padding: 12vh 0;
 	background-color: var(--my-content-background);
 	color: var(--my-content-color);
 	font-family: "Inter", sans-serif;
@@ -40,24 +40,28 @@ body {
 	.site-content {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 15vh;
 	}
 
 	article {
-		padding-bottom: 10px;
 	}
 
 	h2, h3, h4, h5, h6 {
 		display: inline-block;
 		font-family: "Titillium Web", sans-serif;
 		color: var(--my-content-heading);
-		border-bottom: 2px solid var(--my-content-underline);
-		margin-bottom: 20px;
+		border-left: 6px solid var(--my-content-heading-decoration);
+		padding-left: 15px;
+		margin-bottom: 30px;
 	}
 	h2 {
 		font-size: 1.9rem;
 		font-weight: 400;
-		line-height: 3rem;
+		line-height: 2.3rem;
+	}
+
+	p {
+		padding-bottom: 20px;
 	}
 
 	a.fancy {

@@ -1,6 +1,6 @@
 // global css imports
 import './styles/fonts.css'; // font imports
-import './styles/metayeti.css'; // main site styles
+import './styles/metayeti.scss'; // main site styles
 import './styles/tw.css'; // tailwind styles
 
 // vue imports

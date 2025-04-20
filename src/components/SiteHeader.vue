@@ -39,6 +39,7 @@ const switchSiteTheme = (lightMode) => {
 				<div class="bg2"></div>
 			</div>
 			<div class="pixelated background"></div>
+			<div class="crt-fx"></div>
 			<div class="wrap">
 				<h1 class="site-branding">
 					<span class="highlight">meta</span><span>yeti.net</span>
@@ -46,11 +47,17 @@ const switchSiteTheme = (lightMode) => {
 			</div>
 		</div>
 	</header>
+	<!--
 	<nav class="navigation-top">
 		<div class="wrap social-link-row">
 			<a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-facebook" />
 				<span class="tooltip-text">Facebook</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-github" />
+				<span class="tooltip-text">GitHub</span>
 				<div class="tooltip-arrow"></div>
 			</a>
 			<a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
@@ -63,11 +70,6 @@ const switchSiteTheme = (lightMode) => {
 				<span class="tooltip-text">Bluesky</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
-				<font-awesome-icon icon="fa-brands fa-github" />
-				<span class="tooltip-text">GitHub</span>
-				<div class="tooltip-arrow"></div>
-			</a>
 			<a class="social-link tooltip" href="#" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-linkedin" />
 				<span class="tooltip-text">LinkedIn</span>
@@ -78,18 +80,19 @@ const switchSiteTheme = (lightMode) => {
 				<span class="tooltip-text">Reddit</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="https://soundcloud.com/metayeti" target="_blank">
-				<font-awesome-icon icon="fa-brands fa-soundcloud" />
-				<span class="tooltip-text">Soundcloud</span>
-				<div class="tooltip-arrow"></div>
-			</a>
 			<a class="social-link tooltip" href="https://www.youtube.com/@metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-youtube" />
 				<span class="tooltip-text">YouTube</span>
 				<div class="tooltip-arrow"></div>
 			</a>
+			<a class="social-link tooltip" href="https://soundcloud.com/metayeti" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-soundcloud" />
+				<span class="tooltip-text">Soundcloud</span>
+				<div class="tooltip-arrow"></div>
+			</a>
 		</div>
 	</nav>
+	-->
 	<nav class="navigation-main">
 		<div class="wrap flex flex-row gap-1.5">
 			<div class="nav-button-row">
@@ -111,7 +114,7 @@ const switchSiteTheme = (lightMode) => {
 	</nav>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 header {
 	position: relative;
 	user-select: none;
@@ -122,11 +125,10 @@ header > .banner {
 	position: relative;
 	height: 78px;
 	overflow: hidden;
-	z-index: 1;
 
 	.back {
-		/* header backgrounds that make sure the correct colors continue past
-		   the banner on very wide screens or client zoom-out */
+		/* header backgrounds to make sure the correct background colors continue
+		   past the banner */
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -158,14 +160,43 @@ header > .banner {
 		margin-left: -1000px;
 	}
 
+	.crt-fx {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: repeating-linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.2) 0px,
+			rgba(0, 0, 0, 0.2) 1px,
+			transparent 1px,
+			transparent 2px
+		);
+
+	}
+
 	h1.site-branding {
 		position: absolute;
-		top: 25px;
+		line-height: 80px;
 		margin-left: -5px;
 		color: #fff;
+		/*
+		font-family: "Press Start 2P", system-ui;
+		font-size: 9.5px;
+		font-smooth: never;
+		*/
 		font-family: "Sintony", sans-serif;
-		font-weight: 700;
-		font-size: 18px;
+		font-weight: 400;
+		font-size: 17px;
+
+		/*
+		@media (min-width: 430px) { font-size: 0.6em; }
+		@media (min-width: 460px) { font-size: 0.7em; }
+		@media (min-width: 490px) { font-size: 0.8em; }
+		@media (min-width: 520px) { font-size: 0.9em; }
+		@media (min-width: 550px) { font-size: 1em; }
+		*/
 
 		.highlight {
 			color: rgb(135, 121, 145);
@@ -175,6 +206,7 @@ header > .banner {
 }
 
 /* -- top navigation -- */
+/*
 nav.navigation-top {
 	position: sticky;
 	top: 0;
@@ -246,6 +278,7 @@ nav.navigation-top {
 
 	}
 }
+*/
 
 /* -- main navigation -- */
 nav.navigation-main {
@@ -254,7 +287,6 @@ nav.navigation-main {
 	height: 55px;
 	background-color: #141414;
 	border-bottom: 3px solid #111;
-	box-shadow: 0 2px 15px 0 #111;
 	z-index: 99;
 
 	.nav-button-row {
@@ -310,15 +342,47 @@ nav.navigation-main {
 				background-color: rgb(26, 214, 26);
 				box-shadow: 0 0 10px 2px rgb(26, 214, 26);
 			}
+
+			@media (min-width: 500px) {
+				height: 55px;
+				padding: 0 25px 0 0;
+				line-height: 55px;
+				font-size: 13px;
+				text-align: left;
+				flex-grow: 0;
+
+				&::before {
+					display: block;
+					position: relative;
+					float: left;
+					width: 30px;
+					height: 14px;
+					top: 38px;
+					border-left: 1px solid #2a2a2a;
+				}
+				&:first-child::before {
+					border-color: transparent;
+				}
+				&::after {
+					left: 16px;
+					top: 0;
+					bottom: 0;
+					margin: auto 0;
+					width: 5px;
+					height: 5px;
+					background-color: #555;
+				}
+			}
 		}
 	}
-}
-.let-there-be-light nav.navigation-main {
-	box-shadow: none;
+
+
+
 }
 
 /* -- responsive breakpoints -- */
 
+/*
 @media (min-width: 500px) {
 	nav.navigation-main {
 		.nav-button-row {
@@ -355,4 +419,5 @@ nav.navigation-main {
 		}
 	}
 }
+	*/
 </style>
