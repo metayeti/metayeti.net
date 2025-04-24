@@ -75,19 +75,17 @@ const switchSiteTheme = (lightMode) => {
 				<div class="tooltip-arrow"></div>
 			</a>
 			
-			<a class="social-link tooltip" href="https://bsky.app/profile/metayeti.bsky.social" target="_blank">
+			<!-- <a class="social-link tooltip" href="https://bsky.app/profile/metayeti.bsky.social" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-bluesky" />
 				<span class="tooltip-text">Bluesky</span>
 				<div class="tooltip-arrow"></div>
-			</a>
+			</a> -->
 
-			<!--
 			<a class="social-link tooltip" href="https://www.reddit.com/user/metayeti2/" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-reddit-alien" />
 				<span class="tooltip-text">Reddit</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-		-->
 
 			<a class="social-link tooltip" href="https://www.youtube.com/@metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-youtube" />
@@ -124,7 +122,7 @@ const switchSiteTheme = (lightMode) => {
 </template>
 
 <style scoped lang="scss">
-$wrapBreakpoint: 1019;
+$wrapBreakpoint: 1019px;
 
 header {
 	position: relative;
@@ -138,15 +136,15 @@ header > .banner {
 	height: 78px;
 	overflow: hidden;
 
-	@media (max-width: 1019px) {
+	@media (max-width: $wrapBreakpoint) {
 		.wrap {
 			margin-left: 20px;
 		}
 	}
 
 	.back {
-		/* header backgrounds to make sure the correct background colors continue
-		   past the banner */
+		/* header backgrounds make sure that the correct
+		   banner colors continue past the banner picture */
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -190,7 +188,7 @@ header > .banner {
 
 		@media (max-width: 1000px) { top: 10px; left: 184px; }
 		@media (max-width: 950px) { left: 154px; }
-		@media (max-width: 900px) { display: none; }
+		@media (max-width: 900px) { top: 70px; left: 120px; }
 	}
 
 	h1.site-branding {
@@ -209,7 +207,7 @@ header > .banner {
 			color: rgb(132, 111, 146);
 		}
 
-		@media (max-width: 499px) { left: -10px; font-size: 4vw; }
+		@media (max-width: 499px) { left: -5px; font-size: 4vw; }
 
 	}
 
@@ -236,13 +234,12 @@ nav.navigation-top {
 	position: sticky;
 	top: 0;
 	height: 32px;
-	background-color: #000;
-	overflow: hidden;
+	background-color: var(--my-navigation-color1);
 	z-index: 2;
 
-	@media (max-width: 1019px) {
+	@media (max-width: $wrapBreakpoint) {
 		.wrap {
-			margin-right: -10px;
+			padding-right: 10px;
 		}
 	}
 
@@ -316,14 +313,14 @@ nav.navigation-main {
 	position: sticky;
 	top: 0;
 	height: 55px;
-	background-color: #141414;
-	border-bottom: 3px solid #111;
+	background-color: var(--my-navigation-color2);
+	border-bottom: 3px solid var(--my-navigation-border);
 	overflow: hidden;
 	z-index: 99;
 
-	@media (max-width: 1019px) {
+	@media (max-width: $wrapBreakpoint) {
 		.wrap {
-			margin-right: -10px;
+			padding-right: 10px;
 		}
 	}
 
@@ -359,7 +356,7 @@ nav.navigation-main {
 				height: 15px;
 				left: 0;
 				top: 38px;
-				border-left: 1px solid #2a2a2a;
+				border-left: 1px solid var(--my-navigation-cut-in);
 			}
 			&:first-child::before {
 				border-color: transparent;
@@ -396,50 +393,6 @@ nav.navigation-main {
 					width: 30px;
 					height: 14px;
 					top: 38px;
-					border-left: 1px solid #2a2a2a;
-				}
-				&:first-child::before {
-					border-color: transparent;
-				}
-				&::after {
-					left: 16px;
-					top: 0;
-					bottom: 0;
-					margin: auto 0;
-					width: 5px;
-					height: 5px;
-					background-color: #555;
-				}
-			}
-		}
-	}
-
-
-
-}
-
-/* -- responsive breakpoints -- */
-
-/*
-@media (min-width: 500px) {
-	nav.navigation-main {
-		.nav-button-row {
-			.nav-button {
-				height: 55px;
-				padding: 0 25px 0 0;
-				line-height: 55px;
-				font-size: 13px;
-				text-align: left;
-				flex-grow: 0;
-
-				&::before {
-					display: block;
-					position: relative;
-					float: left;
-					width: 30px;
-					height: 14px;
-					top: 38px;
-					border-left: 1px solid #2a2a2a;
 				}
 				&:first-child::before {
 					border-color: transparent;
@@ -457,5 +410,4 @@ nav.navigation-main {
 		}
 	}
 }
-	*/
 </style>

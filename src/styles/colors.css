@@ -7,7 +7,7 @@
 /* Default theme colors */
 
 :root {
-	--my-global-background: #131313;
+	--my-global-background: #252525;
 
 	--my-content-background: #1d1d1d;
 	--my-content-color: #ccc;
@@ -15,8 +15,13 @@
 	--my-content-decoration: #333;
 	--my-content-link: #ff2176;
 
+	--my-navigation-color1: #000;
+	--my-navigation-color2: #151515;
+	--my-navigation-border: #111;
+	--my-navigation-cut-in: #2a2a2a;
 
-	--my-soft-border: #2a2a2a;
+	--my-footer-background: #252525;
+	--my-footer-divider: #2a2a2a;
 }
 
 /* Light theme colors */
@@ -27,4 +32,12 @@
 	--my-content-heading: #000;
 	--my-content-underline: #ebf0f3;
 	--my-content-link: #f70036;
+
+	/*
+	--my-navigation-color1: #fff;
+	--my-navigation-color2: #ddd;
+	--my-navigation-border: #eee;
+	--my-navigation-cut-in: #eee;
+	*/
+
 }
