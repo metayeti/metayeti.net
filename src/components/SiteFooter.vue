@@ -6,8 +6,8 @@ import IconVue from './icons/IconVue.vue';
 	<footer>
 		<div class="wrap h-full py-5 flex flex-col justify-center items-center min-[1020px]:items-end gap-1">
 			<span class="text-neutral-500">Created by Danijel Durakovic</span>
-			<span class="text-neutral-600">&copy; {{ new Date().getFullYear() }} metayeti.net</span>
 			<span class="text-neutral-600">Powered by <a href="https://vuejs.org" target="_blank"><IconVue class="inline" /> Vue.js</a></span>
+			<span class="text-neutral-600">&copy; {{ new Date().getFullYear() }} metayeti.net | All rights reserved.</span>
 		</div>
 	</footer>
 </template>

@@ -39,60 +39,70 @@ const switchSiteTheme = (lightMode) => {
 				<div class="bg2"></div>
 			</div>
 			<div class="pixelated background"></div>
-			<div class="crt-fx"></div>
 			<div class="wrap">
+				<div class="pixelated yeti"></div>
 				<h1 class="site-branding">
-					<span class="highlight">meta</span><span>yeti.net</span>
+					<span class="highlight">.&sol;meta</span><span>yeti.net_</span>
 				</h1>
 			</div>
+			<div class="crt-fx"></div>
 		</div>
 	</header>
-	<!--
 	<nav class="navigation-top">
 		<div class="wrap social-link-row">
-			<a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
+			
+			<!-- <a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-facebook" />
 				<span class="tooltip-text">Facebook</span>
 				<div class="tooltip-arrow"></div>
-			</a>
+			</a> -->
+	
 			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-github" />
 				<span class="tooltip-text">GitHub</span>
 				<div class="tooltip-arrow"></div>
 			</a>
+
+			<!-- <a class="social-link tooltip" href="#" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-linkedin" />
+				<span class="tooltip-text">LinkedIn</span>
+				<div class="tooltip-arrow"></div>
+			</a> -->
+		
 			<a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-x-twitter" />
 				<span class="tooltip-text">X</span>
 				<div class="tooltip-arrow"></div>
 			</a>
+			
 			<a class="social-link tooltip" href="https://bsky.app/profile/metayeti.bsky.social" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-bluesky" />
 				<span class="tooltip-text">Bluesky</span>
 				<div class="tooltip-arrow"></div>
 			</a>
-			<a class="social-link tooltip" href="#" target="_blank">
-				<font-awesome-icon icon="fa-brands fa-linkedin" />
-				<span class="tooltip-text">LinkedIn</span>
-				<div class="tooltip-arrow"></div>
-			</a>
+
+			<!--
 			<a class="social-link tooltip" href="https://www.reddit.com/user/metayeti2/" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-reddit-alien" />
 				<span class="tooltip-text">Reddit</span>
 				<div class="tooltip-arrow"></div>
 			</a>
+		-->
+
 			<a class="social-link tooltip" href="https://www.youtube.com/@metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-youtube" />
 				<span class="tooltip-text">YouTube</span>
 				<div class="tooltip-arrow"></div>
 			</a>
+
 			<a class="social-link tooltip" href="https://soundcloud.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-soundcloud" />
-				<span class="tooltip-text">Soundcloud</span>
+				<span class="tooltip-text">SoundCloud</span>
 				<div class="tooltip-arrow"></div>
 			</a>
+		
 		</div>
 	</nav>
-	-->
 	<nav class="navigation-main">
 		<div class="wrap flex flex-row gap-1.5">
 			<div class="nav-button-row">
@@ -103,7 +113,6 @@ const switchSiteTheme = (lightMode) => {
 			</div>
 
 			<div class="flex flex-row items-center gap-1.5">
-
 				<div class="size-5">
 					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
 				</div>
@@ -115,9 +124,12 @@ const switchSiteTheme = (lightMode) => {
 </template>
 
 <style scoped lang="scss">
+$wrapBreakpoint: 1019;
+
 header {
 	position: relative;
 	user-select: none;
+	overflow: hidden;
 }
 
 /* -- yeti banner -- */
@@ -125,6 +137,12 @@ header > .banner {
 	position: relative;
 	height: 78px;
 	overflow: hidden;
+
+	@media (max-width: 1019px) {
+		.wrap {
+			margin-left: 20px;
+		}
+	}
 
 	.back {
 		/* header backgrounds to make sure the correct background colors continue
@@ -160,6 +178,41 @@ header > .banner {
 		margin-left: -1000px;
 	}
 
+	.yeti {
+		position: absolute;
+		width: 220px;
+		height: 78px;
+		top: 0;
+		left: 194px;
+		background-image: url('@/assets/images/yeti.png');
+		background-size: cover;
+		transition: top 250ms linear, left 250ms linear;
+
+		@media (max-width: 1000px) { top: 10px; left: 184px; }
+		@media (max-width: 950px) { left: 154px; }
+		@media (max-width: 900px) { display: none; }
+	}
+
+	h1.site-branding {
+		position: absolute;
+		top: 0;
+		left: 0;
+		line-height: 82px;
+		margin-left: -5px;
+		color: #fff;
+		font-family: "Lekton", monospace;
+		font-family: "M PLUS 1 Code", monospace;
+		font-style: normal;
+		font-size: 22px;
+
+		.highlight {
+			color: rgb(132, 111, 146);
+		}
+
+		@media (max-width: 499px) { left: -10px; font-size: 4vw; }
+
+	}
+
 	.crt-fx {
 		position: absolute;
 		width: 100%;
@@ -176,43 +229,22 @@ header > .banner {
 
 	}
 
-	h1.site-branding {
-		position: absolute;
-		line-height: 80px;
-		margin-left: -5px;
-		color: #fff;
-		/*
-		font-family: "Press Start 2P", system-ui;
-		font-size: 9.5px;
-		font-smooth: never;
-		*/
-		font-family: "Sintony", sans-serif;
-		font-weight: 400;
-		font-size: 17px;
-
-		/*
-		@media (min-width: 430px) { font-size: 0.6em; }
-		@media (min-width: 460px) { font-size: 0.7em; }
-		@media (min-width: 490px) { font-size: 0.8em; }
-		@media (min-width: 520px) { font-size: 0.9em; }
-		@media (min-width: 550px) { font-size: 1em; }
-		*/
-
-		.highlight {
-			color: rgb(135, 121, 145);
-		}
-
-	}
 }
 
 /* -- top navigation -- */
-/*
 nav.navigation-top {
 	position: sticky;
 	top: 0;
 	height: 32px;
 	background-color: #000;
+	overflow: hidden;
 	z-index: 2;
+
+	@media (max-width: 1019px) {
+		.wrap {
+			margin-right: -10px;
+		}
+	}
 
 	.social-link-row {
 		display: flex;
@@ -278,7 +310,6 @@ nav.navigation-top {
 
 	}
 }
-*/
 
 /* -- main navigation -- */
 nav.navigation-main {
@@ -287,7 +318,14 @@ nav.navigation-main {
 	height: 55px;
 	background-color: #141414;
 	border-bottom: 3px solid #111;
+	overflow: hidden;
 	z-index: 99;
+
+	@media (max-width: 1019px) {
+		.wrap {
+			margin-right: -10px;
+		}
+	}
 
 	.nav-button-row {
 		display: flex;

@@ -13,8 +13,8 @@ const routes = [
 ];
 
 const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
-	//history: createWebHashHistory(import.meta.env.BASE_URL),
+	//history: createWebHistory(import.meta.env.BASE_URL),
+	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes,
 	scrollBehavior(to, from, savedPosition) {
 
@@ -23,13 +23,11 @@ const router = createRouter({
 		}
 
 		const isInitialLoad = !from.name;
-		const toPosition = (to.path === '/') ? 0 : 100;
-		/*
+		//const toPosition = (to.path === '/') ? 0 : 110;
 		let toPosition;
 		if (to.path === '/') toPosition = 0;
 		else if (to.path === '/about') toPosition = 79;
 		else toPosition = 110;
-		*/
 
 		return {
 			top: toPosition,

@@ -9,10 +9,10 @@
 :root {
 	--my-global-background: #131313;
 
-	--my-content-background :#1d1d1d;
+	--my-content-background: #1d1d1d;
 	--my-content-color: #ccc;
 	--my-content-heading: #eee;
-	--my-content-heading-decoration: #333;
+	--my-content-decoration: #333;
 	--my-content-link: #ff2176;
 
 
@@ -22,7 +22,7 @@
 /* Light theme colors */
 
 :root.let-there-be-light {
-	--my-content-background: #e9e9e9;
+	--my-content-background: #f9f9f9;
 	--my-content-color: #000000;
 	--my-content-heading: #000;
 	--my-content-underline: #ebf0f3;
