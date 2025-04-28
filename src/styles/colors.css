@@ -10,10 +10,12 @@
 	--my-global-background: #252525;
 
 	--my-content-background: #1d1d1d;
-	--my-content-color: #ccc;
+	--my-content-text: #ccc;
 	--my-content-heading: #eee;
-	--my-content-decoration: #333;
+	--my-content-accent: #333;
+	--my-content-accent-text: #b9b9b9;
 	--my-content-link: #ff2176;
+	--my-content-link-hover: #fff;
 
 	--my-navigation-color1: #000;
 	--my-navigation-color2: #151515;
@@ -29,13 +31,14 @@
 :root.let-there-be-light {
 	--my-content-background: #f9f9f9;
 	--my-content-color: #000000;
-	--my-content-heading: #000;
+	--my-content-heading: #222;
+	--my-content-accent: #696969;
 	--my-content-underline: #ebf0f3;
 	--my-content-link: #f70036;
 
+	--my-navigation-color1: #f7f7f7;
+	--my-navigation-color2: #dfdfdf;
 	/*
-	--my-navigation-color1: #fff;
-	--my-navigation-color2: #ddd;
 	--my-navigation-border: #eee;
 	--my-navigation-cut-in: #eee;
 	*/

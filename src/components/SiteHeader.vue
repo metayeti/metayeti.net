@@ -5,6 +5,7 @@ import RockerSwitch from './RockerSwitch.vue';
 
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
+import { switchTheme } from '@/utils';
 
 const route = useRoute();
 const navItemActive = ref(0);
@@ -25,9 +26,7 @@ const lightModeIcon = ref(false);
 
 const switchSiteTheme = (lightMode) => {
 	lightModeIcon.value = lightMode;
-	const lightModeClass = 'let-there-be-light';
-	if (lightMode) { document.documentElement.classList.add(lightModeClass); }
-	else { document.documentElement.classList.remove(lightModeClass); }
+	switchTheme(lightMode);
 }
 </script>
 
@@ -51,11 +50,11 @@ const switchSiteTheme = (lightMode) => {
 	<nav class="navigation-top">
 		<div class="wrap social-link-row">
 			
-			<!-- <a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
+			<a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-facebook" />
 				<span class="tooltip-text">Facebook</span>
 				<div class="tooltip-arrow"></div>
-			</a> -->
+			</a>
 	
 			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-github" />
@@ -63,11 +62,11 @@ const switchSiteTheme = (lightMode) => {
 				<div class="tooltip-arrow"></div>
 			</a>
 
-			<!-- <a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="#" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-linkedin" />
 				<span class="tooltip-text">LinkedIn</span>
 				<div class="tooltip-arrow"></div>
-			</a> -->
+			</a>
 		
 			<a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-x-twitter" />
@@ -181,14 +180,14 @@ header > .banner {
 		width: 220px;
 		height: 78px;
 		top: 0;
-		left: 194px;
+		left: 184px;
 		background-image: url('@/assets/images/yeti.png');
 		background-size: cover;
 		transition: top 250ms linear, left 250ms linear;
 
-		@media (max-width: 1000px) { top: 10px; left: 184px; }
+		@media (max-width: 1000px) { top: 10px; left: 174px; }
 		@media (max-width: 950px) { left: 154px; }
-		@media (max-width: 900px) { top: 70px; left: 120px; }
+		@media (max-width: 900px) { display: none; }
 	}
 
 	h1.site-branding {
@@ -219,8 +218,8 @@ header > .banner {
 		top: 0;
 		background: repeating-linear-gradient(
 			to bottom,
-			rgba(0, 0, 0, 0.2) 0px,
-			rgba(0, 0, 0, 0.2) 1px,
+			rgba(0, 0, 0, 0.1) 0px,
+			rgba(0, 0, 0, 0.1) 1px,
 			transparent 1px,
 			transparent 2px
 		);
@@ -258,13 +257,13 @@ nav.navigation-top {
 			line-height: 34px;
 			text-align: center;
 			color: #4a5565;
-		}
-		.social-link:hover {
-			font-size: 21px;
-			line-height: 33px;
-			color: #e5ebf7;
-		}
 
+			&:hover, &:focus {
+				font-size: 21px;
+				line-height: 33px;
+				color: #e5ebf7;
+			}
+		}
 	}
 	.tooltip {
 		position: relative;
@@ -299,7 +298,7 @@ nav.navigation-top {
 			border-color: black transparent transparent transparent;
 		}
 
-		&:hover {
+		&:hover, &:focus {
 			.tooltip-text, .tooltip-arrow {
 				visibility: visible;
 			}
@@ -343,7 +342,7 @@ nav.navigation-main {
 			user-select: none;
 			flex-grow: 1;
 
-			&.active, &:hover {
+			&.active, &:hover, &:focus {
 				background-color: #000;
 				color: #fff;
 			}
@@ -378,7 +377,7 @@ nav.navigation-main {
 				box-shadow: 0 0 10px 2px rgb(26, 214, 26);
 			}
 
-			@media (min-width: 500px) {
+			@media (min-width: 520px) {
 				height: 55px;
 				padding: 0 25px 0 0;
 				line-height: 55px;
