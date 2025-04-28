@@ -38,7 +38,7 @@ onMounted(async () => {
 			</a>
 		</li>
 	</ul>
-	<!-- <p v-else>Loading...</p> -->
+	<!-- <p v-else>...</p> -->
 </template>
 
 <style scoped lang="scss">
@@ -47,17 +47,11 @@ ul.latest-posts {
 		position: relative;
 		display: inline-block;
 		color: var(--my-content-text);
-		//border-bottom: 3px solid #333;
-		//padding-right: 10px;
 		border-bottom: 2px solid transparent;
 
 		.post-date {
 			position: relative;
 			padding: 0 13px;
-			//line-height: 28px;
-			//margin-bottom: -1px;
-			//max-height: 32px;
-			//clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
 			outline: 2px solid #444;
 			background-color: var(--my-content-accent);
 			color: var(--my-content-accent-text);
@@ -79,10 +73,7 @@ ul.latest-posts {
 		&:hover {
 
 			border-bottom: 2px solid var(--my-content-link);
-			//left: -1px;
-
-			//outline: 1px dashed var(--my-content-link);
-			//outline-offset: 8px;
+			left: -1px;
 
 			.post-date {
 				color: var(--my-content-link-hover);
