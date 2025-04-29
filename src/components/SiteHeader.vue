@@ -343,7 +343,7 @@ nav.navigation-main {
 			flex-grow: 1;
 
 			&.active, &:hover, &:focus {
-				background-color: #000;
+				background-color: var(--my-navigation-color1);
 				color: #fff;
 			}
 

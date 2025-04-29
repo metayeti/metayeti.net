@@ -52,7 +52,9 @@ ul.latest-posts {
 		.post-date {
 			position: relative;
 			padding: 0 13px;
-			outline: 2px solid #444;
+			// outline: 2px solid var(--my-content-accent);
+			outline: 2px solid transparent;
+			border-left: 2px solid var(--my-content-link);
 			background-color: var(--my-content-accent);
 			color: var(--my-content-accent-text);
 			font-family: "Titillium Web", sans-serif;
@@ -78,6 +80,7 @@ ul.latest-posts {
 			.post-date {
 				color: var(--my-content-link-hover);
 				outline-color: var(--my-content-link);
+				border-color: transparent;
 			}
 			.post-title {
 				color: var(--my-content-link-hover);
