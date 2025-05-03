@@ -3,7 +3,7 @@
 //
 
 /**
- * Loads JSON data from an arbitrary path.
+ * Loads JSON data from path.
  *
  * @param {string} path
  * @returns {Promise}
@@ -17,10 +17,28 @@ export async function loadJSON(path) {
 		return response.json();
 	}
 	catch (error) {
-		console.log('Error fetching JSON:', error);
+		console.log('Error loading content:', error);
 	}
 }
 
+/**
+ * Load text data from path.
+ *
+ * @param {string} path
+ * @returns {Promise}
+ */
+export async function loadText(path) {
+	try {
+		const response = await fetch(path);
+		if (!response.ok) {
+			throw new Error(`Failed to fetch ${path}`);
+		}
+		return response.text();
+	}
+	catch (error) {
+		console.log('Error loading content:', error);
+	}
+}
 
 /**
  * Convert a date string to a human readable format.
@@ -45,13 +63,13 @@ export function getHumanReadableDate(dateStr) {
  */
 export function switchTheme(lightMode) {
 	const lightModeClass = 'let-there-be-light';
-	const themeMeta = document.querySelector('meta[name="theme-color"]');
+	//const themeMeta = document.querySelector('meta[name="theme-color"]');
 	if (lightMode) {
 		document.documentElement.classList.add(lightModeClass);
-		themeMeta.setAttribute('content', '#dfdfdf');
+		//themeMeta.setAttribute('content', '#dfdfdf');
 	}
 	else {
 		document.documentElement.classList.remove(lightModeClass);
-		themeMeta.setAttribute('content', '#141414');
+		//themeMeta.setAttribute('content', '#141414');
 	}
 }

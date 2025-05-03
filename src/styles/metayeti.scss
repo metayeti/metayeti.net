@@ -1,5 +1,10 @@
-@import './base.css';
-@import './colors.scss';
+@use './base.css';
+@use './colors.scss';
+
+::selection {
+	color: var(--my-selection-text);
+	background: var(--my-selection-background);
+}
 
 body {
 	background-color: var(--my-global-background);
@@ -33,7 +38,7 @@ body {
 	background-color: var(--my-content-background);
 	color: var(--my-content-text);
 	font-family: "Inter", sans-serif;
-	font-size: 1rem;
+	font-size: 1.05rem;
 	z-index: 5;
 
 	.site-content {
@@ -43,7 +48,6 @@ body {
 	}
 
 	h2, h3, h4, h5, h6 {
-		//display: inline-block;
 		font-family: "Titillium Web", sans-serif;
 		color: var(--my-content-heading);
 		border-left: 6px solid var(--my-content-accent);
@@ -62,43 +66,13 @@ body {
 	}
 
 	a.link {
-		//display: inline-block;
 		position: relative;
 		color: var(--my-content-link);
 
 		&:hover {
-			//outline: 1px dashed var(--my-content-link);
-			//outline-offset: 2px;
 			left: -1px;
-			//top: -2px;
-			//padding-bottom: 2px;
-			border-top: 2px dotted var(--my-content-link);
-			color: #fff;
-			// box-shadow: 0 0 2px 2px #000;
-			//transform: translate(0, -1px);
+			border-top: 2px solid var(--my-content-link);
+			color: var(--my-content-link-hover);
 		}
 	}
-
-	/*
-	a.fancy {
-		display: inline-block;
-		color: var(--my-content-link);
-
-		&:before {
-			content: '[';
-			padding-right: 5px;
-			color: var(--my-content-link);
-		}
-		&:after {
-			content: ']';
-			padding-left: 5px;
-			color: var(--my-content-link);
-		}
-		&:hover {
-			color: #fff;
-			border-top: 0;
-			scale: 1.05;
-		}
-	}
-	*/
 }

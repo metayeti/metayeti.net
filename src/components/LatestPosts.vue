@@ -5,17 +5,15 @@ import { ref, onMounted } from 'vue';
 const blogListing = ref([]);
 
 onMounted(async () => {
-
 	const blogData = await loadJSON('/content/blog/index.json');
 	blogListing.value = blogData.posts;
-
 });
 </script>
 
 <template>
 	<ul v-if="blogListing.length" class="latest-posts flex flex-col gap-7">
 		<li
-			v-for="item in blogListing.slice(0, 5)"
+			v-for="item in blogListing.slice(0, 3)"
 			:key="item.id"
 		>
 			<a href="#">
@@ -52,7 +50,6 @@ ul.latest-posts {
 		.post-date {
 			position: relative;
 			padding: 0 13px;
-			// outline: 2px solid var(--my-content-accent);
 			outline: 2px solid transparent;
 			border-left: 2px solid var(--my-content-link);
 			background-color: var(--my-content-accent);
@@ -68,8 +65,8 @@ ul.latest-posts {
 			}
 		}
 		.post-title {
-			color: #aaa;
-			padding: 4px 0;
+			color: var(--my-content-text-dimmed);
+			padding: 5px 0;
 		}
 
 		&:hover {

@@ -7,6 +7,8 @@ import { RouterLink, useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
 import { switchTheme } from '@/utils';
 
+// -- route handling --
+
 const route = useRoute();
 const navItemActive = ref(0);
 
@@ -21,6 +23,7 @@ watch(() => route.path, (nextPath) => {
 	navItemActive.value = routeMap[nextPath] ?? -1;
 });
 
+// -- site theme handling --
 
 const lightModeIcon = ref(false);
 
@@ -28,6 +31,8 @@ const switchSiteTheme = (lightMode) => {
 	lightModeIcon.value = lightMode;
 	switchTheme(lightMode);
 }
+
+
 </script>
 
 <template>
@@ -314,7 +319,7 @@ nav.navigation-main {
 	height: 55px;
 	background-color: var(--my-navigation-color2);
 	border-bottom: 3px solid var(--my-navigation-border);
-	overflow: hidden;
+	//overflow: hidden;
 	z-index: 99;
 
 	@media (max-width: $wrapBreakpoint) {
@@ -334,7 +339,7 @@ nav.navigation-main {
 			height: 55px;
 			line-height: 40px;
 			padding: 0 7px;
-			color: #ccc;
+			color: #9faac4;
 			font-family: "Titillium Web", sans-serif;
 			font-size: 12px;
 			text-align: center;
@@ -382,6 +387,7 @@ nav.navigation-main {
 				padding: 0 25px 0 0;
 				line-height: 55px;
 				font-size: 13px;
+				font-weight: 400;
 				text-align: left;
 				flex-grow: 0;
 

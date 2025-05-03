@@ -1,0 +1,12 @@
+{
+	"projects": [
+		{
+			"name": "Zorlax",
+			"path": "zorlax/",
+			"description": "2D retro platformer",
+			"system": "Windows"
+		}
+	],
+	"old-projects": [
+	]
+}
