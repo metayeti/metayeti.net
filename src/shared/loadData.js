@@ -1,7 +1,3 @@
-//
-// Utility functions
-//
-
 const cache = {}; // data cache
 
 /**
@@ -9,11 +5,10 @@ const cache = {}; // data cache
  *
  * @param {string} path The URL path to fetch data from.
  * @param {Function} parser A function to parse the response (e.g., response.text, response.json).
- * @returns {Promise} - A promise that resolves to the parsed data.
+ * @returns {Promise} A promise that resolves to the parsed data.
  */
-async function loadData(path, parser) {
+export default async function loadData(path, parser) {
 	if (cache[path]) {
-		console.log(cache[path]);
 		return cache[path];
 	}
 	try {
@@ -49,38 +44,4 @@ export async function loadJSON(path) {
  */
 export async function loadText(path) {
 	return loadData(path, response => response.text());
-}
-
-/**
- * Convert a date string to a human readable format.
- *
- * Will convert something like "2025-04-25" to "April 25, 2025"
- * 
- * @param {string} dateStr
- * @returns {string}
- */
-export function getHumanReadableDate(dateStr) {
-	return new Date(dateStr).toLocaleDateString('en-US', {
-		month: 'short',
-		day: 'numeric',
-		year: 'numeric'
-	});
-}
-
-/**
- * Switch between dark and light themes.
- *
- * @param {boolean} lightMode Whether or not to switch to a light mode theme.
- */
-export function switchTheme(lightMode) {
-	const lightModeClass = 'let-there-be-light';
-	//const themeMeta = document.querySelector('meta[name="theme-color"]');
-	if (lightMode) {
-		document.documentElement.classList.add(lightModeClass);
-		//themeMeta.setAttribute('content', '#dfdfdf');
-	}
-	else {
-		document.documentElement.classList.remove(lightModeClass);
-		//themeMeta.setAttribute('content', '#141414');
-	}
 }

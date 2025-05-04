@@ -5,7 +5,7 @@ import RockerSwitch from './RockerSwitch.vue';
 
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
-import { switchTheme } from '@/utils';
+import { switchTheme } from '@/shared';
 
 // -- route handling --
 
@@ -202,7 +202,6 @@ header > .banner {
 		line-height: 82px;
 		margin-left: -5px;
 		color: #fff;
-		font-family: "Lekton", monospace;
 		font-family: "M PLUS 1 Code", monospace;
 		font-style: normal;
 		font-size: 22px;

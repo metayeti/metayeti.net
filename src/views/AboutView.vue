@@ -1,10 +1,8 @@
 <script setup>
-import { loadText } from '@/utils';
+import { loadText, md } from '@/shared';
 import { ref, onMounted } from 'vue';
-import MarkdownIt from 'markdown-it';
 
 const renderedMarkdown = ref('');
-const md = new MarkdownIt();
 
 const fetchMarkdown = async () => {
 	const textData = await loadText('/content/static/about.md');
@@ -15,7 +13,7 @@ onMounted(fetchMarkdown);
 
 
 <template>
-	<div
+	<article
 		v-html="renderedMarkdown"
-	></div>
+	></article>
 </template>

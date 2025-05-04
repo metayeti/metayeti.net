@@ -1,5 +1,5 @@
 <script setup>
-import { getHumanReadableDate, loadJSON } from '@/utils';
+import { getHumanReadableDate, loadJSON } from '@/shared';
 import { ref, onMounted } from 'vue';
 
 const blogListing = ref([]);

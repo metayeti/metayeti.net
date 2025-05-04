@@ -47,6 +47,8 @@ body {
 		gap: 10vh;
 	}
 
+	// -- headings --
+
 	h2, h3, h4, h5, h6 {
 		font-family: "Titillium Web", sans-serif;
 		color: var(--my-content-heading);
@@ -60,10 +62,14 @@ body {
 		line-height: 2.3rem;
 	}
 
+	// -- paragraph --
+
 	p {
 		padding-bottom: 20px;
 		line-height: 1.5rem;
 	}
+
+	// -- link --
 
 	a.link {
 		position: relative;
@@ -74,5 +80,68 @@ body {
 			border-top: 2px solid var(--my-content-link);
 			color: var(--my-content-link-hover);
 		}
+	}
+
+	// -- table --
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		max-width: 800px;
+		margin: 20px 0;
+		font-family: Arial, sans-serif;
+		background-color: #fff;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	th, td {
+		padding: 12px 15px;
+		text-align: left;
+		border-bottom: 1px solid #ddd;
+	}
+
+	th {
+		background-color: #f4f4f4;
+		font-weight: bold;
+		color: #333;
+	}
+
+	tr:hover {
+		background-color: #f9f9f9;
+	}
+
+	td {
+		color: #555;
+	}
+
+	@media (max-width: 600px) {
+		table {
+			width: 100%;
+		}
+		th, td {
+			padding: 8px;
+			font-size: 14px;
+		}
+	}
+
+	// -- code --
+
+	pre, code {
+		font-family: "M PLUS 1 Code", Courier, monospace;
+		background-color: #1b1b1b;
+		color: #ffffff;
+	}
+
+	// code block
+	pre {
+		padding: 10px;
+		overflow-x: auto;
+		border: 1px solid #333;
+	}
+
+	// inline code
+	code {
+		padding: 2px 4px;
+		font-size: 0.9em;
 	}
 }
