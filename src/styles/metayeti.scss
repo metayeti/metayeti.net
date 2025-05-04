@@ -35,6 +35,7 @@ body {
 .main-content {
 	position: relative;
 	padding: 10vh 0;
+	min-height: calc(100vh - 165px); // to prevent flicker and scroll issues
 	background-color: var(--my-content-background);
 	color: var(--my-content-text);
 	font-family: "Inter", sans-serif;

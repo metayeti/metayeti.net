@@ -24,8 +24,7 @@ const md = MarkdownIt({
 
 // -- rewrite some markdown renderer rules --
 
-// override heading_open and heading_close to shift heading levels
-// (h1 -> h2, h2 -> h3, etc.)
+// shift heading levels (h1 -> h2, h2 -> h3, etc.)
 md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
 	const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);

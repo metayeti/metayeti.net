@@ -210,7 +210,10 @@ header > .banner {
 			color: rgb(132, 111, 146);
 		}
 
-		@media (max-width: 499px) { left: -5px; font-size: 4vw; }
+		@media (max-width: 499px) {
+			left: -5px;
+			font-size: clamp(13px, 4vw, 22px);
+		}
 
 	}
 
@@ -376,9 +379,15 @@ nav.navigation-main {
 				background-color: #505050;
 				border-radius: 50%;
 			}
+			/*
+			&:hover::after, &:focus::after {
+				background-color: #e79d14;
+				box-shadow: 0 0 10px 2px #e79d14;
+			}
+			*/
 			&.active::after {
-				background-color: rgb(26, 214, 26);
-				box-shadow: 0 0 10px 2px rgb(26, 214, 26);
+				background-color: #1ad61a;
+				box-shadow: 0 0 10px 2px #1ad61a;
 			}
 
 			@media (min-width: 520px) {
