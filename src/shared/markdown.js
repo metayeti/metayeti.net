@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it';
+import anchor from 'markdown-it-anchor';
 import hljs from 'highlight.js/lib/core';
 
 // import individual languages for hljs (so we don't bundle those we don't need)
@@ -22,18 +23,27 @@ const md = MarkdownIt({
 	}
 });
 
+// add ids to headings for navigation
+md.use(anchor, {
+	permalink: false,
+	slugify: s => s.toLowerCase().replace(/\s+/g, '-'),
+	tabIndex: false
+});
+
 // -- rewrite some markdown renderer rules --
 
 // shift heading levels (h1 -> h2, h2 -> h3, etc.)
 md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
 	const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);
-	return `<h${level}>`;
+	token.tag = `h${level}`;
+	return self.renderToken(tokens, idx, options);
 };
 md.renderer.rules.heading_close = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
 	const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);
-	return `</h${level}>`;
+	token.tag = `h${level}`;
+	return self.renderToken(tokens, idx, options);
 };
 
 // add link class and target _blank to links
@@ -51,5 +61,6 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
 	return self.renderToken(tokens, idx, options);
 };
 
-// -- export markdown instance for global use --
+
+// -- export the markdown instance for global use --
 export default md;

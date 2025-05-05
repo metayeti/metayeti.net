@@ -2,7 +2,7 @@
 
 <img class="me" src="/content/static/images/me.jpg" alt="me">
 
-Ahoy there! I'm Danijel. I'm a programmer with a passion for creating videogames. I combine my [skills](#skills) to create games, software, websites and other kinds of interactive digital content.
+Ahoy there! I'm Danijel. I'm a programmer with a passion for videogames. I combine my [skills](#skills) to create games, software, websites and other kinds of interactive digital content.
 
 My main interests in life are programming, mathematics, science, philosophy, music and art.
 
