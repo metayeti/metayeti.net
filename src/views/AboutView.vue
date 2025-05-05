@@ -1,19 +1,32 @@
 <script setup>
-import { loadText, md } from '@/shared';
+import { loadText, md, routeLinkHandler } from '@/shared';
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-const renderedMarkdown = ref('');
+const renderedAboutMarkdown = ref('');
 
-const fetchMarkdown = async () => {
-	const textData = await loadText('/content/static/about.md');
-	renderedMarkdown.value = md.render(textData);
-};
-onMounted(fetchMarkdown);
+onMounted(async () => {
+	const aboutMarkdown = await loadText('/content/static/about.md');
+	renderedAboutMarkdown.value = md.render(aboutMarkdown);
+});
+
+const router = useRouter();
+const handleRouteLink = routeLinkHandler(router);
 </script>
 
 
 <template>
-	<article
-		v-html="renderedMarkdown"
-	></article>
+	<article v-html="renderedAboutMarkdown" @click="handleRouteLink"></article>
 </template>
+
+<style scoped>
+/* note: both of these syntaxes work */
+/*article >>> img.me {*/
+article :deep(img.me) {
+	float: right;
+	height: 350px;
+	margin: 0 0 50px 35px;
+    border: 8px solid #1a1a1a;
+    box-shadow: 0 0 10px 0 #050505;
+}
+</style>

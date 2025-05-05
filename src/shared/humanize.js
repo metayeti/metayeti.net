@@ -1,7 +1,7 @@
 /**
  * Convert a date string to a human readable format.
  *
- * Will convert something like "2025-04-25" to "April 25, 2025"
+ * Will convert something like "2025-04-25" to "Apr 25, 2025"
  * 
  * @param {string} dateStr
  * @returns {string}

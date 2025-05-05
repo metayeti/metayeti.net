@@ -61,6 +61,14 @@ body {
 		font-size: 1.9rem;
 		font-weight: 400;
 		line-height: 2.3rem;
+
+		/*
+		&:not(:first-child) {
+		}
+		*/
+		&:nth-child(n+2) {
+			margin-top: 6vh;
+		}
 	}
 
 	// -- paragraph --
@@ -68,6 +76,10 @@ body {
 	p {
 		padding-bottom: 20px;
 		line-height: 1.5rem;
+	}
+	p.grayed {
+		color: #686b75;
+		font-size: 0.8rem;
 	}
 
 	// -- link --
@@ -78,6 +90,7 @@ body {
 
 		&:hover {
 			left: -1px;
+			padding-top: 1px;
 			border-top: 2px solid var(--my-content-link);
 			color: var(--my-content-link-hover);
 		}
@@ -143,6 +156,6 @@ body {
 	// inline code
 	code {
 		padding: 2px 4px;
-		font-size: 0.9em;
+		font-size: 0.9rem;
 	}
 }

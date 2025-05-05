@@ -1,4 +1,32 @@
-## Hello, world
+# About me
+
+<img class="me" src="/content/static/images/me.jpg" alt="me">
+
+Ahoy there! I'm Danijel. I'm a programmer with a passion for creating videogames. I combine my [skills](#skills) to create games, software, websites and other kinds of interactive digital content.
+
+My main interests in life are programming, mathematics, science, philosophy, music and art.
+
+# About this website
+
+This website is a little digital garden of my own within the cyberspace. It also serves as my personal portfolio and blog. The website is based on my own custom codebase and works on markdown-driven content.
+
+This website uses no cookies, collects exactly 1 bit of data*, and has 0 (zero) ads.
+
+The full source for this website is available on [GitHub](https://github.com/metayeti/metayeti.net).
+
+While you're here, you can check out my [blog](/blog) or take a look at the [projects](/projects) page to see what I've been working on.
+
+<p class="grayed">* Whether or not light mode is turned on.</p>
+
+# Random factoids
+
+# Skills
+
+# Contact
+
+For business inquiries, please contact me at <metayetidev@gmail.com>.
+
+# Hello, world
 
 Hello from markdown! This is a **sample** markdown file.
 

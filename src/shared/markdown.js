@@ -10,7 +10,7 @@ import 'highlight.js/styles/dark.css';
 hljs.registerLanguage('javascript', javascript);
 
 const md = MarkdownIt({
-	html: true, // warning: don't let users alter markdown
+	html: true, // warning: don't let users alter markdown or you're open to XSS
 	// ---
 	highlight: (str, lang) => {
 		if (lang && hljs.getLanguage(lang)) {
@@ -36,11 +36,17 @@ md.renderer.rules.heading_close = (tokens, idx, options, env, self) => {
 	return `</h${level}>`;
 };
 
-// add link class to links
+// add link class and target _blank to links
 md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
-	// add class="link" to the list of attributes
+	const hrefIndex = token.attrIndex('href');
+	const href = hrefIndex >= 0 ? token.attrs[hrefIndex][1] : '';
+	// add class="link" to the list of attributes ...
 	token.attrPush(['class', 'link']);
+	if (!href.startsWith('/') && !href.startsWith('#')) {
+		// add target="_blank"
+		token.attrPush(['target', '_blank']);
+	}
 	// ... and proceed with the default renderer for link_open
 	return self.renderToken(tokens, idx, options);
 };

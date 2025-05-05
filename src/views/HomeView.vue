@@ -4,7 +4,6 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-
 	<section>
 		<h2>Hi! I'm Danijel.</h2>
 		<p>Welcome to my humble online abode.</p>
@@ -24,7 +23,6 @@ import { RouterLink } from 'vue-router';
 		<h2>Latest projects</h2>
 		<br v-for="i in 15" :key="i">
 	</section>
-
 </template>
 
 <style scoped>
