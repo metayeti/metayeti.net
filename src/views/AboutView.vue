@@ -35,12 +35,13 @@ article :deep(img) {
 		$mobile-breakpoint: 640px;
 
 		display: none;
+		background-color: var(--my-image-border);
 
 		@media (width > $mobile-breakpoint) {
 			&.desktop {
 				display: block;
 				float: right;
-				width: auto;
+				min-width: 289px;
 				height: 350px;
 				margin: 0 0 50px 35px;
 			}
@@ -48,8 +49,9 @@ article :deep(img) {
 		@media (width <= $mobile-breakpoint) {
 			&.mobile {
 				display: block;
+				min-width: 260px;
 				max-height: 450px;
-				margin: 0 auto 20px auto;
+				margin-bottom: 20px;
 			}
 		}
 	}
