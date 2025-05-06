@@ -4,7 +4,8 @@
 			"name": "Zorlax",
 			"path": "zorlax/",
 			"description": "2D retro platformer",
-			"system": "Windows"
+			"system": "Windows",
+			"done": "20%"
 		}
 	],
 	"old-projects": [

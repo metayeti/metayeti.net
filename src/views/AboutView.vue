@@ -19,14 +19,40 @@ const handleRouteLink = routeLinkHandler(router);
 	<article v-html="renderedAboutMarkdown" @click="handleRouteLink"></article>
 </template>
 
-<style scoped>
-/* note: both of these syntaxes work */
-/*article >>> img.me {*/
-article :deep(img.me) {
-	float: right;
-	height: 350px;
-	margin: 0 0 50px 35px;
-    border: 8px solid #1a1a1a;
-    box-shadow: 0 0 10px 0 #050505;
+<style scoped lang="scss">
+/*
+NOTE: Since the contents of this page are generated dynamically via markdown, we need a
+"deep selector" to keep styles for this component scoped.
+
+`article >>> element` or `article :deep(element)` both seem to work.
+*/
+
+article :deep(img) {
+    border: 8px solid var(--my-image-border);
+    box-shadow: 0 0 10px 0 var(--my-image-shadow);
+
+	&.me {
+		$mobile-breakpoint: 640px;
+
+		display: none;
+
+		@media (width > $mobile-breakpoint) {
+			&.desktop {
+				display: block;
+				float: right;
+				width: auto;
+				height: 350px;
+				margin: 0 0 50px 35px;
+			}
+		}
+		@media (width <= $mobile-breakpoint) {
+			&.mobile {
+				display: block;
+				max-height: 450px;
+				margin: 0 auto 20px auto;
+			}
+		}
+	}
 }
+
 </style>

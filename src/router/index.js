@@ -3,7 +3,7 @@ import ProjectsView from '../views/ProjectsView.vue';
 import BlogView from '../views/BlogView.vue';
 import AboutView from '../views/AboutView.vue';
 
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
 	{ path: '/', name: 'Home', component: HomeView },
@@ -14,7 +14,6 @@ const routes = [
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
-	//history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes,
 	scrollBehavior(to, from, savedPosition) {
 		if (savedPosition) {

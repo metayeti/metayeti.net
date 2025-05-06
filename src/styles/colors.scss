@@ -1,32 +1,39 @@
-/* Default theme colors */
-
+/* Default (dark) theme colors */
 :root {
+	// -- selection --
 	--my-selection-text: #fff;
 	--my-selection-background: #4d3766;
 
+	// -- global colors --
 	--my-global-background: #24292e;
 
+	// -- navigation bar --
+	--my-navigation-color1: #0f1113;
+	--my-navigation-color2: #171a1d;
+	--my-navigation-border: #131516;
+	--my-navigation-cut-in: #262b30;
+
+	// -- footer --
+	--my-footer-background: #24292e;
+	--my-footer-divider: #2f343a;
+
+	// -- main content --
 	--my-content-background: #1c1f22;
 	--my-content-text: #ddd;
 	--my-content-text-dimmed: #bbb;
 	--my-content-heading: #eee;
 	--my-content-accent: #293036;
 	--my-content-accent-text: #90969c;
-	//--my-content-link: #2ad371;
 	--my-content-link: #ff2176;
 	--my-content-link-hover: #fff;
+	--my-content-footnote: #686b75;
 
-	--my-navigation-color1: #0f1113;
-	--my-navigation-color2: #171a1d;
-	--my-navigation-border: #131516;
-	--my-navigation-cut-in: #262b30;
-
-	--my-footer-background: #24292e;
-	--my-footer-divider: #2f343a;
+	// -- special --
+	--my-image-border: #1a1a1a;
+	--my-image-shadow: #050505;
 }
 
 /* Light theme colors */
-
 :root.let-there-be-light {
 	--my-content-background: #d3d2c8;
 	--my-content-text: #2f2f2f;
@@ -37,4 +44,8 @@
 	--my-content-underline: #ebf0f3;
 	--my-content-link: #fa3706;
 	--my-content-link-hover: #000;
+
+	// -- special --
+	--my-image-border: #eee;
+	--my-image-shadow: #aaa;
 }

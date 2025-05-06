@@ -76,10 +76,10 @@ body {
 
 	p {
 		padding-bottom: 20px;
-		line-height: 1.5rem;
+		line-height: 1.6rem;
 	}
-	p.grayed {
-		color: #686b75;
+	p.footnote {
+		color: var(--my-content-footnote);
 		font-size: 0.8rem;
 	}
 
@@ -91,8 +91,8 @@ body {
 
 		&:hover {
 			left: -1px;
-			padding-top: 1px;
-			border-top: 2px solid var(--my-content-link);
+			padding-bottom: 2px;
+			border-bottom: 2px dotted var(--my-content-link);
 			color: var(--my-content-link-hover);
 		}
 	}

@@ -1,8 +1,10 @@
 # About me
 
-<img class="me" src="/content/static/images/me.jpg" alt="me">
+<img class="me desktop" src="/content/static/images/me.jpg" alt="me">
 
 Ahoy there! I'm Danijel. I'm a programmer with a passion for videogames. I combine my [skills](#skills) to create games, software, websites and other kinds of interactive digital content.
+
+<img class="me mobile" src="/content/static/images/me.jpg" alt="me">
 
 My main interests in life are programming, mathematics, science, philosophy, music and art.
 
@@ -16,7 +18,7 @@ The full source for this website is available on [GitHub](https://github.com/met
 
 While you're here, you can check out my [blog](/blog) or take a look at the [projects](/projects) page to see what I've been working on.
 
-<p class="grayed">* Whether or not light mode is turned on.</p>
+<p class="footnote">* Whether or not light mode is turned on.</p>
 
 # Random factoids
 
