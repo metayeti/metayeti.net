@@ -92,7 +92,7 @@ body {
 		&:hover {
 			left: -1px;
 			padding-bottom: 2px;
-			border-bottom: 2px dotted var(--my-content-link);
+			border-bottom: 2px solid var(--my-content-link);
 			color: var(--my-content-link-hover);
 		}
 	}

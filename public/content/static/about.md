@@ -12,7 +12,7 @@ My main interests in life are programming, mathematics, science, philosophy, mus
 
 This website is a little digital garden of my own within the cyberspace. It also serves as my personal portfolio and blog. The website is based on my own custom codebase and works on markdown-driven content.
 
-This website uses no cookies, collects exactly 1 bit of data*, and has 0 (zero) ads.
+This website uses no cookies, stores exactly 1 bit of data*, and has 0 (zero) ads.
 
 The full source for this website is available on [GitHub](https://github.com/metayeti/metayeti.net).
 
@@ -21,6 +21,71 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 <p class="footnote">* Whether or not light mode is turned on.</p>
 
 # Random factoids
+
+<div class="factoids pl-5 border-l-2 border-flavor">
+	<ul class="flex flex-col gap-3">
+		<li>
+			<span class="factoid">Home planet</span>
+			<span class="value">Earth</span>
+		</li>
+		<li>
+			<span class="factoid">Home country</span>
+			<span class="value">Slovenia</span>
+		</li>
+		<li>
+			<span class="factoid">Current age</span>
+			<span class="value current-age"></span>
+		</li>
+		<li>
+			<span class="factoid">Favorite videogames<img class="pixelated blooguard" src="/content/static/images/blooguard.gif" alt="Blooguard"></span>
+			<span class="value"><span class="text-flavor">Commander Keen</span>, Quake, Command & Conquer, WoW Classic</span>
+		</li>
+		<li>
+			<span class="factoid">Favorite music</span>
+			<span class="value">I love all <a class="link music" href="#" target="_blank">good music</a> and I have a special place in my heart for <a class="link music" href="#" target="_blank">videogame music</a></span>
+		</li>
+		<li>
+			<span class="factoid">Favorite colors</span>
+			<span class="value"><span class="color-box bg-[#77776b]"></span>, <span class="color-box bg-[#47d6ab]"></span> and <span class="color-box bg-[#645892]"></span></span>
+		</li>
+		<li>
+			<span class="factoid">Favorite programming languages</span>
+			<span class="value">C++, JavaScript</span>
+		</li>
+		<li>
+			<span class="factoid">Favorite editor</span>
+			<span class="value"><a class="link" href="https://www.vim.org/" target="_blank">Vim</a></span>
+		</li>
+		<li>
+			<span class="factoid">Favorite operating systems</span>
+			<span class="value"><a class="link" href="https://winworldpc.com/product/ms-dos/622" target="_blank">MS-DOS 6.22</a>, <a class="link" href="https://winworldpc.com/product/windows-98/98-second-edition" target="_blank">Windows 98</a> (with <a class="link" href="https://winworldpc.com/product/plus/1998" target="_blank">Plus!</a>), most flavors of <a class="link" href="https://www.linux.org/" target="_blank"><span>Linux</span><img class="inline-block size-8" alt="Linux" src="/content/static/images/linux.png"></a></span>
+		</li>
+		<li>
+			<span class="factoid">Personal idols</span>
+			<span class="value">John Romero, John Carmack, Chris Sawyer, that guy from Spiderweb Software</span>
+		</li>
+		<li>
+			<span class="factoid">Favorite composers</span>
+			<span class="value">Frank Klepacki, Glenn Stafford</span>
+		</li>
+		<li>
+			<span class="factoid">Personal heroes</span>
+			<span class="value">Bugs Bunny, Asterix</span>
+		</li>
+		<li>
+			<span class="factoid">Favorite authors</span>
+			<span class="value">Roald Dahl, Frank Herbert</span>
+		</li>
+		<li>
+			<span class="factoid">Favorite scientists</span>
+			<span class="value">Freeman Dyson, Albert Einstein, Richard Feynman</span>
+		</li>
+		<li>
+			<span class="factoid">Favorite philosophers</span>
+			<span class="value">Alan Watts, Bernardo Kastrup</span>
+		</li>
+	</ul>
+</div>
 
 # Skills
 

@@ -147,8 +147,8 @@ header > .banner {
 	}
 
 	.back {
-		/* header backgrounds make sure that the correct
-		   banner colors continue past the banner picture */
+		/* Backgrounds that make sure that the correct
+		 * banner colors continue past the banner. */
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -321,7 +321,6 @@ nav.navigation-main {
 	height: 55px;
 	background-color: var(--my-navigation-color2);
 	border-bottom: 3px solid var(--my-navigation-border);
-	//overflow: hidden;
 	z-index: 99;
 
 	@media (max-width: $wrapBreakpoint) {

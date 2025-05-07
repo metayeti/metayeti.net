@@ -19,16 +19,15 @@ footer {
 	background-color: var(--my-footer-background);
 	font-family: "Inter", sans-serif;
 	font-size: 12px;
-	color: #555;
+	color: var(--my-footer-text);
 	border-top: 2px solid var(--my-footer-divider);
 	z-index: 5;
 
 	.highlight {
-		color: #a0a0a0;
+		color: var(--my-footer-text-highlight);
 	}
-
 	a {
-		color: #41b883;
+		color: var(--my-vue-color);
 	}
 	a:hover {
 		text-decoration: underline;

@@ -21,7 +21,7 @@ const router = createRouter({
 		}
 
 		const isInitialLoad = !from.name;
-		//const toPosition = (to.path === '/') ? 0 : 110;
+
 		let toPosition;
 		if (to.path === '/') toPosition = 0;
 		else if (to.path === '/about') toPosition = 79;
