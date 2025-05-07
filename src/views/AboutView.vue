@@ -81,7 +81,7 @@ function implColorHandles(elements) {
 			}
 			moveElement(e, element);
 		}
-		function _handleRelease(e) {
+		function _handleRelease() {
 			if (!moving) {
 				return;
 			}
