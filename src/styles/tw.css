@@ -1,7 +1,9 @@
 @import 'tailwindcss';
 
-/* tailwind extension classes */
 @theme {
+
+	/* tailwind extension classes */
+
 	/* additional colors */
 	--color-flavor: var(--my-content-flavor);
 }

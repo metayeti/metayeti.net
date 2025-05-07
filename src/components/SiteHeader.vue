@@ -4,7 +4,7 @@ import IconFlame from './icons/IconFlame.vue';
 import RockerSwitch from './RockerSwitch.vue';
 
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, watch } from 'vue';
+import { ref, useTemplateRef, watch } from 'vue';
 import { switchTheme } from '@/shared';
 
 // -- route handling --
@@ -23,6 +23,47 @@ watch(() => route.path, (nextPath) => {
 	navItemActive.value = routeMap[nextPath] ?? -1;
 });
 
+// -- hide navigation --
+
+const navMain = useTemplateRef('nav-main');
+
+let lastScrollY = window.scrollY;
+
+function handleScroll() {
+	const currentScrollY = window.scrollY;
+
+	if (currentScrollY < 250) {
+		// show navbar at the very top regardless of scroll
+		navMain.value.classList.remove('tucked');
+	}
+	else if (currentScrollY > lastScrollY) {
+		// scrolling down
+		navMain.value.classList.add('tucked');
+	}
+	else {
+		// scrolling up
+		navMain.value.classList.remove('tucked');
+	}
+
+	lastScrollY = currentScrollY;
+}
+
+window.addEventListener('scroll', () => handleScroll(), { passive: true });
+/*
+	let currentScroll = window.pageYOffset ?? document.documentElement.scrollTop;
+
+	if (currentScroll > lastScrollTop) {
+		// scrolling down
+		navMain.value.classList.add('hidden');
+	}
+	else {
+		// scrolling up
+		navMain.value.classList.remove('hidden');
+	}
+
+	lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // prevent negative scroll
+	*/
+
 // -- site theme handling --
 
 const lightModeIcon = ref(false);
@@ -31,7 +72,6 @@ const switchSiteTheme = (lightMode) => {
 	lightModeIcon.value = lightMode;
 	switchTheme(lightMode);
 }
-
 
 </script>
 
@@ -105,7 +145,7 @@ const switchSiteTheme = (lightMode) => {
 		
 		</div>
 	</nav>
-	<nav class="navigation-main">
+	<nav ref="nav-main" class="navigation-main">
 		<div class="wrap flex flex-row gap-1.5">
 			<div class="nav-button-row">
 				<RouterLink class="nav-button" to="/" :class="{ active: navItemActive === 0}">home</RouterLink>
@@ -322,6 +362,11 @@ nav.navigation-main {
 	background-color: var(--my-navigation-color2);
 	border-bottom: 3px solid var(--my-navigation-border);
 	z-index: 99;
+	transition: transform 0.3s ease;
+
+	&.tucked {
+		transform: translateY(-100%);
+	}
 
 	@media (max-width: $wrapBreakpoint) {
 		.wrap {

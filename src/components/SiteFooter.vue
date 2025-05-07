@@ -27,7 +27,7 @@ footer {
 		color: var(--my-footer-text-highlight);
 	}
 	a {
-		color: var(--my-vue-color);
+		color: #41b883;
 	}
 	a:hover {
 		text-decoration: underline;

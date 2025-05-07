@@ -7,7 +7,6 @@ import { goodMusic, goodGameMusic } from '@/extras';
 // -- load markdown and handle rendering --
 
 const renderedAboutMarkdown = ref('');
-const aboutPage = useTemplateRef('about-page');
 
 onMounted(async () => {
 
@@ -19,6 +18,7 @@ onMounted(async () => {
 });
 
 // -- make router be able to use <a> from generated-html --
+
 const router = useRouter();
 const handleRouteLink = routeLinkHandler(router);
 
@@ -97,6 +97,8 @@ function implColorHandles(elements) {
 /**
  * Handle dynamic data in generated markdown.
  */
+const aboutPage = useTemplateRef('about-page');
+
 function handleDynamicContent() {
 	// update age data
 	const ageElement = aboutPage.value.querySelector('.current-age');
