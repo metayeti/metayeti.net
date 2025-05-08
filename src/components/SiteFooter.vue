@@ -20,7 +20,6 @@ footer {
 	font-family: "Inter", sans-serif;
 	font-size: 12px;
 	color: var(--my-footer-text);
-	border-top: 2px solid var(--my-footer-divider);
 	z-index: 5;
 
 	.highlight {
