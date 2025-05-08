@@ -51,13 +51,21 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
 	const hrefIndex = token.attrIndex('href');
 	const href = hrefIndex >= 0 ? token.attrs[hrefIndex][1] : '';
-	// add class="link" to the list of attributes ...
+	// add class="link" to the list of attributes
 	token.attrPush(['class', 'link']);
 	if (!href.startsWith('/') && !href.startsWith('#')) {
 		// add target="_blank"
 		token.attrPush(['target', '_blank']);
 	}
-	// ... and proceed with the default renderer for link_open
+	// proceed with the default renderer for link_open
+	return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.bullet_list_open = (tokens, idx, options, env, self) => {
+	const token = tokens[idx];
+	// add class="list" to the list of attributes
+	token.attrPush(['class', 'list']);
+	// proceed with the default renderer for list_open
 	return self.renderToken(tokens, idx, options);
 };
 

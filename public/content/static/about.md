@@ -22,7 +22,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 
 # Random factoids
 
-<div class="factoids pl-5 border-l-2 border-flavor">
+<div class="factoids pl-4 border-l-2 border-flavor">
 	<ul class="flex flex-col gap-3">
 		<li>
 			<span class="factoid">Home planet</span>
@@ -89,132 +89,44 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 
 # Skills
 
+## Programming
+
+I started programming at an early age of about 10. The very first thing I remember is trying to figure out how timers work in [Visual Basic 3](https://winworldpc.com/product/microsoft-visual-bas/30). Later on, I weaved my way through VB5 and 6, then C, Pascal, and finally C++, C#, Java, Python, PHP, JavaScript and many others.
+
+<img src="/content/static/images/vb3.png" alt="VB3">
+<p class="caption">Visual Basic 3 - my earliest programming memory.</p>
+
+Throughout my programming journey, I've explored a wide range of technologies, methodologies, frameworks, computer science concepts, mathematics, and related fields.
+
+My favorite programming language is C++ with its raw power, expressivity and rock-like stability. My second favorite programming language is JavaScript. It's moderately high level but remains eloquent in its simplicity, yet highly expressive.
+
+I like [open source software](https://en.wikipedia.org/wiki/Open-source_software). You can check out some of my projects on [GitHub](https://github.com/metayeti).
+
+## Human languages
+
+As an aspiring member of the human species, I've learned some human languages.
+
+- Slovenian, my mother tongue. As perplexing as it is beautiful.
+- Serbo-Croatian, my 2nd language, I rarely use it but I understand it more or less flawlessly.
+- English, my 3rd language. I would rate my level as advanced.
+
+
+<p class="fancy-block">My attempts to learn German have been less than fruitful so far, although Duolingo had successfully trained me to be able to ask for the whereabout of horses, should I ever encounter a situation in which that would become a pressing concern. My attempts to learn Russian have been similar, and I assure you I'm capable of asking for the whereabouts of horses in Russian as well. I'm now trying to learn Japanese. I have not learned how to ask for the whereabouts of horses in Japanese just yet, but I expect to be able to discuss it fluently soon.</p>
+
+## Art & Music
+
+I've been interested in all manners of visual design ever since I can remember. In the very early days I used to make interfaces in Visual Basic just for fun. In recent times I mostly work with web interfaces.
+
+I have always been interested in art and music. I tried to learn the guitar at an early age (and persisted for quite a while). I've been intro drawing since I can remember, although it's only the last decade or so when I took it upon myself to get good enough at it to be able to use it for higher goals. For games, I decided to focus mostly on pixel art as that's my favorite graphical style (no doubt inspired by the games I used to play).
+
+<img class="pixelated w-[420px]" src="/content/static/images/zakk.png" alt="zAKK">
+<p class="caption">This guy's name is Zakk. I made this titlescreen for a demo game that remains unreleased.</p>
+
+I've getting better at composing my own game music. You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).
+
+<div><audio controls src="/content/static/audio/game_track.mp3"></audio></div>
+<p class="caption">A game track I've composed.</p>
+
 # Contact
 
 For business inquiries, please contact me at <metayetidev@gmail.com>.
-
-# Hello, world
-
-Hello from markdown! This is a **sample** markdown file.
-
-- Item 1
-- Item 2
-- Item 3
-- Item 4
-
-[Learn more](https://example.com)
-
-# Main Heading (H1)
-## Subheading (H2)
-### Tertiary Heading (H3)
-#### Quaternary Heading (H4)
-##### Quinary Heading (H5)
-###### Senary Heading (H6)
-
-## Paragraphs
-This is a paragraph with **bold text**, *italic text*, and ***bold italic text***. You can also have `inline code` for small snippets. Here's a [link](https://example.com) and an email link: <contact@example.com>.
-
-Another paragraph with a line break  
-using two spaces at the end of the line.
-
-## Lists
-### Unordered List
-- Item 1
-- Item 2
-  - Nested Item 2.1
-  - Nested Item 2.2
-- Item 3 with *emphasis*
-
-### Ordered List
-1. First item
-2. Second item
-   1. Nested item 2.1
-   2. Nested item 2.2
-3. Third item
-
-## Blockquotes
-> This is a blockquote.
-> It can span multiple lines.
->> Nested blockquote for emphasis.
-
-## Code Blocks
-Inline code: `const example = true;`
-
-Fenced code block with syntax highlighting:
-```javascript
-function greet(name) {
-  return `Hello, ${name}!`;
-}
-console.log(greet('World'));
-```
-
-## Horizontal Rule
----
-
-## Images
-![some image](https://placehold.co/400x200 "some image")
-
-## Tables
-| Header 1 | Header 2 | Header 3 |
-|----------|:--------:|---------:|
-| Row 1    | Centered | Right   |
-| Row 2    | Content  | Aligned |
-
-## Task Lists
-- [x] Completed task
-- [ ] Incomplete task
-- [ ] Another task
-
-## Footnotes
-This is a sentence with a footnote[^1].
-
-[^1]: This is the footnote content.
-
-## Definition Lists
-Term 1
-: Definition for Term 1.
-
-Term 2
-: Definition for Term 2, with **bold** text.
-
-## Strikethrough
-This text has ~~strikethrough~~ applied.
-
-## Highlight
-This text is ==highlighted== for emphasis.
-
-## Emoji
-Support for emoji: 😊🚀
-
-## Code
-
-```JavaScript
-// -- rewrite some markdown renderer rules --
-
-// override heading_open and heading_close to shift heading levels
-// (h1 -> h2, h2 -> h3, etc.)
-md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
-	const token = tokens[idx];
-	const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);
-	return `<h${level}>`;
-};
-md.renderer.rules.heading_close = (tokens, idx, options, env, self) => {
-	const token = tokens[idx];
-	const level = Math.min(parseInt(token.tag.slice(1), 10) + 1, 6);
-	return `</h${level}>`;
-};
-
-// add link class to links
-md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-	const token = tokens[idx];
-	// add class="link" to the list of attributes
-	token.attrPush(['class', 'link']);
-	// ... and proceed with the default renderer for link_open
-	return self.renderToken(tokens, idx, options);
-};
-```
-
-<br>
-
-## Inline HTML
-<div style="color: orange;">This is inline HTML content.</div>

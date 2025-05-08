@@ -11,7 +11,7 @@ onMounted(async () => {
 </script>
 
 <template>
-	<ul v-if="blogListing.length" class="latest-posts flex flex-col gap-7">
+	<ul v-if="blogListing.length" class="latest-posts flex flex-col gap-7.5">
 		<li
 			v-for="item in blogListing.slice(0, 3)"
 			:key="item.id"

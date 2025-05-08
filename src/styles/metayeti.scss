@@ -53,12 +53,12 @@ body {
 	h2, h3, h4, h5, h6 {
 		font-family: "Titillium Web", sans-serif;
 		color: var(--my-content-heading);
-		border-left: 6px solid var(--my-content-accent);
-		padding-left: 15px;
 		margin-bottom: 30px;
 		scroll-margin-top: 80px;
 	}
 	h2 {
+		border-left: 6px solid var(--my-content-accent);
+		padding-left: 15px;
 		font-size: 1.9rem;
 		font-weight: 400;
 		line-height: 2.3rem;
@@ -71,16 +71,65 @@ body {
 			margin-top: 6vh;
 		}
 	}
+	h3 {
+		position: relative;
+		display: inline-block;
+		color: var(--my-content-heading2);
+		font-size: 1.5rem;
+		font-weight: 600;
+		z-index: auto;
+
+		&::before {
+			position: absolute;
+			content: '';
+			width: calc(100% + 75px);
+			height: 100%;
+			left: -48px;
+			top: 1.5px;
+			background-color: var(--my-content-accent);
+			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
+			z-index: -1;
+		}
+		&:nth-child(n+2) {
+			margin-top: 2vh;
+		}
+	}
 
 	// -- paragraph --
 
 	p {
 		padding-bottom: 20px;
 		line-height: 1.6rem;
-	}
-	p.footnote {
-		color: var(--my-content-footnote);
-		font-size: 0.8rem;
+
+		// variants
+		&.caption {
+			padding-top: 5px;
+			color: var(--my-content-note);
+			font-family: "Titillium Web", sans-serif;
+			font-size: 0.9rem;
+		}
+		&.footnote {
+			color: var(--my-content-note);
+			font-size: 0.8rem;
+		}
+		&.fancy-block {
+			font-size: 0.75rem;
+			line-height: 1.2rem;
+			color: var(--my-content-text-dimmed);
+
+			&::before {
+				content: '.:[';
+				font-weight: 600;
+				padding-right: 5px;
+				color: var(--my-content-note);
+			}
+			&::after {
+				content: ']:.';
+				font-weight: 600;
+				padding-left: 5px;
+				color: var(--my-content-note);
+			}
+		}
 	}
 
 	// -- link --
@@ -94,6 +143,24 @@ body {
 			padding-bottom: 2px;
 			border-bottom: 2px dotted var(--my-content-link);
 			color: var(--my-content-link-hover);
+		}
+	}
+
+	// -- list --
+	ul.list {
+		padding-bottom: 20px;
+		//list-style-type: square;
+		list-style-position: inside;
+		//padding-left: 15px;
+		font-size: 1rem;
+		line-height: 1.6rem;
+
+		li {
+			list-style-type: square;
+			padding-left: 15px;
+		}
+		li::marker {
+			color: var(--my-content-bullet);
 		}
 	}
 
