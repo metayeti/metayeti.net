@@ -34,7 +34,7 @@ body {
 
 .main-content {
 	position: relative;
-	padding: 10vh 0;
+	padding: calc(8vh + 10px) 0;
 	min-height: calc(100vh - 165px); // to prevent flicker and scroll issues
 	background-color: var(--my-content-background);
 	color: var(--my-content-text);
@@ -145,12 +145,12 @@ body {
 			color: var(--my-content-link-hover);
 		}
 		&::before {
-			content: '[';
+			content: '{';
 			margin-right: 4px;
 			color: var(--my-content-link);
 		}
 		&::after {
-			content: ']';
+			content: '}';
 			margin-left: 4px;
 			color: var(--my-content-link);
 		}

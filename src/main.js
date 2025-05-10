@@ -12,11 +12,10 @@ import router from './router';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-/*
+// import icons
 import { 
-	faEnvelope
+	faSearch
 } from '@fortawesome/free-solid-svg-icons'
- */
  
 import {
 	faFacebook,
@@ -26,13 +25,13 @@ import {
 	faLinkedin,
 	faRedditAlien,
 	faSoundcloud,
-	faYoutube
+	faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
-	// icons
-	//faEnvelope,
-	// brands
+	// solid icons
+	faSearch,
+	// brand icons
 	faFacebook,
 	faXTwitter,
 	faBluesky,
@@ -40,7 +39,7 @@ library.add(
 	faLinkedin,
 	faRedditAlien,
 	faSoundcloud,
-	faYoutube
+	faYoutube,
 );
 
 // create the app

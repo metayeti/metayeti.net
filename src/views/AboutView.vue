@@ -119,7 +119,7 @@ function handleDynamicContent() {
 <style scoped lang="scss">
 /*
 NOTE: Since the contents of this page are generated dynamically via markdown, we need a
-"deep selector" to keep the styles for this component scoped.
+"deep selector" to keep styles for this component scoped.
 */
 article :deep(img.me) {
 	$mobile-breakpoint: 640px;
@@ -185,8 +185,12 @@ article :deep(.factoids) {
 		border-top-left-radius: 15px;
 		border-bottom-right-radius: 15px;
 		overflow: hidden;
-		box-shadow: 0 0 2px 0px rgba(0,0,0,0.9);
 		user-select: none;
+		box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+
+		:root.let-there-be-light & {
+			box-shadow: 0 0 0 2px rgba(0,0,0,0.6);
+		}
 
 		&::after {
 			content: '';

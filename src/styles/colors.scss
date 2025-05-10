@@ -38,10 +38,22 @@
 	--my-content-note: #686b75;
 	--my-content-bullet: #484f64;
 
+	// -- sidebar --
+	--my-sidebar-background: #171a1d;
+	--my-sidebar-heading: #999;
+	--my-sidebar-searchbox: #111;
+	--my-sidebar-searchbox-focus: #e5ebf7;
+	--my-sidebar-searchbox-text: #ccc;
+	--my-sidebar-search-button-icon: #68717e;
+	--my-sidebar-search-button-icon-highlight: #e5ebf7;
+	--my-sidebar-tag-background: #2e3135;
+	--my-sidebar-tag-text: #949597;
+	--my-sidebar-tag-background-highlight: #5a5e64;
+	--my-sidebar-tag-text-highlight: #fff;
+
 	// -- special --
 	--my-image-border: #1a1a1a;
 	--my-image-shadow: #050505;
-	--my-rocker-border: #0f1113;
 }
 
 /* Light theme colors */
@@ -56,12 +68,12 @@
 
 	// -- navigation bar --
 	--my-navigation-background1: #e8e5e2;
-	--my-navigation-background2: #f0eeec;
+	--my-navigation-background2: #f7f4f2;
 	--my-navigation-border: #e8e5e2;
 	--my-navigation-label: #3b3a39;
 	--my-navigation-label-highlight: #080b07;
 	--my-navigation-light-dimmed: #afafaf;
-	--my-navigation-light-on: #39d61a;
+	--my-navigation-light-on: #19c409;
 	--my-navigation-cut-in: #ddd6cf;
 	--my-navigation-social-icon: #3b3a39;
 	--my-navigation-social-icon-highlight: #242321;
@@ -74,16 +86,29 @@
 	// -- main content --
 	--my-content-background: #e3e0dd;
 	--my-content-text: #292929;
-	--my-content-text-dimmed: #7a746e;
+	--my-content-text-dimmed: #77716a;
 	--my-content-heading: #111;
 	--my-content-heading2: #554e48;
 	--my-content-accent: #cecbc6;
 	--my-content-accent-text: #333333;
-	--my-content-flavor: #04b404;
-	--my-content-link: #ff2158;
+	--my-content-flavor: #2f9401;
+	--my-content-link: #dd1345;
 	--my-content-link-hover: #000000;
 	--my-content-note: #686b75;
-	--my-content-bullet: #484f64;
+	--my-content-bullet: #686b75;
+
+	// -- sidebar --
+	--my-sidebar-background: #f5f4f3;
+	--my-sidebar-heading: #554e48;
+	--my-sidebar-searchbox: #ffffff;
+	--my-sidebar-searchbox-focus: #242424;
+	--my-sidebar-searchbox-text: #ccc;
+	--my-sidebar-search-button-icon: #68717e;
+	--my-sidebar-search-button-icon-highlight: #e5ebf7;
+	--my-sidebar-tag-background: #cec8c1;
+	--my-sidebar-tag-text: #303030;
+	--my-sidebar-tag-background-highlight: #5a5e64;
+	--my-sidebar-tag-text-highlight: #fff;
 
 	// -- special --
 	--my-image-border: #f1f1f1;
