@@ -89,12 +89,6 @@ onMounted(() => {
 	</header>
 	<nav class="navigation-top">
 		<div class="wrap social-link-row">
-			
-			<!-- <a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
-				<font-awesome-icon icon="fa-brands fa-facebook" />
-				<span class="tooltip-text">Facebook</span>
-				<div class="tooltip-arrow"></div>
-			</a> -->
 	
 			<a class="social-link tooltip" href="https://github.com/metayeti" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-github" />
@@ -114,18 +108,6 @@ onMounted(() => {
 				<div class="tooltip-arrow"></div>
 			</a>
 			
-			<!-- <a class="social-link tooltip" href="https://bsky.app/profile/metayeti.bsky.social" target="_blank">
-				<font-awesome-icon icon="fa-brands fa-bluesky" />
-				<span class="tooltip-text">Bluesky</span>
-				<div class="tooltip-arrow"></div>
-			</a> -->
-
-			<!-- <a class="social-link tooltip" href="https://www.reddit.com/user/metayeti2/" target="_blank">
-				<font-awesome-icon icon="fa-brands fa-reddit-alien" />
-				<span class="tooltip-text">Reddit</span>
-				<div class="tooltip-arrow"></div>
-			</a> -->
-
 			<a class="social-link tooltip" href="https://www.youtube.com/@metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-youtube" />
 				<span class="tooltip-text">YouTube</span>

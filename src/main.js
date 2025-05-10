@@ -8,39 +8,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-// setup font awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-// import icons
-import { 
-	faSearch
-} from '@fortawesome/free-solid-svg-icons'
- 
-import {
-	faFacebook,
-	faXTwitter,
-	faBluesky,
-	faGithub,
-	faLinkedin,
-	faRedditAlien,
-	faSoundcloud,
-	faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-
-library.add(
-	// solid icons
-	faSearch,
-	// brand icons
-	faFacebook,
-	faXTwitter,
-	faBluesky,
-	faGithub,
-	faLinkedin,
-	faRedditAlien,
-	faSoundcloud,
-	faYoutube,
-);
+// import font-awesome
+import { FontAwesomeIcon } from './plugins/fontawesome';
 
 // create the app
 const app = createApp(App);
