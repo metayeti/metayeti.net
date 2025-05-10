@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router';
 		<p>
 			I'm a software developer from Slovenia.
 			I make <RouterLink to="/projects" class="link">games</RouterLink> <br class="responsive-break">
-			and <a href="https://github.com/metayeti" class="link">software gizmos</a>. I sometimes write some nonsense<br class="responsive-break">
+			and <a href="https://github.com/metayeti" target="_blank" class="link">software gizmos</a>. I sometimes write some nonsense<br class="responsive-break">
 			on my <RouterLink to="/blog" class="link">blog</RouterLink>. I like snow leopards, tea, drawing, reading <br class="responsive-break">and coding.
 		</p>
 		<p>Enjoy your stay!</p>

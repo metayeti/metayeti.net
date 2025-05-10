@@ -18,7 +18,7 @@ The full source for this website is available on [GitHub](https://github.com/met
 
 While you're here, you can check out my [blog](/blog) or take a look at the [projects](/projects) page to see what I've been working on.
 
-<p class="footnote">* Whether or not light mode is turned on.</p>
+<p class="footnote">* Technically a single character - <code>'1'</code> or <code>'0'</code>, indicating whether or not light mode is on.</p>
 
 # Random factoids
 

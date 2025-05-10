@@ -53,17 +53,19 @@ window.addEventListener('scroll', () => handleScroll(), { passive: true });
 // -- site theme handling --
 
 const rockerSwitch = useTemplateRef('rocker-switch');
-const config = configuration.getConfig();
-const lightModeIcon = ref(config.lightMode);
+//const config = configuration.getConfig();
+let isLightMode = configuration.isLightMode();
+const lightModeIcon = ref(isLightMode);
 
 const switchSiteTheme = (lightMode) => {
-	config.lightMode = lightModeIcon.value = lightMode;
+	//config.lightMode = lightModeIcon.value = lightMode;
+	isLightMode = lightModeIcon.value = lightMode;
 	switchTheme(lightMode);
-	configuration.save();
+	configuration.setLightMode(isLightMode);
 }
 
 onMounted(() => {
-	if (config.lightMode) {
+	if (isLightMode) {
 		rockerSwitch.value?.manualSwitch();
 		switchTheme(true);
 	}
