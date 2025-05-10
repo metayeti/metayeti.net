@@ -151,7 +151,7 @@ onMounted(() => {
 
 			<div class="flex flex-row items-center gap-1.5">
 				<div class="size-5">
-					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
+					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-sky-600' : 'text-gray-600'" />
 				</div>
 
 				<RockerSwitch ref="rocker-switch" @switch-toggle="switchSiteTheme" />
@@ -298,12 +298,12 @@ nav.navigation-top {
 			font-size: 19px;
 			line-height: 34px;
 			text-align: center;
-			color: #4a5565;
+			color: var(--my-navigation-social-icon);
 
 			&:hover, &:focus {
 				font-size: 21px;
 				line-height: 33px;
-				color: #e5ebf7;
+				color: var(--my-navigation-social-icon-highlight);
 			}
 		}
 	}
@@ -355,9 +355,14 @@ nav.navigation-main {
 	top: 0;
 	height: 55px;
 	background-color: var(--my-navigation-background2);
-	border-bottom: 3px solid var(--my-navigation-border);
+	border-bottom: 2px solid var(--my-navigation-border);
 	z-index: 99;
 	transition: transform 0.3s ease;
+
+	:root.let-there-be-light & {
+		// make the border less pronounced in light mode
+		border-bottom: 1px solid var(--my-navigation-border);
+	}
 
 	&.tucked {
 		transform: translateY(-100%);
@@ -382,11 +387,17 @@ nav.navigation-main {
 			padding: 0 7px;
 			color: var(--my-navigation-label);
 			font-family: "Titillium Web", sans-serif;
+			font-weight: 400;
 			font-size: 12px;
 			text-align: center;
 			text-transform: uppercase;
 			user-select: none;
 			flex-grow: 1;
+
+			:root.let-there-be-light & {
+				// make text a tiny bit heavier in light mode
+				font-weight: 600;
+			}
 
 			&.active, &:hover, &:focus {
 				background-color: var(--my-navigation-background1);
@@ -428,7 +439,7 @@ nav.navigation-main {
 				padding: 0 25px 0 0;
 				line-height: 55px;
 				font-size: 13px;
-				font-weight: 400;
+				//font-weight: 400;
 				text-align: left;
 				flex-grow: 0;
 

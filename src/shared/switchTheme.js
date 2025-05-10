@@ -8,10 +8,10 @@ export function switchTheme(lightMode) {
 	const themeMeta = document.querySelector('meta[name="theme-color"]');
 	if (lightMode) {
 		document.documentElement.classList.add(lightModeClass);
-		themeMeta.setAttribute('content', '#dbdad0');
+		themeMeta.setAttribute('content', '#e3e0dd');
 	}
 	else {
 		document.documentElement.classList.remove(lightModeClass);
-		themeMeta.setAttribute('content', '#141414');
+		themeMeta.setAttribute('content', '#1c1f22');
 	}
 }

@@ -16,6 +16,8 @@
 	--my-navigation-light-dimmed: #505050;
 	--my-navigation-light-on: #1ad61a;
 	--my-navigation-cut-in: #262b30;
+	--my-navigation-social-icon: #4a5565;
+	--my-navigation-social-icon-highlight: #e5ebf7;
 
 	// -- footer --
 	--my-footer-background: #171a1d;
@@ -39,6 +41,7 @@
 	// -- special --
 	--my-image-border: #1a1a1a;
 	--my-image-shadow: #050505;
+	--my-rocker-border: #0f1113;
 }
 
 /* Light theme colors */
@@ -55,34 +58,37 @@
 	--my-navigation-background1: #f0eeec;
 	--my-navigation-background2: #e8e5e2;
 	--my-navigation-border: #f0eeec;
-	--my-navigation-label: #6b6457;
+	--my-navigation-label: #3b3a39;
 	--my-navigation-label-highlight: #080b07;
 	--my-navigation-light-dimmed: #afafaf;
-	--my-navigation-light-on: #1ac0d6;
-	--my-navigation-cut-in: #d9d4cf;
+	--my-navigation-light-on: #39d61a;
+	--my-navigation-cut-in: #ddd6cf;
+	--my-navigation-social-icon: #3b3a39;
+	--my-navigation-social-icon-highlight: #242321;
 
 	// -- footer --
-	--my-footer-background: #171a1d;
-	--my-footer-text: #43505f;
-	--my-footer-text-highlight: #adadad;
+	--my-footer-background: #f0ece8;
+	--my-footer-text: #858585;
+	--my-footer-text-highlight: #000000;
 
 	// -- main content --
 	--my-content-background: #e3e0dd;
 	--my-content-text: #292929;
-	--my-content-text-dimmed: #7a8994;
+	--my-content-text-dimmed: #7a746e;
 	--my-content-heading: #111;
-	--my-content-heading2: #636e77;
-	--my-content-accent: #d6cfc9;
-	--my-content-accent-text: #90969c;
-	--my-content-flavor: #54fc54;
-	--my-content-link: #ff2176;
-	--my-content-link-hover: #fff;
+	--my-content-heading2: #554e48;
+	--my-content-accent: #cecbc6;
+	--my-content-accent-text: #333333;
+	--my-content-flavor: #12b312;
+	--my-content-link: #ff2158;
+	--my-content-link-hover: #000000;
 	--my-content-note: #686b75;
 	--my-content-bullet: #484f64;
 
 	// -- special --
-	--my-image-border: #1a1a1a;
-	--my-image-shadow: #050505;
+	--my-image-border: #f1f1f1;
+	--my-image-shadow: #bebebe;
+	--my-rocker-border: rgba(0,0,0,0.8);
 
 	/*ddd
 	// -- global colors --

@@ -144,6 +144,14 @@ body {
 			border-bottom: 2px dotted var(--my-content-link);
 			color: var(--my-content-link-hover);
 		}
+		&::before {
+			content: '[';
+			margin-right: 2px;
+		}
+		&::after {
+			content: ']';
+			margin-left: 2px;
+		}
 	}
 
 	// -- list --

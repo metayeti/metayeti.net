@@ -150,7 +150,7 @@ article :deep(img.me) {
 
 article :deep(.factoids) {
 	.factoid {
-		color: #fff;
+		color: var(--my-content-text);
 		font-family: "Titillium Web", sans-serif;
 		font-size: 1.1rem;
 
@@ -159,7 +159,7 @@ article :deep(.factoids) {
 		}
 	}
 	.value {
-		color: #999;
+		color: var(--my-content-text-dimmed);
 		font-size: 1rem;		
 	}
 
@@ -185,7 +185,7 @@ article :deep(.factoids) {
 		border-top-left-radius: 15px;
 		border-bottom-right-radius: 15px;
 		overflow: hidden;
-		box-shadow: 0 0 2px 0 #000;
+		box-shadow: 0 0 2px 0px rgba(0,0,0,0.9);
 		user-select: none;
 
 		&::after {

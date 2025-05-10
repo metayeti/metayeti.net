@@ -45,6 +45,7 @@ defineExpose({
 <style scoped>
 button.rocker-switch {
 
+	--color-rocker-border: rgb(146, 28, 28);
 	--color-rocker-dark: rgb(128, 6, 6);
 	--color-rocker-light: rgb(190, 13, 13);
 	--color-rocker-symbol: rgba(255,255,255,0.5);
@@ -54,9 +55,7 @@ button.rocker-switch {
 	position: relative;
 	width: 50px;
 	height: 30px;
-	background-color: transparent;
 	border-radius: 3px;
-	box-shadow: 0 0 5px 2px transparent;
 	touch-action: manipulation;
 	cursor: pointer;
 
@@ -69,8 +68,8 @@ button.rocker-switch {
 		bottom: 0;
 		top: 0;
 		margin: auto;
-		border-radius: 2px;
-		background-color: #000;
+		/* border-radius: 1px; */
+		background-color: var(--color-rocker-border);
 
 		.switch-container {
 			position: absolute;
