@@ -141,16 +141,18 @@ body {
 		&:hover {
 			left: -1px;
 			padding-bottom: 2px;
-			border-bottom: 2px dotted var(--my-content-link);
+			border-bottom: 2px solid var(--my-content-link);
 			color: var(--my-content-link-hover);
 		}
 		&::before {
 			content: '[';
-			margin-right: 2px;
+			margin-right: 4px;
+			color: var(--my-content-link);
 		}
 		&::after {
 			content: ']';
-			margin-left: 2px;
+			margin-left: 4px;
+			color: var(--my-content-link);
 		}
 	}
 

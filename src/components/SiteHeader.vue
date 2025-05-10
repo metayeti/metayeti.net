@@ -102,17 +102,17 @@ onMounted(() => {
 				<div class="tooltip-arrow"></div>
 			</a>
 
-			<!-- <a class="social-link tooltip" href="#" target="_blank">
+			<a class="social-link tooltip" href="#" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-linkedin" />
 				<span class="tooltip-text">LinkedIn</span>
 				<div class="tooltip-arrow"></div>
-			</a> -->
+			</a>
 		
-			<!-- <a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
+			<a class="social-link tooltip" href="https://x.com/metayetidev" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-x-twitter" />
 				<span class="tooltip-text">X</span>
 				<div class="tooltip-arrow"></div>
-			</a> -->
+			</a>
 			
 			<!-- <a class="social-link tooltip" href="https://bsky.app/profile/metayeti.bsky.social" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-bluesky" />
@@ -151,7 +151,7 @@ onMounted(() => {
 
 			<div class="flex flex-row items-center gap-1.5">
 				<div class="size-5">
-					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-sky-600' : 'text-gray-600'" />
+					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-orange-400' : 'text-gray-600'" />
 				</div>
 
 				<RockerSwitch ref="rocker-switch" @switch-toggle="switchSiteTheme" />
