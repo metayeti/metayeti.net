@@ -5,12 +5,16 @@
 	--my-selection-background: #4d3766;
 
 	// -- global colors --
-	--my-global-background: #24292e;
+	--my-global-background: #171a1d;
 
 	// -- navigation bar --
-	--my-navigation-color1: #0f1113;
-	--my-navigation-color2: #171a1d;
+	--my-navigation-background1: #0f1113;
+	--my-navigation-background2: #171a1d;
 	--my-navigation-border: #131516;
+	--my-navigation-label: #9da3b1;
+	--my-navigation-label-highlight: #fff;
+	--my-navigation-light-dimmed: #505050;
+	--my-navigation-light-on: #1ad61a;
 	--my-navigation-cut-in: #262b30;
 
 	// -- footer --
@@ -39,17 +43,69 @@
 
 /* Light theme colors */
 :root.let-there-be-light {
-	--my-content-background: #d3d2c8;
+
+	// -- selection --
+	--my-selection-text: #fff;
+	--my-selection-background: #4d3766;
+
+	// -- global colors --
+	--my-global-background: #171a1d;
+
+	// -- navigation bar --
+	--my-navigation-background1: #f0eeec;
+	--my-navigation-background2: #e8e5e2;
+	--my-navigation-border: #f0eeec;
+	--my-navigation-label: #6b6457;
+	--my-navigation-label-highlight: #080b07;
+	--my-navigation-light-dimmed: #afafaf;
+	--my-navigation-light-on: #1ac0d6;
+	--my-navigation-cut-in: #d9d4cf;
+
+	// -- footer --
+	--my-footer-background: #171a1d;
+	--my-footer-text: #43505f;
+	--my-footer-text-highlight: #adadad;
+
+	// -- main content --
+	--my-content-background: #e3e0dd;
+	--my-content-text: #292929;
+	--my-content-text-dimmed: #7a8994;
+	--my-content-heading: #111;
+	--my-content-heading2: #636e77;
+	--my-content-accent: #d6cfc9;
+	--my-content-accent-text: #90969c;
+	--my-content-flavor: #54fc54;
+	--my-content-link: #ff2176;
+	--my-content-link-hover: #fff;
+	--my-content-note: #686b75;
+	--my-content-bullet: #484f64;
+
+	// -- special --
+	--my-image-border: #1a1a1a;
+	--my-image-shadow: #050505;
+
+	/*ddd
+	// -- global colors --
+	--my-global-background: #e7e6da;
+
+	// -- main content --
+	--my-content-background: #dbdad0;
 	--my-content-text: #2f2f2f;
 	--my-content-text-dimmed: #424242;
 	--my-content-heading: #222;
 	--my-content-accent: #b8b7ad;
 	--my-content-accent-text: #2e2e2e;
 	--my-content-underline: #ebf0f3;
-	--my-content-link: #fa3706;
+	--my-content-link: #ff500b;
 	--my-content-link-hover: #000;
+
+	// -- footer --
+	--my-footer-background: #e7e6da;
+	--my-footer-text: #bebeba;
+	--my-footer-text-highlight: #57544a;
 
 	// -- special --
 	--my-image-border: #464541;
 	--my-image-shadow: #aaa;
+	*/
 }

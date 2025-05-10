@@ -38,7 +38,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 		</li>
 		<li>
 			<span class="factoid">Favorite videogames<img class="pixelated blooguard" src="/content/static/images/blooguard.gif" alt="Blooguard"></span>
-			<span class="value"><span class="text-flavor">Commander Keen</span>, Quake, Command & Conquer, WoW Classic</span>
+			<span class="value"><span class="text-flavor">Commander Keen</span>, Quake, Command & Conquer, Fallout 1, WoW Classic</span>
 		</li>
 		<li>
 			<span class="factoid">Favorite music</span>

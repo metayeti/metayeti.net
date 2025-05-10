@@ -4,8 +4,8 @@ import IconFlame from './icons/IconFlame.vue';
 import RockerSwitch from './RockerSwitch.vue';
 
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, useTemplateRef, watch } from 'vue';
-import { switchTheme } from '@/shared';
+import { onMounted, ref, useTemplateRef, watch } from 'vue';
+import { configuration, switchTheme } from '@/shared';
 
 // -- route handling --
 
@@ -49,30 +49,25 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', () => handleScroll(), { passive: true });
-/*
-	let currentScroll = window.pageYOffset ?? document.documentElement.scrollTop;
-
-	if (currentScroll > lastScrollTop) {
-		// scrolling down
-		navMain.value.classList.add('hidden');
-	}
-	else {
-		// scrolling up
-		navMain.value.classList.remove('hidden');
-	}
-
-	lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // prevent negative scroll
-	*/
 
 // -- site theme handling --
 
-const lightModeIcon = ref(false);
+const rockerSwitch = useTemplateRef('rocker-switch');
+const config = configuration.getConfig();
+const lightModeIcon = ref(config.lightMode);
 
 const switchSiteTheme = (lightMode) => {
-	lightModeIcon.value = lightMode;
+	config.lightMode = lightModeIcon.value = lightMode;
 	switchTheme(lightMode);
+	configuration.save();
 }
 
+onMounted(() => {
+	if (config.lightMode) {
+		rockerSwitch.value?.manualSwitch();
+		switchTheme(true);
+	}
+});
 </script>
 
 <template>
@@ -159,7 +154,7 @@ const switchSiteTheme = (lightMode) => {
 					<IconFlame class="text-gray-600 transition-colors duration-300" :class="lightModeIcon ? 'text-yellow-500' : 'text-gray-600'" />
 				</div>
 
-				<RockerSwitch @switch-toggle="switchSiteTheme" />
+				<RockerSwitch ref="rocker-switch" @switch-toggle="switchSiteTheme" />
 			</div>
 		</div>
 	</nav>
@@ -280,7 +275,7 @@ nav.navigation-top {
 	position: sticky;
 	top: 0;
 	height: 32px;
-	background-color: var(--my-navigation-color1);
+	background-color: var(--my-navigation-background1);
 	z-index: 2;
 
 	@media (max-width: $wrapBreakpoint) {
@@ -359,7 +354,7 @@ nav.navigation-main {
 	position: sticky;
 	top: 0;
 	height: 55px;
-	background-color: var(--my-navigation-color2);
+	background-color: var(--my-navigation-background2);
 	border-bottom: 3px solid var(--my-navigation-border);
 	z-index: 99;
 	transition: transform 0.3s ease;
@@ -385,7 +380,7 @@ nav.navigation-main {
 			height: 55px;
 			line-height: 40px;
 			padding: 0 7px;
-			color: #9faac4;
+			color: var(--my-navigation-label);
 			font-family: "Titillium Web", sans-serif;
 			font-size: 12px;
 			text-align: center;
@@ -394,8 +389,8 @@ nav.navigation-main {
 			flex-grow: 1;
 
 			&.active, &:hover, &:focus {
-				background-color: var(--my-navigation-color1);
-				color: #fff;
+				background-color: var(--my-navigation-background1);
+				color: var(--my-navigation-label-highlight);
 			}
 
 			&::before {
@@ -420,18 +415,12 @@ nav.navigation-main {
 				top: 36px;
 				width: 5px;
 				height: 5px;
-				background-color: #505050;
+				background-color: var(--my-navigation-light-dimmed);
 				border-radius: 50%;
 			}
-			/*
-			&:hover::after, &:focus::after {
-				background-color: #e79d14;
-				box-shadow: 0 0 10px 2px #e79d14;
-			}
-			*/
 			&.active::after {
-				background-color: #1ad61a;
-				box-shadow: 0 0 10px 2px #1ad61a;
+				background-color: var(--my-navigation-light-on);
+				box-shadow: 0 0 10px 2px var(--my-navigation-light-on);
 			}
 
 			@media (min-width: 520px) {
@@ -461,7 +450,6 @@ nav.navigation-main {
 					margin: auto 0;
 					width: 5px;
 					height: 5px;
-					background-color: #555;
 				}
 			}
 		}

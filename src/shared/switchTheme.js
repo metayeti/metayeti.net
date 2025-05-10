@@ -5,13 +5,13 @@
  */
 export function switchTheme(lightMode) {
 	const lightModeClass = 'let-there-be-light';
-	//const themeMeta = document.querySelector('meta[name="theme-color"]');
+	const themeMeta = document.querySelector('meta[name="theme-color"]');
 	if (lightMode) {
 		document.documentElement.classList.add(lightModeClass);
-		//themeMeta.setAttribute('content', '#dfdfdf');
+		themeMeta.setAttribute('content', '#dbdad0');
 	}
 	else {
 		document.documentElement.classList.remove(lightModeClass);
-		//themeMeta.setAttribute('content', '#141414');
+		themeMeta.setAttribute('content', '#141414');
 	}
 }

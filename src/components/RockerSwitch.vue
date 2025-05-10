@@ -9,6 +9,12 @@ const toggleSwitch = () => {
 	isToggled.value = !isToggled.value;
 	emit('switchToggle', isToggled.value);
 };
+
+defineExpose({
+	manualSwitch: () => {
+		isToggled.value = true;
+	}
+});
 </script>
 
 <template>
@@ -48,9 +54,9 @@ button.rocker-switch {
 	position: relative;
 	width: 50px;
 	height: 30px;
-	background-color: #151515;
+	background-color: transparent;
 	border-radius: 3px;
-	box-shadow: 0 0 5px 2px #151515;
+	box-shadow: 0 0 5px 2px transparent;
 	touch-action: manipulation;
 	cursor: pointer;
 
