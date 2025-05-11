@@ -45,12 +45,13 @@ defineExpose({
 <style scoped>
 button.rocker-switch {
 
-	--color-rocker-border: rgb(46, 0, 0);
+	--color-rocker-border: rgb(133, 3, 3);
 
+	/*
 	:root.let-there-be-light & {
-		/* slightly lighter border in light-mode */
 		--color-rocker-border: rgb(131, 0, 0);
 	}
+	*/
 
 	--color-rocker-dark: rgb(128, 6, 6);
 	--color-rocker-light: rgb(190, 13, 13);

@@ -29,20 +29,43 @@ const navMain = useTemplateRef('nav-main');
 
 let lastScrollY = window.scrollY;
 
+// switch meta theme color for extra coolness
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+let navbarTucked = false;
+
+function tuckNavbar(tuck) {
+	if (tuck) {
+		if (navbarTucked) {
+			return;
+		}
+		navMain.value.classList.add('tucked');
+		themeMeta.setAttribute('content', (isLightMode) ? '#e3e0dd' : '#1c1f22');
+		navbarTucked = true;
+	}
+	else {
+		if (!navbarTucked) {
+			return;
+		}
+		navMain.value.classList.remove('tucked');
+		themeMeta.setAttribute('content', '#171a1d');
+		navbarTucked = false;
+	}
+}
+
 function handleScroll() {
 	const currentScrollY = window.scrollY;
-
 	if (currentScrollY < 250) {
 		// show navbar at the very top regardless of scroll
-		navMain.value.classList.remove('tucked');
+		tuckNavbar(false);
 	}
 	else if (currentScrollY > lastScrollY) {
 		// scrolling down
-		navMain.value.classList.add('tucked');
+		tuckNavbar(true);
 	}
-	else {
+	else if (lastScrollY - currentScrollY > 20) {
 		// scrolling up
-		navMain.value.classList.remove('tucked');
+		tuckNavbar(false);
 	}
 
 	lastScrollY = currentScrollY;
@@ -53,12 +76,10 @@ window.addEventListener('scroll', () => handleScroll(), { passive: true });
 // -- site theme handling --
 
 const rockerSwitch = useTemplateRef('rocker-switch');
-//const config = configuration.getConfig();
 let isLightMode = configuration.isLightMode();
 const lightModeIcon = ref(isLightMode);
 
 const switchSiteTheme = (lightMode) => {
-	//config.lightMode = lightModeIcon.value = lightMode;
 	isLightMode = lightModeIcon.value = lightMode;
 	switchTheme(lightMode);
 	configuration.setLightMode(isLightMode);
@@ -244,8 +265,8 @@ header > .banner {
 		top: 0;
 		background: repeating-linear-gradient(
 			to bottom,
-			rgba(0, 0, 0, 0.1) 0px,
-			rgba(0, 0, 0, 0.1) 1px,
+			rgba(0, 0, 0, 0.15) 0px,
+			rgba(0, 0, 0, 0.15) 1px,
 			transparent 1px,
 			transparent 2px
 		);
@@ -371,17 +392,17 @@ nav.navigation-main {
 			padding: 0 7px;
 			color: var(--my-navigation-label);
 			font-family: "Titillium Web", sans-serif;
-			font-weight: 400;
+			font-weight: 600;
 			font-size: 12px;
 			text-align: center;
 			text-transform: uppercase;
 			user-select: none;
 			flex-grow: 1;
 
-			:root.let-there-be-light & {
-				// make text a tiny bit heavier in light mode
-				font-weight: 600;
-			}
+			// :root.let-there-be-light & {
+			// 	// make text a tiny bit heavier in light mode
+			// 	font-weight: 600;
+			// }
 
 			&.active, &:hover, &:focus {
 				background-color: var(--my-navigation-background1);
