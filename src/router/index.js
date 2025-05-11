@@ -16,12 +16,22 @@ const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes,
 	scrollBehavior(to, from, savedPosition) {
+		// handle saved position (browser back/forward)
 		if (savedPosition) {
 			return savedPosition;
 		}
 
-		const isInitialLoad = !from.name;
+		// handle anchor links (e.g /about#skills)
+		if (to.hash) {
+			return {
+				el: to.hash, // scroll to element with matching id
+				top: 30,
+				behavior: 'smooth'
+			}
+		}
 
+		// default scroll behavior for routes
+		const isInitialLoad = !from.name;
 		let toPosition;
 		if (to.path === '/') toPosition = 0;
 		else if (to.path === '/about') toPosition = 79;

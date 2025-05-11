@@ -152,6 +152,7 @@ article :deep(.factoids) {
 	.factoid {
 		color: var(--my-content-text);
 		font-family: "Titillium Web", sans-serif;
+		font-weight: 600;
 		font-size: 1.1rem;
 
 		&::after {

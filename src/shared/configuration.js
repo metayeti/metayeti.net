@@ -1,21 +1,14 @@
 // persistent configuration
 
 class Configuration {
+	lightMode = false; // we only ever store this value, so this class is optimized for that
 
-	lightMode = false; // we only store this value, so this class is optimized for that
+	#KEY = '___metayeti.net___'; // localstorage key
 
-	#KEY = '___metayeti.net___';
-
-	#getDefaultConfig() {
-		return {
-			lightMode: false
-		};
-	}
 	#load() {
 		const localConfig = localStorage.getItem(this.#KEY);
 		this.lightMode = localConfig === "1";
 	}
-
 	constructor() {
 		this.#load();
 	}

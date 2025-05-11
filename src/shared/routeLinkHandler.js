@@ -18,7 +18,9 @@ export function routeLinkHandler(router) {
 		// intercept route links and let the router handle them
 		const target = e.target;
 
-		if (!target.getAttribute('href') || !target.getAttribute('href').startsWith('/')) {
+		const href = target.getAttribute('href');
+
+		if (!href || !href.startsWith('/')) {
 			return;
 		}
 
