@@ -343,10 +343,10 @@ nav.navigation-main {
 	z-index: 99;
 	transition: transform 0.3s ease;
 
-	:root.let-there-be-light & {
-		// make the border less pronounced in light mode
-		border-bottom: 1px solid var(--my-navigation-border);
-	}
+	// :root.let-there-be-light & {
+	// 	// make the border less pronounced in light mode
+	// 	border-bottom: 1px solid var(--my-navigation-border);
+	// }
 
 	&.tucked {
 		transform: translateY(-100%);
