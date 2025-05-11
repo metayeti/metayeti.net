@@ -1,6 +1,34 @@
 <script setup>
-import { useTemplateRef } from 'vue';
+import { loadJSON } from '@/shared';
+import { ref, onMounted, useTemplateRef, computed } from 'vue';
+import { RouterLink } from 'vue-router';
 
+// -- data handling --
+
+const blogListing = ref([]);
+
+onMounted(async () => {
+	const blogData = await loadJSON('/content/blog/index.json');
+	blogListing.value = blogData.posts;
+});
+
+const postsByYear = computed(() => {
+	const groupedPosts = new Map();
+
+	blogListing.value.forEach(post => {
+		// extract year from date published
+		const year = new Date(post['date-published']).getFullYear();
+		if (!groupedPosts.has(year)) {
+			groupedPosts.set(year, []);
+		}
+		groupedPosts.get(year).push(post);
+	});
+
+	return groupedPosts;
+});
+
+
+// -- search --
 const searchInput = useTemplateRef('search-input');
 
 const handleSearch = () => {
@@ -11,9 +39,23 @@ const handleSearch = () => {
 
 <template>
 	<!-- <br v-for="i in 100" :key="i"> -->
-	<div class="flex flex-col md:flex-row gap-20 md:gap-5">
+	<div class="flex items-start flex-col md:flex-row gap-20 md:gap-5">
 		<div class="flex-1">
-			some content
+
+			<h2>Search results</h2>
+
+			<div
+				v-for="(item, index) in postsByYear"
+				:key="item[0]"
+			>
+				<h3>{{ item[0] }}</h3>
+
+				<div
+					v-for="data in item[1]"
+				>
+					<div>{{ data }}</div>
+				</div>
+			</div>
 		</div>
 		<div class="sidebar flex-none p-3 flex flex-col gap-9 md:max-w-70">
 

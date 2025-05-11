@@ -102,7 +102,8 @@ const aboutPage = useTemplateRef('about-page');
 function handleDynamicContent() {
 	// update age data
 	const ageElement = aboutPage.value.querySelector('.current-age');
-	ageElement.textContent = getAge('1988-01-05');
+	const ageStr = getAge('1988-01-05');
+	ageElement.textContent = ageStr;
 	// update music links
 	const musicElements = aboutPage.value.querySelectorAll('.factoids > ul > li > span.value > .music');
 	musicLinks.updateLinks(...musicElements);

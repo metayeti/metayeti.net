@@ -1,81 +1,81 @@
 {
     "posts": [
         {
-            "title": "Some title post",
-            "path": "/blog-post-12",
-            "date-last-update": "2025-11-18",
-            "date-published": "2025-09-02",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Why NULL is cool",
-            "path": "/blog-post-11",
-            "date-last-update": "2026-02-14",
-            "date-published": "2025-07-30",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Yoohoo some long title blah blah",
-            "path": "/blog-post-10",
-            "date-last-update": "2024-08-19",
-            "date-published": "2024-06-11",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Blog post 8",
-            "path": "/blog-post-8",
-            "date-last-update": "2026-01-05",
-            "date-published": "2025-04-17",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Blog post 7",
-            "path": "/blog-post-7",
-            "date-last-update": "2024-12-28",
-            "date-published": "2024-09-14",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Blog post 6",
-            "path": "/blog-post-6",
-            "date-last-update": "2025-03-22",
-            "date-published": "2024-11-30",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Blog post 5",
-            "path": "/blog-post-5",
-            "date-last-update": "2025-10-09",
-            "date-published": "2025-06-25",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Blog post 4",
-            "path": "/blog-post-4",
-            "date-last-update": "2024-05-16",
-            "date-published": "2024-03-08",
-            "tags": ["something", "tag1", "tag2"]
-        },
-        {
-            "title": "Blog post 3",
-            "path": "/blog-post-3",
+            "title": "The Role of Ethics in AI",
+            "path": "/role-of-ethics-in-ai",
             "date-last-update": "2026-03-19",
             "date-published": "2025-12-07",
-            "tags": ["something", "tag1", "tag2"]
+            "tags": ["ai-ethics", "technology", "responsibility"]
         },
         {
-            "title": "Blog post 2",
-            "path": "/blog-post-2",
-            "date-last-update": "2025-08-11",
+            "title": "Tips for Optimizing Code",
+            "path": "/tips-optimizing-code",
+            "date-last-update": "2025-10-09",
+            "date-published": "2025-06-25",
+            "tags": ["coding", "optimization", "performance"]
+        },
+        {
+            "title": "Understanding Quantum Computing",
+            "path": "/understanding-quantum-computing",
+            "date-last-update": "2025-03-22",
             "date-published": "2025-01-23",
-            "tags": ["something", "tag1", "tag2"]
+            "tags": ["quantum-computing", "innovation", "tech"]
         },
         {
-            "title": "Blog post 1",
-            "path": "/blog-post-1",
+            "title": "The Power of Open Source",
+            "path": "/power-of-open-source",
+            "date-last-update": "2024-12-28",
+            "date-published": "2024-09-14",
+            "tags": ["open-source", "community", "software"]
+        },
+        {
+            "title": "Introduction to Cloud Computing",
+            "path": "/introduction-cloud-computing",
             "date-last-update": "2024-10-05",
-            "date-published": "2024-02-19",
-            "tags": ["something", "tag1", "tag2"]
+            "date-published": "2024-06-11",
+            "tags": ["cloud-computing", "in Lionelfrastructure", "tech"]
+        },
+        {
+            "title": "Building Scalable Web Apps",
+            "path": "/building-scalable-web-apps",
+            "date-last-update": "2024-05-16",
+            "date-published": "2024-03-08",
+            "tags": ["web-development", "scalability", "coding"]
+        },
+        {
+            "title": "Why Data Privacy Matters",
+            "path": "/why-data-privacy-matters",
+            "date-last-update": "2023-02-14",
+            "date-published": "2023-01-10",
+            "tags": ["data-privacy", "security", "technology"]
+        },
+        {
+            "title": "Deep Dive into Neural Networks",
+            "path": "/deep-dive-neural-networks",
+            "date-last-update": "2022-09-30",
+            "date-published": "2022-07-08",
+            "tags": ["neural-networks", "deep-learning", "ai"]
+        },
+        {
+            "title": "The Future of AI in 2021",
+            "path": "/future-of-ai-2021",
+            "date-last-update": "2021-06-18",
+            "date-published": "2021-04-25",
+            "tags": ["ai", "trends", "technology"]
+        },
+        {
+            "title": "Exploring Python Libraries",
+            "path": "/exploring-python-libraries",
+            "date-last-update": "2020-03-10",
+            "date-published": "2020-01-12",
+            "tags": ["python", "libraries", "coding"]
+        },
+        {
+            "title": "Getting Started with Machine Learning",
+            "path": "/getting-started-machine-learning",
+            "date-last-update": "2019-07-22",
+            "date-published": "2019-05-15",
+            "tags": ["machine-learning", "tutorial", "beginner"]
         }
     ]
 }

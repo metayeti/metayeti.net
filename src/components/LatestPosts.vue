@@ -1,6 +1,7 @@
 <script setup>
 import { getHumanReadableDate, loadJSON } from '@/shared';
 import { ref, onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const blogListing = ref([]);
 
@@ -11,32 +12,37 @@ onMounted(async () => {
 </script>
 
 <template>
-	<ul v-if="blogListing.length" class="latest-posts flex flex-col gap-7.5">
-		<li
-			v-for="item in blogListing.slice(0, 3)"
-			:key="item.id"
-		>
-			<a href="#">
-				<div class="flex flex-row gap-4">
-					<div class="post-date flex flex-none justify-middle items-center">
-						<span>
-							{{
-								getHumanReadableDate(item['date-published'])
-							}}
-						</span>
+	<div class="flex flex-col gap-6">
+		<ul v-if="blogListing.length" class="latest-posts flex flex-col gap-7.5">
+			<li
+				v-for="item in blogListing.slice(0, 3)"
+				:key="item.id"
+			>
+				<a href="#">
+					<div class="flex flex-row gap-4">
+						<div class="post-date flex flex-none justify-middle items-center">
+							<span>
+								{{
+									getHumanReadableDate(item['date-published'])
+								}}
+							</span>
+						</div>
+						<div class="post-title">
+							<span>
+								{{
+									item['title']
+								}}
+							</span>
+						</div>
 					</div>
-					<div class="post-title">
-						<span>
-							{{
-								item['title']
-							}}
-						</span>
-					</div>
-				</div>
-			</a>
-		</li>
-	</ul>
-	<!-- <p v-else>...</p> -->
+				</a>
+			</li>
+		</ul>
+		<!-- <p v-else>...</p> -->
+		<div>
+			<RouterLink to="/blog" class="link">More ...</RouterLink>
+		</div>
+	</div>
 </template>
 
 <style scoped lang="scss">
