@@ -82,7 +82,7 @@ const handleSearch = () => {
 			color: var(--my-sidebar-searchbox-text);
 			background-color: var(--my-sidebar-searchbox);
 			padding: 5px 8px;
-			font-size: 15px;
+			font-size: 16px;
 			&:focus {
 				outline: none;
 			}
