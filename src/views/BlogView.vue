@@ -27,6 +27,15 @@ const postsByYear = computed(() => {
 	return groupedPosts;
 });
 
+const tagList = computed(() => {
+	const s = new Set();
+	blogListing.value.forEach(post => {
+		if (post.tags) {
+			s.add(...post.tags);
+		}
+	});
+	return [...s].sort();
+});
 
 // -- search --
 const searchInput = useTemplateRef('search-input');
@@ -39,10 +48,10 @@ const handleSearch = () => {
 
 <template>
 	<!-- <br v-for="i in 100" :key="i"> -->
-	<div class="flex items-start flex-col md:flex-row gap-20 md:gap-5">
+	<div class="flex flex-col-reverse items-start md:flex-row gap-20 md:gap-5">
 		<div class="flex-1">
 
-			<h2>Search results</h2>
+			<h2>All Posts</h2>
 
 			<div
 				v-for="(item, index) in postsByYear"
@@ -67,24 +76,17 @@ const handleSearch = () => {
 			</form>
 
 			<div class="flex flex-col gap-3">
-				<h5>Tags</h5>
+				<h5>Topics</h5>
 				<div class="tag-list flex flex-row flex-wrap gap-2">
-					<button class="tag">Game Development</button>
-					<button class="tag">Unity</button>
-					<button class="tag">Unreal Engine</button>
-					<button class="tag">Programming</button>
-					<button class="tag">C#</button>
-					<button class="tag">C++</button>
-					<button class="tag">AI</button>
-					<button class="tag">Graphics</button>
-					<button class="tag">Shaders</button>
-					<button class="tag">VR/AR</button>
-					<button class="tag">Indie Games</button>
-					<button class="tag">Tech Reviews</button>
-					<button class="tag">Optimization</button>
-					<button class="tag">Networking</button>
-					<button class="tag">Game Design</button>
-				</div>
+
+					<button
+						v-for="item in tagList"
+						:key="item"
+						class="tag"
+					>
+						{{ item }}
+					</button>
+				</div>		
 			</div>
 
 			<!--
@@ -148,8 +150,8 @@ const handleSearch = () => {
 		background-color: var(--my-sidebar-tag-background);
 		color: var(--my-sidebar-tag-text);
 		padding: 3px 9px;
-		font-family: "Titillium Web", sans-serif;
-		font-size: 15px;
+		//font-family: "Titillium Web", sans-serif;
+		font-size: 16px;
 		font-weight: 400;
 		border-radius: 5px;
 		cursor: pointer;

@@ -1,7 +1,7 @@
 // persistent configuration
 
 class Configuration {
-	lightMode = false; // we only ever store this value, so this class is optimized for that
+	lightMode = false; // we only ever store this value, so this class is optimized for just that
 
 	#KEY = '___metayeti.net___'; // localstorage key
 
