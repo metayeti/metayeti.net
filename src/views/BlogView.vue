@@ -51,7 +51,7 @@ const handleSearch = () => {
 
 <template>
 	<!-- <br v-for="i in 100" :key="i"> -->
-	<div class="blog-posts flex flex-col-reverse items-start md:flex-row gap-20 md:gap-10">
+	<div class="blog-posts flex flex-col md:items-start md:flex-row gap-20 md:gap-10">
 		<div class="flex-1">
 
 			<h2>All Posts</h2>
@@ -70,9 +70,29 @@ const handleSearch = () => {
 						v-for="post_data in data"
 						:key="post_data.title"
 					>
+
+						<!-- <div class="tag-list flex flex-row flex-wrap gap-2">
+							<button
+								v-for="tag in post_data.tags"
+								:key="tag"
+								class="tag"
+							>
+								<span>{{ tag }}</span>
+							</button>
+						</div> -->
+
+
+
 						<!-- <div>{{ post_data }}</div> -->
 						<div class="entry-date">{{ getHumanReadableDateWithoutYear(post_data['date-published']) }}</div>
-						<div class="entry-title">{{ post_data.title }}</div>
+						<div class="entry-title pt-2">{{ post_data.title }}</div>
+
+						<div class="entry-description">
+							{{ post_data.description }}
+						</div>
+
+
+						<div class="cta pt-5">Read More -></div>
 					</RouterLink>
 				</div>
 			</div>
@@ -101,17 +121,6 @@ const handleSearch = () => {
 				</div>		
 			</div>
 
-			<!--
-			<div class="flex flex-col gap-3">
-				<h5>By Year</h5>
-				<div class="tag-list flex flex-row flex-wrap gap-2">
-					<span class="tag">2026</span>
-					<span class="tag">2025</span>
-					<span class="tag">2018</span>
-				</div>
-			</div>
-			-->
-
 		</div>
 	</div>
 </template>
@@ -121,7 +130,7 @@ const handleSearch = () => {
 	.blog-entry {
 		padding: 10px;
 		border: 2px solid #333;
-		border-radius: 5px;
+		border-radius: 15px;
 
 		&:hover, &:focus {
 			border-color: var(--my-content-link);
@@ -138,6 +147,39 @@ const handleSearch = () => {
 			color: #ccc;
 			font-size: 16px;
 		}
+
+		.entry-description {
+			font-size: 13px;
+			color: #888;
+		}
+
+/*
+		.tag-list > .tag {
+			background-color: var(--my-sidebar-tag-background);
+			color: var(--my-sidebar-tag-text);
+			padding: 3px 9px;
+			font-size: 11px;
+			font-weight: 400;
+			border-radius: 5px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: var(--my-sidebar-tag-background-highlight);
+				color: var(--my-sidebar-tag-text-highlight);
+			}
+
+			.tag-name {
+			}
+
+		}
+			*/
+
+		.cta {
+			font-size: 13px;
+			color: var(--my-content-link);
+		}
+
+
 	}
 }
 .sidebar {
@@ -186,7 +228,7 @@ const handleSearch = () => {
 		color: var(--my-sidebar-tag-text);
 		padding: 3px 9px;
 		//font-family: "Titillium Web", sans-serif;
-		font-size: 14px;
+		font-size: 13px;
 		font-weight: 400;
 		border-radius: 5px;
 		cursor: pointer;
@@ -203,7 +245,7 @@ const handleSearch = () => {
 			padding: 0 7.5px;
 			margin-left: 10px;
 			background-color: #222;
-			border-radius: 50%;
+			border-radius: 16px;
 		}
 	}
 }

@@ -10,7 +10,7 @@ My main interests in life are programming, mathematics, science, philosophy, mus
 
 # About this website
 
-This website is a little digital garden of my own within the cyberspace. It also serves as my personal portfolio and blog. The website is based on my own custom codebase and works on markdown-driven content.
+This website is a little digital garden of my own within the cyberspace. It also serves as my personal portfolio and blog. The website is based on my own custom codebase that works on markdown-driven content.
 
 This website uses no cookies, stores exactly 1 bit of data*, and has 0 (zero) ads.
 
@@ -78,7 +78,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 		</li>
 		<li>
 			<span class="factoid">Favorite scientists</span>
-			<span class="value">Freeman Dyson, Albert Einstein, Richard Feynman</span>
+			<span class="value">Freeman Dyson, Richard Feynman</span>
 		</li>
 		<li>
 			<span class="factoid">Favorite philosophers</span>

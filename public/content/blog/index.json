@@ -5,77 +5,88 @@
             "path": "/role-of-ethics-in-ai",
             "date-last-update": "2026-03-19",
             "date-published": "2025-12-07",
-            "tags": ["ai-ethics", "technology", "responsibility"]
+            "tags": ["ai-ethics", "technology", "responsibility"],
+            "description": "An exploration of ethical considerations in artificial intelligence and why they matter for the future of technology."
         },
         {
             "title": "Tips for Optimizing Code",
             "path": "/tips-optimizing-code",
             "date-last-update": "2025-10-09",
             "date-published": "2025-06-25",
-            "tags": ["coding", "optimization", "performance"]
+            "tags": ["coding", "optimization", "performance"],
+            "description": "Discover practical strategies to make your code faster, cleaner, and more efficient."
         },
         {
             "title": "Understanding Quantum Computing",
             "path": "/understanding-quantum-computing",
             "date-last-update": "2025-03-22",
             "date-published": "2025-01-23",
-            "tags": ["quantum-computing", "innovation", "tech"]
+            "tags": ["quantum-computing", "innovation", "tech"],
+            "description": "A beginner-friendly introduction to the concepts and potential of quantum computing."
         },
         {
             "title": "The Power of Open Source",
             "path": "/power-of-open-source",
             "date-last-update": "2024-12-28",
             "date-published": "2024-09-14",
-            "tags": ["open-source", "community", "software"]
+            "tags": ["open-source", "community", "software"],
+            "description": "Learn how open source software is transforming the tech industry and empowering communities."
         },
         {
             "title": "Introduction to Cloud Computing",
             "path": "/introduction-cloud-computing",
             "date-last-update": "2024-10-05",
             "date-published": "2024-06-11",
-            "tags": ["cloud-computing", "in Lionelfrastructure", "tech"]
+            "tags": ["cloud-computing", "in Lionelfrastructure", "tech"],
+            "description": "Get started with cloud computing and understand its impact on modern infrastructure."
         },
         {
             "title": "Building Scalable Web Apps",
             "path": "/building-scalable-web-apps",
             "date-last-update": "2024-05-16",
             "date-published": "2024-03-08",
-            "tags": ["web-development", "scalability", "coding"]
+            "tags": ["web-development", "scalability", "coding"],
+            "description": "Best practices and techniques for creating web applications that grow with your user base."
         },
         {
             "title": "Why Data Privacy Matters",
             "path": "/why-data-privacy-matters",
             "date-last-update": "2023-02-14",
             "date-published": "2023-01-10",
-            "tags": ["data-privacy", "security", "technology"]
+            "tags": ["data-privacy", "security", "technology"],
+            "description": "Understand the importance of data privacy and how it affects individuals and organizations."
         },
         {
             "title": "Deep Dive into Neural Networks",
             "path": "/deep-dive-neural-networks",
             "date-last-update": "2022-09-30",
             "date-published": "2022-07-08",
-            "tags": ["neural-networks", "deep-learning", "ai"]
+            "tags": ["neural-networks", "deep-learning", "ai"],
+            "description": "Explore the inner workings of neural networks and their role in deep learning."
         },
         {
             "title": "The Future of AI in 2021",
             "path": "/future-of-ai-2021",
             "date-last-update": "2021-06-18",
             "date-published": "2021-04-25",
-            "tags": ["ai", "trends", "technology"]
+            "tags": ["ai", "trends", "technology"],
+            "description": "A look at emerging trends and predictions for artificial intelligence in 2021 and beyond."
         },
         {
             "title": "Exploring Python Libraries",
             "path": "/exploring-python-libraries",
             "date-last-update": "2020-03-10",
             "date-published": "2020-01-12",
-            "tags": ["python", "libraries", "coding"]
+            "tags": ["python", "libraries", "coding"],
+            "description": "An overview of essential Python libraries every developer should know."
         },
         {
             "title": "Getting Started with Machine Learning",
             "path": "/getting-started-machine-learning",
             "date-last-update": "2019-07-22",
             "date-published": "2019-05-15",
-            "tags": ["machine-learning", "tutorial", "beginner"]
+            "tags": ["machine-learning", "tutorial", "beginner"],
+            "description": "A simple guide to help beginners take their first steps in machine learning."
         }
     ]
 }

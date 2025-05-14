@@ -265,8 +265,8 @@ header > .banner {
 		top: 0;
 		background: repeating-linear-gradient(
 			to bottom,
-			rgba(0, 0, 0, 0.15) 0px,
-			rgba(0, 0, 0, 0.15) 1px,
+			rgba(0, 0, 0, 0.1) 0px,
+			rgba(0, 0, 0, 0.1) 1px,
 			transparent 1px,
 			transparent 2px
 		);
