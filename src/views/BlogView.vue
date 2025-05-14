@@ -1,5 +1,5 @@
 <script setup>
-import { loadJSON } from '@/shared';
+import { getHumanReadableDateWithoutYear, loadJSON } from '@/shared';
 import { ref, onMounted, useTemplateRef, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 
@@ -28,13 +28,16 @@ const postsByYear = computed(() => {
 });
 
 const tagList = computed(() => {
-	const s = new Set();
-	blogListing.value.forEach(post => {
-		if (post.tags) {
-			s.add(...post.tags);
-		}
-	});
-	return [...s].sort();
+    const tagCounts = new Map();
+    blogListing.value.forEach(post => {
+        if (Array.isArray(post.tags)) {
+            post.tags.forEach(tag => {
+                tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+            });
+        }
+    });
+    // Return sorted array of [tag, count] pairs
+    return Array.from(tagCounts.entries()).sort((a, b) => a[0].localeCompare(b[0]));
 });
 
 // -- search --
@@ -48,25 +51,33 @@ const handleSearch = () => {
 
 <template>
 	<!-- <br v-for="i in 100" :key="i"> -->
-	<div class="flex flex-col-reverse items-start md:flex-row gap-20 md:gap-5">
+	<div class="blog-posts flex flex-col-reverse items-start md:flex-row gap-20 md:gap-10">
 		<div class="flex-1">
 
 			<h2>All Posts</h2>
 
 			<div
-				v-for="(item, index) in postsByYear"
-				:key="item[0]"
+				class="pb-[60px]"
+				v-for="[year, data] in postsByYear"
+				:key="year"
 			>
-				<h3>{{ item[0] }}</h3>
+				<h3>{{ year }}</h3>
 
-				<div
-					v-for="data in item[1]"
-				>
-					<div>{{ data }}</div>
+				<div class="flex flex-col gap-5">
+					<RouterLink
+						class="blog-entry"
+						:to="`/blog${post_data.path}`"
+						v-for="post_data in data"
+						:key="post_data.title"
+					>
+						<!-- <div>{{ post_data }}</div> -->
+						<div class="entry-date">{{ getHumanReadableDateWithoutYear(post_data['date-published']) }}</div>
+						<div class="entry-title">{{ post_data.title }}</div>
+					</RouterLink>
 				</div>
 			</div>
 		</div>
-		<div class="sidebar flex-none p-3 flex flex-col gap-9 md:max-w-70">
+		<div class="sidebar flex-none p-3 flex flex-col gap-9 md:max-w-76">
 
 			<form @submit.prevent="handleSearch" class="search-box flex flex-row">
 				<input ref="search-input" type="text" placeholder="Search posts ...">
@@ -80,11 +91,12 @@ const handleSearch = () => {
 				<div class="tag-list flex flex-row flex-wrap gap-2">
 
 					<button
-						v-for="item in tagList"
-						:key="item"
+						v-for="[tag, count] in tagList"
+						:key="tag"
 						class="tag"
 					>
-						{{ item }}
+						<span class="tag-name">{{ tag }}</span>
+						<span class="tag-count">{{ count }}</span>
 					</button>
 				</div>		
 			</div>
@@ -105,6 +117,29 @@ const handleSearch = () => {
 </template>
 
 <style scoped lang="scss">
+.blog-posts {
+	.blog-entry {
+		padding: 10px;
+		border: 2px solid #333;
+		border-radius: 5px;
+
+		&:hover, &:focus {
+			border-color: var(--my-content-link);
+			transform: translateX(-1px);
+		}
+
+		.entry-date {
+			font-family: "Titillium Web", sans-serif;
+			color: #555;
+			font-weight: bold;
+			font-size: 15px;
+		}
+		.entry-title {
+			color: #ccc;
+			font-size: 16px;
+		}
+	}
+}
 .sidebar {
 	background-color: var(--my-sidebar-background);
 
@@ -151,7 +186,7 @@ const handleSearch = () => {
 		color: var(--my-sidebar-tag-text);
 		padding: 3px 9px;
 		//font-family: "Titillium Web", sans-serif;
-		font-size: 16px;
+		font-size: 14px;
 		font-weight: 400;
 		border-radius: 5px;
 		cursor: pointer;
@@ -159,6 +194,16 @@ const handleSearch = () => {
 		&:hover {
 			background-color: var(--my-sidebar-tag-background-highlight);
 			color: var(--my-sidebar-tag-text-highlight);
+		}
+
+		.tag-name {
+		}
+		.tag-count {
+			display: inline-block;
+			padding: 0 7.5px;
+			margin-left: 10px;
+			background-color: #222;
+			border-radius: 50%;
 		}
 	}
 }
