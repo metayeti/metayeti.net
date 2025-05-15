@@ -1,6 +1,7 @@
 import HomeView from '../views/HomeView.vue';
 import ProjectsView from '../views/ProjectsView.vue';
 import BlogView from '../views/BlogView.vue';
+import BlogPostView from '../views/BlogPostView.vue';
 import AboutView from '../views/AboutView.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
@@ -9,7 +10,7 @@ const routes = [
 	{ path: '/', name: 'Home', component: HomeView },
 	{ path: '/projects', name: 'projects', component: ProjectsView },
 	{ path: '/blog', name: 'blog', component: BlogView },
-	{ path: '/blog/:slug', name: 'blog-post', component: null },
+	{ path: '/blog/:slug', name: 'blog-post', component: BlogPostView },
 	{ path: '/about', name: 'about', component: AboutView },
 ];
 

@@ -20,7 +20,19 @@ const routeMap = {
 };
 
 watch(() => route.path, (nextPath) => {
-	navItemActive.value = routeMap[nextPath] ?? -1;
+	// check for exact matches
+	if (routeMap[nextPath] !== undefined) {
+		navItemActive.value = routeMap[nextPath];
+		return;
+	}
+	// if no exact match, check for subpages
+	for (const [path, value] of Object.entries(routeMap)) {
+		if (path === '/') continue;
+		if (nextPath.startsWith(path)) {
+			navItemActive.value = value;
+			return;
+		}
+	}
 });
 
 // -- hide navigation --

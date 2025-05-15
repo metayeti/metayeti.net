@@ -66,7 +66,7 @@ const handleSearch = () => {
 				<div class="flex flex-col gap-5">
 					<RouterLink
 						class="blog-entry"
-						:to="`/blog${post_data.path}`"
+						:to="`/blog/${post_data.slug}`"
 						v-for="post_data in data"
 						:key="post_data.title"
 					>
@@ -130,12 +130,18 @@ const handleSearch = () => {
 	.blog-entry {
 		padding: 10px;
 		border: 2px solid #333;
-		border-radius: 15px;
+		//border-radius: 15px;
+
+		// transform: skewX(20deg);
 
 		&:hover, &:focus {
 			border-color: var(--my-content-link);
 			transform: translateX(-1px);
 		}
+
+		// * {
+		// 	transform: skewX(-20deg);
+		// }
 
 		.entry-date {
 			font-family: "Titillium Web", sans-serif;
@@ -226,12 +232,13 @@ const handleSearch = () => {
 	.tag-list > .tag {
 		background-color: var(--my-sidebar-tag-background);
 		color: var(--my-sidebar-tag-text);
-		padding: 3px 9px;
+		//padding: 3px 9px;
 		//font-family: "Titillium Web", sans-serif;
 		font-size: 13px;
 		font-weight: 400;
-		border-radius: 5px;
+		// border-radius: 5px;
 		cursor: pointer;
+		transform: skewX(-10deg);
 
 		&:hover {
 			background-color: var(--my-sidebar-tag-background-highlight);
@@ -239,13 +246,19 @@ const handleSearch = () => {
 		}
 
 		.tag-name {
+			display: inline-block;
+			padding-left: 10px;
+			transform: skewX(10deg);
 		}
 		.tag-count {
 			display: inline-block;
-			padding: 0 7.5px;
+			padding: 3px 7.5px;
 			margin-left: 10px;
-			background-color: #222;
-			border-radius: 16px;
+			background-color: #444444;
+			color: #868686;
+			font-weight: 700;
+			// border-radius: 16px;
+			// transform: skewX(10deg);
 		}
 	}
 }
