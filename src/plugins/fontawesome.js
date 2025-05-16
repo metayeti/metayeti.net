@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // import icons we need
 import { 
-  faSearch
+  faSearch,
+  faArrowLeft,
+  faCalendarDays
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
@@ -19,6 +21,8 @@ import {
 library.add(
   // solid icons
   faSearch,
+  faArrowLeft,
+  faCalendarDays,
   // brand icons
   faXTwitter,
   faGithub,

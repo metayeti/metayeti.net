@@ -15,6 +15,20 @@ export function getHumanReadableDate(dateStr) {
 }
 
 /**
+ * Will convert "2025-04-25" to "April 25, 2025"
+ * 
+ * @param {string} dateStr
+ * @returns {string}
+ */
+export function getHumanReadableDateFull(dateStr) {
+	return new Date(dateStr).toLocaleDateString('en-US', {
+		month: 'long',
+		day: 'numeric',
+		year: 'numeric'
+	});
+}
+
+/**
  * Will convert "2025-04-25" to "April 25"
  * 
  * @param {string} dateStr 

@@ -1,5 +1,5 @@
 <script setup>
-import { getHumanReadableDateWithoutYear, loadJSON } from '@/shared';
+import { constants, getHumanReadableDateWithoutYear, loadJSON } from '@/shared';
 import { ref, onMounted, useTemplateRef, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 
@@ -8,7 +8,7 @@ import { RouterLink } from 'vue-router';
 const blogListing = ref([]);
 
 onMounted(async () => {
-	const blogData = await loadJSON('/content/blog/index.json');
+	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
 	blogListing.value = blogData.posts;
 });
 
@@ -71,7 +71,7 @@ const handleSearch = () => {
 						:key="post_data.title"
 					>
 
-						<!-- <div class="tag-list flex flex-row flex-wrap gap-2">
+						<div class="tag-list flex flex-row flex-wrap gap-2">
 							<button
 								v-for="tag in post_data.tags"
 								:key="tag"
@@ -79,7 +79,7 @@ const handleSearch = () => {
 							>
 								<span>{{ tag }}</span>
 							</button>
-						</div> -->
+						</div>
 
 
 
@@ -232,11 +232,8 @@ const handleSearch = () => {
 	.tag-list > .tag {
 		background-color: var(--my-sidebar-tag-background);
 		color: var(--my-sidebar-tag-text);
-		//padding: 3px 9px;
-		//font-family: "Titillium Web", sans-serif;
 		font-size: 13px;
 		font-weight: 400;
-		// border-radius: 5px;
 		cursor: pointer;
 		transform: skewX(-10deg);
 
@@ -257,8 +254,6 @@ const handleSearch = () => {
 			background-color: #444444;
 			color: #868686;
 			font-weight: 700;
-			// border-radius: 16px;
-			// transform: skewX(10deg);
 		}
 	}
 }

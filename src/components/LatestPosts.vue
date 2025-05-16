@@ -1,12 +1,12 @@
 <script setup>
-import { getHumanReadableDate, loadJSON } from '@/shared';
+import { constants, getHumanReadableDate, loadJSON } from '@/shared';
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const blogListing = ref([]);
 
 onMounted(async () => {
-	const blogData = await loadJSON('/content/blog/index.json');
+	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
 	blogListing.value = blogData.posts;
 });
 </script>
@@ -18,7 +18,10 @@ onMounted(async () => {
 				v-for="item in blogListing.slice(0, 3)"
 				:key="item.id"
 			>
-				<a href="#">
+				<RouterLink
+					class="blog-entry"
+					:to="`/blog/${item.slug}`"
+				>
 					<div class="flex flex-row gap-4">
 						<div class="post-date flex flex-none justify-middle items-center">
 							<span>
@@ -35,7 +38,7 @@ onMounted(async () => {
 							</span>
 						</div>
 					</div>
-				</a>
+				</RouterLink>
 			</li>
 		</ul>
 		<!-- <p v-else>...</p> -->
@@ -47,7 +50,7 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 ul.latest-posts {
-	a {
+	.blog-entry {
 		position: relative;
 		display: inline-block;
 		color: var(--my-content-text);

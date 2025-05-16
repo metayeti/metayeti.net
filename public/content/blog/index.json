@@ -3,7 +3,7 @@
         {
             "title": "The Role of Ethics in AI",
             "slug": "role-of-ethics-in-ai",
-            "date-last-update": "2026-03-19",
+            "date-updated": "2026-03-19",
             "date-published": "2025-12-07",
             "tags": ["ai-ethics", "technology", "responsibility"],
             "description": "An exploration of ethical considerations in artificial intelligence and why they matter for the future of technology."
@@ -11,9 +11,9 @@
         {
             "title": "Tips for Optimizing Code",
             "slug": "tips-optimizing-code",
-            "date-last-update": "2025-10-09",
+            "date-updated": "2025-10-09",
             "date-published": "2025-06-25",
-            "tags": ["coding", "optimization", "performance"],
+            "tags": ["coding", "optimization", "performance", "some long tag", "some longer tag"],
             "description": "Discover practical strategies to make your code faster, cleaner, and more efficient."
         },
         {
