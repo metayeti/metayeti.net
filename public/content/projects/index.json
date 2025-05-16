@@ -2,12 +2,13 @@
 	"projects": [
 		{
 			"name": "Zorlax",
-			"path": "zorlax/",
+			"path": "zorlax",
 			"description": "2D retro platformer",
 			"system": "Windows",
-			"done": "20%"
+			"done": "20%",
+			"screenshots": []
 		}
 	],
-	"old-projects": [
+	"legacy-projects": [
 	]
 }

@@ -1,5 +1,6 @@
 <script setup>
 import LatestPosts from '@/components/LatestPosts.vue';
+import LatestProjects from '@/components/LatestProjects.vue';
 import { RouterLink } from 'vue-router';
 </script>
 
@@ -21,7 +22,7 @@ import { RouterLink } from 'vue-router';
 	</section>
 	<section>
 		<h2>Latest projects</h2>
-		<br v-for="i in 15" :key="i">
+		<LatestProjects class="py-3" />
 	</section>
 </template>
 

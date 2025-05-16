@@ -6,4 +6,5 @@
 
 	/* additional colors */
 	--color-flavor: var(--my-content-flavor);
+	--color-accent: var(--my-content-accent);
 }
