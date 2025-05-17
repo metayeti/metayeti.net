@@ -1,14 +1,64 @@
 {
-	"projects": [
+	"active": [
 		{
 			"title": "Zorlax",
 			"path": "zorlax",
 			"description": "2D retro platformer",
 			"system": "Windows",
 			"done": "20%",
-			"screenshots": ["s1.png", "s2.png", "s3.png"]
+			"screenshots": ["screenshots/s1.png", "screenshots/s2.png", "screenshots/s3.png"]
+		},
+		{
+			"title": "Another Mobile Project",
+			"path": "another-mobile-project",
+			"description": "Cross-platform mobile application",
+			"system": "iOS/Android",
+			"done": "45%",
+			"screenshots": ["screenshots/s1.png"]
+		},
+		{
+			"title": "Demo 3",
+			"path": "demo3",
+			"description": "Technical demonstration for client",
+			"system": "Web",
+			"done": "90%",
+			"screenshots": ["screenshots/s1.png"]
+		},
+		{
+			"title": "Listing Interface",
+			"path": "listing.json",
+			"description": "Dynamic product listing interface",
+			"system": "Web",
+			"done": "75%",
+			"screenshots": ["screenshots/s1.png"]
+		},
+		{
+			"title": "Mock Mobile Project",
+			"path": "mock-mobile-project",
+			"description": "UI/UX testing environment",
+			"system": "Android",
+			"done": "60%",
+			"screenshots": ["screenshots/s1.png"]
+		},
+		{
+			"title": "Puzzle Pozzle Frozzle",
+			"path": "puzzle-pozzle-frozzle",
+			"description": "Brain teaser puzzle game",
+			"system": "iOS",
+			"done": "30%",
+			"screenshots": ["screenshots/s1.png"]
+		},
+		{
+			"title": "Some Mobile Project",
+			"path": "some-mobile-project",
+			"description": "Productivity app prototype",
+			"system": "iOS/Android",
+			"done": "15%",
+			"screenshots": ["screenshots/s1.png"]
 		}
 	],
-	"legacy-projects": [
+	"inactive": [
+	],
+	"legacy": [
 	]
 }

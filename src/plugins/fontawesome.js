@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { 
   faSearch,
   faArrowLeft,
-  faCalendarDays
+  faCalendarDays,
+  faClock
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
@@ -23,6 +24,7 @@ library.add(
   faSearch,
   faArrowLeft,
   faCalendarDays,
+  faClock,
   // brand icons
   faXTwitter,
   faGithub,

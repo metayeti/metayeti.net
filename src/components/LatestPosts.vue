@@ -7,7 +7,7 @@ const blogListing = ref([]);
 
 onMounted(async () => {
 	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
-	blogListing.value = blogData.posts;
+	blogListing.value = blogData?.posts ?? [];
 });
 </script>
 
@@ -41,8 +41,7 @@ onMounted(async () => {
 				</RouterLink>
 			</li>
 		</ul>
-		<!-- <p v-else>...</p> -->
-		<div>
+		<div v-if="blogListing.length > 3">
 			<RouterLink to="/blog" class="link">More ...</RouterLink>
 		</div>
 	</div>

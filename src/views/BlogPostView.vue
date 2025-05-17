@@ -1,13 +1,19 @@
 <script setup>
-import { constants, getHumanReadableDateFull, loadJSON, loadText, md } from '@/shared';
+import { constants, getHumanReadableDateFull, getHumanReadableMinutes, loadJSON, loadText, md } from '@/shared';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 // -- load markdown and handle rendering --
 
-const renderedArticleMarkdown = ref('');
+function estimateReadingTime(text, wordsPerMinute = 200) {
+	const words = text.split(' ').length;
+	const minutes = Math.ceil(words / wordsPerMinute);
+	return minutes;
+}
 
+const renderedArticleMarkdown = ref('');
 const postListing = ref({});
+const readingTime = ref('');
 
 onMounted(async () => {
 	const route = useRoute();
@@ -18,6 +24,13 @@ onMounted(async () => {
 	const articlePath = `/content/blog/${routeSlug}/article.md`;
 	const articleMarkdown  = await loadText(articlePath);
 	renderedArticleMarkdown.value = md.render(articleMarkdown);
+	// compute get article stats
+	const articlePlainText = articleMarkdown
+		.replace(/[#*`~\[\]\(\)]/g, '') // remove markdown symbols
+		.replace(/\s+/g, ' ') // normalize whitespace
+		.trim();
+	const readingTimeInMinutes = estimateReadingTime(articlePlainText);
+	readingTime.value = getHumanReadableMinutes(readingTimeInMinutes);
 });
 
 </script>
@@ -40,9 +53,15 @@ onMounted(async () => {
 		</div>
 		<h2 class="post-title">{{ postListing.title }}</h2>
 		<span class="post-description">{{ postListing.description }}</span>
-		<span class="post-date-published py-3">
-			<font-awesome-icon class="pr-2" icon="fa-solid fa-calendar-days" />
-			{{ getHumanReadableDateFull(postListing['date-published']) }}
+		<span class="post-meta py-3 flex flex-row gap-5">
+			<span class="post-date-published">
+				<font-awesome-icon class="pr-1.5" icon="fa-solid fa-calendar-days" />
+				{{ getHumanReadableDateFull(postListing['date-published']) }}
+			</span>
+			<span v-if="readingTime" class="post-read-duration">
+				<font-awesome-icon class="pr-1.5" icon="fa-solid fa-clock" />
+				{{ readingTime }} read
+			</span>
 		</span>
 	</section>
 	<article v-html="renderedArticleMarkdown"></article>
@@ -100,8 +119,13 @@ onMounted(async () => {
 	.post-description {
 		color: var(--my-content-text-dimmed);
 	}
-	.post-date-published {
+	.post-meta {
 		font-size: 13px;
+
+		.post-date-published {
+		}
+		.post-read-duration {
+		}
 	}
 }
 .post-footer {

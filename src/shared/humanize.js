@@ -40,3 +40,16 @@ export function getHumanReadableDateWithoutYear(dateStr) {
 		day: 'numeric'
 	});
 }
+
+/**
+ * Will convert "58" to "58 minutes" and "90" to "1.5 hours"
+ *
+ * @param {number} minutes Number of minutes.
+ */
+export function getHumanReadableMinutes(minutes) {
+	if (minutes < 60) {
+		return `${minutes} minute${minutes === 1 ? '' : 's'}`;
+	}	
+	const hours = Number((minutes / 60).toFixed(1)); // wrap with Number so we get rid of insignificant zeroes (e.g "1.0 hours")
+	return `${hours} hour${hours === 1 ? '' : 's'}`;
+}

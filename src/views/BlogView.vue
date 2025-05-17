@@ -9,22 +9,21 @@ const blogListing = ref([]);
 
 onMounted(async () => {
 	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
-	blogListing.value = blogData.posts;
+	blogListing.value = blogData?.posts ?? [];
 });
 
 const postsByYear = computed(() => {
-	const groupedPosts = new Map();
-
+	const computedPosts = new Map();
 	blogListing.value.forEach(post => {
 		// extract year from date published
 		const year = new Date(post['date-published']).getFullYear();
-		if (!groupedPosts.has(year)) {
-			groupedPosts.set(year, []);
+		if (!computedPosts.has(year)) {
+			computedPosts.set(year, []);
 		}
-		groupedPosts.get(year).push(post);
+		computedPosts.get(year).push(post);
 	});
 
-	return groupedPosts;
+	return computedPosts;
 });
 
 const tagList = computed(() => {
@@ -61,7 +60,7 @@ const handleSearch = () => {
 </script>
 
 <template>
-	<div class="flex flex-col md:items-start md:flex-row gap-20 md:gap-12">
+	<div class="flex flex-col md:items-start md:flex-row gap-10 md:gap-12">
 		<div class="blog-posts flex-1">
 
 			<h2>All Posts</h2>
@@ -74,7 +73,7 @@ const handleSearch = () => {
 				<h3>{{ year }}</h3>
 				<div class="flex flex-col gap-5">
 					<div
-						class="blog-entry md:py-[10px]"
+						class="blog-entry md:pb-[10px]"
 						v-for="postData in data"
 						:key="postData.title"
 					>
@@ -141,7 +140,7 @@ const handleSearch = () => {
 			width: calc(100% + 4px);
 			.tag {
 				cursor: pointer;
-				color: var(--my-content-accent-text);
+				color: var(--my-content-text-dimmed);
 				padding: 3px 9px;
 				font-size: 12px;
 				font-weight: 400;
@@ -149,11 +148,10 @@ const handleSearch = () => {
 				transform: skewX(-20deg);
 
 				&:hover {
-					color: var(--my-sidebar-tag-text-highlight);
+					color: var(--my-content-link-hover);
 					outline: 2px solid var(--my-content-link);
 					transform: skewX(-20deg) translateX(-1px);
 				}
-
 				.tag-name {
 					display: inline-block;
 					transform: skewX(20deg);
@@ -161,8 +159,8 @@ const handleSearch = () => {
 			}
 		}
 		.blog-link {
-			border: 2px solid var(--my-content-accent);
 			display: block;
+			border: 2px solid var(--my-content-accent);
 			padding: 10px;
 
 			&:hover, &:focus {
@@ -171,18 +169,18 @@ const handleSearch = () => {
 			}
 			.entry-date {
 				font-family: "Titillium Web", sans-serif;
-				color: #555;
+				color: var(--my-content-bullet);
 				font-weight: bold;
 				font-size: 15px;
 			}
 			.entry-title {
-				color: #ccc;
+				color: var(--my-content-text);
 				font-size: 16px;
 			}
 
 			.entry-description {
 				font-size: 13px;
-				color: #888;
+				color: var(--my-content-text-dimmed);
 			}
 
 			.cta {
