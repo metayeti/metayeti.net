@@ -6,7 +6,9 @@
 			"description": "2D retro platformer",
 			"system": "Windows",
 			"done": "20%",
-			"screenshots": []
+			"screenshots": [
+				"s1.png", "s2.png", "s3.png"
+			]
 		}
 	],
 	"legacy-projects": [

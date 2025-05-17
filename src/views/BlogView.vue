@@ -51,7 +51,7 @@ const handleSearch = () => {
 
 <template>
 	<!-- <br v-for="i in 100" :key="i"> -->
-	<div class="flex flex-col md:items-start md:flex-row-reverse gap-20 md:gap-20">
+	<div class="flex flex-col md:items-start md:flex-row gap-20 md:gap-10">
 		<div class="blog-posts flex-1">
 
 			<h2>All Posts</h2>
@@ -65,30 +65,31 @@ const handleSearch = () => {
 
 				<div class="flex flex-col gap-5">
 					<div
-						class="blog-entry"
-						v-for="post_data in data"
-						:key="post_data.title"
+						class="blog-entry md:p-[10px]"
+						v-for="postData in data"
+						:key="postData.title"
 					>
 
-						<div class="tag-list flex flex-row flex-wrap gap-1 justify-end">
+						
+						<div class="tag-list flex flex-row flex-wrap justify-end gap-1.5">
 							<button
-								v-for="tag in post_data.tags"
+								v-for="tag in postData.tags"
 								:key="tag"
 								class="tag"
 							>
 								<span class="tag-name">{{ tag }}</span>
 							</button>
 						</div>
+						
 						<RouterLink
 							class="blog-link"
-							:to="`/blog/${post_data.slug}`"
+							:to="`/blog/${postData.slug}`"
 						>
-							<!-- <div>{{ post_data }}</div> -->
-							<div class="entry-date pt-1">{{ getHumanReadableDateWithoutYear(post_data['date-published']) }}</div>
-							<div class="entry-title pt-1.5">{{ post_data.title }}</div>
+							<div class="entry-date pt-1">{{ getHumanReadableDateWithoutYear(postData['date-published']) }}</div>
+							<div class="entry-title pt-1.5">{{ postData.title }}</div>
 
 							<div class="entry-description">
-								{{ post_data.description }}
+								{{ postData.description }}
 							</div>
 
 
@@ -98,7 +99,7 @@ const handleSearch = () => {
 				</div>
 			</div>
 		</div>
-		<div class="sidebar flex-none p-3 flex flex-col gap-9 md:max-w-75">
+		<div class="sidebar flex-none flex flex-col gap-9 md:max-w-67">
 
 			<form @submit.prevent="handleSearch" class="search-box flex flex-row">
 				<input ref="search-input" type="text" placeholder="Search posts ...">
@@ -108,9 +109,8 @@ const handleSearch = () => {
 			</form>
 
 			<div class="flex flex-col gap-3">
-				<h5>Topics</h5>
+				<h5>Tags</h5>
 				<div class="tag-list flex flex-row flex-wrap gap-2">
-
 					<button
 						v-for="[tag, count] in tagList"
 						:key="tag"
@@ -119,7 +119,7 @@ const handleSearch = () => {
 						<span class="tag-name">{{ tag }}</span>
 						<span class="tag-count">{{ count }}</span>
 					</button>
-				</div>		
+				</div>
 			</div>
 
 		</div>
@@ -130,14 +130,15 @@ const handleSearch = () => {
 .blog-posts {
 
 	.blog-entry {
-		padding: 10px;
 
 		.tag-list {
-			position: relative;
-			width: 70%;
-			margin-left: 30%;
-			background-color: var(--my-content-accent);
+			width: calc(100% + 2px);
+			// position: relative;
+			// width: 70%;
+			// margin-left: 30%;
+			// background-color: var(--my-content-accent);
 
+			/*
 			&::before {
 				position: absolute;
 				content: '';
@@ -147,23 +148,27 @@ const handleSearch = () => {
 				background-color: var(--my-content-accent);
 				clip-path: polygon(100% 0, 100% 100%, 20% 100%);
 			}
+				*/
 
 			.tag {
 				//background-color: var(--my-content-accent);
+				cursor: pointer;
 				color: var(--my-content-accent-text);
 				padding: 3px 9px;
 				font-size: 12px;
 				font-weight: 400;
 				cursor: pointer;
-				//transform: skewX(-10deg);
+				transform: skewX(-20deg);
 
 				&:hover {
-					background-color: var(--my-sidebar-tag-background-highlight);
+					//background-color: var(--my-sidebar-tag-background-highlight);
 					color: var(--my-sidebar-tag-text-highlight);
+					outline: 2px solid var(--my-content-link);
 				}
 
 				.tag-name {
-					//transform: skewX(10deg);
+					display: inline-block;
+					transform: skewX(20deg);
 				}
 			}
 		}
@@ -192,25 +197,31 @@ const handleSearch = () => {
 				font-size: 13px;
 				color: #888;
 			}
-		}
 
-
-		.cta {
-			display: inline-block;
-			font-size: 13px;
-			color: var(--my-content-link);
-		}
-		&:hover {
 			.cta {
-				border-bottom: 2px solid var(--my-content-link);
+				display: inline-block;
+				font-size: 13px;
+				color: var(--my-content-link);
+				border-bottom: 2px solid transparent;
 			}
+			&:hover {
+				.cta {
+					color: var(--my-content-link-hover);
+					border-bottom: 2px solid var(--my-content-link);
+				}
+			}
+
 		}
+
 
 
 	}
 }
 .sidebar {
-	background-color: var(--my-sidebar-background);
+	position: relative;
+	padding: 10px;
+	//background-color: var(--my-sidebar-background);
+	border: 2px solid var(--my-content-accent);
 
 	h5 {
 		padding: 0;
@@ -257,22 +268,24 @@ const handleSearch = () => {
 		font-weight: 400;
 		cursor: pointer;
 		transform: skewX(-10deg);
+		//border: 2px solid var(--my-siderbar-tag-background);
 
 		&:hover {
-			background-color: var(--my-sidebar-tag-background-highlight);
+			//background-color: var(--my-sidebar-tag-background-highlight);
 			color: var(--my-sidebar-tag-text-highlight);
+			outline: 2px solid var(--my-content-link);
 		}
 
 		.tag-name {
 			display: inline-block;
-			padding-left: 10px;
+			padding-left: 8px;
 			transform: skewX(10deg);
 		}
 		.tag-count {
 			display: inline-block;
-			padding: 3px 7.5px;
+			padding: 2px 7.5px;
 			margin-left: 10px;
-			background-color: #444444;
+			background-color: #333;
 			color: #868686;
 			font-weight: 700;
 		}

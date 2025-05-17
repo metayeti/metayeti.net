@@ -37,6 +37,7 @@ export const goodMusic = [
 	'https://www.youtube.com/watch?v=by6lyNC3D9Y',   // Nirvana - Heart Shaped Box
 	'https://www.youtube.com/watch?v=HdpLz02CXYM',   // Ludus Pinsky Live lockdown diaries
 	'https://www.youtube.com/watch?v=kRgj2qtSXlU',   // Astral Projection - Enlightened Evolution
+	'https://www.youtube.com/watch?v=dggRG8KukFM',   // Bijelo Dugme - Hajdemo u Planine
 ];
 
 // list of good game music

@@ -90,6 +90,17 @@ body {
 			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
 			z-index: -1;
 		}
+		&::after {
+			position: absolute;
+			content: '';
+			width: 30px;
+			height: 100%;
+			top: 1.5px;
+			right: -48px;
+			background-color: var(--my-content-accent);
+			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
+			z-index: -1;
+		}
 		&:nth-child(n+2) {
 			margin-top: 2vh;
 		}
@@ -121,13 +132,13 @@ body {
 				content: '.:[';
 				font-weight: 600;
 				padding-right: 5px;
-				color: var(--my-content-note);
+				color: var(--my-content-bullet);
 			}
 			&::after {
 				content: ']:.';
 				font-weight: 600;
 				padding-left: 5px;
-				color: var(--my-content-note);
+				color: var(--my-content-bullet);
 			}
 		}
 	}

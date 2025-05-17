@@ -22,7 +22,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 
 # Random factoids
 
-<div class="factoids pl-4 border-l-2 border-orange-400">
+<div class="factoids pl-4 border-l-2 border-flavor">
 	<ul class="flex flex-col gap-3">
 		<li>
 			<span class="factoid">Home planet</span>
