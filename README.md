@@ -1,6 +1,7 @@
-# metayeti.net
+<img src="logo.png">
 
 Personal homesite/blog/etc.
+
 
 ## Legal
 
