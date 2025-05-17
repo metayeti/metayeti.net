@@ -68,7 +68,7 @@ onMounted(async () => {
 	<section class="post-footer">
 		<span class="post-date-updated">
 			Article last updated:
-			<font-awesome-icon class="px-2" icon="fa-solid fa-calendar-days" />
+			<font-awesome-icon class="pl-4 pr-1.5" icon="fa-solid fa-calendar-days" />
 			{{ getHumanReadableDateFull(postListing['date-updated']) }}
 		</span>	
 	</section>

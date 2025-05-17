@@ -160,8 +160,8 @@ const handleSearch = () => {
 		}
 		.blog-link {
 			display: block;
-			border: 2px solid var(--my-content-accent);
-			padding: 10px;
+			border-top: 2px solid var(--my-content-accent);
+			padding: 10px 0;
 
 			&:hover, &:focus {
 				border-color: var(--my-content-link);
