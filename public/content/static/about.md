@@ -2,7 +2,7 @@
 
 <img class="me desktop" src="/content/static/images/me.jpg" alt="me">
 
-Ahoy there! I'm Danijel. I'm a programmer with a passion for videogames. I combine my [skills](#skills) to create games, software, websites and other kinds of interactive digital content.
+Hi there! I'm Danijel. I'm a programmer with a passion for videogames. I combine my [skills](#skills) to create games, software, websites and other kinds of interactive digital content.
 
 <img class="me mobile" src="/content/static/images/me.jpg" alt="me">
 

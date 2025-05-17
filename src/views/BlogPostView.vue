@@ -1,7 +1,7 @@
 <script setup>
 import { constants, getHumanReadableDateFull, getHumanReadableMinutes, loadJSON, loadText, md } from '@/shared';
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, RouterLink } from 'vue-router';
 
 // -- load markdown and handle rendering --
 
@@ -54,11 +54,11 @@ onMounted(async () => {
 		<h2 class="post-title">{{ postListing.title }}</h2>
 		<span class="post-description">{{ postListing.description }}</span>
 		<span class="post-meta py-3 flex flex-row gap-5">
-			<span class="post-date-published">
+			<span>
 				<font-awesome-icon class="pr-1.5" icon="fa-solid fa-calendar-days" />
 				{{ getHumanReadableDateFull(postListing['date-published']) }}
 			</span>
-			<span v-if="readingTime" class="post-read-duration">
+			<span v-if="readingTime">
 				<font-awesome-icon class="pr-1.5" icon="fa-solid fa-clock" />
 				{{ readingTime }} read
 			</span>
@@ -71,6 +71,13 @@ onMounted(async () => {
 			<font-awesome-icon class="pl-4 pr-1.5" icon="fa-solid fa-calendar-days" />
 			{{ getHumanReadableDateFull(postListing['date-updated']) }}
 		</span>	
+		<div class="about-author flex flex-row gap-5">
+			<img src="@/assets/images/photo_small.jpg" alt="">
+			<div>
+				<h5>About the author</h5>
+				<p>by <RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - game developer, blogger, digital creator.</p>
+			</div>
+		</div>
 	</section>
 </template>
 
@@ -121,17 +128,33 @@ onMounted(async () => {
 	}
 	.post-meta {
 		font-size: 13px;
-
-		.post-date-published {
-		}
-		.post-read-duration {
-		}
 	}
 }
 .post-footer {
 	.post-date-updated {
 		font-size: 13px;
 		text-align: right;
+	}
+	.about-author {
+		border: 2px solid var(--my-content-accent);
+		margin-top: 30px;
+		padding: 15px;
+		img {
+			width: 130px;
+			//filter: grayscale(1);
+		}
+		h5 {
+			font-size: 1rem;
+			padding: 0;
+			margin: 0 0 10px 0;
+		}
+		p {
+			padding: 0;
+			margin: 0;
+			font-size: 0.8rem;
+			line-height: 1.3rem;;
+			color: var(--my-content-text-dimmed);
+		}
 	}
 }
 </style>

@@ -103,7 +103,6 @@ const handleSearch = () => {
 			</div>
 		</div>
 		<div class="sidebar flex-none flex flex-col gap-9 md:max-w-67">
-
 			<form
 				@submit.prevent="handleSearch"
 				class="search-box flex flex-row"
