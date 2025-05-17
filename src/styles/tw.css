@@ -7,4 +7,12 @@
 	/* additional colors */
 	--color-flavor: var(--my-content-flavor);
 	--color-accent: var(--my-content-accent);
+
+	/* animations */
+	--animate-wiggle: wiggle 350ms ease-in-out;
+	@keyframes wiggle {
+		0% { transform: translateX(3px); }
+		50% { transform: translateX(-3px); }
+		100% { transform: translateX(0); }
+	}
 }

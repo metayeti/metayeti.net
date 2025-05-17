@@ -39,16 +39,19 @@
 	--my-content-bullet: #484f64;
 
 	// -- sidebar --
-	--my-sidebar-heading: #999;
-	--my-sidebar-searchbox: #0f0f11;
-	--my-sidebar-searchbox-focus: #e5ebf7;
-	--my-sidebar-searchbox-text: #ccc;
-	--my-sidebar-search-button-icon: #68717e;
+	--my-sidebar-heading: #9ea1ac;
+	--my-sidebar-searchbox: #23272b;
+	--my-sidebar-searchbox-focus: #23272b;
+	--my-sidebar-searchbox-focus-background: #1c1f22;
+	--my-sidebar-searchbox-text: #d0d7e0;
+	--my-sidebar-search-button-icon: #69717c;
 	--my-sidebar-search-button-icon-highlight: #e5ebf7;
-	--my-sidebar-tag-background: #23272b;
-	--my-sidebar-tag-text: #7a7e81;
-	--my-sidebar-tag-background-highlight: #5a5e64;
+	--my-sidebar-tag-text: #8e959b;
 	--my-sidebar-tag-text-highlight: #fff;
+	--my-sidebar-tag-background: #23272b;
+	--my-sidebar-tag-background-highlight: #5a5e64;
+	--my-sidebar-tag-count-text: #999;
+	--my-sidebar-tag-count-background: #1b1e20;
 
 	// -- special --
 	--my-image-border: #1a1a1a;
@@ -84,7 +87,6 @@
 	--my-content-bullet: #686b75;
 
 	// -- sidebar --
-	--my-sidebar-background: #fff;
 	--my-sidebar-heading: #554e48;
 	--my-sidebar-searchbox: #ffffff;
 	--my-sidebar-searchbox-focus: #242424;

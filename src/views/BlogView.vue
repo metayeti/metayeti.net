@@ -42,16 +42,26 @@ const tagList = computed(() => {
 
 // -- search --
 const searchInput = useTemplateRef('search-input');
+const isSearchInputWiggling = ref(false);
+let wiggleTimeout = null;
+const wiggleDuration = 350;
 
 const handleSearch = () => {
-	const searchTerm = searchInput.value.value;
-	console.log(searchInput.value.value);
+	const searchTerm = String(searchInput.value.value).trim();
+	if (searchTerm === '') {
+		// empty box, wiggle search to indicate
+		isSearchInputWiggling.value = true;
+		wiggleTimeout = setTimeout(() => {
+			isSearchInputWiggling.value = false;
+		}, wiggleDuration);
+		// all done here
+		return;
+	}
 };
 </script>
 
 <template>
-	<!-- <br v-for="i in 100" :key="i"> -->
-	<div class="flex flex-col md:items-start md:flex-row gap-20 md:gap-10">
+	<div class="flex flex-col md:items-start md:flex-row gap-20 md:gap-12">
 		<div class="blog-posts flex-1">
 
 			<h2>All Posts</h2>
@@ -62,15 +72,12 @@ const handleSearch = () => {
 				:key="year"
 			>
 				<h3>{{ year }}</h3>
-
 				<div class="flex flex-col gap-5">
 					<div
-						class="blog-entry md:p-[10px]"
+						class="blog-entry md:py-[10px]"
 						v-for="postData in data"
 						:key="postData.title"
 					>
-
-						
 						<div class="tag-list flex flex-row flex-wrap justify-end gap-1.5">
 							<button
 								v-for="tag in postData.tags"
@@ -80,19 +87,16 @@ const handleSearch = () => {
 								<span class="tag-name">{{ tag }}</span>
 							</button>
 						</div>
-						
 						<RouterLink
 							class="blog-link"
 							:to="`/blog/${postData.slug}`"
 						>
-							<div class="entry-date pt-1">{{ getHumanReadableDateWithoutYear(postData['date-published']) }}</div>
-							<div class="entry-title pt-1.5">{{ postData.title }}</div>
+							<div class="entry-date">{{ getHumanReadableDateWithoutYear(postData['date-published']) }}</div>
+							<div class="entry-title pt-2.5">{{ postData.title }}</div>
 
 							<div class="entry-description">
 								{{ postData.description }}
 							</div>
-
-
 							<div class="cta pt-5">Read More -></div>
 						</RouterLink>
 					</div>
@@ -101,7 +105,11 @@ const handleSearch = () => {
 		</div>
 		<div class="sidebar flex-none flex flex-col gap-9 md:max-w-67">
 
-			<form @submit.prevent="handleSearch" class="search-box flex flex-row">
+			<form
+				@submit.prevent="handleSearch"
+				class="search-box flex flex-row"
+				:class="{ 'animate-wiggle': isSearchInputWiggling }"
+			>
 				<input ref="search-input" type="text" placeholder="Search posts ...">
 				<button type="submit" title="Search">
 					<font-awesome-icon icon="fa-solid fa-search" class="size-5" />
@@ -109,7 +117,7 @@ const handleSearch = () => {
 			</form>
 
 			<div class="flex flex-col gap-3">
-				<h5>Tags</h5>
+				<h5>Topics</h5>
 				<div class="tag-list flex flex-row flex-wrap gap-2">
 					<button
 						v-for="[tag, count] in tagList"
@@ -128,30 +136,10 @@ const handleSearch = () => {
 
 <style scoped lang="scss">
 .blog-posts {
-
 	.blog-entry {
-
 		.tag-list {
-			width: calc(100% + 2px);
-			// position: relative;
-			// width: 70%;
-			// margin-left: 30%;
-			// background-color: var(--my-content-accent);
-
-			/*
-			&::before {
-				position: absolute;
-				content: '';
-				width: 20.5px;
-				height: 101%;
-				left: -20px;
-				background-color: var(--my-content-accent);
-				clip-path: polygon(100% 0, 100% 100%, 20% 100%);
-			}
-				*/
-
+			width: calc(100% + 4px);
 			.tag {
-				//background-color: var(--my-content-accent);
 				cursor: pointer;
 				color: var(--my-content-accent-text);
 				padding: 3px 9px;
@@ -161,9 +149,9 @@ const handleSearch = () => {
 				transform: skewX(-20deg);
 
 				&:hover {
-					//background-color: var(--my-sidebar-tag-background-highlight);
 					color: var(--my-sidebar-tag-text-highlight);
 					outline: 2px solid var(--my-content-link);
+					transform: skewX(-20deg) translateX(-1px);
 				}
 
 				.tag-name {
@@ -172,7 +160,6 @@ const handleSearch = () => {
 				}
 			}
 		}
-
 		.blog-link {
 			border: 2px solid var(--my-content-accent);
 			display: block;
@@ -210,17 +197,12 @@ const handleSearch = () => {
 					border-bottom: 2px solid var(--my-content-link);
 				}
 			}
-
 		}
-
-
-
 	}
 }
 .sidebar {
 	position: relative;
 	padding: 10px;
-	//background-color: var(--my-sidebar-background);
 	border: 2px solid var(--my-content-accent);
 
 	h5 {
@@ -233,8 +215,10 @@ const handleSearch = () => {
 
 	form.search-box {
 		&:has(input:focus),
-		&:has(button:focus) {
-			outline: 2px solid var(--my-sidebar-searchbox-focus);
+		&:has(input:hover),
+		&:has(button:focus),
+		&:has(button:hover) {
+			outline: 2px solid var(--my-content-link);
 		}
 		input {
 			width: 100%;
@@ -244,6 +228,7 @@ const handleSearch = () => {
 			font-size: 16px;
 			&:focus {
 				outline: none;
+				background-color: var(--my-sidebar-searchbox-focus-background);
 			}
 			+button {
 				display: flex;
@@ -253,6 +238,7 @@ const handleSearch = () => {
 				color: var(--my-sidebar-search-button-icon);
 				padding: 0 10px;
 				cursor: pointer;
+				touch-action: manipulation;
 
 				&:hover {
 					color: var(--my-siderbar-search-button-icon-highlight);
@@ -264,16 +250,16 @@ const handleSearch = () => {
 	.tag-list > .tag {
 		background-color: var(--my-sidebar-tag-background);
 		color: var(--my-sidebar-tag-text);
-		font-size: 13px;
+		font-size: 12.5px;
 		font-weight: 400;
 		cursor: pointer;
 		transform: skewX(-10deg);
-		//border: 2px solid var(--my-siderbar-tag-background);
+		border: 2px solid var(--my-sidebar-tag-background);
 
 		&:hover {
-			//background-color: var(--my-sidebar-tag-background-highlight);
 			color: var(--my-sidebar-tag-text-highlight);
 			outline: 2px solid var(--my-content-link);
+			transform: skewX(-10deg) translateX(-1px);
 		}
 
 		.tag-name {
@@ -285,8 +271,8 @@ const handleSearch = () => {
 			display: inline-block;
 			padding: 2px 7.5px;
 			margin-left: 10px;
-			background-color: #333;
-			color: #868686;
+			background-color: var(--my-sidebar-tag-count-background);
+			color: var(--my-sidebar-tag-count-text);
 			font-weight: 700;
 		}
 	}
