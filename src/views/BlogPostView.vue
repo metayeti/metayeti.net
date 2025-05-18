@@ -119,7 +119,7 @@ onMounted(async () => {
 	h2.post-title {
 		border: 0;
 		padding: 0;
-		margin: 9px 0 5px 0;
+		margin: 10px 0 5px 0;
 		font-size: 2.2rem;
 		line-height: 2.4rem;
 	}

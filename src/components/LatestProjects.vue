@@ -15,13 +15,13 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="flex flex-col gap-6">
+	<div class="flex flex-col gap-9">
 		<div class="project-reel">
 			<ul class="latest-projects flex flex-row">
 				<li
-					v-for="item in projectsListing.slice(0, 3)"
+					v-for="item in projectsListing.slice(0, 6)"
 				>
-					{{item.title}}
+					<img :src="`/content/projects/${item.path}/${item.screenshots[0]}`" alt="">
 				</li>
 			</ul>
 		</div>
@@ -38,17 +38,24 @@ onMounted(async () => {
 	ul {
 		li {
 			position: relative;
-			width: 100px;
-			height: 100px;
-			border: 2px solid #333;
-			background-color: #181818;
+			border: 5px solid var(--my-content-accent);
+			background-color: var(--my-content-accent);
 			cursor: pointer;
+			box-shadow: 0 0 10px 0 #111;
+			transition: scale 80ms ease-in-out;
 
+			img {
+				max-height: 200px;
+			}
+
+			&:first-child {
+				scale: 1.1;
+			}
 			&:nth-child(n+2) {
 				margin-left: -20px;
 			}
 
-			@for $i from 1 through 3 {
+			@for $i from 1 through 10 {
 				&:nth-child(#{$i}) {
 					z-index: 90 - $i + 1;
 				}

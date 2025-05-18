@@ -57,8 +57,9 @@ body {
 		scroll-margin-top: 30px;
 	}
 	h2 {
+		position: relative;
 		border-left: 6px solid var(--my-content-accent);
-		padding-left: 15px;
+		padding-left: 10px;
 		font-size: 1.9rem;
 		line-height: 2.3rem;
 		font-weight: 400;
@@ -69,6 +70,17 @@ body {
 		*/
 		&:nth-child(n+2) {
 			margin-top: 6vh;
+		}
+
+		&::before {
+			position: absolute;
+			content: '';
+			width: 35px;
+			height: 100%;
+			left: -48px;
+			background-color: var(--my-content-accent);
+			clip-path: polygon(17px 0, 100% 0, 100% 100%, 0 100%);
+			opacity: 0.25;
 		}
 	}
 	h3 {
