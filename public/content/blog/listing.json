@@ -87,6 +87,13 @@
             "date-published": "2019-05-15",
             "tags": ["machine-learning", "tutorial", "beginner"],
             "description": "A simple guide to help beginners take their first steps in machine learning."
+        },
+        {
+			"title": "Let's Make Snake With JavaScript",
+			"slug": "lets-make-snake-with-javascript",
+			"date-published": "2017-02-06",
+			"tags": ["javascript", "programming", "tutorial"],
+			"description": "A dive into making a simple Snake game with HTML5 and JavaScript."
         }
     ]
 }

@@ -115,7 +115,7 @@ const handleSearch = () => {
 			</form>
 
 			<div class="flex flex-col gap-3">
-				<h5>Topics</h5>
+				<h5>Tags</h5>
 				<div class="tag-list flex flex-row flex-wrap gap-2">
 					<button
 						v-for="[tag, count] in tagList"

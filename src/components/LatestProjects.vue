@@ -36,6 +36,7 @@ onMounted(async () => {
 	min-height: 10px;
 
 	ul {
+		$n-items: 6;
 		li {
 			position: relative;
 			border: 5px solid var(--my-content-accent);
@@ -55,20 +56,19 @@ onMounted(async () => {
 				margin-left: -20px;
 			}
 
-			// limit number of items on mobile
+			// limit number of items as the screen shrinks
+			@media (width < 1024px) {
+				&:nth-child(n+#{$n-items}) { display: none; }
+			}
 			@media (width < 768px) {
-				&:nth-child(n+5) {
-					display: none;
-				}
+				&:nth-child(n+#{$n-items - 1}) { display: none; }
 			}
 			@media (width < 640px) {
-				&:nth-child(n+4) {
-					display: none;
-				}
+				&:nth-child(n+#{$n-items - 2}) { display: none; }
 			}
-			
 
-			@for $i from 1 through 10 {
+			// make it look like a stack of cards
+			@for $i from 1 through $n-items {
 				&:nth-child(#{$i}) {
 					z-index: 90 - $i + 1;
 				}
