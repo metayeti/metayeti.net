@@ -55,6 +55,19 @@ onMounted(async () => {
 				margin-left: -20px;
 			}
 
+			// limit number of items on mobile
+			@media (width < 768px) {
+				&:nth-child(n+5) {
+					display: none;
+				}
+			}
+			@media (width < 640px) {
+				&:nth-child(n+4) {
+					display: none;
+				}
+			}
+			
+
 			@for $i from 1 through 10 {
 				&:nth-child(#{$i}) {
 					z-index: 90 - $i + 1;

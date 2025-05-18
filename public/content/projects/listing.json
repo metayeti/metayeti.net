@@ -5,6 +5,7 @@
 			"path": "zorlax",
 			"description": "2D retro platformer",
 			"system": "Windows",
+			"status": "Unfinished",
 			"done": "20%",
 			"screenshots": ["screenshots/s1.png", "screenshots/s2.png", "screenshots/s3.png"]
 		},
@@ -23,14 +24,6 @@
 			"system": "Web",
 			"done": "90%",
 			"screenshots": ["screenshots/0L9RJZOIX0VI1551141065502.jpg"]
-		},
-		{
-			"title": "Listing Interface",
-			"path": "listing.json",
-			"description": "Dynamic product listing interface",
-			"system": "Web",
-			"done": "75%",
-			"screenshots": ["screenshots/s1.png"]
 		},
 		{
 			"title": "Mock Mobile Project",

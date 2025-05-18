@@ -24,7 +24,7 @@ onMounted(async () => {
 	const articlePath = `/content/blog/${routeSlug}/article.md`;
 	const articleMarkdown  = await loadText(articlePath);
 	renderedArticleMarkdown.value = md.render(articleMarkdown);
-	// compute get article stats
+	// estimate read time
 	const articlePlainText = articleMarkdown
 		.replace(/[#*`~\[\]\(\)]/g, '') // remove markdown symbols
 		.replace(/\s+/g, ' ') // normalize whitespace
