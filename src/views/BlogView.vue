@@ -198,7 +198,7 @@ const handleSearch = () => {
 	}
 }
 .sidebar {
-	position: relative;
+	//position: relative;
 	padding: 10px;
 	border: 2px solid var(--my-content-accent);
 
@@ -240,6 +240,29 @@ const handleSearch = () => {
 				&:hover {
 					color: var(--my-siderbar-search-button-icon-highlight);
 				}
+			}
+		}
+
+		@media screen and (width < 768px) {
+			position: absolute;
+			width: 200px;
+			right: 20px;
+			top: -9vh;
+			border: 2px solid var(--my-content-accent);
+			padding: 5px;
+			margin-bottom: 20px;
+			transition: width 120ms ease-out;
+
+
+			&:has(input:focus),
+			&:has(input:hover),
+			&:has(button:focus),
+			&:has(button:hover) {
+				border-color: transparent;
+			}
+			&:has(input:focus),
+			&:has(button:focus) {
+				width: 300px;
 			}
 		}
 	}

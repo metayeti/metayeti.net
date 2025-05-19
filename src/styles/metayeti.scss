@@ -34,7 +34,7 @@ body {
 
 .main-content {
 	position: relative;
-	padding: calc(8vh + 10px) 0;
+	padding: calc(10vh + 10px) 0;
 	min-height: calc(100vh - 165px); // to prevent flicker and scroll issues
 	background-color: var(--my-content-background);
 	color: var(--my-content-text);
@@ -69,7 +69,7 @@ body {
 		}
 		*/
 		&:nth-child(n+2) {
-			margin-top: 6vh;
+			margin-top: 7vh;
 		}
 
 		&::before {
@@ -80,7 +80,7 @@ body {
 			left: -48px;
 			background-color: var(--my-content-accent);
 			clip-path: polygon(17px 0, 100% 0, 100% 100%, 0 100%);
-			opacity: 0.25;
+			opacity: 0.44;
 		}
 	}
 	h3 {

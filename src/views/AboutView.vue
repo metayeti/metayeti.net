@@ -162,7 +162,7 @@ article :deep(.factoids) {
 	}
 	.value {
 		color: var(--my-content-text-dimmed);
-		font-size: 1rem;		
+		font-size: 1rem;
 	}
 
 	img.blooguard {
