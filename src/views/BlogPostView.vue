@@ -122,6 +122,7 @@ onMounted(async () => {
 		margin: 10px 0 5px 0;
 		font-size: 2.2rem;
 		line-height: 2.4rem;
+		&:before { content: none; }
 	}
 	.post-description {
 		color: var(--my-content-text-dimmed);
