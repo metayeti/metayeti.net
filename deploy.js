@@ -23,7 +23,7 @@ import path from 'path';
 import { config } from 'dotenv';
 import Client from 'ftp';
 import { glob } from 'glob';
-import { color, red, green, yellow } from 'console-log-colors';
+import { green, yellow } from 'console-log-colors';
 
 config();
 
@@ -64,7 +64,8 @@ async function ensureRemoteDir(client, remoteDir) {
 				client.mkdir(currentPath, true, (err) => {
 					if (err && err.code !== 550) { // ignore "File exists" errors
 						reject(err);
-					} else {
+					}
+					else {
 						resolve();
 					}
 				});
@@ -82,12 +83,14 @@ async function getRemoteFileInfo(client, remoteFilePath) {
 			if (err) {
 				// if we get an error, assume the file doesn't exist
 				resolve(null);
-			} else if (list && list.length > 0) {
+			}
+			else if (list && list.length > 0) {
 				resolve({
 					size: list[0].size,
 					date: list[0].date
 				});
-			} else {
+			}
+			else {
 				resolve(null);
 			}
 		});
@@ -106,7 +109,8 @@ function shouldUploadFile(localStats, remoteInfo) {
 	
 	if (localTime > remoteTime) {
 		return true; // local file is newer, upload it
-	} else if (localTime === remoteTime && localStats.size !== remoteInfo.size) {
+	}
+	else if (localTime === remoteTime && localStats.size !== remoteInfo.size) {
 		return true; // same timestamp but different size, upload it
 	}
 	
@@ -121,7 +125,8 @@ function uploadFile(client, localFilePath, remoteFilePath, isBinary) {
 		client.put(readStream, remoteFilePath, (err) => {
 			if (err) {
 				reject(err);
-			} else {
+			}
+			else {
 				console.log(green('Uploaded: ') + `${localFilePath} → ${remoteFilePath} ${isBinary ? green('(binary mode)') : green('(text mode)')}`);
 				resolve();
 			}
@@ -171,7 +176,8 @@ async function deploy() {
 					client.binary((err) => {
 						if (err) console.error(`Error setting binary mode: ${err}`);
 					});
-				} else {
+				}
+				else {
 					client.ascii((err) => {
 						if (err) console.error(`Error setting ascii mode: ${err}`);
 					});

@@ -43,6 +43,7 @@ let lastScrollY = window.scrollY;
 
 // switch meta theme color for extra coolness
 const themeMeta = document.querySelector('meta[name="theme-color"]');
+const rootElement = document.documentElement;
 
 let navbarTucked = false;
 
@@ -52,7 +53,10 @@ function tuckNavbar(tuck) {
 			return;
 		}
 		navMain.value.classList.add('tucked');
-		themeMeta.setAttribute('content', (isLightMode) ? '#e3e0dd' : '#1c1f22');
+		themeMeta.setAttribute(
+			'content',
+			getComputedStyle(rootElement).getPropertyValue('--my-content-background')
+		);
 		navbarTucked = true;
 	}
 	else {
@@ -60,7 +64,10 @@ function tuckNavbar(tuck) {
 			return;
 		}
 		navMain.value.classList.remove('tucked');
-		themeMeta.setAttribute('content', '#171a1d');
+		themeMeta.setAttribute(
+			'content',
+			getComputedStyle(rootElement).getPropertyValue('--my-navigation-background2')
+		);
 		navbarTucked = false;
 	}
 }
