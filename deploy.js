@@ -74,6 +74,44 @@ async function ensureRemoteDir(client, remoteDir) {
 	}
 }
 
+async function getRemoteFileInfo(client, remoteFilePath) {
+	// get remote file information (size and modification time)
+	return new Promise((resolve, reject) => {
+		client.list(remoteFilePath, (err, list) => {
+			if (err) {
+				// if we get an error, assume the file doesn't exist
+				resolve(null);
+			} else if (list && list.length > 0) {
+				resolve({
+					size: list[0].size,
+					date: list[0].date
+				});
+			} else {
+				resolve(null);
+			}
+		});
+	});
+}
+
+function shouldUploadFile(localStats, remoteInfo) {
+	// skip upload if remote file exists and is newer or same age
+	if (!remoteInfo) {
+		return true; // remote file doesn't exist, upload it
+	}
+	
+	// compare modification dates
+	const localTime = localStats.mtime.getTime();
+	const remoteTime = remoteInfo.date.getTime();
+	
+	if (localTime > remoteTime) {
+		return true; // local file is newer, upload it
+	} else if (localTime === remoteTime && localStats.size !== remoteInfo.size) {
+		return true; // same timestamp but different size, upload it
+	}
+	
+	return false; // Remote file is up to date, skip upload
+}
+
 function uploadFile(client, localFilePath, remoteFilePath, isBinary) {
 	// upload a single file
 	return new Promise((resolve, reject) => {
@@ -92,6 +130,9 @@ function uploadFile(client, localFilePath, remoteFilePath, isBinary) {
 
 async function deploy() {
 	const client = new Client();
+	let filesProcessed = 0;
+	let filesUploaded = 0;
+	let filesSkipped = 0;
 	
 	try {
 		// connect to the FTP server
@@ -108,6 +149,7 @@ async function deploy() {
 		
 		// process each file
 		for (const localFile of files) {
+			filesProcessed++;
 			const relativeFilePath = path.relative(sourceDir, localFile);
 			const remoteFilePath = path.posix.join(remotePath, relativeFilePath.split(path.sep).join('/'));
 			const remoteDir = path.posix.dirname(remoteFilePath);
@@ -115,25 +157,42 @@ async function deploy() {
 			// determine if it's a binary file
 			const isBinary = isBinaryFile(localFile);
 			
-			// set transfer mode
-			if (isBinary) {
-				client.binary((err) => {
-					if (err) console.error(`Error setting binary mode: ${err}`);
-				});
-			} else {
-				client.ascii((err) => {
-					if (err) console.error(`Error setting ascii mode: ${err}`);
-				});
+			// Get local file stats
+			const localStats = fs.statSync(localFile);
+			
+			// Get remote file info if it exists
+			const remoteInfo = await getRemoteFileInfo(client, remoteFilePath);
+			
+			// Check if file needs to be uploaded
+			if (shouldUploadFile(localStats, remoteInfo)) {
+				// set transfer mode
+				if (isBinary) {
+					client.binary((err) => {
+						if (err) console.error(`Error setting binary mode: ${err}`);
+					});
+				} else {
+					client.ascii((err) => {
+						if (err) console.error(`Error setting ascii mode: ${err}`);
+					});
+				}
+				
+				// ensure remote directory exists
+				await ensureRemoteDir(client, remoteDir);
+				
+				// upload the file
+				await uploadFile(client, localFile, remoteFilePath, isBinary);
+				filesUploaded++;
 			}
-			
-			// ensure remote directory exists
-			await ensureRemoteDir(client, remoteDir);
-			
-			// upload the file
-			await uploadFile(client, localFile, remoteFilePath, isBinary);
+			else {
+				console.log(`Skipped: ${localFile} (unchanged)`);
+				filesSkipped++;
+			}
 		}
 		
-		console.log('Deploy completed successfully!');
+		console.log(`\nDeploy completed successfully!`);
+		console.log(`Files processed: ${filesProcessed}`);
+		console.log(`Files uploaded: ${filesUploaded}`);
+		console.log(`Files skipped: ${filesSkipped}`);
 
 	} catch (error) {
 		console.error('Deploy failed:', error);
