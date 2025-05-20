@@ -26,7 +26,7 @@ onMounted(async () => {
 	renderedArticleMarkdown.value = md.render(articleMarkdown);
 	// estimate read time
 	const articlePlainText = articleMarkdown
-		.replace(/[#*`~\[\]\(\)]/g, '') // remove markdown symbols
+		.replace(/[#*`~[]()]/g, '') // remove markdown symbols
 		.replace(/\s+/g, ' ') // normalize whitespace
 		.trim();
 	const readingTimeInMinutes = estimateReadingTime(articlePlainText);
@@ -75,7 +75,7 @@ onMounted(async () => {
 			<img src="@/assets/images/photo_small.jpg" alt="">
 			<div>
 				<h5>About the author</h5>
-				<p>by <RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - game developer, blogger, digital creator.</p>
+				<p>by <RouterLink to="/about" class="link">Danijel</RouterLink> - game developer, blogger, etc.</p>
 			</div>
 		</div>
 	</section>

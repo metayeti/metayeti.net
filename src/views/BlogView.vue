@@ -42,7 +42,7 @@ const tagList = computed(() => {
 // -- search --
 const searchInput = useTemplateRef('search-input');
 const isSearchInputWiggling = ref(false);
-let wiggleTimeout = null;
+let wiggleTimeout;
 const wiggleDuration = 350;
 
 const handleSearch = () => {

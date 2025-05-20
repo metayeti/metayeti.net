@@ -89,6 +89,13 @@
             "description": "A simple guide to help beginners take their first steps in machine learning."
         },
         {
+			"title": "Hello, world!",
+			"slug": "hello-world",
+			"date-published": "2025-05-20",
+			"tags": [],
+			"description": "Website is live!"
+        },
+        {
 			"title": "Let's Make Snake With JavaScript",
 			"slug": "lets-make-snake-with-javascript",
 			"date-published": "2017-02-06",

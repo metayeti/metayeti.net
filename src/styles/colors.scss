@@ -60,45 +60,61 @@
 
 /* Light theme colors */
 :root.let-there-be-light {
+
 	// -- selection --
 	--my-selection-text: #fff;
 	--my-selection-background: #4d3766;
 
 	// -- global colors --
-	--my-global-background: #f0ece8;
+	--my-global-background: #171a1d;
+
+	// -- navigation bar --
+	--my-navigation-background1: #0f1113;
+	--my-navigation-background2: #171a1d;
+	--my-navigation-border: #131516;
+	--my-navigation-label: #9da3b1;
+	--my-navigation-label-highlight: #fff;
+	--my-navigation-light-dimmed: #505050;
+	--my-navigation-light-on: #1ad61a;
+	--my-navigation-cut-in: #262b30;
+	--my-navigation-social-icon: #4a5565;
+	--my-navigation-social-icon-highlight: #e5ebf7;
 
 	// -- footer --
-	--my-footer-background: #f0ece8;
-	--my-footer-text: #858585;
-	--my-footer-text-highlight: #000000;
+	--my-footer-background: #edf0f3;
+	--my-footer-text: #9098a0;
+	--my-footer-text-highlight: #0c0c0c;
 
 	// -- main content --
-	--my-content-background: #e3e0dd;
-	--my-content-text: #292929;
-	--my-content-text-dimmed: #77716a;
-	--my-content-heading: #111;
-	--my-content-heading2: #554e48;
+	--my-content-background: #fff;
+	--my-content-text: #000;
+	--my-content-text-dimmed: #7a8994;
+	--my-content-heading: #000;
+	--my-content-heading2: #636e77;
 	--my-content-accent: #cecbc6;
-	--my-content-accent-text: #333333;
-	--my-content-flavor: #35a700;
-	--my-content-link: #eb0f21;
+	--my-content-accent-text: #333;
+	--my-content-flavor: #1eda06;
+	--my-content-link: #ff391f;
 	--my-content-link-hover: #000000;
 	--my-content-note: #686b75;
-	--my-content-bullet: #686b75;
+	--my-content-bullet: #484f64;
 
 	// -- sidebar --
-	--my-sidebar-heading: #554e48;
-	--my-sidebar-searchbox: #ffffff;
-	--my-sidebar-searchbox-focus: #242424;
-	--my-sidebar-searchbox-text: #ccc;
-	--my-sidebar-search-button-icon: #68717e;
+	--my-sidebar-heading: #9ea1ac;
+	--my-sidebar-searchbox: #23272b;
+	--my-sidebar-searchbox-focus: #23272b;
+	--my-sidebar-searchbox-focus-background: #1c1f22;
+	--my-sidebar-searchbox-text: #d0d7e0;
+	--my-sidebar-search-button-icon: #69717c;
 	--my-sidebar-search-button-icon-highlight: #e5ebf7;
-	--my-sidebar-tag-background: #cec8c1;
-	--my-sidebar-tag-text: #303030;
-	--my-sidebar-tag-background-highlight: #5a5e64;
+	--my-sidebar-tag-text: #8e959b;
 	--my-sidebar-tag-text-highlight: #fff;
+	--my-sidebar-tag-background: #23272b;
+	--my-sidebar-tag-background-highlight: #5a5e64;
+	--my-sidebar-tag-count-text: #999;
+	--my-sidebar-tag-count-background: #1b1e20;
 
 	// -- special --
-	--my-image-border: #bdb7ad;
-	--my-image-shadow: #bebebe;
+	--my-image-border: #1a1a1a;
+	--my-image-shadow: #050505;
 }
