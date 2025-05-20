@@ -30,10 +30,10 @@
     "dotenv": "^16.5.0",
     "eslint": "^9.22.0",
     "eslint-plugin-vue": "~10.0.0",
+    "ftp": "^0.3.10",
+    "glob": "^11.0.2",
     "globals": "^16.0.0",
     "sass": "^1.86.3",
-    "vinyl-fs": "^4.0.0",
-    "vinyl-ftp": "^0.6.1",
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2"
   }
