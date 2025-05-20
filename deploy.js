@@ -23,6 +23,7 @@ import path from 'path';
 import { config } from 'dotenv';
 import Client from 'ftp';
 import { glob } from 'glob';
+import { color, red, green, yellow } from 'console-log-colors';
 
 config();
 
@@ -61,7 +62,7 @@ async function ensureRemoteDir(client, remoteDir) {
 		try {
 			await new Promise((resolve, reject) => {
 				client.mkdir(currentPath, true, (err) => {
-					if (err && err.code !== 550) { // Ignore "File exists" errors
+					if (err && err.code !== 550) { // ignore "File exists" errors
 						reject(err);
 					} else {
 						resolve();
@@ -109,7 +110,7 @@ function shouldUploadFile(localStats, remoteInfo) {
 		return true; // same timestamp but different size, upload it
 	}
 	
-	return false; // Remote file is up to date, skip upload
+	return false; // remote file is up to date, skip upload
 }
 
 function uploadFile(client, localFilePath, remoteFilePath, isBinary) {
@@ -121,7 +122,7 @@ function uploadFile(client, localFilePath, remoteFilePath, isBinary) {
 			if (err) {
 				reject(err);
 			} else {
-				console.log(`Uploaded: ${localFilePath} → ${remoteFilePath} ${isBinary ? '(binary mode)' : '(text mode)'}`);
+				console.log(green('Uploaded: ') + `${localFilePath} → ${remoteFilePath} ${isBinary ? green('(binary mode)') : green('(text mode)')}`);
 				resolve();
 			}
 		});
@@ -142,7 +143,7 @@ async function deploy() {
 			client.connect(ftpConfig);
 		});
 		
-		console.log('FTP connection established.');
+		console.log('\nFTP connection established.\n');
 		
 		// get all files in the dist directory
 		const files = glob.sync(`${sourceDir}/**/*`, { nodir: true });
@@ -157,13 +158,13 @@ async function deploy() {
 			// determine if it's a binary file
 			const isBinary = isBinaryFile(localFile);
 			
-			// Get local file stats
+			// get local file stats
 			const localStats = fs.statSync(localFile);
 			
-			// Get remote file info if it exists
+			// get remote file info if it exists
 			const remoteInfo = await getRemoteFileInfo(client, remoteFilePath);
 			
-			// Check if file needs to be uploaded
+			// check if file needs to be uploaded
 			if (shouldUploadFile(localStats, remoteInfo)) {
 				// set transfer mode
 				if (isBinary) {
@@ -184,15 +185,15 @@ async function deploy() {
 				filesUploaded++;
 			}
 			else {
-				console.log(`Skipped: ${localFile} (unchanged)`);
+				console.log(yellow('Skipped: ') + localFile + yellow(' (unchanged)'));
 				filesSkipped++;
 			}
 		}
 		
-		console.log(`\nDeploy completed successfully!`);
+		console.log(`\nDeploy completed successfully!\n`);
 		console.log(`Files processed: ${filesProcessed}`);
-		console.log(`Files uploaded: ${filesUploaded}`);
-		console.log(`Files skipped: ${filesSkipped}`);
+		console.log(`Files ${green('uploaded')}: ${filesUploaded}`);
+		console.log(`Files ${yellow('skipped')}: ${filesSkipped}`);
 
 	} catch (error) {
 		console.error('Deploy failed:', error);
