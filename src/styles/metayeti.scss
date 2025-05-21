@@ -79,7 +79,7 @@ body {
 			height: 100%;
 			left: -48px;
 			background-color: var(--my-content-accent);
-			clip-path: polygon(17px 0, 100% 0, 100% 100%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 17px 100%);
 			opacity: 0.44;
 		}
 	}

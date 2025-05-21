@@ -61,6 +61,7 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
 	return self.renderToken(tokens, idx, options);
 };
 
+// add list class to bullets
 md.renderer.rules.bullet_list_open = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
 	// add class="list" to the list of attributes
