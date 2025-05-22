@@ -1,12 +1,12 @@
 {
     "posts": [
         {
-            "title": "My thoughts on AI",
-            "slug": "my-thoughts-on-ai",
+            "title": "My thoughts on generative AI",
+            "slug": "my-thoughts-on-generative-ai",
             "date-last-update": "2025-07-22",
             "date-published": "2025-05-22",
             "tags": [],
-            "description": "My thoughts on the rise of artificial intelligence in modern computing."
+            "description": "My thoughts on the rise of generative artificial intelligence in modern computing."
         },
         {
 			"title": "Hello, world!",
