@@ -3,7 +3,3 @@ Greetings! I’m a game developer from Slovenia. I go by the name Danijel and I 
 Enjoy your stay! <span class="smol">\*rocket jumps out of sight\*</span>
 
 PS: site is under construction and will be for a bit
-
-<div class="flex justify-center">
-	<img src="/content/blog/hello-world/images/construction.gif" alt="construction">
-</div>

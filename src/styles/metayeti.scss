@@ -48,6 +48,15 @@ body {
 		gap: 10vh;
 	}
 
+	// -- ruler --
+	hr {
+		width: 100%;
+		height: 0;
+		border: 0;
+		border-bottom: 2px solid var(--my-content-accent);
+		margin: 30px 0 50px 0;
+	}
+
 	// -- headings --
 
 	h2, h3, h4, h5, h6 {
@@ -78,6 +87,7 @@ body {
 			width: 23px;
 			height: 100%;
 			left: -49px;
+			top: -1px;
 			background-color: var(--my-content-accent);
 			clip-path: polygon(17px 0, 100% 0, 100% 100%, 0 100%);
 			opacity: 0.3;
@@ -88,6 +98,7 @@ body {
 			width: 23px;
 			height: 100%;
 			left: -20px;
+			top: -1px;
 			background-color: var(--my-content-accent);
 			clip-path: polygon(0 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
 			opacity: 0.7;
