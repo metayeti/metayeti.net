@@ -11,11 +11,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
-  faXTwitter,
   faGithub,
+  faFacebook,
   faLinkedin,
-  faSoundcloud,
+  faXTwitter,
   faYoutube,
+  faSoundcloud,
 } from '@fortawesome/free-brands-svg-icons';
 
 // add icons to the library
@@ -26,11 +27,12 @@ library.add(
   faCalendarDays,
   faClock,
   // brand icons
-  faXTwitter,
   faGithub,
+  faFacebook,
   faLinkedin,
-  faSoundcloud,
+  faXTwitter,
   faYoutube,
+  faSoundcloud,
 );
 
 export { FontAwesomeIcon };

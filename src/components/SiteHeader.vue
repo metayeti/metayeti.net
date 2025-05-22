@@ -138,6 +138,12 @@ onMounted(() => {
 				<div class="tooltip-arrow"></div>
 			</a>
 
+			<a class="social-link tooltip" href="https://www.facebook.com/profile.php?id=100095050669741" target="_blank">
+				<font-awesome-icon icon="fa-brands fa-facebook" />
+				<span class="tooltip-text">Facebook</span>
+				<div class="tooltip-arrow"></div>
+			</a>
+
 			<a class="social-link tooltip" href="#" target="_blank">
 				<font-awesome-icon icon="fa-brands fa-linkedin" />
 				<span class="tooltip-text">LinkedIn</span>

@@ -75,7 +75,7 @@ onMounted(async () => {
 			<img src="@/assets/images/photo_small.jpg" alt="">
 			<div>
 				<h5>About the author</h5>
-				<p>by <RouterLink to="/about" class="link">Danijel</RouterLink> - game developer, blogger, etc.</p>
+				<p>by <RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - game developer, blogger, etc.</p>
 			</div>
 		</div>
 	</section>
