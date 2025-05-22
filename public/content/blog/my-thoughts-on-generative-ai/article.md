@@ -8,10 +8,10 @@ Unfortunately, it's also dumb:
 Worse yet, it makes *you* dumb:  
 [AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical Thinking](https://www.mdpi.com/2075-4698/15/1/6)
  
-It exploits our psychology:  
+It exploits your psychology:  
 [LLMs aren’t very bright. Why are so many people fooled?](https://garymarcus.substack.com/p/llms-arent-very-bright-why-are-so)
  
-And it decays our existing skills:  
+And it decays your existing skills:  
 [AI is Creating a Generation of Illiterate Programmers](https://nmn.gl/blog/ai-illiterate-programmers)
 
 ---
