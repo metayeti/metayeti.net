@@ -150,25 +150,37 @@ article :deep(img.me) {
 }
 
 article :deep(.factoids) {
-	.factoid {
-		color: var(--my-content-text);
-		font-family: "Titillium Web", sans-serif;
-		font-weight: 600;
-		font-size: 1.1rem;
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
 
-		&::after {
-			content: ':';
+		li {
+			.factoid {
+				color: var(--my-content-accent-text);
+				background-color: var(--my-content-accent);
+				padding: 4px 10px;
+				margin-right: 4px;
+				font-family: "Titillium Web", sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				border-radius: 4px;
+
+				&::after {
+					content: ':';
+				}
+			}
+			.value {
+				line-height: 2rem;
+				color: var(--my-content-text-dimmed);
+				font-size: 1rem;
+			}
 		}
 	}
-	.value {
-		color: var(--my-content-text-dimmed);
-		font-size: 1rem;
-	}
-
 	img.blooguard {
 		position: absolute;
 		margin-top: -66px;
-		margin-left: 260px;
+		margin-left: 276px;
 		user-select: none;
 
 		@media (width < 400px) {

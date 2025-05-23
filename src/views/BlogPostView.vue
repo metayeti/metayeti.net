@@ -68,14 +68,16 @@ onMounted(async () => {
 	<section class="post-footer">
 		<span class="post-date-updated">
 			Article last updated:
-			<font-awesome-icon class="pl-4 pr-1.5" icon="fa-solid fa-calendar-days" />
-			{{ getHumanReadableDateFull(postListing['date-updated']) }}
+			<span>
+				<font-awesome-icon class="pl-2.5 pr-1.5" icon="fa-solid fa-calendar-days" />
+				{{ getHumanReadableDateFull(postListing['date-updated'] ? postListing['date-updated'] : postListing['date-published']) }}
+			</span>
 		</span>	
 		<div class="about-author flex flex-row gap-5">
 			<img src="@/assets/images/photo_small.jpg" alt="">
 			<div>
 				<h5>About the author</h5>
-				<p>by <RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - game developer, blogger, etc.</p>
+				<p><RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - programmer, game developer, blogger, etc.</p>
 			</div>
 		</div>
 	</section>
@@ -136,6 +138,10 @@ onMounted(async () => {
 	.post-date-updated {
 		font-size: 13px;
 		text-align: right;
+		color: var(--my-content-text-dimmed);
+		span {
+			color: var(--my-content-text);
+		}
 	}
 	.about-author {
 		border: 2px solid var(--my-content-accent);

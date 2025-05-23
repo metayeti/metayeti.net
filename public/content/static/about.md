@@ -22,8 +22,8 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 
 # Random factoids
 
-<div class="factoids pl-4 border-l-2 border-flavor">
-	<ul class="flex flex-col gap-3">
+<div class="factoids">
+	<ul>
 		<li>
 			<span class="factoid">Home planet</span>
 			<span class="value">Earth</span>
@@ -110,7 +110,6 @@ As an aspiring member of the human species, I've learned some human languages.
 - Serbo-Croatian, my 2nd language, I rarely use it but I understand it more or less flawlessly.
 - English, my 3rd language. I would rate my level as advanced.
 
-
 <p class="fancy-block">My attempts to learn German have been less than fruitful so far, although Duolingo had successfully trained me to be able to ask for the whereabout of horses, should I ever encounter a situation in which that would become a pressing concern. My attempts to learn Russian have been similar, and I assure you I'm capable of asking for the whereabouts of horses in Russian as well. I'm now trying to learn Japanese. I have not learned how to ask for the whereabouts of horses in Japanese just yet, but I expect to be able to discuss it fluently soon.</p>
 
 ## Art & Music
@@ -119,7 +118,7 @@ I've been interested in all manners of visual design ever since I can remember. 
 
 I have always been interested in art and music. I tried to learn the guitar at an early age (and persisted for quite a while). I've been interested in drawing since I can remember, although it's only the last decade or so when I took it upon myself to get good enough at it to be able to use it for higher goals. For games, I decided to focus mostly on pixel art as that's my favorite graphical style (no doubt inspired by the games I used to play).
 
-<img class="pixelated w-[420px]" src="/content/static/images/zakk.png" alt="zAKK">
+<img class="pixelated w-[420px] bg-accent p-1.5" src="/content/static/images/zakk.png" alt="zAKK">
 <p class="caption">This guy's name is Zakk. I made this titlescreen for a demo game that remains unreleased.</p>
 
 I've getting better at composing my own game music. You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).
