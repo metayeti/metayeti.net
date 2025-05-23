@@ -19,6 +19,7 @@ export default defineConfig({
     },
   },
   /* Prevent cache-busting filenames, we don't need them for now. */
+  /*
   build: {
     rollupOptions: {
       output: {
@@ -28,6 +29,7 @@ export default defineConfig({
       }
     }
   },
+  */
   /* Configure the server to be accessible from external devices
      for testing purposes. */
   server: {
