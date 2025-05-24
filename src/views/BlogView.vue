@@ -1,5 +1,5 @@
 <script setup>
-import { constants, getHumanReadableDateWithoutYear, loadJSON } from '@/shared';
+import { constants, getHumanReadableDateWithoutYear, loadJSON, updateTitle } from '@/shared';
 import { ref, onMounted, useTemplateRef, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 
@@ -8,6 +8,8 @@ import { RouterLink } from 'vue-router';
 const blogListing = ref([]);
 
 onMounted(async () => {
+	updateTitle();
+
 	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
 	blogListing.value = blogData?.posts ?? [];
 });

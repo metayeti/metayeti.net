@@ -1,5 +1,5 @@
 <script setup>
-import { constants, getHumanReadableDateFull, getHumanReadableMinutes, loadJSON, loadText, md } from '@/shared';
+import { constants, getHumanReadableDateFull, getHumanReadableMinutes, loadJSON, loadText, md, updateTitle } from '@/shared';
 import { ref, onMounted } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 
@@ -18,9 +18,13 @@ const readingTime = ref('');
 onMounted(async () => {
 	const route = useRoute();
 	const routeSlug = route.params.slug;
+	// load post data
 	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
 	const postData = blogData.posts.find(post => post.slug === routeSlug);
 	postListing.value = postData;
+	// update page title
+	updateTitle(postData.title);
+	// load article
 	const articlePath = `/content/blog/${routeSlug}/article.md`;
 	const articleMarkdown  = await loadText(articlePath);
 	renderedArticleMarkdown.value = md.render(articleMarkdown);

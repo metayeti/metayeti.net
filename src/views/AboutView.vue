@@ -1,5 +1,5 @@
 <script setup>
-import { loadText, md, routeLinkHandler, shuffle } from '@/shared';
+import { loadText, md, routeLinkHandler, updateTitle, shuffle } from '@/shared';
 import { ref, onMounted, nextTick, useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
 import { goodMusic, goodGameMusic } from '@/extras';
@@ -9,6 +9,7 @@ import { goodMusic, goodGameMusic } from '@/extras';
 const renderedAboutMarkdown = ref('');
 
 onMounted(async () => {
+	updateTitle();
 
 	const aboutMarkdown = await loadText('/content/static/about.md');
 	renderedAboutMarkdown.value = md.render(aboutMarkdown);
@@ -164,7 +165,9 @@ article :deep(.factoids) {
 				font-family: "Titillium Web", sans-serif;
 				font-weight: 600;
 				font-size: 1rem;
-				border-radius: 4px;
+				border-radius: 10px;
+				border-bottom-left-radius: 0;
+				border-top-right-radius: 0;
 
 				&::after {
 					content: ':';

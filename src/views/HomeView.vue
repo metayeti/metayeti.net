@@ -1,7 +1,14 @@
 <script setup>
 import LatestPosts from '@/components/LatestPosts.vue';
 import LatestProjects from '@/components/LatestProjects.vue';
+import { updateTitle } from '@/shared';
 import { RouterLink } from 'vue-router';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+	updateTitle();
+});
+
 </script>
 
 <template>

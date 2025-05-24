@@ -49,12 +49,12 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 			<span class="value"><span class="color-box bg-[#77776b]"></span>, <span class="color-box bg-[#47d6ab]"></span> and <span class="color-box bg-[#645892]"></span></span>
 		</li>
 		<li>
-			<span class="factoid">Favorite programming languages</span>
-			<span class="value">C++, JavaScript</span>
-		</li>
-		<li>
 			<span class="factoid">Favorite editor</span>
 			<span class="value"><a class="link" href="https://www.vim.org/" target="_blank">Vim</a></span>
+		</li>
+		<li>
+			<span class="factoid">Favorite programming languages</span>
+			<span class="value">C++, JavaScript</span>
 		</li>
 		<li>
 			<span class="factoid">Favorite operating systems</span>
@@ -110,7 +110,7 @@ As an aspiring member of the human species, I've learned some human languages.
 - Serbo-Croatian, my 2nd language, I rarely use it but I understand it more or less flawlessly.
 - English, my 3rd language. I would rate my level as advanced.
 
-<p class="fancy-block">My attempts to learn German have been less than fruitful so far, although Duolingo had successfully trained me to be able to ask for the whereabout of horses, should I ever encounter a situation in which that would become a pressing concern. My attempts to learn Russian have been similar, and I assure you I'm capable of asking for the whereabouts of horses in Russian as well. I'm now trying to learn Japanese. I have not learned how to ask for the whereabouts of horses in Japanese just yet, but I expect to be able to discuss it fluently soon.</p>
+<p class="smol fancy-block">My attempts to learn German have been less than fruitful so far, although Duolingo had successfully trained me to be able to ask for the whereabout of horses, should I ever encounter a situation in which that would become a pressing concern. My attempts to learn Russian have been similar, and I assure you I'm capable of asking for the whereabouts of horses in Russian as well. I'm now trying to learn Japanese. I have not learned how to ask for the whereabouts of horses in Japanese just yet, but I expect to be able to discuss it fluently soon.</p>
 
 ## Art & Music
 
