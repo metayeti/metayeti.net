@@ -149,7 +149,29 @@ article :deep(img.me) {
 		}
 	}
 }
-
+article :deep(.special-bg) {
+	position: relative;
+	display: block;
+	width: 100%;
+	//background: linear-gradient(to right, #f0f0f0, #fff, #f0f0f0);
+	//padding: 0 20px;
+	box-sizing: border-box;
+	z-index: 1;
+	img {
+		display: block;
+		//width: 100%;
+		height: auto;
+	}
+	&::before {
+		position: absolute;
+		content: '';
+		left: -50vw;
+		width: 150vw;
+		height: 100%;
+		background-color: var(--my-footer-background);
+		z-index: -1;
+	}
+}
 article :deep(.factoids) {
 	ul {
 		display: flex;
