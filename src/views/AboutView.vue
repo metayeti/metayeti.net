@@ -187,9 +187,7 @@ article :deep(.factoids) {
 				font-family: "Titillium Web", sans-serif;
 				font-weight: 600;
 				font-size: 1rem;
-				border-radius: 10px;
-				border-bottom-left-radius: 0;
-				border-top-right-radius: 0;
+				border-radius: 3px;
 
 				&::after {
 					content: ':';

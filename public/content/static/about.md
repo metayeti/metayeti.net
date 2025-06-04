@@ -120,9 +120,7 @@ I've been interested in all manners of visual design ever since I can remember. 
 
 I have always been interested in art and music. I tried to learn the guitar at an early age (and persisted for quite a while). I've been interested in drawing since I can remember, although it's only the last decade or so when I took it upon myself to get good enough at it to be able to use it for higher goals. For games, I decided to focus mostly on pixel art as that's my favorite graphical style (no doubt inspired by the games I used to play).
 
-<div class="special-bg">
-	<img class="pixelated w-[420px]" src="/content/static/images/zakk.png" alt="zAKK">
-</div>
+<img class="pixelated w-[420px]" src="/content/static/images/zakk.png" alt="zAKK">
 <p class="caption">This guy's name is Zakk. I made this titlescreen for a demo game that remains unreleased.</p>
 
 I've getting better at composing my own game music. You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).

@@ -34,7 +34,3 @@ coverage
 
 # Additional directories
 /dev/
-
-# temporary mock data
-/public/content/projects/**/screenshots/*.png
-/public/content/projects/**/screenshots/*.jpg
