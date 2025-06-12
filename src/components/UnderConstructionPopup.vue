@@ -58,14 +58,15 @@ onMounted(() => {
 	bottom: 0;
 	color: #000;
 	background-color: #fdc02d;
+	box-shadow: -10px 0 120px 20px #000;
 	z-index: 9999;
 
 	&::before {
 		content: '';
 		position: absolute;
 		width: 100%;
-		height: 5px;
-		top: -5px;
+		height: 10px;
+		top: -10px;
 		left: 0;
 		background: repeating-linear-gradient(
 			-45deg,
@@ -76,7 +77,7 @@ onMounted(() => {
 		);
 	}
 
-	transform: translateY(calc(100% + 5px));
+	transform: translateY(calc(100% + 10px));
 	transition: transform 250ms ease-out; // for hiding
 
 	&.shown {
