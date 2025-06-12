@@ -4,35 +4,35 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // import icons we need
 import { 
-  faSearch,
-  faArrowLeft,
-  faCalendarDays,
-  faClock
+	faSearch,
+	faArrowLeft,
+	faCalendarDays,
+	faClock,
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
-  faGithub,
-  faFacebook,
-  faLinkedin,
-  faXTwitter,
-  faYoutube,
-  faSoundcloud,
+	faGithub,
+	faFacebook,
+	faLinkedin,
+	faXTwitter,
+	faYoutube,
+	faSoundcloud,
 } from '@fortawesome/free-brands-svg-icons';
 
 // add icons to the library
 library.add(
-  // solid icons
-  faSearch,
-  faArrowLeft,
-  faCalendarDays,
-  faClock,
-  // brand icons
-  faGithub,
-  faFacebook,
-  faLinkedin,
-  faXTwitter,
-  faYoutube,
-  faSoundcloud,
+	// solid icons
+	faSearch,
+	faArrowLeft,
+	faCalendarDays,
+	faClock,
+	// brand icons
+	faGithub,
+	faFacebook,
+	faLinkedin,
+	faXTwitter,
+	faYoutube,
+	faSoundcloud,
 );
 
 export { FontAwesomeIcon };

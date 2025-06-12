@@ -2,7 +2,12 @@
 import SiteHeader from './components/SiteHeader.vue';
 import SiteFooter from './components/SiteFooter.vue';
 
-import { RouterView } from 'vue-router'
+
+import { RouterView, useRoute } from 'vue-router'
+
+// todo remove when site is polished and finished
+import UnderConstructionPopup from './components/UnderConstructionPopup.vue';
+const route = useRoute();
 </script>
 
 <template>
@@ -13,4 +18,5 @@ import { RouterView } from 'vue-router'
 		</div>
 	</main>
 	<SiteFooter />
+	<UnderConstructionPopup v-if="route.path === '/'" />
 </template>
