@@ -135,7 +135,13 @@ const handleSearch = () => {
 </template>
 
 <style scoped lang="scss">
+$sbBreakpoint: 768px;
+
 .blog-posts {
+
+	@media screen and (width < $sbBreakpoint) {
+		padding-top: 70px;
+	}
 	.blog-entry {
 		.tag-list {
 			width: calc(100% + 4px);
@@ -248,11 +254,11 @@ const handleSearch = () => {
 			}
 		}
 
-		@media screen and (width < 768px) {
+		@media screen and (width < $sbBreakpoint) {
 			position: absolute;
 			width: 200px;
 			right: 20px;
-			top: -9vh;
+			top: -1vh;
 			border: 2px solid var(--my-content-accent);
 			padding: 5px;
 			margin-bottom: 20px;
