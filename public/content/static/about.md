@@ -123,7 +123,7 @@ I have always been interested in art and music. I tried to learn the guitar at a
 <img class="pixelated w-[420px]" src="/content/static/images/zakk.png" alt="zAKK">
 <p class="caption">This guy's name is Zakk. I made this titlescreen for a demo game that remains unreleased.</p>
 
-I've getting better at composing my own game music. You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).
+I've been getting better at composing my own game music. You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).
 
 <div><audio controls src="/content/static/audio/game_track.mp3"></audio></div>
 <p class="caption">A game track I've composed.</p>
