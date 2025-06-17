@@ -9,13 +9,13 @@
 
 	// -- navigation bar --
 	--my-navigation-background1: #0f1113;
-	--my-navigation-background2: #171a1d;
+	--my-navigation-background2: #22272c;
 	--my-navigation-border: #131516;
 	--my-navigation-label: #9da3b1;
 	--my-navigation-label-highlight: #fff;
 	--my-navigation-light-dimmed: #505050;
 	--my-navigation-light-on: #1ad61a;
-	--my-navigation-cut-in: #262b30;
+	--my-navigation-cut-in: #353b41;
 	--my-navigation-social-icon: #4a5565;
 	--my-navigation-social-icon-highlight: #e5ebf7;
 
@@ -32,7 +32,7 @@
 	--my-content-heading2: #636e77;
 	--my-content-accent: #293036;
 	--my-content-accent-text: #90969c;
-	--my-content-flavor: #54fc54;
+	--my-content-flavor: #1eda06;
 	--my-content-link: #ff2176;
 	--my-content-link-hover: #fff;
 	--my-content-note: #686b75;
@@ -69,6 +69,7 @@
 	--my-global-background: #171a1d;
 
 	// -- navigation bar --
+	/*
 	--my-navigation-background1: #0f1113;
 	--my-navigation-background2: #171a1d;
 	--my-navigation-border: #131516;
@@ -79,42 +80,43 @@
 	--my-navigation-cut-in: #262b30;
 	--my-navigation-social-icon: #4a5565;
 	--my-navigation-social-icon-highlight: #e5ebf7;
+	*/
 
 	// -- footer --
-	--my-footer-background: #edf0f3;
+	--my-footer-background: #ebebeb;
 	--my-footer-text: #9098a0;
 	--my-footer-text-highlight: #0c0c0c;
 
 	// -- main content --
-	--my-content-background: #fff;
+	--my-content-background: #dfdfdf;
 	--my-content-text: #000;
-	--my-content-text-dimmed: #7a8994;
+	--my-content-text-dimmed: #858585;
 	--my-content-heading: #000;
-	--my-content-heading2: #636e77;
-	--my-content-accent: #cecbc6;
-	--my-content-accent-text: #333;
-	--my-content-flavor: #1eda06;
-	--my-content-link: #ff391f;
+	--my-content-heading2: #3b3b3b;
+	--my-content-accent: #c2c2c2;
+	--my-content-accent-text: #030303;
+	--my-content-flavor: #14ac00;
+	--my-content-link: #f75104;
 	--my-content-link-hover: #000000;
 	--my-content-note: #686b75;
 	--my-content-bullet: #484f64;
 
 	// -- sidebar --
-	--my-sidebar-heading: #9ea1ac;
-	--my-sidebar-searchbox: #23272b;
+	--my-sidebar-heading: #9c9c9c;
+	--my-sidebar-searchbox: #eeeeee;
 	--my-sidebar-searchbox-focus: #23272b;
-	--my-sidebar-searchbox-focus-background: #1c1f22;
-	--my-sidebar-searchbox-text: #d0d7e0;
-	--my-sidebar-search-button-icon: #69717c;
+	--my-sidebar-searchbox-focus-background: #f3f3f3;
+	--my-sidebar-searchbox-text: #3d3d3d;
+	--my-sidebar-search-button-icon: #666666;
 	--my-sidebar-search-button-icon-highlight: #e5ebf7;
-	--my-sidebar-tag-text: #8e959b;
-	--my-sidebar-tag-text-highlight: #fff;
-	--my-sidebar-tag-background: #23272b;
+	--my-sidebar-tag-text: #353535;
+	--my-sidebar-tag-text-highlight: #000000;
+	--my-sidebar-tag-background: #c4c4c4;
 	--my-sidebar-tag-background-highlight: #5a5e64;
-	--my-sidebar-tag-count-text: #999;
-	--my-sidebar-tag-count-background: #1b1e20;
+	--my-sidebar-tag-count-text: #818181;
+	--my-sidebar-tag-count-background: #e0e0e0;
 
 	// -- special --
-	--my-image-border: #1a1a1a;
-	--my-image-shadow: #050505;
+	--my-image-border: #cccccc;
+	--my-image-shadow: #ebebeb;
 }

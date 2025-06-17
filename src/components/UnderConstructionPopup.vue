@@ -40,7 +40,6 @@ onMounted(() => {
 					<section class="flex flex-col gap-1">
 						<p>Thanks for visiting my website! This website is still a work in progress so things may be <span class="broken">broken</span> or <span class="missing">missing</span>.</p>
 						<p>A select group of elite construction hamsters are already working on it.</p>
-						<p class="pt-2 font-bold uppercase">== Click somewhere on the screen to make this popup go away. ==</p>
 					</section>
 				</div>
 			</div>
@@ -58,7 +57,7 @@ onMounted(() => {
 	bottom: 0;
 	color: #000;
 	background-color: #fdc02d;
-	box-shadow: -10px 0 120px 20px #000;
+	box-shadow: -10px 0 20px 5px #000;
 	z-index: 9999;
 
 	&::before {
