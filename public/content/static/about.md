@@ -126,7 +126,7 @@ I have always been interested in art and music. I tried to learn the guitar at a
 <img class="pixelated" src="/content/static/images/zakk_sprite.gif" alt="ZAKK walk">
 <p class="caption">Zakk doin' the walk. Look at him go!</p>
 
-Music-wise, I've been getting better at composing my own for my game projects. I've used a number of DAWs over the years but my current favorite is [FL Studio](https://www.image-line.com/fl-studio). You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).
+Music-wise, I've been getting better at composing my own for my game projects. I've used a number of DAWs over the years, my current favorite is [FL Studio](https://www.image-line.com/fl-studio). You can listen to some of my music on [SoundCloud](https://soundcloud.com/metayeti).
 
 <div><audio controls src="/content/static/audio/game_track.mp3"></audio></div>
 <p class="caption">A basic game track I've composed.</p>
