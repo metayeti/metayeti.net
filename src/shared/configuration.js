@@ -2,6 +2,7 @@
 
 class Configuration {
 	lightMode = false; // we only ever store this value, so this class is optimized for just that
+	                   // (there's only one value that's being set in the LS)
 
 	#KEY = '___metayeti.net___'; // localstorage key
 

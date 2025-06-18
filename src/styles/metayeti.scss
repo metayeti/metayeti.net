@@ -85,13 +85,16 @@ body {
 		&::before {
 			position: absolute;
 			content: '';
-			width: 43px;
+			//width: 43px;
+			width: 100vw;
 			height: 100%;
-			left: -66px;
+			//left: -66px;
+			left: calc(-100vw - 25px);
 			top: -1px;
-			background-color: var(--my-content-accent);
+			//background-color: var(--my-content-accent);
+			background: linear-gradient(to left, var(--my-content-accent) 0%, rgba(0,0,0,0) 10%);
 			clip-path: polygon(17px 0, 100% 0, 100% 100%, 0 100%);
-			opacity: 0.3;
+			opacity: 0.5;
 		}
 		&::after {
 			position: absolute;
@@ -102,7 +105,7 @@ body {
 			top: -1px;
 			background-color: var(--my-content-accent);
 			clip-path: polygon(0 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
-			opacity: 0.7;
+			opacity: 0.9;
 		}
 	}
 	h3 {

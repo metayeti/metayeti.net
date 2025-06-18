@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+const LS_KEY = '___metayeti.net__under_construction__';
+
 const popupActive = ref(false);
 const popupShown = ref(false);
 
@@ -25,7 +27,9 @@ const hidePopup = () => {
 };
 
 onMounted(() => {
+    if (localStorage.getItem(LS_KEY) === '1') return;
 	showPopup();
+	localStorage.setItem(LS_KEY, '1');
 });
 
 </script>
