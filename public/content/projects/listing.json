@@ -1,6 +1,8 @@
 {
-	"reel": [
-		
+	"latest": [	
+		"active->zorlax",
+		"legacy->tronix2",
+		"legacy->powerblocks"
 	],
 	"active": [
 		{
