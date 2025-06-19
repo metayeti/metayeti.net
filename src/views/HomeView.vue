@@ -28,7 +28,7 @@ onMounted(() => {
 		<LatestPosts class="py-3" />
 	</section>
 	<section>
-		<h2>Latest projects</h2>
+		<h2>Latest Projects</h2>
 		<LatestProjects class="py-3" />
 	</section>
 </template>
