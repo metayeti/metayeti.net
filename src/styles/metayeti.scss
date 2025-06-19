@@ -190,10 +190,12 @@ body {
 				font-size: 0.7rem;
 			}
 		}
+		s {
+			color: var(--my-content-text-dimmed);
+		}
 	}
 
 	// -- link --
-
 	a.link {
 		position: relative;
 		color: var(--my-content-link);
@@ -231,6 +233,49 @@ body {
 		}
 		li::marker {
 			color: var(--my-content-bullet);
+		}
+	}
+
+	blockquote {
+		// original style from: https://freefrontend.com/css-blockquotes/
+
+		$quoteSVG: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' style='fill: currentColor'><path d='M9.983 3v7.391C9.983 16.095 6.252 19.961 1 21l-.995-2.151C2.437 17.932 4 15.211 4 13H0V3h9.983zM24 3v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151C16.437 17.932 18 15.211 18 13h-3.983V3H24z'/></svg>";
+
+		position: relative;
+		padding-left: 2rem;
+		margin: 20px 0 30px 0;
+		overflow: hidden;
+
+		&::before, &::after {
+			position: absolute;
+			background-color: var(--my-content-note);
+		}
+
+		p {
+			padding: 0;
+			margin: 0;
+			color: var(--my-content-text);
+		}
+		p + p {
+			margin-top: 1rem;
+		}
+
+		&::before {
+			content: '';
+			width: 14px;
+			height: 14px;
+			mask: url($quoteSVG);
+			mask-size: cover;
+			left: 0;
+			top: 0;
+		}
+
+		&::after {
+			content: "";
+			left: 5px;
+			top: 25px;
+			width: 1px;
+			height: 100%;
 		}
 	}
 
@@ -282,18 +327,19 @@ body {
 		font-family: "M PLUS 1 Code", Courier, monospace;
 		background-color: #1b1b1b;
 		color: #ffffff;
+		border: 1px solid #444;
+		border-radius: 4px;
 	}
 
 	// code block
 	pre {
 		padding: 10px;
 		overflow-x: auto;
-		border: 1px solid #333;
 	}
 
 	// inline code
 	code {
-		padding: 2px 4px;
+		padding: 3px 5px;
 		font-size: 0.9rem;
 	}
 }

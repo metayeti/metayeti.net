@@ -1,26 +1,33 @@
 {
-    "posts": [
-        {
-            "title": "My thoughts on generative AI",
-            "slug": "my-thoughts-on-generative-ai",
-            "date-published": "2025-05-22",
-            "date-updated": "2025-06-17",
-            "tags": ["generative-ai"],
-            "description": "My thoughts on the rise of generative artificial intelligence in modern computing."
-        },
-        {
+	"posts": [
+		{
+			"title": "DRY, KISS and YAGNI",
+			"slug": "dry-kiss-and-yagni",
+			"date-published": "2025-06-19",
+			"tags": ["programming"],
+			"description": "Back to basics."
+		},
+		{
+			"title": "My thoughts on generative AI",
+			"slug": "my-thoughts-on-generative-ai",
+			"date-published": "2025-05-22",
+			"date-updated": "2025-06-17",
+			"tags": ["generative-ai"],
+			"description": "My thoughts on the rise of generative artificial intelligence in modern computing."
+		},
+		{
 			"title": "Hello, world!",
 			"slug": "hello-world",
 			"date-published": "2025-05-20",
 			"tags": ["random"],
 			"description": "Website is live!"
-        },
-        {
+		},
+		{
 			"title": "Let's Make Snake With JavaScript",
 			"slug": "lets-make-snake-with-javascript",
 			"date-published": "2017-02-06",
 			"tags": ["javascript", "programming", "tutorial"],
 			"description": "A dive into making a simple Snake game with HTML5 and JavaScript."
-        }
-    ]
+		}
+	]
 }

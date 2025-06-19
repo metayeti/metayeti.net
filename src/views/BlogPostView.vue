@@ -81,7 +81,7 @@ onMounted(async () => {
 			<img src="@/assets/images/photo_small.jpg" alt="">
 			<div>
 				<h5>About the author</h5>
-				<p><RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - programmer, game developer, blogger, etc.</p>
+				<p><RouterLink to="/about" class="link">Danijel Durakovic</RouterLink> - programmer, game developer, blogger, elemental shaman etc.</p>
 			</div>
 		</div>
 	</section>
@@ -153,7 +153,10 @@ onMounted(async () => {
 		padding: 15px;
 		img {
 			width: 130px;
-			//filter: grayscale(1);
+			max-width: 35%;
+			height: auto;
+			object-fit: contain;
+			filter: grayscale(1);
 		}
 		h5 {
 			font-size: 1rem;
@@ -164,7 +167,7 @@ onMounted(async () => {
 			padding: 0;
 			margin: 0;
 			font-size: 0.8rem;
-			line-height: 1.3rem;;
+			line-height: 1.3rem;
 			color: var(--my-content-text-dimmed);
 		}
 	}

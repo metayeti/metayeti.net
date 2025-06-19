@@ -149,6 +149,7 @@ article :deep(img.me) {
 		}
 	}
 }
+/*
 article :deep(.special-bg) {
 	position: relative;
 	display: block;
@@ -172,6 +173,7 @@ article :deep(.special-bg) {
 		z-index: -1;
 	}
 }
+*/
 article :deep(.factoids) {
 	ul {
 		display: flex;

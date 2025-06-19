@@ -12,7 +12,8 @@
 			"platform": "Windows",
 			"status": "Unfinished",
 			"done": "20%",
-			"screenshots": ["screenshots/s1.png", "screenshots/s2.png", "screenshots/s3.png"]
+			"screenshots": ["screenshots/s1.png", "screenshots/s2.png", "screenshots/s3.png"],
+			"hasDevLog": true
 		}
 	],
 	"inactive": [
@@ -26,5 +27,20 @@
 			"screenshots": ["screenshots/tronix2.png"],
 			"date-published": ""
 		}
-	]
+	],
+	"categories": [
+		{
+			"handle": "games",
+			"display": "Games",
+			"description": "Projects currently in development."
+		},
+		{
+			"handle": "in-development",
+			"display": "In Development",
+			"description": "Projects currently in development."
+		},
+		{
+			
+		}
+	],
 }
