@@ -49,8 +49,8 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 			<span class="value"><span class="color-box bg-[#77776b]"></span>, <span class="color-box bg-[#47d6ab]"></span> and <span class="color-box bg-[#645892]"></span></span>
 		</li>
 		<li>
-			<span class="factoid">Favorite editor</span>
-			<span class="value"><a class="link" href="https://www.vim.org/" target="_blank">Vim</a></span>
+			<span class="factoid">Favorite editors</span>
+			<span class="value"><a class="link" href="https://www.vim.org/" target="_blank">Vim</a>, <a class="link" href="https://code.visualstudio.com/" target="_blank">VS Code</a>, <a class="link" href="https://rizonesoft.com/downloads/notepad3/" target="_blank">Notepad3</a></span>
 		</li>
 		<li>
 			<span class="factoid">Favorite programming languages</span>
@@ -74,7 +74,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 		</li>
 		<li>
 			<span class="factoid">Favorite authors</span>
-			<span class="value">Roald Dahl, Frank Herbert</span>
+			<span class="value">Roald Dahl, Frank Herbert, Terry Pratchett</span>
 		</li>
 		<li>
 			<span class="factoid">Favorite scientists</span>
@@ -93,9 +93,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 
 I started programming at an early age of about 10. The very first thing I remember is trying to figure out how timers work in [Visual Basic 3](https://winworldpc.com/product/microsoft-visual-bas/30). Later on, I weaved my way through VB5 and 6, then C, Pascal, and finally C++, C#, Java, Python, PHP, JavaScript and many others.
 
-<div class="special-bg">
-	<img src="/content/static/images/vb3.png" alt="VB3">
-</div>
+<img src="/content/static/images/vb3.png" alt="VB3">
 <p class="caption">Visual Basic 3 - my earliest programming memory.</p>
 
 Throughout my programming journey, I've explored a wide range of technologies, methodologies, frameworks, computer science concepts, mathematics, and related fields.
