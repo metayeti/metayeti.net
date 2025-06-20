@@ -38,9 +38,6 @@
 			"handle": "in-development",
 			"display": "In Development",
 			"description": "Projects currently in development."
-		},
-		{
-			
 		}
-	],
+	]
 }

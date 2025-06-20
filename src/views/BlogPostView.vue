@@ -16,18 +16,20 @@ const renderedArticleMarkdown = ref('');
 const postListing = ref({});
 const readingTime = ref('');
 
+const raw = { listing: null, markdown: ''};
+
 onMounted(async () => {
 	const route = useRoute();
 	const routeSlug = route.params.slug;
 	// load post data
 	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
 	const postData = blogData.posts.find(post => post.slug === routeSlug);
-	postListing.value = postData;
+	postListing.value = raw.listing = postData;
 	// update page title
 	updateTitle(postData.title);
 	// load article
 	const articlePath = articleRawMarkdownURL.value = `/content/blog/${routeSlug}/article.md`;
-	const articleMarkdown  = await loadText(articlePath);
+	const articleMarkdown = raw.markdown = await loadText(articlePath);
 	renderedArticleMarkdown.value = md.render(articleMarkdown);
 	// estimate read time
 	const articlePlainText = articleMarkdown
@@ -37,6 +39,35 @@ onMounted(async () => {
 	const readingTimeInMinutes = estimateReadingTime(articlePlainText);
 	readingTime.value = getHumanReadableMinutes(readingTimeInMinutes);
 });
+
+// -- raw markdown --
+const getRawMarkdown = () => {
+	const markdown = `# ${raw.listing.title}
+${raw.listing.description}
+
+---
+
+${raw.markdown}
+
+---
+
+Original article URL: ${window.location.href}
+
+Published: ${getHumanReadableDateFull(raw.listing['date-published'])}${raw.listing['date-updated'] ? '\nUpdated: ' + getHumanReadableDateFull(raw.listing['date-updated']) : ''}
+
+by Danijel Durakovic (https://metayeti.net)
+`;
+
+	const blob = new Blob([markdown], { type: 'text/markdown' });
+	const url = URL.createObjectURL(blob);
+
+	const a = document.createElement('a');
+	a.href = url;
+	a.download = 'article.md';
+	a.click();
+
+	URL.revokeObjectURL(url);
+};
 
 </script>
 
@@ -71,7 +102,7 @@ onMounted(async () => {
 	</section>
 	<article v-html="renderedArticleMarkdown"></article>
 	<section class="post-footer">
-		<div class="flex flex-col gap-4 min-[360px]:flex-row min-[360px]:gap-0 min-[360px]:justify-between">
+		<div class="flex flex-col gap-4 min-[370px]:flex-row min-[370px]:gap-0 min-[370px]:justify-between">
 			<div class="post-date-updated">
 				Article last updated:
 				<span>
@@ -80,10 +111,10 @@ onMounted(async () => {
 				</span>
 			</div>
 			<div class="post-raw-markdown self-end">
-				<a :href="articleRawMarkdownURL" target="_blank">
+				<button @click="getRawMarkdown">
 					<font-awesome-icon class="pr-1.5" icon="fa-solid fa-floppy-disk" />
 					<span>raw</span>
-				</a>
+				</button>
 			</div>
 		</div>
 		<div class="about-author flex flex-row gap-5">
@@ -157,10 +188,12 @@ onMounted(async () => {
 	}
 	.post-raw-markdown {
 		font-size: 13px;
-		a {
+		button {
 			position: relative;
 			color: var(--my-content-text);
 			padding-bottom: 3px;
+			border-bottom: 2px solid transparent;
+			cursor: pointer;
 			span {
 				color: var(--my-content-link);
 			}
