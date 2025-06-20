@@ -8,6 +8,7 @@ import {
 	faArrowLeft,
 	faCalendarDays,
 	faClock,
+	faFloppyDisk,
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
@@ -26,6 +27,7 @@ library.add(
 	faArrowLeft,
 	faCalendarDays,
 	faClock,
+	faFloppyDisk,
 	// brand icons
 	faGithub,
 	faFacebook,

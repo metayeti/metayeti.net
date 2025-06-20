@@ -11,6 +11,7 @@ function estimateReadingTime(text, wordsPerMinute = 200) {
 	return minutes;
 }
 
+const articleRawMarkdownURL = ref('');
 const renderedArticleMarkdown = ref('');
 const postListing = ref({});
 const readingTime = ref('');
@@ -25,7 +26,7 @@ onMounted(async () => {
 	// update page title
 	updateTitle(postData.title);
 	// load article
-	const articlePath = `/content/blog/${routeSlug}/article.md`;
+	const articlePath = articleRawMarkdownURL.value = `/content/blog/${routeSlug}/article.md`;
 	const articleMarkdown  = await loadText(articlePath);
 	renderedArticleMarkdown.value = md.render(articleMarkdown);
 	// estimate read time
@@ -70,13 +71,21 @@ onMounted(async () => {
 	</section>
 	<article v-html="renderedArticleMarkdown"></article>
 	<section class="post-footer">
-		<span class="post-date-updated">
-			Article last updated:
-			<span>
-				<font-awesome-icon class="pl-2.5 pr-1.5" icon="fa-solid fa-calendar-days" />
-				{{ getHumanReadableDateFull(postListing['date-updated'] ? postListing['date-updated'] : postListing['date-published']) }}
-			</span>
-		</span>	
+		<div class="flex flex-col gap-4 min-[360px]:flex-row min-[360px]:gap-0 min-[360px]:justify-between">
+			<div class="post-date-updated">
+				Article last updated:
+				<span>
+					<font-awesome-icon class="pl-2.5 pr-1.5" icon="fa-solid fa-calendar-days" />
+					{{ getHumanReadableDateFull(postListing['date-updated'] ? postListing['date-updated'] : postListing['date-published']) }}
+				</span>
+			</div>
+			<div class="post-raw-markdown self-end">
+				<a :href="articleRawMarkdownURL" target="_blank">
+					<font-awesome-icon class="pr-1.5" icon="fa-solid fa-floppy-disk" />
+					<span>raw</span>
+				</a>
+			</div>
+		</div>
 		<div class="about-author flex flex-row gap-5">
 			<img src="@/assets/images/photo_small.jpg" alt="">
 			<div>
@@ -141,10 +150,29 @@ onMounted(async () => {
 .post-footer {
 	.post-date-updated {
 		font-size: 13px;
-		text-align: right;
 		color: var(--my-content-text-dimmed);
 		span {
 			color: var(--my-content-text);
+		}
+	}
+	.post-raw-markdown {
+		font-size: 13px;
+		a {
+			position: relative;
+			color: var(--my-content-text);
+			padding-bottom: 3px;
+			span {
+				color: var(--my-content-link);
+			}
+			&:hover {
+				left: -1px;
+				border-bottom: 2px solid var(--my-content-link);
+				color: var(--my-content-link-hover);
+				span {
+					color: var(--my-content-link-hover);
+					transform: translateX(1px);
+				}
+			}
 		}
 	}
 	.about-author {
