@@ -38,7 +38,7 @@ const ftpConfig = {
 };
 
 // binary file extensions to explicitly handle in binary mode
-const binaryExtensions = ['.ico', '.png', '.jpg', '.jpeg', '.gif', '.mp3', '.pdf', '.zip', '.woff', '.woff2', '.ttf', '.eot', '.svg'];
+const binaryExtensions = ['.ico', '.png', '.jpg', '.jpeg', '.gif', '.mp3', '.pdf', '.zip', '.woff', '.woff2', '.ttf', '.eot', '.svg', '.webp', '.webm'];
 
 // source directory and remote path
 const sourceDir = 'dist';
