@@ -18,9 +18,7 @@ onMounted(async () => {
 	<div class="flex flex-col gap-9">
 		<div class="project-reel">
 			<ul class="latest-projects flex flex-row">
-				<li
-					v-for="item in projectsListing.slice(0, 6)"
-				>
+				<li v-for="item in projectsListing.slice(0, 6)" >
 					<img :src="`/content/projects/${item.path}/${item.screenshots[0]}`" alt="">
 				</li>
 			</ul>

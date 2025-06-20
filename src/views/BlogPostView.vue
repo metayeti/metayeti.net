@@ -102,7 +102,7 @@ by Danijel Durakovic (https://metayeti.net)
 	</section>
 	<article v-html="renderedArticleMarkdown"></article>
 	<section class="post-footer">
-		<div class="flex flex-col gap-4 min-[370px]:flex-row min-[370px]:gap-0 min-[370px]:justify-between">
+		<div class="flex flex-col flex-row justify-between">
 			<div class="post-date-updated">
 				Article last updated:
 				<span>
@@ -110,7 +110,7 @@ by Danijel Durakovic (https://metayeti.net)
 					{{ getHumanReadableDateFull(postListing['date-updated'] ? postListing['date-updated'] : postListing['date-published']) }}
 				</span>
 			</div>
-			<div class="post-raw-markdown self-end">
+			<div class="post-raw-markdown hidden min-[370px]:block">
 				<button @click="getRawMarkdown">
 					<font-awesome-icon class="pr-1.5" icon="fa-solid fa-floppy-disk" />
 					<span>raw</span>

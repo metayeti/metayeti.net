@@ -30,14 +30,24 @@
 	],
 	"categories": [
 		{
-			"handle": "games",
+			"type": "games",
 			"display": "Games",
-			"description": "Projects currently in development."
+			"description": "Finished games."
 		},
 		{
-			"handle": "in-development",
+			"type": "software",
+			"display": "Software",
+			"description": "Various software things"
+		},
+		{
+			"type": "in-development",
 			"display": "In Development",
-			"description": "Projects currently in development."
+			"description": "Projects currently being developed."
+		},
+		{
+			"type": "legacy",
+			"display": "Legacy",
+			"description": "Old or abandoned projects"
 		}
 	]
 }
