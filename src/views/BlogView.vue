@@ -24,7 +24,7 @@ const postsByYear = computed(() => {
 		}
 		computedPosts.get(year).push(post);
 	});
-
+	console.log(computedPosts);
 	return computedPosts;
 });
 
@@ -37,7 +37,7 @@ const tagList = computed(() => {
             });
         }
     });
-    // Return sorted array of [tag, count] pairs
+    // return sorted array of [tag, count] pairs
     return Array.from(tagCounts.entries()).sort((a, b) => a[0].localeCompare(b[0]));
 });
 
@@ -115,18 +115,47 @@ const handleSearch = () => {
 					<font-awesome-icon icon="fa-solid fa-search" class="size-5" />
 				</button>
 			</form>
+			<ul class="search-navigation flex flex-col items-end">
+				<li>
+					<a href="#topics">
+						By Topic
+						<font-awesome-icon icon="fa-solid fa-arrow-down" class="size-3" />
+					</a>
+				</li>
+				<li>
+					<a href="#years">
+						By Year
+						<font-awesome-icon icon="fa-solid fa-arrow-down" class="size-3" />
+					</a>
+				</li>
+			</ul>
 
-			<div class="flex flex-col gap-3">
-				<h5>Tags</h5>
-				<div class="tag-list flex flex-row flex-wrap gap-2">
-					<button
-						v-for="[tag, count] in tagList"
-						:key="tag"
-						class="tag"
-					>
-						<span class="tag-name">{{ tag }}</span>
-						<span class="tag-count">{{ count }}</span>
-					</button>
+			<div class="flex flex-col gap-7">
+				<div>
+					<h5 id="topics">Topics</h5>
+					<div class="tag-list flex flex-row flex-wrap gap-2">
+						<button
+							v-for="[tag, count] in tagList"
+							:key="tag"
+							class="tag"
+						>
+							<span class="tag-name">{{ tag }}</span>
+							<span class="tag-count">{{ count }}</span>
+						</button>
+					</div>
+				</div>
+				<div>
+					<h5 id="years">Years</h5>
+					<div class="tag-list flex flex-row flex-wrap gap-2">
+						<button
+							v-for="[year, data] in postsByYear"
+							:key="year"
+							class="tag"
+						>
+							<div class="tag-name">{{ year }}</div>
+							<div class="tag-count">{{ data.length }}</div>
+						</button>
+					</div>
 				</div>
 			</div>
 
@@ -200,6 +229,9 @@ $sbBreakpoint: 768px;
 				border-bottom: 2px solid transparent;
 			}
 			&:hover {
+				.entry-title {
+					color: var(--my-content-link-hover);
+				}
 				.cta {
 					color: var(--my-content-link-hover);
 					border-bottom: 2px solid var(--my-content-link);
@@ -209,13 +241,12 @@ $sbBreakpoint: 768px;
 	}
 }
 .sidebar {
-	//position: relative;
 	padding: 10px;
 	border: 2px solid var(--my-content-accent);
 
 	h5 {
 		padding: 0;
-		margin: 0;
+		margin: 0 0 8px 0;
 		color: var(--my-sidebar-heading);
 		font-size: 15px;
 		font-weight: 600;
@@ -274,6 +305,41 @@ $sbBreakpoint: 768px;
 			&:has(input:focus),
 			&:has(button:focus) {
 				width: 300px;
+			}
+		}
+	}
+	.search-navigation {
+		display: none;
+
+		@media screen and (width < $sbBreakpoint) {
+			display: flex;
+			position: absolute;
+			width: 190px;
+			right: 24px;
+			top: 50px;
+
+			a {
+				display: inline-block;
+				font-size: 12px;
+				font-weight: 700;
+				color: var(--my-sidebar-heading);
+				border-bottom: 2px solid transparent;
+
+				&:hover {
+					color: var(--my-content-link-text);
+					border-bottom: 2px solid var(--my-content-link);
+				}
+
+				&::before {
+					content: '{';
+					margin-right: 5px;
+					color: var(--my-content-link);
+				}
+				&::after {
+					content: '}';
+					margin-left: 5px;
+					color: var(--my-content-link);
+				}
 			}
 		}
 	}

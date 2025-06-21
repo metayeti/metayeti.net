@@ -9,6 +9,7 @@ import {
 	faCalendarDays,
 	faClock,
 	faFloppyDisk,
+	faArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
@@ -28,6 +29,7 @@ library.add(
 	faCalendarDays,
 	faClock,
 	faFloppyDisk,
+	faArrowDown,
 	// brand icons
 	faGithub,
 	faFacebook,
