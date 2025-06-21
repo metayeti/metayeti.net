@@ -10,6 +10,10 @@ import {
 	faClock,
 	faFloppyDisk,
 	faArrowDown,
+	faDragon,
+	faScroll,
+	faWrench,
+	faDungeon,
 } from '@fortawesome/free-solid-svg-icons'
  
 import {
@@ -23,20 +27,27 @@ import {
 
 // add icons to the library
 library.add(
-	// solid icons
+
+	// --solid icons--
 	faSearch,
 	faArrowLeft,
 	faCalendarDays,
 	faClock,
 	faFloppyDisk,
 	faArrowDown,
-	// brand icons
+	faDragon,
+	faScroll,
+	faWrench,
+	faDungeon,
+
+	// --brand icons--
 	faGithub,
 	faFacebook,
 	faLinkedin,
 	faXTwitter,
 	faYoutube,
 	faSoundcloud,
+
 );
 
 export { FontAwesomeIcon };

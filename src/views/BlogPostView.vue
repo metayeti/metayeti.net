@@ -5,6 +5,9 @@ import { useRoute, RouterLink } from 'vue-router';
 
 // -- load markdown and handle rendering --
 
+const route = useRoute();
+const routeSlug = route.params.slug;
+
 function estimateReadingTime(text, wordsPerMinute = 200) {
 	const words = text.split(' ').length;
 	const minutes = Math.ceil(words / wordsPerMinute);
@@ -16,20 +19,16 @@ const renderedArticleMarkdown = ref('');
 const postListing = ref({});
 const readingTime = ref('');
 
-const raw = { listing: null, markdown: ''};
-
 onMounted(async () => {
-	const route = useRoute();
-	const routeSlug = route.params.slug;
 	// load post data
 	const blogData = await loadJSON(`/content/blog/${constants.FILENAME_BLOG_LISTING}`);
 	const postData = blogData.posts.find(post => post.slug === routeSlug);
-	postListing.value = raw.listing = postData;
+	postListing.value = postData;
 	// update page title
 	updateTitle(postData.title);
 	// load article
 	const articlePath = articleRawMarkdownURL.value = `/content/blog/${routeSlug}/article.md`;
-	const articleMarkdown = raw.markdown = await loadText(articlePath);
+	const articleMarkdown = await loadText(articlePath);
 	renderedArticleMarkdown.value = md.render(articleMarkdown);
 	// estimate read time
 	const articlePlainText = articleMarkdown
@@ -41,7 +40,15 @@ onMounted(async () => {
 });
 
 // -- raw markdown --
-const getRawMarkdown = () => {
+const getRawMarkdown = async () => {
+	// fetch article again rather than memoize the entire raw markdown on load (this probably saves
+	// some memory since few users are expected to use this feature, so we prefer to leverage the
+	// loader cache instead)
+	const articlePath = articleRawMarkdownURL.value = `/content/blog/${routeSlug}/article.md`;
+	const articleMarkdown = await loadText(articlePath); // already cached, should be instant
+	const raw = { listing: postListing.value, markdown: articleMarkdown };
+
+	// generate the markdown so we can include the title and other relevant info
 	const markdown = `# ${raw.listing.title}
 ${raw.listing.description}
 
@@ -58,6 +65,7 @@ Published: ${getHumanReadableDateFull(raw.listing['date-published'])}${raw.listi
 by Danijel Durakovic (https://metayeti.net)
 `;
 
+	// now we can download the markdown as file
 	const blob = new Blob([markdown], { type: 'text/markdown' });
 	const url = URL.createObjectURL(blob);
 
@@ -66,7 +74,9 @@ by Danijel Durakovic (https://metayeti.net)
 	a.download = 'article.md';
 	a.click();
 
+	// clean-up
 	URL.revokeObjectURL(url);
+	a.remove();
 };
 
 </script>

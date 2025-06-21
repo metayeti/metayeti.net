@@ -32,22 +32,26 @@
 		{
 			"type": "games",
 			"display": "Games",
-			"description": "Finished games."
+			"description": "Finished games.",
+			"icon": "dragon"
 		},
 		{
 			"type": "software",
 			"display": "Software",
-			"description": "Various software things"
+			"description": "Various software things",
+			"icon": "scroll"
 		},
 		{
 			"type": "in-development",
 			"display": "In Development",
-			"description": "Projects currently being developed."
+			"description": "Projects currently being developed.",
+			"icon": "wrench"
 		},
 		{
 			"type": "legacy",
 			"display": "Legacy",
-			"description": "Old or abandoned projects"
+			"description": "Old or abandoned projects",
+			"icon": "dungeon"
 		}
 	]
 }

@@ -15,79 +15,72 @@ onMounted(async () => {
 </script>
 
 <template>
-	<ul class="projects-tab-list">
-		<div class="tabs flex flex-row gap-3">
-			<li v-for="(item, i) in projectsListing.categories" >
-				<button :class="i === 0 ? 'active' : ''">{{ item['display'] }}</button>
-			</li>
-		</div>
-		<div class="decoration"></div>
-	</ul>
-	<div class="projects-tab-view">
-
+	<div class="flex flex-col gap-1">
+		<ul class="projects-tab-list">
+			<div class="tabs flex flex-row flex-wrap-reverse gap-1 justify-end">
+				<li v-for="(item, i) in projectsListing.categories" >
+					<button
+						:class="i === 0 ? 'active' : ''"
+						class="flex flex-row gap-3 items-center"
+					>
+						<span class="icon">
+							<font-awesome-icon :icon="'fa-solid fa-' + item.icon" class="size-4" />
+						</span>
+						<span class="display">
+							{{ item.display }}
+						</span>
+					</button>
+				</li>
+			</div>
+		</ul>
+		<section class="projects-tab-view">
+			<p class="caption"><br>Clonk! Crank! Whizzzz!<br>Uh oh - the gears seem to be stuck.<br>The hamsters are already working on it.<br></p>
+		</section>
 	</div>
-	<p class="caption"><br>Clonk! Crank! Whizzzz!<br>Uh oh - the gears seem to be stuck.<br>Gnomes are already working on it.<br></p>
 </template>
 
 <style scoped lang="scss">
 .projects-tab-list {
 	.tabs {
+		transform: translateX(8px);
 		button {
 			position: relative;
-			padding: 4px 15px;
-			margin-left: 15px;
-			margin-right: 15px;
+			padding: 4px 20px;
 			text-align: center;
 			cursor: pointer;
 			color: var(--my-content-accent-text);
-			border-bottom: 2px solid transparent;
+			border-top: 2px solid transparent;
+			font-family: "Titillium Web", sans-serif;
+			font-size: 1.1rem;
+
+			transform: skewX(-25deg);
 			scale: 0.95;
 
-			&.active, &:hover {
-				scale: 1;
-				color: var(--my-content-link-text);
-				background-color: var(--my-content-accent);
-
-				&::before, &::after {
-					background-color: var(--my-content-accent);
+			span {
+				transform: skewX(25deg);
+				&.icon, &.display {
+					color: var(--my-content-text-dimmed);
 				}
 			}
-			&:hover {
-				border-bottom: 2px solid var(--my-content-text-dimmed);
+			&.active, &:hover {
+				scale: 1;
+				background-color: var(--my-content-accent);
+
+				.icon, .display {
+					color: var(--my-content-link-hover);
+				}
 			}
 			&.active {
-				border-bottom: 2px solid var(--my-content-link);
-			}
-
-			&::before {
-				content: '';
-				position: absolute;
-				width: 15px;
-				height: 100%;
-				top: 0;
-				left: -14.5px;
-				clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 100%);
-			}
-
-			&::after {
-				content: '';
-				position: absolute;
-				width: 15px;
-				height: 100%;
-				top: 0;
-				right: -14.5px;
-				clip-path: polygon(0 0, 100% 100%, 0 100%, 0 100%);
+				border-top: 2px solid var(--my-content-link);
+				.icon {
+					color: var(--my-content-link);
+				}
 			}
 		}
 	}
-	.decoration {
-		position: relative;
-		width: 100%;
-		height: 5px;
-		top: -0.5px;
-		background-color: var(--my-content-accent);
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
-	}
+}
+.projects-tab-view {
+	border: 2px solid var(--my-content-accent);
+	padding: 10px;
 }
 </style>
