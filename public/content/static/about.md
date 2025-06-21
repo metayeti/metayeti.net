@@ -42,7 +42,7 @@ While you're here, you can check out my [blog](/blog) or take a look at the [pro
 		</li>
 		<li>
 			<span class="factoid">Favorite music</span>
-			<span class="value">I love all <a class="link music" href="#" target="_blank">good music</a> and I have a special place in my heart for <a class="link music" href="#" target="_blank">videogame music</a></span>
+			<span class="value">I love all <a class="link music" target="_blank">good music</a> and I have a special place in my heart for <a class="link music" target="_blank">videogame music</a></span>
 		</li>
 		<li>
 			<span class="factoid">Favorite colors</span>

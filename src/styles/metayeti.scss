@@ -200,6 +200,7 @@ body {
 	a.link {
 		position: relative;
 		color: var(--my-content-link);
+		cursor: pointer;
 
 		&[href^='#'] {
 			color: var(--my-content-text);
