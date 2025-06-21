@@ -201,6 +201,9 @@ body {
 		position: relative;
 		color: var(--my-content-link);
 
+		&[href^='#'] {
+			color: var(--my-content-text);
+		}
 		&:hover {
 			left: -1px;
 			padding-bottom: 2px;
