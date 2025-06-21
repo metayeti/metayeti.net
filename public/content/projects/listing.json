@@ -45,7 +45,7 @@
 			"type": "in-development",
 			"display": "In Development",
 			"description": "Projects currently being developed.",
-			"icon": "wrench"
+			"icon": "code"
 		},
 		{
 			"type": "legacy",

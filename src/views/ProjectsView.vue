@@ -24,7 +24,7 @@ onMounted(async () => {
 						class="flex flex-row gap-3 items-center"
 					>
 						<span class="icon">
-							<font-awesome-icon :icon="'fa-solid fa-' + item.icon" class="size-4" />
+							<font-awesome-icon :icon="'fa-solid fa-' + item.icon" class="size-5" />
 						</span>
 						<span class="display">
 							{{ item.display }}
@@ -51,10 +51,10 @@ onMounted(async () => {
 			color: var(--my-content-accent-text);
 			border-top: 2px solid transparent;
 			font-family: "Titillium Web", sans-serif;
-			font-size: 1.1rem;
+			font-size: 1rem;
 
 			transform: skewX(-25deg);
-			scale: 0.95;
+			scale: 0.96;
 
 			span {
 				transform: skewX(25deg);

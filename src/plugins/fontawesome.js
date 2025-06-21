@@ -12,7 +12,7 @@ import {
 	faArrowDown,
 	faDragon,
 	faScroll,
-	faWrench,
+	faCode,
 	faDungeon,
 } from '@fortawesome/free-solid-svg-icons'
  
@@ -37,7 +37,7 @@ library.add(
 	faArrowDown,
 	faDragon,
 	faScroll,
-	faWrench,
+	faCode,
 	faDungeon,
 
 	// --brand icons--
