@@ -68,7 +68,6 @@ body {
 	}
 	h2 {
 		position: relative;
-		//border-left: 6px solid var(--my-content-accent);
 		padding-left: 10px;
 		font-size: 1.9rem;
 		line-height: 2.3rem;
@@ -76,6 +75,7 @@ body {
 
 		/*
 		&:not(:first-child) {
+			margin-top: 7vh;
 		}
 		*/
 		&:nth-child(n+2) {
@@ -85,26 +85,24 @@ body {
 		&::before {
 			position: absolute;
 			content: '';
-			width: 43px;
-			//width: 100vw;
+			width: 63px;
 			height: 100%;
-			left: -66px;
-			//left: calc(-100vw - 25px);
+			left: -86px;
 			top: -1px;
 			background-color: var(--my-content-accent);
-			//background: linear-gradient(to left, var(--my-content-accent) 0%, rgba(0,0,0,0) 10%);
-			clip-path: polygon(17px 0, 100% 0, 100% 100%, 0 100%);
-			opacity: 0.3;
+			background: linear-gradient(to left, var(--my-content-accent) 0%, rgba(0,0,0,0) 100%);
+			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
+			opacity: 0.4;
 		}
 		&::after {
 			position: absolute;
 			content: '';
-			width: 23px;
+			width: 42px;
 			height: 100%;
-			left: -20px;
+			left: -37px;
 			top: -1px;
 			background-color: var(--my-content-accent);
-			clip-path: polygon(0 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
+			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
 			opacity: 0.9;
 		}
 	}
