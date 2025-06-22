@@ -46,12 +46,12 @@ onMounted(async () => {
 		button {
 			position: relative;
 			padding: 4px 20px;
-			text-align: center;
+			//text-align: center;
 			cursor: pointer;
 			color: var(--my-content-accent-text);
 			border-top: 2px solid transparent;
 			font-family: "Titillium Web", sans-serif;
-			font-size: 1rem;
+			font-size: 0.9em;
 
 			transform: skewX(-25deg);
 			scale: 0.96;
@@ -73,7 +73,7 @@ onMounted(async () => {
 			&.active {
 				border-top: 2px solid var(--my-content-link);
 				.icon {
-					color: var(--my-content-link);
+					color: var(--my-content-accent-text);
 				}
 			}
 		}

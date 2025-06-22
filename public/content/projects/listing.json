@@ -39,6 +39,12 @@
 			"type": "software",
 			"display": "Software",
 			"description": "Various software things",
+			"icon": "window-maximize"
+		},
+		{
+			"type": "websites",
+			"display": "Websites",
+			"description": "Various software things",
 			"icon": "scroll"
 		},
 		{
@@ -48,8 +54,8 @@
 			"icon": "code"
 		},
 		{
-			"type": "legacy",
-			"display": "Legacy",
+			"type": "old",
+			"display": "Old",
 			"description": "Old or abandoned projects",
 			"icon": "dungeon"
 		}
