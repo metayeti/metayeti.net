@@ -68,10 +68,12 @@ body {
 	}
 	h2 {
 		position: relative;
-		padding-left: 10px;
+		padding-left: 20px;
 		font-size: 1.9rem;
-		line-height: 2.3rem;
+		line-height: 2.4rem;
 		font-weight: 400;
+		//display: inline-block;
+		z-index: 1;
 
 		/*
 		&:not(:first-child) {
@@ -85,25 +87,39 @@ body {
 		&::before {
 			position: absolute;
 			content: '';
-			width: 63px;
+			width: 55px;
 			height: 100%;
-			left: -86px;
+			left: -61px;
 			top: -1px;
 			background-color: var(--my-content-accent);
-			background: linear-gradient(to left, var(--my-content-accent) 0%, rgba(0,0,0,0) 100%);
-			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
-			opacity: 0.4;
+			background: linear-gradient(to left, var(--my-content-accent) 60%, rgba(0,0,0,0) 100%);
+			clip-path: polygon(0 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
+			opacity: 0.3;
+			z-index: -1;
 		}
 		&::after {
 			position: absolute;
 			content: '';
-			width: 42px;
+			width: 30px;
 			height: 100%;
-			left: -37px;
+			left: -20px;
 			top: -1px;
 			background-color: var(--my-content-accent);
 			clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
 			opacity: 0.9;
+			z-index: -1;
+		}
+
+
+		@media (max-width: 1019px) {
+			/*
+			font-size: 2.1rem;
+			line-height: 2.5rem;
+			*/
+			padding-left: 0;
+			&::before, &::after {
+				display: none;
+			}
 		}
 	}
 	h3 {
@@ -112,7 +128,7 @@ body {
 		color: var(--my-content-heading2);
 		font-size: 1.5rem;
 		font-weight: 600;
-		z-index: auto;
+		z-index: 1;
 
 		&::before {
 			position: absolute;

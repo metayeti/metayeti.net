@@ -14,6 +14,31 @@
 			"done": "20%",
 			"screenshots": ["screenshots/s1.png", "screenshots/s2.png", "screenshots/s3.png"],
 			"hasDevLog": true
+		},
+		{
+			"title": "Tronix2",
+			"path": "legacy/tronix2",
+			"screenshots": ["screenshots/tronix2.jpg"]
+		},
+		{
+			"title": "Powerblocks",
+			"path": "legacy/powerblocks",
+			"screenshots": ["screenshots/powerblocks.jpg"]
+		},
+		{
+			"title": "Tonality",
+			"path": "legacy/tonality",
+			"screenshots": ["screenshots/tonality.jpg"]
+		},
+		{
+			"title": "Blobby",
+			"path": "legacy/blobby",
+			"screenshots": ["screenshots/blobby.jpg"]
+		},
+		{
+			"title": "Precision",
+			"path": "legacy/precision",
+			"screenshots": ["screenshots/precision.jpg"]
 		}
 	],
 	"inactive": [
