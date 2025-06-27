@@ -79,8 +79,8 @@
 			"icon": "code"
 		},
 		{
-			"type": "old",
-			"display": "Old",
+			"type": "legacy",
+			"display": "Legacy",
 			"description": "Old or abandoned projects",
 			"icon": "dungeon"
 		}
