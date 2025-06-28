@@ -73,16 +73,16 @@
 			"icon": "scroll"
 		},
 		{
-			"type": "in-development",
-			"display": "In Development",
-			"description": "Projects currently being developed.",
-			"icon": "code"
-		},
-		{
 			"type": "legacy",
 			"display": "Legacy",
 			"description": "Old or abandoned projects",
 			"icon": "dungeon"
+		},
+		{
+			"type": "in-development",
+			"display": "In Development",
+			"description": "Projects currently being developed.",
+			"icon": "code"
 		}
 	]
 }
