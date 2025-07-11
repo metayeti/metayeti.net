@@ -42,7 +42,7 @@ onMounted(() => {
 				<div class="flex flex-col gap-3 justify-center">
 					<h2>Greetings traveler!</h2>
 					<section class="flex flex-col gap-1">
-						<p>Thanks for visiting my website! This website is still a work in progress so things may be <span class="broken">broken</span> or <span class="missing">missing</span>.</p>
+						<p>Thanks for visiting my website! This website is still a work in progress so things may be <span class="bro">bro</span><span class="ken">ken</span> or <span class="missing">missing</span>.</p>
 						<p>A select group of elite construction hamsters are already working on it.</p>
 					</section>
 				</div>
@@ -108,9 +108,15 @@ onMounted(() => {
 		span {
 			font-weight: 700;
 		}
-		.broken {
+		.bro, .ken {
 			display: inline-block;
-			transform: rotate(10deg);
+		}
+		.bro {
+			transform: rotate(-32deg) translateY(5px);
+			margin-right: 4px;
+		}
+		.ken {
+			transform: rotate(7deg);
 		}
 		.missing {
 			opacity: 0.15;

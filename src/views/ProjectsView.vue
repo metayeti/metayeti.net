@@ -16,21 +16,23 @@ onMounted(async () => {
 
 <template>
 	<div class="flex flex-col">
-		<ul class="projects-tab-list flex flex-row flex-wrap-reverse gap-1 justify-end">
-			<li v-for="(item, i) in projectsListing.categories">
-				<button
-					:class="i === 0 ? 'active' : ''"
-					class="flex flex-row gap-3 items-center"
-				>
-					<span class="icon">
-						<font-awesome-icon :icon="'fa-solid fa-' + item.icon" class="size-5" />
-					</span>
-					<span class="display">
-						{{ item.display }}
-					</span>
-				</button>
-			</li>
-		</ul>
+		<!-- <div class="overflow-x-scroll overflow-y-hidden"> -->
+			<ul class="projects-tab-list flex flex-row flex-wrap-reverse gap-1 justify-end">
+				<li v-for="(item, i) in projectsListing.categories">
+					<button
+						:class="i === 0 ? 'active' : ''"
+						class="flex flex-row gap-3 items-center"
+					>
+						<span class="icon">
+							<font-awesome-icon :icon="'fa-solid fa-' + item.icon" class="size-5" />
+						</span>
+						<span class="display">
+							{{ item.display }}
+						</span>
+					</button>
+				</li>
+			</ul>
+		<!-- </div> -->
 		<section class="projects-tab-view">
 			<p class="caption"><br>Clonk! Crank! Whizzzz!<br>Uh oh - the gears seem to be stuck.<br>The hamsters are already working on it.<br></p>
 		</section>
@@ -39,23 +41,17 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .projects-tab-list {
+	min-width: min-content;
 	//transform: translateX(-10px);
 	button {
 		position: relative;
-		//padding: 4px 20px;
-		padding: 15px 22px;
-		//text-align: center;
+		padding: 10px 22px;
 		cursor: pointer;
 		color: var(--my-content-accent-text);
-		//border: 2px solid transparent;
-		//border-bottom: 0;
 		font-family: "Titillium Web", sans-serif;
 		font-size: 0.95rem;
 		font-weight: 600;
-			//background-color: transparent;
 
-		//border: 2px solid transparent;
-		//transform: skewX(20deg);
 		scale: 0.96;
 
 		span {
