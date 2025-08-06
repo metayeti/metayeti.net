@@ -2,7 +2,7 @@
 
 This is the deployment script for metayeti.net.
  
-It requires an .env file to be put into root with the following contents:
+It requires a .env file to be put into root with the following contents:
 
 ---
 
