@@ -1,24 +1,36 @@
-import { defineConfig, globalIgnores } from 'eslint/config'
-import globals from 'globals'
 import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{js,mjs,jsx,vue}'],
-  },
-
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
-
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-    },
-  },
-
-  js.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
+	globalIgnores(['dist']),
+	{
+		files: ['**/*.{js,jsx}'],
+		extends: [
+			js.configs.recommended,
+			reactHooks.configs.flat.recommended,
+			reactRefresh.configs.vite,
+		],
+		languageOptions: {
+			ecmaVersion: 2020,
+			globals: globals.browser,
+			parserOptions: {
+				ecmaVersion: 'latest',
+				ecmaFeatures: { jsx: true },
+				sourceType: 'module',
+			},
+		},
+		plugins: [
+			"prettier"
+		],
+		rules: {
+			'no-unused-vars': [
+				'error', { varsIgnorePattern: '^[A-Z_]' }
+			],
+			indent: ['error', 'tab'],
+			"prettier/prettier": "error"
+		},
+	},
 ])

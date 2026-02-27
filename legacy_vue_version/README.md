@@ -5,7 +5,7 @@ Personal homesite/blog/etc.
 
 ## Legal
 
-Copyright &copy; 2026 Danijel Durakovic
+Copyright &copy; 2025 Danijel Durakovic
 
 The source code of this repository is made available for viewing purposes only. You may view the code for personal, non-commercial reference or study.
 

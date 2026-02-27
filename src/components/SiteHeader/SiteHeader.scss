@@ -1,0 +1,51 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         components/SiteHeader/SiteHeader.scss
+//  Description:  Site header component styles.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-02-10
+//  Updated:      n/a
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+.site-header {
+	position: relative;
+	user-select: none;
+	overflow: hidden;
+}
+
+/*
+.header {
+	position: relative;
+	user-select: none;
+	overflow: hidden;
+
+	&__banner {
+		position: relative;
+		height: 78px;
+
+		&-background {
+			position: absolute;
+			width: 2000px;
+			height: 79px;
+			background-image: url('@/assets/images/header.png');
+			background-size: cover;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
+	*/

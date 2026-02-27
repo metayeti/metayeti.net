@@ -1,0 +1,39 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         theme.scss
+//  Description:  Defines color variables and theme-related styles.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-02-09
+//  Updated:      n/a
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+// -- Default Theme (dark) --
+:root {
+	// selection
+	--color-sel-text: #0a0a0a;
+	--color-sel-bg: #686868;
+
+	// global
+	--color-global-bg: #171a1d;
+
+	// header
+	--color-nav-bg: #16191d;
+}
+
+// -- Alternate Theme (light) --
+:root.light {
+}

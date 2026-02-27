@@ -1,0 +1,74 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         responsive.scss
+//  Description:  Responsive mixin.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-02-09
+//  Updated:      n/a
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+@use 'sass:map';
+
+// breakpoints (same as Tailwind uses)
+$breakpoints: (
+	'sm': 640px,
+	'md': 768px,
+	'lg': 1024px,
+	'xl': 1280px,
+	'2xl': 1536px,
+);
+
+/// Responsive breakpoint mixin to use site-wide.
+/// @param {String} $size - Breakpoint size (sm, md, lg, xl, or 2xl)
+/// @content Styles to apply at this breakpoint and above.
+/// @example scss
+///   .element {
+///     width: 100%;
+///
+///     @include screen('md') {
+///       width: 50%;
+///     }
+///   }
+@mixin screen($size) {
+	@if map.has-key($breakpoints, $size) {
+		@media (min-width: #{map.get($breakpoint, $size)}) {
+			@content;
+		}
+	} @else {
+		@error 'Invalid breakpoint: #{$size}. Valid sizes are: sm, md, lg, xl, 2xl';
+	}
+}
+
+/// Convenience mixin for defining multiple breakpoints at once.
+/// @param {Map} $styles - Map of breakpoint sizes to style maps.
+/// @example scss
+///   .container {
+///     @include respond((
+///       sm: (padding: 14px, font-size: 1rem),
+///       md: (padding: 16px, font-size: 1.1rem),
+///       lg: (padding: 18px, font-size: 1.2rem)
+///     ));
+///   }
+@mixin respond($styles) {
+	@each $size, $properties in $styles {
+		@include screen($size) {
+			@each $property, $value in $properties {
+				#{$property}: $value;
+			}
+		}
+	}
+}
