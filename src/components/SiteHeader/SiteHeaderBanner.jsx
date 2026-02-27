@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-27
+//  Updated:      2026-02-28
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -36,7 +36,7 @@ function getTimeOfDay() {
 	}
 }
 
-function SiteHeaderBanner() {
+export default function SiteHeaderBanner() {
 	const timeOfDay = getTimeOfDay();
 	return (
 		<div className="site-header-banner">
@@ -51,5 +51,3 @@ function SiteHeaderBanner() {
 		</div>
 	);
 }
-
-export default SiteHeaderBanner;

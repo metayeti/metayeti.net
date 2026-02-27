@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-27
+//  Updated:      2026-02-28
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,7 +23,7 @@
 
 import './SiteHeaderSocial.scss';
 
-function SiteHeaderSocial() {
+export default function SiteHeaderSocial() {
 	return (
 		<div className="site-header-social">
 			<div className="wrapped site-header-social__links">
@@ -35,5 +35,3 @@ function SiteHeaderSocial() {
 		</div>
 	);
 }
-
-export default SiteHeaderSocial;

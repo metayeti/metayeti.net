@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-27
+//  Updated:      2026-02-28
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,8 +23,6 @@
 
 import './SiteHeaderNav.scss';
 
-function SiteHeaderNav() {
+export default function SiteHeaderNav() {
 	return <nav className="site-header-nav"></nav>;
 }
-
-export default SiteHeaderNav;
