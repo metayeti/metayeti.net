@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         components/SiteHeader/MainNavBar.jsx
-//  Description:  Social navigation bar component.
+//  File:         components/SiteHeader/SiteHeaderNav.scss
+//  Description:  Site header navigation styles.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-02-10
-//  Updated:      n/a
+//  Created:      2026-02-27
+//  Updated:      2026-02-27
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,14 +21,7 @@
 //  TODO:         -
 //
 
-import './SocialNavBar.scss';
-
-function SocialNavBar() {
-	return (
-		<div className="social-nav-bar">
-			<div className="wrap">abcd</div>
-		</div>
-	);
+.site-header-nav {
+	height: 65px;
+	background-color: var(--color-header-bg-nav);
 }
-
-export default SocialNavBar;

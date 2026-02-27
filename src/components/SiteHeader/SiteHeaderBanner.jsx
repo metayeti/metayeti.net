@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         components/SiteHeader/HeaderBanner.jsx
-//  Description:  Header banner component.
+//  File:         components/SiteHeader/SiteHeaderBanner.jsx
+//  Description:  Site header banner component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-02-10
-//  Updated:      n/a
+//  Created:      2026-02-27
+//  Updated:      2026-02-27
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,7 +21,7 @@
 //  TODO:         -
 //
 
-import './HeaderBanner.scss';
+import './SiteHeaderBanner.scss';
 
 function getTimeOfDay() {
 	const hour = new Date().getHours();
@@ -36,13 +36,20 @@ function getTimeOfDay() {
 	}
 }
 
-function HeaderBanner() {
+function SiteHeaderBanner() {
 	const timeOfDay = getTimeOfDay();
 	return (
-		<div className="header-banner">
-			<div className={`header-banner__background header-banner__background--${timeOfDay} pixelated`}></div>
+		<div className="site-header-banner">
+			<div
+				className={`site-header-banner__background site-header-banner__background--${timeOfDay} pixelated`}
+			></div>
+			<div className="site-header-banner__branding wrapped">
+				<div className="site-header-banner__branding-yeti pixelated"></div>
+				{/*<h1 className="site-header-banner__branding-title">metayeti.net</h1>*/}
+			</div>
+			<div className="site-header-banner__scanlines"></div>
 		</div>
 	);
 }
 
-export default HeaderBanner;
+export default SiteHeaderBanner;

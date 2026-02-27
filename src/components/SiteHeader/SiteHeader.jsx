@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-10
-//  Updated:      n/a
+//  Updated:      2026-02-27
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,21 +22,16 @@
 //
 
 import './SiteHeader.scss';
-import HeaderBanner from './HeaderBanner';
-import SocialNavBar from './SocialNavBar';
+import SiteHeaderBanner from './SiteHeaderBanner';
+import SiteHeaderSocial from './SiteHeaderSocial';
+import SiteHeaderNav from './SiteHeaderNav';
 
 function SiteHeader() {
 	return (
-		/*
-		<header className="header">
-			<div className="header__banner">
-				<div className="header__banner-background pixelated"></div>
-			</div>
-		</header>
-		*/
 		<header className="site-header">
-			<HeaderBanner />
-			<SocialNavBar />
+			<SiteHeaderBanner />
+			<SiteHeaderSocial />
+			<SiteHeaderNav />
 		</header>
 	);
 }

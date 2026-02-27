@@ -31,9 +31,13 @@
 	--color-global-bg: #171a1d;
 
 	// header
-	--color-nav-bg: #16191d;
+	//--color-header-bg-social: #1d1d1d;
+	--color-header-bg-social: #16191d;
+	--color-header-bg-nav: #1f2429;
 }
 
 // -- Alternate Theme (light) --
 :root.light {
+	// global
+	--color-global-bg: #fdfdfd;
 }

@@ -1,0 +1,101 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         components/SiteHeader/SiteHeaderBanner.scss
+//  Description:  Site header banner styles.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-02-27
+//  Updated:      2026-02-27
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+.site-header-banner {
+	// these colors are fixed and theme-independent, so they can be hardcoded here
+	$color-left: #292130;
+	$color-right: #b9e6fb;
+
+	position: relative;
+	height: 78px;
+
+	overflow: hidden;
+
+	&::before {
+		// make sure banner halves survive extreme screen widths
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to right, $color-left 50%, $color-right 50%);
+		background-size: 100% 100%;
+	}
+
+	&__background {
+		position: absolute;
+		width: 2000px;
+		height: 78px;
+		background-image: url('@/assets/images/header.png');
+		background-size: cover;
+		left: 50%;
+		transform: translateX(-50%);
+
+		&--morning {
+		}
+		&--midday {
+		}
+		&--evening {
+		}
+		&--night {
+		}
+	}
+
+	&__branding {
+		&-yeti {
+			position: absolute;
+			width: 220px;
+			height: 78px;
+			top: 0;
+			left: 184px;
+			background-image: url('@/assets/images/yeti.png');
+			background-size: cover;
+			transition:
+				top 250ms linear,
+				left 250ms linear;
+
+			@media (width < 1000px) {
+				top: 10px;
+				left: 174px;
+			}
+			@media (width < 950px) {
+				left: 154px;
+			}
+			@media (width < 900px) {
+				display: none;
+			}
+		}
+	}
+
+	&__scanlines {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-image: repeating-linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.1) 0,
+			rgba(0, 0, 0, 0.1) 1px,
+			transparent 1px,
+			transparent 2px
+		);
+	}
+}

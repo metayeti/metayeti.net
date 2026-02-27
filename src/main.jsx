@@ -28,7 +28,7 @@ import { createRoot } from 'react-dom/client';
 
 import App from '@/App.jsx';
 
-createRoot(document.getElementById('metayeti-dot-net')).render(
+createRoot(document.getElementById('metayeti')).render(
 	<StrictMode>
 		<App />
 	</StrictMode>,
