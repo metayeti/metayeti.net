@@ -26,7 +26,7 @@
 @use './fonts';
 
 ::selection {
-	color: var(--color-sel-text);
+	color: var(--color-sel-fg);
 	background-color: var(--color-sel-bg);
 }
 

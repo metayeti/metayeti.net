@@ -24,16 +24,17 @@
 // -- Default Theme (dark) --
 :root {
 	// selection
-	--color-sel-text: #0a0a0a;
 	--color-sel-bg: #686868;
+	--color-sel-fg: #0a0a0a;
 
 	// global
 	--color-global-bg: #171a1d;
 
 	// header
-	//--color-header-bg-social: #1d1d1d;
-	--color-header-bg-social: #16191d;
-	--color-header-bg-nav: #1f2429;
+	--color-header-social-bg: #16191d;
+	--color-header-social-fg: #8396a5;
+	--color-header-social-hl: #e5ebf7;
+	--color-header-nav-bg: #1f2429;
 }
 
 // -- Alternate Theme (light) --

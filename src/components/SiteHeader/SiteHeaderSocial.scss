@@ -23,7 +23,7 @@
 
 .site-header-social {
 	height: 32px;
-	background-color: var(--color-header-bg-social);
+	background-color: var(--color-header-social-bg);
 
 	&__links {
 		display: flex;
@@ -31,18 +31,20 @@
 		justify-content: end;
 		align-items: center;
 		flex-direction: row;
-		gap: 1px;
+		gap: 3px;
 	}
 	&__link {
 		height: 100%;
 		aspect-ratio: 1/1;
-		color: white;
+		color: var(--color-header-social-fg);
 		padding: 5px;
-		border-radius: 50%;
+		border-radius: 7px;
 
 		&:hover {
 			scale: 1.2;
-			background-color: var(--color-header-bg-social);
+			outline: 1px solid rgba(255, 255, 255, 0.07);
+			color: var(--color-header-social-hl);
+			background-color: var(--color-header-social-bg);
 			transition: scale 0.1s ease;
 		}
 	}

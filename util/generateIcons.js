@@ -74,7 +74,7 @@ for (const file of svgFiles) {
 					{
 						name: 'removeAttrs',
 						params: {
-							attrs: ['style', 'class', 'width', 'height'],
+							attrs: ['style', 'class', 'width', 'height', 'fill'],
 						},
 					},
 				],

@@ -22,6 +22,8 @@
 //
 
 import IconGitHub from '../icons/IconGitHub';
+import IconFacebook from '../icons/IconFacebook';
+import IconLinkedIn from '../icons/IconLinkedIn';
 import './SiteHeaderSocial.scss';
 
 export default function SiteHeaderSocial() {
@@ -30,6 +32,16 @@ export default function SiteHeaderSocial() {
 			<div className="site-header-social__links wrapped">
 				<a href="https://github.com/metayeti" target="_blank" className="site-header-social__link">
 					<IconGitHub />
+				</a>
+				<a
+					href="https://www.facebook.com/profile.php?id=100095050669741"
+					target="_blank"
+					className="site-header-social__link"
+				>
+					<IconFacebook />
+				</a>
+				<a href="#" target="_blank" className="site-header-social__link">
+					<IconLinkedIn />
 				</a>
 			</div>
 		</div>
