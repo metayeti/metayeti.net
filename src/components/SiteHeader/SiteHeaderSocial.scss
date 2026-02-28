@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-27
+//  Updated:      2026-02-28
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -28,9 +28,15 @@
 	&__links {
 		display: flex;
 		height: 100%;
-		justify-content: flex;
+		justify-content: end;
 		align-items: center;
 		flex-direction: row;
 		gap: 1px;
+	}
+	&__link {
+		height: 100%;
+		aspect-ratio: 1/1;
+		color: white;
+		padding: 5px;
 	}
 }

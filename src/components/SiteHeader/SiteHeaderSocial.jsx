@@ -21,16 +21,16 @@
 //  TODO:         -
 //
 
+import IconGitHub from '../icons/IconGitHub';
 import './SiteHeaderSocial.scss';
 
 export default function SiteHeaderSocial() {
 	return (
 		<div className="site-header-social">
-			<div className="wrapped site-header-social__links">
-				<p>1</p>
-				<p>2</p>
-				<p>3</p>
-				<p>4</p>
+			<div className="site-header-social__links wrapped">
+				<a href="https://github.com/metayeti" target="_blank" className="site-header-social__link">
+					<IconGitHub />
+				</a>
 			</div>
 		</div>
 	);
