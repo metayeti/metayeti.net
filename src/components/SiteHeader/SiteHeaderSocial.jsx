@@ -24,6 +24,11 @@
 import IconGitHub from '../icons/IconGitHub';
 import IconFacebook from '../icons/IconFacebook';
 import IconLinkedIn from '../icons/IconLinkedIn';
+import IconX from '../icons/IconX';
+import IconSteam from '../icons/IconSteam';
+import IconItchIo from '../icons/IconItchIo';
+import IconYouTube from '../icons/IconYouTube';
+import IconSoundCloud from '../icons/IconSoundCloud';
 import './SiteHeaderSocial.scss';
 
 export default function SiteHeaderSocial() {
@@ -42,6 +47,21 @@ export default function SiteHeaderSocial() {
 				</a>
 				<a href="#" target="_blank" className="site-header-social__link">
 					<IconLinkedIn />
+				</a>
+				<a href="#" target="_blank" className="site-header-social__link">
+					<IconX />
+				</a>
+				<a href="#" target="_blank" className="site-header-social__link">
+					<IconSteam />
+				</a>
+				<a href="#" target="_blank" className="site-header-social__link">
+					<IconItchIo />
+				</a>
+				<a href="#" target="_blank" className="site-header-social__link">
+					<IconYouTube />
+				</a>
+				<a href="#" target="_blank" className="site-header-social__link">
+					<IconSoundCloud />
 				</a>
 			</div>
 		</div>

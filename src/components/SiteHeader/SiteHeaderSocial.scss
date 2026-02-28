@@ -31,13 +31,13 @@
 		justify-content: end;
 		align-items: center;
 		flex-direction: row;
-		gap: 3px;
+		gap: 2px;
 	}
 	&__link {
 		height: 100%;
 		aspect-ratio: 1/1;
 		color: var(--color-header-social-fg);
-		padding: 5px;
+		padding: 5.5px;
 		border-radius: 7px;
 
 		&:hover {
