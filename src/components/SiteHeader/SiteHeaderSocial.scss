@@ -38,5 +38,12 @@
 		aspect-ratio: 1/1;
 		color: white;
 		padding: 5px;
+		border-radius: 50%;
+
+		&:hover {
+			scale: 1.2;
+			background-color: var(--color-header-bg-social);
+			transition: scale 0.1s ease;
+		}
 	}
 }
