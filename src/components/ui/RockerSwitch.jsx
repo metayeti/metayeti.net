@@ -9,7 +9,7 @@
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  File:         components/ui/RockerSwitch.jsx
-//  Description:  Rocker switch component.
+//  Description:  Rocker switch UI component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01

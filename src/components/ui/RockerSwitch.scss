@@ -9,7 +9,7 @@
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  File:         components/ui/RockerSwitch.scss
-//  Description:  Rocker switch component styles.
+//  Description:  Rocker switch UI component styles.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
@@ -29,6 +29,11 @@
 	touch-action: manipulation;
 	cursor: pointer;
 	background-color: var(--color-rocker-background);
+
+	&:hover {
+		transition: outline 130ms ease-in-out;
+		outline: 2px solid orange;
+	}
 
 	&__inner {
 		position: absolute;
@@ -121,7 +126,6 @@
 	}
 
 	// toggled state
-
 	&--toggled {
 		.rocker-switch__side--left {
 			.rocker-switch__depth--left {

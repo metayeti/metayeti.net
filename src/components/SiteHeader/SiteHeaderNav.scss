@@ -91,6 +91,46 @@
 		}
 	}
 
+	&__link-text-container {
+		display: inline-block;
+		position: relative;
+		white-space: nowrap;
+	}
+
+	&__link-text--static {
+		display: inline-block;
+		visibility: hidden;
+		user-select: none;
+		pointer-events: none;
+		white-space: nowrap;
+	}
+
+	&__link-text {
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		min-width: 1em;
+		white-space: nowrap;
+	}
+
+	&__link-caret {
+		display: inline-block;
+		margin-left: 2px;
+		animation: nav-link-caret-blink 0.6s infinite;
+
+		@keyframes nav-link-caret-blink {
+			0%,
+			50% {
+				opacity: 1;
+			}
+			51%,
+			100% {
+				opacity: 0;
+			}
+		}
+	}
+
 	// -- side area --
 	&__side {
 		display: flex;
