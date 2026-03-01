@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-28
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -39,7 +39,7 @@ function getTimeOfDay() {
 export default function SiteHeaderBanner() {
 	const timeOfDay = getTimeOfDay();
 	return (
-		<div className="site-header-banner">
+		<header className="site-header-banner">
 			<div
 				className={`site-header-banner__background site-header-banner__background--${timeOfDay} pixelated`}
 			></div>
@@ -48,6 +48,6 @@ export default function SiteHeaderBanner() {
 				{/*<h1 className="site-header-banner__branding-title">metayeti.net</h1>*/}
 			</div>
 			<div className="site-header-banner__scanlines"></div>
-		</div>
+		</header>
 	);
 }

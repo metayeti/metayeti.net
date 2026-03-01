@@ -22,8 +22,12 @@
 //
 
 .site-header-nav {
+	position: sticky;
+	top: 0;
 	height: 60px;
 	background-color: var(--color-header-nav-bg);
+	box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.2);
+	z-index: 99;
 
 	&__main {
 		display: flex;
@@ -48,13 +52,16 @@
 		align-items: center;
 		height: 100%;
 		padding: 0 32px;
-		background: var(--color-header-nav-bg);
+		background-color: var(--color-header-nav-bg);
 		color: var(--color-header-nav-fg);
 		font-family: var(--font-button);
 		font-size: 0.8rem;
 		font-weight: 600;
 		text-decoration: none;
 		text-transform: uppercase;
+		transition:
+			background-color 130ms ease-in-out,
+			color 130ms ease-in-out;
 
 		&--active,
 		&:hover {

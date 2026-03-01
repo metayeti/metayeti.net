@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-10
-//  Updated:      2026-02-28
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,17 +21,16 @@
 //  TODO:         -
 //
 
-import './SiteHeader.scss';
 import SiteHeaderBanner from './SiteHeaderBanner';
 import SiteHeaderSocial from './SiteHeaderSocial';
 import SiteHeaderNav from './SiteHeaderNav';
 
 export default function SiteHeader() {
 	return (
-		<header className="site-header">
+		<>
 			<SiteHeaderBanner />
 			<SiteHeaderSocial />
 			<SiteHeaderNav />
-		</header>
+		</>
 	);
 }
