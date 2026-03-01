@@ -33,8 +33,11 @@ function RootLayout() {
 	return (
 		<>
 			<SiteHeader />
-			<main>
+			<main className="main-content">
 				<Outlet />
+				{Array.from({ length: 60 }).map((_, i) => (
+					<br key={i} />
+				))}
 			</main>
 			<SiteFooter />
 		</>

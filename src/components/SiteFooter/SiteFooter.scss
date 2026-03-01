@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-27
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,4 +22,62 @@
 //
 
 .site-footer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: var(--color-footer-bg);
+	color: var(--color-footer-fg);
+	font-family: var(--font-base);
+	font-size: 0.8em;
+	height: 300px;
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+
+		@media (width < 1008px) {
+			align-items: center;
+		}
+
+		span,
+		a {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: auto;
+		}
+	}
+
+	&__react-link {
+		color: var(--color-react-blue);
+		text-decoration: none;
+		text-underline-offset: 4px;
+		&:hover {
+			text-decoration: underline;
+
+			.site-footer__react-icon {
+				animation: react-icon-bounce 0.7s ease-in-out infinite;
+				@keyframes react-icon-bounce {
+					0%,
+					100% {
+						transform: translateX(-1px);
+					}
+					50% {
+						transform: translateX(1px);
+					}
+				}
+			}
+		}
+	}
+
+	&__react-icon {
+		display: inline-block;
+		background-image: url('@/assets/images/react.svg');
+		width: 22px;
+		height: 22px;
+		margin: 0 5px;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
 }

@@ -26,7 +26,16 @@ import './SiteFooter.scss';
 function SiteFooter() {
 	return (
 		<footer className="site-footer">
-			<p>&copy; 2026 metayeti.net. All rights reserved.</p>
+			<div className="site-footer__main wrapped">
+				<span>Created by Danijel Durakovic</span>
+				<span>
+					Powered by
+					<a href="https://react.dev" target="_blank" className="site-footer__react-link">
+						<div className="site-footer__react-icon"></div> React
+					</a>
+				</span>
+				<span>&copy; {new Date().getFullYear()} metayeti.net | All rights reserved.</span>
+			</div>
 		</footer>
 	);
 }

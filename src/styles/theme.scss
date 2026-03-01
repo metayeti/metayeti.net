@@ -49,7 +49,16 @@
 	--color-rocker-dark: rgb(128, 6, 6);
 	--color-rocker-light: rgb(190, 13, 13);
 	--color-rocker-symbol: rgba(255, 255, 255, 0.5);
-	--color-rocker-background: #141414;
+	--color-rocker-bg: #141414;
+
+	// content
+	--color-content-bg: #1c1f22;
+	--color-content-fg: #c4d2dd;
+
+	// footer
+	--color-footer-bg: #171a1d;
+	--color-footer-fg: #505e69;
+	--color-react-blue: #61dafb;
 }
 
 // -- Alternate Theme (light) --

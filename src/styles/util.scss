@@ -33,7 +33,7 @@
 		$breakpoint: 960px + $pad * 2;
 
 		@media (width < $breakpoint) {
-			width: auto;
+			width: 100%;
 			padding: 0 $pad;
 		}
 	}
