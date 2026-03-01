@@ -18,7 +18,7 @@
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
-//  TODO:         -
+//  TODO:         Remove console.log in final version.
 //
 
 import SiteHeader from '@/components/SiteHeader';
@@ -30,6 +30,8 @@ import Projects from '@/routes/Projects';
 import Blog from '@/routes/Blog';
 import About from '@/routes/About';
 import NotFound from './routes/NotFound';
+
+console.log('Current mode:', import.meta.env.MODE);
 
 function RootLayout() {
 	return (
