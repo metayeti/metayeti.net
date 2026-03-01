@@ -21,6 +21,8 @@
 //  TODO:         -
 //
 
+@use '@/styles/responsive';
+
 .site-header-social {
 	height: 32px;
 	background-color: var(--color-header-social-bg);
@@ -31,7 +33,11 @@
 		justify-content: end;
 		align-items: center;
 		flex-direction: row;
-		gap: 2px;
+		gap: 1px;
+
+		@include responsive.size('sm') {
+			gap: 2px;
+		}
 	}
 	&__link {
 		position: relative;

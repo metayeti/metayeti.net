@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      n/a
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,7 +23,7 @@
 
 @use 'sass:map';
 
-// breakpoints (same as Tailwind uses)
+/// Breakpoints (same as Tailwind uses).
 $breakpoints: (
 	'sm': 640px,
 	'md': 768px,
@@ -32,20 +32,20 @@ $breakpoints: (
 	'2xl': 1536px,
 );
 
-/// Responsive breakpoint mixin to use site-wide.
+/// Responsive breakpoint mixin.
 /// @param {String} $size - Breakpoint size (sm, md, lg, xl, or 2xl)
 /// @content Styles to apply at this breakpoint and above.
 /// @example scss
 ///   .element {
 ///     width: 100%;
 ///
-///     @include screen('md') {
+///     @include size('md') {
 ///       width: 50%;
 ///     }
 ///   }
-@mixin screen($size) {
+@mixin size($size) {
 	@if map.has-key($breakpoints, $size) {
-		@media (min-width: #{map.get($breakpoint, $size)}) {
+		@media (width >= #{map.get($breakpoints, $size)}) {
 			@content;
 		}
 	} @else {
@@ -65,7 +65,7 @@ $breakpoints: (
 ///   }
 @mixin respond($styles) {
 	@each $size, $properties in $styles {
-		@include screen($size) {
+		@include size($size) {
 			@each $property, $value in $properties {
 				#{$property}: $value;
 			}

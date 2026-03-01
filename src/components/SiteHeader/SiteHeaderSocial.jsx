@@ -34,7 +34,7 @@ import './SiteHeaderSocial.scss';
 export default function SiteHeaderSocial() {
 	return (
 		<div className="site-header-social">
-			<div className="site-header-social__links wrapped">
+			<div className="site-header-social__links wrapped wrapped--sm-pad">
 				<a href="https://github.com/metayeti" target="_blank" className="site-header-social__link">
 					<IconGitHub />
 					<div className="site-header-social__link-tooltip">GitHub</div>
