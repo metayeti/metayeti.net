@@ -21,25 +21,41 @@
 //  TODO:         -
 //
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './SiteHeaderNav.scss';
 
 export default function SiteHeaderNav() {
+	const getLinkClassName = ({ isActive }) =>
+		`site-header-nav__link ${isActive ? 'site-header-nav__link--active' : ''}`;
+
 	return (
 		<nav className="site-header-nav">
 			<div className="site-header-nav__main wrapped wrapped--no-pad">
-				<ul className="site-header-nav__links">
-					<li>
-						<Link to="/" className="site-header-nav__link">
-							Home
-						</Link>
-					</li>
-					<li>
-						<Link to="/about" className="site-header-nav__link">
-							About
-						</Link>
-					</li>
-				</ul>
+				<div className="site-header-nav__buttons">
+					<ul className="site-header-nav__links">
+						<li>
+							<NavLink to="/" className={getLinkClassName}>
+								Home
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/projects" className={getLinkClassName}>
+								Projects
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/blog" className={getLinkClassName}>
+								Blog
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/about" className={getLinkClassName}>
+								About
+							</NavLink>
+						</li>
+					</ul>
+				</div>
+				<div className="site-header-nav__side">abcd</div>
 			</div>
 		</nav>
 	);

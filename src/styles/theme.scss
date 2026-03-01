@@ -33,8 +33,13 @@
 	// header
 	--color-header-social-bg: #16191d;
 	--color-header-social-fg: #8396a5;
-	--color-header-social-hl: #e5ebf7;
+	--color-header-social-fg--hl: #e5ebf7;
 	--color-header-nav-bg: #1f2429;
+	--color-header-nav-bg--hl: #16191d;
+	--color-header-nav-fg: #96a0b1;
+	--color-header-nav-fg--hl: #e5ebf7;
+	--color-header-nav-notch: #373a3f;
+	//--gradient-header-nav-button: linear-gradient(180deg, rgba(69, 74, 84, 1) 0%, rgba(31, 36, 41, 1) 50%);
 }
 
 // -- Alternate Theme (light) --

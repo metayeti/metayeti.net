@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-28
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,6 +22,76 @@
 //
 
 .site-header-nav {
-	height: 65px;
+	height: 60px;
 	background-color: var(--color-header-nav-bg);
+
+	&__main {
+		display: flex;
+		flex-direction: row;
+		height: 100%;
+	}
+
+	// -- buttons area --
+	&__buttons {
+		flex-grow: 1;
+	}
+	&__links {
+		display: flex;
+		flex-direction: row;
+		list-style: none;
+		height: 100%;
+	}
+	&__link {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 100%;
+		padding: 0 32px;
+		background: var(--color-header-nav-bg);
+		color: var(--color-header-nav-fg);
+		font-family: var(--font-button);
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		&--active,
+		&:hover {
+			background-color: var(--color-header-nav-bg--hl);
+			color: var(--color-header-nav-fg--hl);
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 1px;
+			height: 15px;
+			background-color: var(--color-header-nav-notch);
+		}
+		li:first-child &::before {
+			display: none;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 6px;
+			height: 6px;
+			left: 20px;
+			transform: translate(-50%);
+			border-radius: 50%;
+			background-color: #444;
+		}
+		&--active::after {
+			background-color: lime;
+			box-shadow: 0 0 10px 2px lime;
+		}
+	}
+
+	// -- side area --
+	&__side {
+	}
 }
