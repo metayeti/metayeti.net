@@ -31,6 +31,8 @@
 	--color-global-bg: #171a1d;
 
 	// header
+	--color-header-banner-left: #292130;
+	--color-header-banner-right: #b9e6fb;
 	--color-header-social-bg: #16191d;
 	--color-header-social-fg: #758794;
 	--color-header-social-fg--hl: #e5ebf7;
@@ -43,6 +45,7 @@
 	--color-header-nav-indicator: #4e5c66;
 	--color-header-nav-indicator--hl: orange;
 	--color-header-nav-notch: #373a3f;
+	--shadow-header-nav: 0 1px 6px 3px rgba(0, 0, 0, 0.1);
 
 	// special
 	--color-rocker-border: rgb(133, 3, 3);
@@ -66,5 +69,11 @@
 :root.light {
 	// global
 	--color-global-bg: #fdfdfd;
+
+	// header
+	--shadow-header-nav: 0 1px 6px 4px rgba(0, 0, 0, 0.25);
+
+	// content
 	--color-content-bg: #fff;
+	--color-content-fg: #000;
 }
