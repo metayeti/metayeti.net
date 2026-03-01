@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-01
+//  Updated:      2026-03-02
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -124,7 +124,18 @@ function NavLinkButton({ to, label }) {
 }
 
 export default function SiteHeaderNav() {
-	const [isLit, setIsLit] = useState(false);
+	const [isLit, setIsLit] = useState(() => {
+		if (typeof window !== 'undefined') {
+			const saved = localStorage.getItem('lightmode');
+			return saved === '1';
+		}
+		return false;
+	});
+
+	useEffect(() => {
+		document.documentElement.classList.toggle('light', isLit);
+		localStorage.setItem('lightmode', isLit ? '1' : '0');
+	}, [isLit]);
 
 	return (
 		<nav className="site-header-nav">
@@ -141,7 +152,7 @@ export default function SiteHeaderNav() {
 						<IconFlame />
 					</div>
 					<div className="site-header-nav__side-switch">
-						<RockerSwitch onSwitchToggle={setIsLit} />
+						<RockerSwitch initialToggled={isLit} onSwitchToggle={setIsLit} />
 					</div>
 				</div>
 			</div>

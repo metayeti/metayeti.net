@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-01
+//  Updated:      2026-03-02
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,18 +21,24 @@
 //  TODO:         -
 //
 
+import { useEffect } from 'react';
 import { useState, useImperativeHandle, forwardRef } from 'react';
 
 import './RockerSwitch.scss';
 
-const RockerSwitch = forwardRef(function RockerSwitch({ onSwitchToggle }, ref) {
-	const [isToggled, setIsToggled] = useState(false);
+const RockerSwitch = forwardRef(function RockerSwitch({ onSwitchToggle, initialToggled = false }, ref) {
+	const [isToggled, setIsToggled] = useState(initialToggled);
 
+	/*
 	useImperativeHandle(ref, () => ({
 		manualSwitch: () => {
 			setIsToggled(true);
 		},
 	}));
+	*/
+	useEffect(() => {
+		setIsToggled(initialToggled);
+	}, [initialToggled]);
 
 	const handleClick = () => {
 		const next = !isToggled;
