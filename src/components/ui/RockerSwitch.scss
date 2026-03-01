@@ -32,7 +32,7 @@
 
 	&:hover {
 		transition: outline 130ms ease-in-out;
-		outline: 2px solid orange;
+		outline: 2px solid var(--color-rocker-outline--hl);
 	}
 
 	&__inner {

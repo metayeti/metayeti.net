@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-27
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -61,6 +61,7 @@
 	}
 
 	&__branding {
+		position: relative;
 		&-yeti {
 			position: absolute;
 			width: 220px;
@@ -83,6 +84,19 @@
 			@media (width < 900px) {
 				display: none;
 			}
+		}
+		&-title {
+			position: absolute;
+			top: 0;
+			left: 0;
+			line-height: 82px;
+			font-family: var(--font-code);
+			font-weight: 400;
+			font-size: 22px;
+			color: #fff;
+		}
+		&-hl {
+			color: rgb(132, 111, 146);
 		}
 	}
 

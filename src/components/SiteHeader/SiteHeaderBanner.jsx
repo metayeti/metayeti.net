@@ -46,6 +46,10 @@ export default function SiteHeaderBanner() {
 			<div className="site-header-banner__branding wrapped">
 				<div className="site-header-banner__branding-yeti pixelated"></div>
 				{/*<h1 className="site-header-banner__branding-title">metayeti.net</h1>*/}
+				<h1 className="site-header-banner__branding-title">
+					<span className="site-header-banner__branding-hl">.&#47;meta</span>
+					<span>yeti.net_</span>
+				</h1>
 			</div>
 			<div className="site-header-banner__scanlines"></div>
 		</header>
