@@ -32,14 +32,24 @@
 
 	// header
 	--color-header-social-bg: #16191d;
-	--color-header-social-fg: #8396a5;
+	--color-header-social-fg: #758794;
 	--color-header-social-fg--hl: #e5ebf7;
 	--color-header-nav-bg: #1f2429;
 	--color-header-nav-bg--hl: #16191d;
 	--color-header-nav-fg: #96a0b1;
 	--color-header-nav-fg--hl: #e5ebf7;
+	--color-header-nav-light: #444;
+	--color-header-nav-light--hl: lime;
+	--color-header-nav-indicator: #4e5c66;
+	--color-header-nav-indicator--hl: orange;
 	--color-header-nav-notch: #373a3f;
-	//--gradient-header-nav-button: linear-gradient(180deg, rgba(69, 74, 84, 1) 0%, rgba(31, 36, 41, 1) 50%);
+
+	// special
+	--color-rocker-border: rgb(133, 3, 3);
+	--color-rocker-dark: rgb(128, 6, 6);
+	--color-rocker-light: rgb(190, 13, 13);
+	--color-rocker-symbol: rgba(255, 255, 255, 0.5);
+	--color-rocker-background: #141414;
 }
 
 // -- Alternate Theme (light) --

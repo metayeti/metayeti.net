@@ -21,12 +21,18 @@
 //  TODO:         -
 //
 
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
+import RockerSwitch from '@/components/ui/RockerSwitch';
+import IconFlame from '@/components/icons/IconFlame';
 import './SiteHeaderNav.scss';
 
 export default function SiteHeaderNav() {
+	const [isLit, setIsLit] = useState(false);
+
 	const getLinkClassName = ({ isActive }) =>
-		`site-header-nav__link ${isActive ? 'site-header-nav__link--active' : ''}`;
+		clsx('site-header-nav__link', isActive && 'site-header-nav__link--active');
 
 	return (
 		<nav className="site-header-nav">
@@ -55,7 +61,14 @@ export default function SiteHeaderNav() {
 						</li>
 					</ul>
 				</div>
-				<div className="site-header-nav__side">abcd</div>
+				<div className="site-header-nav__side">
+					<div className={clsx('site-header-nav__side-icon', isLit && 'site-header-nav__side-icon--active')}>
+						<IconFlame />
+					</div>
+					<div className="site-header-nav__side-switch">
+						<RockerSwitch onSwitchToggle={setIsLit} />
+					</div>
+				</div>
 			</div>
 		</nav>
 	);

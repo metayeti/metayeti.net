@@ -51,7 +51,7 @@
 		background: var(--color-header-nav-bg);
 		color: var(--color-header-nav-fg);
 		font-family: var(--font-button);
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		font-weight: 600;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -83,15 +83,36 @@
 			left: 20px;
 			transform: translate(-50%);
 			border-radius: 50%;
-			background-color: #444;
+			background-color: var(--color-header-nav-light);
 		}
 		&--active::after {
-			background-color: lime;
-			box-shadow: 0 0 10px 2px lime;
+			background-color: var(--color-header-nav-light--hl);
+			box-shadow: 0 0 10px 2px var(--color-header-nav-light--hl);
 		}
 	}
 
 	// -- side area --
 	&__side {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
+
+		&-icon {
+			width: 24px;
+			height: 24px;
+			color: var(--color-header-nav-indicator);
+			transition: color 100ms ease-in-out;
+
+			&--active {
+				color: var(--color-header-nav-indicator--hl);
+			}
+		}
+		&-switch {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			height: 100%;
+		}
 	}
 }

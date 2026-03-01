@@ -21,14 +21,15 @@
 //  TODO:         -
 //
 
-import IconGitHub from '../icons/IconGitHub';
-import IconFacebook from '../icons/IconFacebook';
-import IconLinkedIn from '../icons/IconLinkedIn';
-import IconX from '../icons/IconX';
-import IconSteam from '../icons/IconSteam';
-import IconItchIo from '../icons/IconItchIo';
-import IconYouTube from '../icons/IconYouTube';
-import IconSoundCloud from '../icons/IconSoundCloud';
+import IconGitHub from '@/components/icons/IconGitHub';
+import IconFacebook from '@/components/icons/IconFacebook';
+import IconLinkedIn from '@/components/icons/IconLinkedIn';
+import IconX from '@/components/icons/IconX';
+import IconSteam from '@/components/icons/IconSteam';
+import IconItchIo from '@/components/icons/IconItchIo';
+import IconYouTube from '@/components/icons/IconYouTube';
+import IconSoundCloud from '@/components/icons/IconSoundCloud';
+
 import './SiteHeaderSocial.scss';
 
 export default function SiteHeaderSocial() {
