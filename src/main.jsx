@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      n/a
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -25,8 +25,7 @@ import '@/styles/main.scss';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
-import App from '@/App.jsx';
+import App from '@/App';
 
 createRoot(document.getElementById('metayeti')).render(
 	<StrictMode>

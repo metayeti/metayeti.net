@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-02-28
+//  Updated:      2026-03-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,8 +21,26 @@
 //  TODO:         -
 //
 
+import { Link } from 'react-router-dom';
 import './SiteHeaderNav.scss';
 
 export default function SiteHeaderNav() {
-	return <nav className="site-header-nav"></nav>;
+	return (
+		<nav className="site-header-nav">
+			<div className="site-header-nav__main wrapped wrapped--no-pad">
+				<ul className="site-header-nav__links">
+					<li>
+						<Link to="/" className="site-header-nav__link">
+							Home
+						</Link>
+					</li>
+					<li>
+						<Link to="/about" className="site-header-nav__link">
+							About
+						</Link>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	);
 }
