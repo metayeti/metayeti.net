@@ -8,8 +8,8 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/routes/About.jsx
-//  Description:  About page component.
+//  File:         src/routes/Projects.jsx
+//  Description:  Projects page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
@@ -21,11 +21,11 @@
 //  TODO:         -
 //
 
-export default function About() {
+export default function Projects() {
 	return (
 		<div className="wrapped">
-			<h1>About</h1>
-			<p>This is the about page.</p>
+			<h1>Projects</h1>
+			<p>This is the projects page.</p>
 		</div>
 	);
 }

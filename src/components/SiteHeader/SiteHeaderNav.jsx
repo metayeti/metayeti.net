@@ -115,7 +115,7 @@ function NavLinkButton({ to, label }) {
 						)}
 					>
 						{displayText}
-						{isHovering && <span className="site-header-nav__link-caret">|</span>}
+						{isHovering && <span className="site-header-nav__link-caret">_</span>}
 					</span>
 				</span>
 			</NavLink>

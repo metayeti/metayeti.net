@@ -8,8 +8,8 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/routes/About.jsx
-//  Description:  About page component.
+//  File:         src/routes/Blog.jsx
+//  Description:  Blog page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
@@ -21,11 +21,11 @@
 //  TODO:         -
 //
 
-export default function About() {
+export default function Blog() {
 	return (
 		<div className="wrapped">
-			<h1>About</h1>
-			<p>This is the about page.</p>
+			<h1>Blog</h1>
+			<p>This is the blog page.</p>
 		</div>
 	);
 }

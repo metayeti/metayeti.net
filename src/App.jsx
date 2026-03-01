@@ -26,6 +26,8 @@ import SiteFooter from '@/components/SiteFooter';
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Home from '@/routes/Home';
+import Projects from '@/routes/Projects';
+import Blog from '@/routes/Blog';
 import About from '@/routes/About';
 import NotFound from './routes/NotFound';
 
@@ -52,6 +54,18 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <Home />,
+			},
+			{
+				path: '/about',
+				element: <About />,
+			},
+			{
+				path: '/projects',
+				element: <Projects />,
+			},
+			{
+				path: '/blog',
+				element: <Blog />,
 			},
 			{
 				path: '/about',
