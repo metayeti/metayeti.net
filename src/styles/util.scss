@@ -1,0 +1,59 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         util.scss
+//  Description:  Utility classes.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-03-01
+//  Updated:      2026-03-01
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+.pixelated {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+.wrapped {
+	@mixin wrapped-responsive($pad) {
+		$breakpoint: 960px + $pad * 2;
+
+		@media (width < $breakpoint) {
+			width: auto;
+			padding: 0 $pad;
+		}
+	}
+
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+
+	// default
+	&:not(&--sm-pad):not(&--no-pad) {
+		@include wrapped-responsive(20px);
+	}
+
+	// small padding
+	&--sm-pad {
+		@include wrapped-responsive(7px);
+	}
+
+	// no padding
+	&--no-pad {
+		@include wrapped-responsive(0);
+	}
+}

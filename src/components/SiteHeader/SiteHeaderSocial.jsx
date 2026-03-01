@@ -33,7 +33,7 @@ import './SiteHeaderSocial.scss';
 
 export default function SiteHeaderSocial() {
 	return (
-		<div className="site-header-social">
+		<nav className="site-header-social">
 			<div className="site-header-social__links wrapped wrapped--sm-pad">
 				<a href="https://github.com/metayeti" target="_blank" className="site-header-social__link">
 					<IconGitHub />
@@ -74,6 +74,6 @@ export default function SiteHeaderSocial() {
 					</div>
 				</a>
 			</div>
-		</div>
+		</nav>
 	);
 }
