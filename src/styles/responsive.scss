@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-01
+//  Updated:      2026-03-02
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,11 +23,12 @@
 
 @use 'sass:map';
 
-/// Breakpoints (same as Tailwind uses).
+/// Responsive breakpoints. These should be used as much as possible for
+/// site-wide consistency.
 $breakpoints: (
 	'sm': 640px,
 	'md': 768px,
-	'lg': 1024px,
+	'lg': 1060px,
 	'xl': 1280px,
 	'2xl': 1536px,
 );

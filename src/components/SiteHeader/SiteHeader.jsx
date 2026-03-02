@@ -25,8 +25,6 @@ import SiteHeaderBanner from './SiteHeaderBanner';
 import SiteHeaderSocial from './SiteHeaderSocial';
 import SiteHeaderNav from './SiteHeaderNav';
 
-import './SiteHeader.scss';
-
 export default function SiteHeader() {
 	return (
 		<>
