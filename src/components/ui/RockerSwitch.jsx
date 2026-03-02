@@ -22,20 +22,13 @@
 //
 
 import { useEffect } from 'react';
-import { useState, useImperativeHandle, forwardRef } from 'react';
+import { useState, forwardRef } from 'react';
 
 import './RockerSwitch.scss';
 
 const RockerSwitch = forwardRef(function RockerSwitch({ onSwitchToggle, initialToggled = false }, ref) {
 	const [isToggled, setIsToggled] = useState(initialToggled);
 
-	/*
-	useImperativeHandle(ref, () => ({
-		manualSwitch: () => {
-			setIsToggled(true);
-		},
-	}));
-	*/
 	useEffect(() => {
 		setIsToggled(initialToggled);
 	}, [initialToggled]);
