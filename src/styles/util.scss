@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-01
+//  Updated:      2026-03-02
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -29,6 +29,17 @@
 }
 
 .wrapped {
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+	@media (width < 960px) {
+		width: auto;
+		padding: 0 15px;
+	}
+
+	//todo: implement --sm-pad, --no-pad
+
+	/*
 	@mixin wrapped-responsive($pad) {
 		$breakpoint: 960px + $pad * 2;
 
@@ -56,4 +67,5 @@
 	&--no-pad {
 		@include wrapped-responsive(0);
 	}
+	*/
 }

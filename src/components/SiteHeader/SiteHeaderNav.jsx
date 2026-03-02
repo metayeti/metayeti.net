@@ -133,7 +133,7 @@ export default function SiteHeaderNav() {
 	});
 
 	useEffect(() => {
-		document.documentElement.classList.toggle('light', isLit);
+		document.documentElement.classList.toggle('lightmode', isLit);
 		localStorage.setItem('lightmode', isLit ? '1' : '0');
 	}, [isLit]);
 

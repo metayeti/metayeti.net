@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-01
+//  Updated:      2026-03-02
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -39,7 +39,7 @@ function getTimeOfDay() {
 export default function SiteHeaderBanner() {
 	const timeOfDay = getTimeOfDay();
 	return (
-		<header className="site-header-banner">
+		<div className="site-header-banner">
 			<div
 				className={`site-header-banner__background site-header-banner__background--${timeOfDay} pixelated`}
 			></div>
@@ -52,6 +52,6 @@ export default function SiteHeaderBanner() {
 				</h1>
 			</div>
 			<div className="site-header-banner__scanlines"></div>
-		</header>
+		</div>
 	);
 }
