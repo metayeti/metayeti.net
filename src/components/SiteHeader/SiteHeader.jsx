@@ -30,7 +30,7 @@ import './SiteHeader.scss';
 export default function SiteHeader() {
 	return (
 		<>
-			<header class="site-header">
+			<header className="site-header">
 				<SiteHeaderBanner />
 				<SiteHeaderSocial />
 			</header>

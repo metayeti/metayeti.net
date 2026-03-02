@@ -21,6 +21,7 @@
 //  TODO:         -
 //
 
+/// Ensures pixel art stays pixelated. Add to any element displaying an image.
 .pixelated {
 	image-rendering: -moz-crisp-edges;
 	image-rendering: -webkit-crisp-edges;
@@ -28,44 +29,35 @@
 	image-rendering: pixelated;
 }
 
+/// A centered, fixed-width container that collapses to full-width on smaller screens.
+/// On underflow, medium padding is applied to each side by default.
+///
+/// @modifier --sm-pad             Applies small padding to each side on underflow
+/// @modifier --no-pad             Applies no padding to each side on underflow
+/// @modifier --sm-pad-right-only  Same as --sm-pad, but only applies padding to the right side
 .wrapped {
+	$wrap-width: 1024px;
+	$autosize-on: 1060px;
+	$normal-pad: 20px;
+	$sm-pad: 10px;
+
 	position: relative;
-	width: 960px;
+	width: $wrap-width;
 	margin: 0 auto;
-	@media (width < 960px) {
+	@media (width < $autosize-on) {
 		width: auto;
-		padding: 0 15px;
-	}
+		padding: 0 $normal-pad;
 
-	//todo: implement --sm-pad, --no-pad
+		&--no-pad {
+			padding: 0;
+		}
 
-	/*
-	@mixin wrapped-responsive($pad) {
-		$breakpoint: 960px + $pad * 2;
+		&--sm-pad {
+			padding: 0 $sm-pad;
+		}
 
-		@media (width < $breakpoint) {
-			width: 100%;
-			padding: 0 $pad;
+		&--sm-pad-right-only {
+			padding: 0 $sm-pad 0 0;
 		}
 	}
-
-	position: relative;
-	width: 960px;
-	margin: 0 auto;
-
-	// default
-	&:not(&--sm-pad):not(&--no-pad) {
-		@include wrapped-responsive(20px);
-	}
-
-	// small padding
-	&--sm-pad {
-		@include wrapped-responsive(7px);
-	}
-
-	// no padding
-	&--no-pad {
-		@include wrapped-responsive(0);
-	}
-	*/
 }

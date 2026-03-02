@@ -139,7 +139,7 @@ export default function SiteHeaderNav() {
 
 	return (
 		<nav className="site-header-nav">
-			<div className="site-header-nav__main wrapped wrapped--no-pad">
+			<div className="site-header-nav__main wrapped wrapped--sm-pad-right-only">
 				<div className="site-header-nav__buttons">
 					<ul className="site-header-nav__links">
 						{LINKS.map((link) => (
