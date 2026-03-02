@@ -67,28 +67,6 @@
 
 // -- Alternate Theme (light) --
 :root.light {
-	// global
-	--color-global-bg: #fdfdfd;
-
-	// header
-	--color-header-banner-left: #292130;
-	--color-header-banner-right: #b9e6fb;
-	--color-header-social-bg: #32383d;
-	--color-header-social-bg--hl: #262829;
-	--color-header-social-fg: #c0c9c9;
-	--color-header-social-fg--hl: #fff;
-	--color-header-nav-bg: #dfe3e7;
-	--color-header-nav-bg--hl: #424b55;
-	--color-header-nav-fg: #77797c;
-	--color-header-nav-fg--hl: #ececec;
-	--color-header-nav-light: #808080;
-	--color-header-nav-light--hl: lime;
-	--color-header-nav-notch: #c6c7ca;
-	--shadow-header-nav: 0 0 0 1px rgba(0, 0, 0, 0.2);
-
-	// special
-	--color-rocker-bg: #313131;
-
 	// content
 	--color-content-bg: #ffffff;
 	--color-content-fg: #000;
