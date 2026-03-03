@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-02
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -37,8 +37,7 @@ const LINKS = [
 
 function NavLinkButton({ to, label }) {
 	const [displayText, setDisplayText] = useState(label);
-	const [isAnimating, setIsAnimating] = useState(false);
-	const [isHovering, setIsHovering] = useState(false);
+	const [isTyping, setIsTyping] = useState(false);
 	const animationTimeoutRef = useRef(null);
 	const charIndexRef = useRef(0);
 
@@ -53,18 +52,16 @@ function NavLinkButton({ to, label }) {
 	}, []);
 
 	const handleMouseEnter = () => {
-		setIsHovering(true);
+		setIsTyping(true);
 
 		if (animationTimeoutRef.current) {
 			clearTimeout(animationTimeoutRef.current);
 		}
 
-		setIsAnimating(true);
 		charIndexRef.current = 0;
 
 		// prepare for typing by clearing text
 		setDisplayText('');
-
 		// start animation
 		typeCharacters();
 	};
@@ -79,8 +76,12 @@ function NavLinkButton({ to, label }) {
 				index++;
 				animationTimeoutRef.current = setTimeout(typeNext, 70);
 			} else {
-				// Typing complete, but keep caret visible while hovering
-				setIsAnimating(false);
+				// typing complete
+				// cancel anim after a timeout (friendlier for mobile users)
+				setTimeout(() => {
+					setIsTyping(false);
+					setDisplayText(label);
+				}, 1200);
 			}
 		};
 
@@ -88,12 +89,11 @@ function NavLinkButton({ to, label }) {
 	};
 
 	const handleMouseLeave = () => {
-		setIsHovering(false);
+		setIsTyping(false);
 		if (animationTimeoutRef.current) {
 			clearTimeout(animationTimeoutRef.current);
 		}
 		setDisplayText(label);
-		setIsAnimating(false);
 	};
 
 	return (
@@ -108,14 +108,9 @@ function NavLinkButton({ to, label }) {
 					<span className="site-header-nav__link-text--static" aria-hidden="true">
 						{label}
 					</span>
-					<span
-						className={clsx(
-							'site-header-nav__link-text',
-							isAnimating && 'site-header-nav__link-text--active',
-						)}
-					>
+					<span className={clsx('site-header-nav__link-text')}>
 						{displayText}
-						{isHovering && <span className="site-header-nav__link-caret">_</span>}
+						{isTyping && <span className="site-header-nav__link-caret">_</span>}
 					</span>
 				</span>
 			</NavLink>
