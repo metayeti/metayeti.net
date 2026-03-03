@@ -13,13 +13,15 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-02
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
 //  TODO:         -
 //
+
+@use '@/styles/responsive.scss';
 
 .site-header-nav {
 	position: sticky;
@@ -33,6 +35,7 @@
 		display: flex;
 		flex-direction: row;
 		height: 100%;
+		gap: 10px;
 	}
 
 	// -- buttons area --
@@ -44,18 +47,27 @@
 		flex-direction: row;
 		list-style: none;
 		height: 100%;
+
+		> li {
+			flex-grow: 1;
+		}
+		@include responsive.size('sm') {
+			> li {
+				flex-grow: 0;
+			}
+		}
 	}
 	&__link {
 		position: relative;
 		display: flex;
 		flex-direction: row;
+		justify-content: center;
 		align-items: center;
 		height: 100%;
-		padding: 0 32px;
 		background-color: var(--color-header-nav-bg);
 		color: var(--color-header-nav-fg);
 		font-family: var(--font-button);
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		font-weight: 600;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -89,8 +101,10 @@
 			position: absolute;
 			width: 6px;
 			height: 6px;
-			left: 20px;
-			transform: translate(-50%);
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			bottom: 13px;
 			border-radius: 50%;
 			background-color: var(--color-header-nav-light);
 		}
@@ -98,44 +112,56 @@
 			background-color: var(--color-header-nav-light--hl);
 			box-shadow: 0 0 10px 2px var(--color-header-nav-light--hl);
 		}
-	}
 
-	&__link-text-container {
-		display: inline-block;
-		position: relative;
-		white-space: nowrap;
-	}
+		&-text-container {
+			display: inline-block;
+			position: relative;
+			white-space: nowrap;
+			padding-bottom: 7px;
+		}
+		&-text {
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			min-width: 1em;
+			white-space: nowrap;
 
-	&__link-text--static {
-		display: inline-block;
-		visibility: hidden;
-		user-select: none;
-		pointer-events: none;
-		white-space: nowrap;
-	}
-
-	&__link-text {
-		display: inline-block;
-		position: absolute;
-		left: 0;
-		top: 0;
-		min-width: 1em;
-		white-space: nowrap;
-	}
-
-	&__link-caret {
-		display: inline-block;
-		margin-left: 2px;
-		animation: nav-link-caret-blink 0.6s infinite;
-
-		@keyframes nav-link-caret-blink {
-			0%,
-			50% {
-				opacity: 1;
+			&--static {
+				display: inline-block;
+				visibility: hidden;
+				user-select: none;
+				pointer-events: none;
+				white-space: nowrap;
 			}
-			51%,
-			100% {
-				opacity: 0;
+		}
+		&-caret {
+			display: inline-block;
+			margin-left: 2px;
+			animation: nav-link-caret-blink 0.6s infinite;
+
+			@keyframes nav-link-caret-blink {
+				0%,
+				50% {
+					opacity: 1;
+				}
+				51%,
+				100% {
+					opacity: 0;
+				}
+			}
+		}
+
+		@include responsive.size('sm') {
+			padding: 0 32px;
+			font-size: 0.9rem;
+			&-text-container {
+				padding-bottom: 0;
+			}
+			&::after {
+				bottom: auto;
+				right: auto;
+				left: 17px;
 			}
 		}
 	}
