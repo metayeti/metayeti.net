@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-02
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -26,6 +26,7 @@
 /// Responsive breakpoints. These should be used as much as possible for
 /// site-wide consistency.
 $breakpoints: (
+	'xs': 500px,
 	'sm': 640px,
 	'md': 768px,
 	'lg': 1060px,

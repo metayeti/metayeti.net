@@ -13,13 +13,15 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-02
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
 //  TODO:         -
 //
+
+@use '@/styles/responsive.scss';
 
 .site-header-banner {
 	position: relative;
@@ -88,12 +90,22 @@
 		&-title {
 			position: absolute;
 			top: 0;
-			left: 0;
+			left: -5px;
+			padding-left: 10px;
 			line-height: 82px;
 			font-family: var(--font-code);
 			font-weight: 400;
-			font-size: 22px;
+			left: -5px;
+			font-size: clamp(13px, 4vw, 22px);
 			color: #fff;
+
+			@include responsive.size('xs') {
+				left: 0;
+				font-size: 22px;
+			}
+			@include responsive.size('lg') {
+				padding-left: 0;
+			}
 		}
 		&-hl {
 			color: rgb(132, 111, 146);

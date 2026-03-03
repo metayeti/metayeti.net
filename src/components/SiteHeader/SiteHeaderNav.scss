@@ -50,10 +50,12 @@
 
 		> li {
 			flex-grow: 1;
+			max-width: 115px;
 		}
 		@include responsive.size('sm') {
 			> li {
 				flex-grow: 0;
+				max-width: none;
 			}
 		}
 	}
@@ -117,7 +119,7 @@
 			display: inline-block;
 			position: relative;
 			white-space: nowrap;
-			padding-bottom: 7px;
+			transform: translateY(-5px);
 		}
 		&-text {
 			display: inline-block;
@@ -152,11 +154,15 @@
 			}
 		}
 
+		@include responsive.size('xs') {
+			font-size: 0.85rem;
+		}
 		@include responsive.size('sm') {
-			padding: 0 32px;
 			font-size: 0.9rem;
+			padding: 0 32px;
 			&-text-container {
 				padding-bottom: 0;
+				transform: none;
 			}
 			&::after {
 				bottom: auto;
