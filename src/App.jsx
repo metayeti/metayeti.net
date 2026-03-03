@@ -25,11 +25,11 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Home from '@/routes/Home';
-import Projects from '@/routes/Projects';
-import Blog from '@/routes/Blog';
-import About from '@/routes/About';
-import NotFound from './routes/NotFound';
+import Home from '@/pages/Home';
+import Projects from '@/pages/Projects';
+import Blog from '@/pages/Blog';
+import About from '@/pages/About';
+import NotFound from './pages/NotFound';
 
 console.log('Current mode:', import.meta.env.MODE);
 
