@@ -27,11 +27,24 @@ export default function Home() {
 	return (
 		<div className="home-page wrapped">
 			<div className="home-page__yeti"></div>
-			<h2>Hi! I'm Danijel.</h2>
-			<p>Welcome to my humble online abode.</p>
-			<p>I'm a game developer from Slovenia.</p>
-			<h2>Latest Posts</h2>
-			<h2>Latest Projects</h2>
+			<section>
+				<h2>Hi! I'm Danijel.</h2>
+				<p>Welcome to my humble online abode.</p>
+				<p>
+					I'm a game developer from Slovenia. I make games
+					<br />
+					and things that go whirrrr. I sometimes write some
+					<br />
+					nonsense on my blog. I like snow leopards and tea.
+				</p>
+				<p>Enjoy your stay!</p>
+			</section>
+			<section>
+				<h2>Latest Posts</h2>
+			</section>
+			<section>
+				<h2>Latest Projects</h2>
+			</section>
 		</div>
 	);
 }

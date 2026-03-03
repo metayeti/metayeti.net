@@ -23,7 +23,7 @@
 
 // -- Google Fonts imports --
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200;400&family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap');
 
@@ -33,7 +33,7 @@
 
 	// site-wide base font
 	--font-base: 'Inter', sans-serif;
-	--font-heading: 'Titillium Web', sans-serif;
+	--font-heading: 'Exo 2', sans-serif;
 	--font-button: 'Oxanium', sans-serif;
 	--font-code: 'M PLUS 1 Code', monospace;
 }
