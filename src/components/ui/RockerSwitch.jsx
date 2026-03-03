@@ -24,7 +24,15 @@
 import { useEffect } from 'react';
 import { useState, forwardRef } from 'react';
 
+import switch1_sfx from '@/assets/sfx/switch1.mp3';
+import switch2_sfx from '@/assets/sfx/switch2.mp3';
+
 import './RockerSwitch.scss';
+
+const sfx = {
+	on: new Audio(switch1_sfx),
+	off: new Audio(switch2_sfx),
+};
 
 const RockerSwitch = forwardRef(function RockerSwitch({ onSwitchToggle, initialToggled = false }, ref) {
 	const [isToggled, setIsToggled] = useState(initialToggled);
@@ -37,6 +45,7 @@ const RockerSwitch = forwardRef(function RockerSwitch({ onSwitchToggle, initialT
 		const next = !isToggled;
 		setIsToggled(next);
 		onSwitchToggle?.(next);
+		sfx[next ? 'on' : 'off'].play();
 	};
 
 	return (
