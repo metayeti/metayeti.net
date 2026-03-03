@@ -24,6 +24,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
+import { isMobile } from 'react-device-detect';
 import RockerSwitch from '@/components/ui/RockerSwitch';
 import IconFlame from '@/components/icons/IconFlame';
 import './SiteHeaderNav.scss';
@@ -75,9 +76,9 @@ function NavLinkButton({ to, label }) {
 				setDisplayText(chars.slice(0, index + 1).join(''));
 				index++;
 				animationTimeoutRef.current = setTimeout(typeNext, 70);
-			} else {
-				// typing complete
-				// cancel anim after a timeout (friendlier for mobile users)
+			} else if (isMobile) {
+				// on mobile, cancel the animation after a timeout (so it doesn't
+				// linger on while the user is scrolling)
 				setTimeout(() => {
 					setIsTyping(false);
 					setDisplayText(label);
@@ -108,7 +109,7 @@ function NavLinkButton({ to, label }) {
 					<span className="site-header-nav__link-text--static" aria-hidden="true">
 						{label}
 					</span>
-					<span className={clsx('site-header-nav__link-text')}>
+					<span className="site-header-nav__link-text">
 						{displayText}
 						{isTyping && <span className="site-header-nav__link-caret">_</span>}
 					</span>
