@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         components/SiteHeader/SiteHeader.jsx
+//  File:         src/components/SiteHeader/SiteHeader.jsx
 //  Description:  Site header component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-10
-//  Updated:      2026-03-02
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         components/SiteHeader/index.js
+//  File:         src/components/SiteHeader/index.js
 //  Description:  Site header component export.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-10
-//  Updated:      2026-02-27
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

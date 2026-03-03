@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         components/SiteFooter/SiteFooter.jsx
+//  File:         src/components/SiteFooter/SiteFooter.jsx
 //  Description:  Site footer component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-01
+//  Updated:      2026-03-03
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

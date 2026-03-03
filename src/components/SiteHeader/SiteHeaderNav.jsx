@@ -8,7 +8,7 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         components/SiteHeader/SiteHeaderNav.jsx
+//  File:         src/components/SiteHeader/SiteHeaderNav.jsx
 //  Description:  Site header navigation component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
