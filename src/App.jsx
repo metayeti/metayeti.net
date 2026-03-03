@@ -37,7 +37,7 @@ function RootLayout() {
 	return (
 		<>
 			<SiteHeader />
-			<main className="main-content">
+			<main>
 				<Outlet />
 				{Array.from({ length: 60 }).map((_, i) => (
 					<br key={i} />
