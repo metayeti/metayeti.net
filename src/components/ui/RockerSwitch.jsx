@@ -23,6 +23,7 @@
 
 import { useEffect } from 'react';
 import { useState, forwardRef } from 'react';
+import { isMobile } from 'react-device-detect';
 
 import switch1_sfx from '@/assets/sfx/switch1.mp3';
 import switch2_sfx from '@/assets/sfx/switch2.mp3';
@@ -31,7 +32,10 @@ import './RockerSwitch.scss';
 
 const sfx = {
 	on: new Audio(switch1_sfx),
-	off: new Audio(switch2_sfx),
+	// tweak sfx for mobile because switch2.mp3 is very high pitched, making it
+	// sound MUCH louder on mobile than on desktop - so just use the same sfx
+	// for both sounds on mobile (also avoids loading about 8kb on mobile)
+	off: new Audio(isMobile ? switch1_sfx : switch2_sfx),
 };
 
 const RockerSwitch = forwardRef(function RockerSwitch({ onSwitchToggle, initialToggled = false }, ref) {
