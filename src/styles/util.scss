@@ -44,6 +44,9 @@
 
 	position: relative;
 	width: $wrap-width;
+	// handles safe areas on notched devices with viewport-fit=cover
+	// shrinks max-width by side insets (0px on desktop/rectangular screens)
+	max-width: calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
 	margin: 0 auto;
 	@media (width < $autosize-on) {
 		width: auto;
@@ -52,11 +55,9 @@
 		&--no-pad {
 			padding: 0;
 		}
-
 		&--sm-pad {
 			padding: 0 $sm-pad;
 		}
-
 		&--sm-pad-right-only {
 			padding: 0 $sm-pad 0 0;
 		}
