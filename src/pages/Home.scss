@@ -1,13 +1,19 @@
 .home-page {
 	position: relative;
+	z-index: 2;
 	&__yeti {
 		position: absolute;
-		right: 0;
+		right: -200px;
 		top: -60px;
 		width: 600px;
 		height: 600px;
 		background-image: url('@/assets/images/big_yeti.png');
 		background-position: center;
 		background-size: contain;
+		z-index: -1;
+
+		@media (width < 650px) {
+			display: none;
+		}
 	}
 }

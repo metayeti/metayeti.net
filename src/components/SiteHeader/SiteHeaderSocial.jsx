@@ -21,7 +21,7 @@
 //  TODO:         -
 //
 
-import IconFacebook from '@/components/icons/IconFacebook';
+//import IconFacebook from '@/components/icons/IconFacebook';
 import IconLinkedIn from '@/components/icons/IconLinkedIn';
 import IconGitHub from '@/components/icons/IconGitHub';
 import IconX from '@/components/icons/IconX';

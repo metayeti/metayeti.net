@@ -47,6 +47,7 @@ body {
 		font-family: var(--font-base);
 		background-color: var(--color-content-bg);
 		color: var(--color-content-fg);
+		overflow: hidden;
 
 		// -- headings --
 		h2,
