@@ -21,18 +21,18 @@
 //  TODO:         -
 //
 
+import { Fragment } from 'react';
+
 import './UnderConstruction.scss';
 
 export default function UnderConstruction() {
 	const BandSegment = () => (
 		<div className="band-segment">
 			{Array.from({ length: 4 }, (_, i) => (
-				<>
-					<div key={i} className="band-stripe" />
-					<div key={i + 4} className="band-text">
-						UNDER CONSTRUCTION
-					</div>
-				</>
+				<Fragment key={i}>
+					<div className="band-stripe" />
+					<div className="band-text">UNDER CONSTRUCTION</div>
+				</Fragment>
 			))}
 		</div>
 	);

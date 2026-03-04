@@ -39,7 +39,7 @@ console.log('Current mode:', import.meta.env.MODE);
 function RootLayout() {
 	return (
 		<>
-			<UnderConstruction />
+			{import.meta.env.MODE === 'production' && <UnderConstruction />}
 			<SiteHeader />
 			<main>
 				<Outlet />
