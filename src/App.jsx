@@ -21,6 +21,8 @@
 //  TODO:         Remove console.log in final version.
 //
 
+import UnderConstruction from './components/extras/UnderConstruction';
+
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
@@ -37,38 +39,10 @@ console.log('Current mode:', import.meta.env.MODE);
 function RootLayout() {
 	return (
 		<>
-			{/* <div className="site-in-construction">
-				<div class="band-1">
-					<div class="band-1-track">
-						<div class="band-1-segment">
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">UNDER CONSTRUCTION</div>
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">⚡ COMING SOON ⚡</div>
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">WORK IN PROGRESS</div>
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">🚧 STAY TUNED 🚧</div>
-						</div>
-						<div class="band-1-segment">
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">UNDER CONSTRUCTION</div>
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">⚡ COMING SOON ⚡</div>
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">WORK IN PROGRESS</div>
-							<div class="band-1-stripe"></div>
-							<div class="band-1-text">🚧 STAY TUNED 🚧</div>
-						</div>
-					</div>
-				</div>
-			</div> */}
+			<UnderConstruction />
 			<SiteHeader />
 			<main>
 				<Outlet />
-				{Array.from({ length: 60 }).map((_, i) => (
-					<br key={i} />
-				))}
 			</main>
 			<SiteFooter />
 		</>

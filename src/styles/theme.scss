@@ -58,8 +58,13 @@
 
 	// content
 	--color-content-bg: #1c1f22;
+	--color-content-image:
+		radial-gradient(ellipse at 74% 40%, #0a1a2e 0%, transparent 70%),
+		repeating-linear-gradient(0deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px),
+		repeating-linear-gradient(90deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px);
 	--color-content-fg: #c4d2dd;
 	--color-content-heading: #fff;
+	//--color-content-
 
 	// footer
 	--color-footer-bg: #171a1d;

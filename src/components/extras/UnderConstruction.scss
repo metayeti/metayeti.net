@@ -1,0 +1,78 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         src/components/extras/UnderConstruction.scss
+//  Description:  Under construction banner styles.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-03-04
+//  Updated:      2026-03-04
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         Remove when site is finished.
+//  TODO:         -
+//
+
+$construction-band-height: 40px;
+.under-construction-banner {
+	//position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: $construction-band-height;
+	background: orange;
+	z-index: 9999;
+
+	.band {
+		width: 100%;
+		height: $construction-band-height;
+		overflow: hidden;
+		background: #000;
+		border: 2px solid #ffe800;
+		position: relative;
+	}
+	.band-track {
+		display: flex;
+		animation: scroll-left 200s linear infinite;
+		height: 100%;
+		width: max-content;
+	}
+	.band-segment {
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+	.band-stripe {
+		width: 64px;
+		height: 100%;
+		flex-shrink: 0;
+		background: repeating-linear-gradient(-45deg, #ffe800 0px, #ffe800 12px, #000 12px, #000 24px);
+	}
+	.band-text {
+		padding: 0 28px;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 28px;
+		letter-spacing: 6px;
+		color: #ffe800;
+		text-shadow:
+			0 0 20px #ffe800,
+			0 0 40px #ffe800;
+		white-space: nowrap;
+	}
+	@keyframes scroll-left {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+}
