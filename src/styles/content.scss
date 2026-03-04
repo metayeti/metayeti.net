@@ -28,11 +28,8 @@
 	color: var(--color-content-fg);
 	overflow: hidden;
 
-	background: #100e20;
-	background-image:
-		radial-gradient(ellipse at 74% 40%, #0a1a2e 0%, transparent 70%),
-		repeating-linear-gradient(0deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px),
-		repeating-linear-gradient(90deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px);
+	background: var(--color-content-bg);
+	background-image: var(--gradient-content-bg);
 	// -- headings --
 	h2,
 	h3,
@@ -44,31 +41,20 @@
 	}
 
 	h2 {
-		/*
-			position: relative;
-			font-weight: 400;
-			font-size: 2.2rem;
-			color: var(--color-content-heading);
-			margin-top: 10px;
-			margin-bottom: 30px;
-			color: rgb(78, 218, 236);
-			*/
 		position: relative;
 		width: fit-content;
 		margin-top: 10px;
 		margin-left: -32px;
 		padding: 12px 30px;
-		color: #e0f4ff;
+		color: var(--color-content-title);
 		font-size: 2.1rem;
 		font-weight: 200;
 		letter-spacing: 0.25em;
 		text-transform: uppercase;
-		border: 1px solid #1e6a9a66;
-		background: linear-gradient(180deg, #071828cc 0%, #050e1acc 100%);
-		text-shadow: 0 0 12px #7dd3fc99;
-		box-shadow:
-			0 0 24px #1e6a9a22,
-			inset 0 0 20px #1e3a5a22;
+		border: 1px solid var(--color-content-title-border);
+		background: var(--gradient-content-title-bg);
+		text-shadow: var(--shadow-content-title-text);
+		box-shadow: var(--shadow-content-title-box);
 
 		/* corner tick marks */
 		&::before,
@@ -81,16 +67,16 @@
 		&::before {
 			top: -1px;
 			left: -1px;
-			border-top: 2px solid #5bc8ff;
-			border-left: 2px solid #5bc8ff;
-			box-shadow: -2px -2px 8px #5bc8ff66;
+			border-top: 2px solid var(--color-content-title-border--fancy);
+			border-left: 2px solid var(--color-content-title-border--fancy);
+			box-shadow: -2px -2px 8px var(--color-content-title-border--glow);
 		}
 		&::after {
 			bottom: -1px;
 			right: -1px;
-			border-bottom: 2px solid #5bc8ff;
-			border-right: 2px solid #5bc8ff;
-			box-shadow: 2px 2px 8px #5bc8ff66;
+			border-bottom: 2px solid var(--color-content-title-border--fancy);
+			border-right: 2px solid var(--color-content-title-border--fancy);
+			box-shadow: 2px 2px 8px var(--color-content-title-border--glow);
 		}
 	}
 
@@ -109,9 +95,7 @@
 
 	// -- link --
 	a {
-		color: lime;
-
-		color: #64748b;
+		color: var(--color-content-link);
 		font-size: 1.1rem;
 		font-weight: 400;
 		letter-spacing: 0.07em;
@@ -126,8 +110,8 @@
 			content: attr(data-label);
 			position: absolute;
 			inset: 0;
-			color: #7dd3fc;
-			text-shadow: 0 0 10px #7dd3fcaa;
+			color: var(--color-content-link--hover);
+			text-shadow: 0 0 10px var(--color-content-link--glow);
 			clip-path: inset(0 100% 0 0);
 			transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 			letter-spacing: 0.07em;
