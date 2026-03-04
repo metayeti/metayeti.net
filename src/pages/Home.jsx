@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-03
+//  Updated:      2026-03-04
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -31,11 +31,21 @@ export default function Home() {
 				<h2>Hi! I'm Danijel.</h2>
 				<p>Welcome to my humble online abode.</p>
 				<p>
-					I'm a game developer from Slovenia. I make games
+					I'm a game developer from Slovenia. I make{' '}
+					<a data-label="videogames" href="#">
+						videogames
+					</a>
 					<br />
-					and things that go whirrrr. I sometimes write some
+					and{' '}
+					<a data-label="things that go whirrrr" href="#">
+						things that go whirrrr
+					</a>
+					. I sometimes write some
 					<br />
-					nonsense on my blog. I like snow leopards and tea.
+					<a data-label="nonsense on my blog" href="#">
+						nonsense on my blog
+					</a>
+					. I like snow leopards and tea.
 				</p>
 				<p>Enjoy your stay!</p>
 			</section>
