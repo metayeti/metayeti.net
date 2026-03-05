@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-04
+//  Updated:      2026-03-05
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -45,6 +45,7 @@ function RootLayout() {
 				<Outlet />
 			</main>
 			<SiteFooter />
+			{import.meta.env.MODE === 'production' && <UnderConstruction />}
 		</>
 	);
 }

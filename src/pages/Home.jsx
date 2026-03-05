@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-04
+//  Updated:      2026-03-05
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -45,7 +45,7 @@ export default function Home() {
 					<a data-label="nonsense on my blog" href="#">
 						nonsense on my blog
 					</a>
-					. I like snow leopards and tea.
+					. I like snow leopards, coding and tea.
 				</p>
 				<p>Enjoy your stay!</p>
 			</section>

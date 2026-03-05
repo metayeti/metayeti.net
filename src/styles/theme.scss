@@ -82,7 +82,57 @@
 
 // -- Alternate Theme (light) --
 :root.lightmode {
+	// selection
+	--color-sel-bg: #b8d4e8;
+	--color-sel-fg: #0f1923;
+
+	// global
+	--color-global-bg: #dde3ec;
+
+	// header
+	--color-header-social-bg: #dde3ec;
+	--color-header-social-bg--hl: #c8d2df;
+	--color-header-social-fg: #4e6070;
+	--color-header-social-fg--hl: #0d1a26;
+	--color-header-nav-bg: #e4e9f0;
+	--color-header-nav-bg--hl: #dde3ec;
+	--color-header-nav-fg: #3d5060;
+	--color-header-nav-fg--hl: #0d1a26;
+	--color-header-nav-light: #aaa;
+	--color-header-nav-light--hl: #1a8c1a;
+	--color-header-nav-indicator: #8fa5b5;
+	--color-header-nav-indicator--hl: #f18d12;
+	--color-header-nav-notch: #c8d2db;
+	--shadow-header-nav: 0 1px 6px 3px rgba(0, 0, 0, 0.07);
+
+	// special
+	--color-rocker-border: rgb(160, 20, 20);
+	--color-rocker-dark: rgb(140, 10, 10);
+	--color-rocker-light: rgb(210, 40, 40);
+	--color-rocker-symbol: rgba(255, 255, 255, 0.7);
+	--color-rocker-bg: #3f3f3f;
+	--color-rocker-outline--hl: var(--color-header-nav-indicator--hl);
+
 	// content
-	--color-content-bg: #ffffff;
-	--color-content-fg: #000;
+	--color-content-bg: #f0f5fa;
+	--gradient-content-bg:
+		radial-gradient(ellipse at 74% 40%, #d6eaf8 0%, transparent 70%),
+		repeating-linear-gradient(0deg, transparent, transparent 30px, #dce8f2 30px, #dce8f2 31px),
+		repeating-linear-gradient(90deg, transparent, transparent 30px, #dce8f2 30px, #dce8f2 31px);
+	--color-content-fg: #2a3d4d;
+	--color-content-title: #0a1e2e;
+	--color-content-title-border: #2a88c466;
+	--color-content-title-border--fancy: #1a6a9a;
+	--color-content-title-border--glow: #1a6a9a44;
+	--gradient-content-title-bg: linear-gradient(180deg, #d6eaf8cc 0%, #c2ddf2cc 100%);
+	--shadow-content-title-text: 0 0 12px #2a88c444;
+	--shadow-content-title-box: 0 0 24px #2a88c418, inset 0 0 20px #a8cce418;
+	--color-content-link: #4a6880;
+	--color-content-link--hover: #1a6a9a;
+	--color-content-link--glow: #1a6a9a88;
+
+	// footer
+	--color-footer-bg: #dde3ec;
+	--color-footer-fg: #5a7080;
+	--color-react-blue: #0a80a0;
 }

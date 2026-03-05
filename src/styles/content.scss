@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-04
-//  Updated:      2026-03-04
+//  Updated:      2026-03-05
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -110,14 +110,44 @@
 			content: attr(data-label);
 			position: absolute;
 			inset: 0;
+			letter-spacing: 0.07em;
 			color: var(--color-content-link--hover);
 			text-shadow: 0 0 10px var(--color-content-link--glow);
 			clip-path: inset(0 100% 0 0);
 			transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			letter-spacing: 0.07em;
 		}
 		&:hover::before {
 			clip-path: inset(0 0% 0 0);
 		}
 	}
+
+	// pure CSS version, looks worse but works with word wrapping
+	/*
+	a {
+		color: transparent;
+		font-size: 1.15rem;
+		font-weight: 400;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		font-family: 'Share Tech Mono', monospace;
+		//display: inline-block;
+		text-decoration: none;
+		cursor: pointer;
+		background-image: linear-gradient(
+			to right,
+			var(--color-content-link--hover) 50%,
+			var(--color-content-link) 50%
+		);
+		background-size: 200% 100%;
+		background-position: 100% 0;
+		-webkit-background-clip: text;
+		background-clip: text;
+		transition: background-position 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+		&:hover {
+			background-position: 0% 0;
+			text-shadow: 0 0 5px var(--color-content-link--glow);
+		}
+	}
+	*/
 }
