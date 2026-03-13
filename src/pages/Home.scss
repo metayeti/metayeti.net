@@ -13,13 +13,15 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-03
-//  Updated:      2026-03-05
+//  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
 //  TODO:         -
 //
+
+@use '../styles/responsive';
 
 .home-page {
 	position: relative;
@@ -35,8 +37,9 @@
 		background-size: contain;
 		z-index: -1;
 
-		@media (width < 650px) {
-			display: none;
+		display: none;
+		@include responsive.size('md') {
+			display: block;
 		}
 
 		:root.lightmode & {

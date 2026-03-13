@@ -8,11 +8,11 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/styles/main.scss
-//  Description:  Main stylesheet. Defines global styles and imports main styles.
+//  File:         src/styles/layout.scss
+//  Description:  Layout styles.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-02-09
+//  Created:      2026-03-12
 //  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -21,25 +21,26 @@
 //  TODO:         -
 //
 
-@use './base';
-@use './fonts';
-@use './theme';
-@use './util';
-@use './content';
-@use './layout';
+@use './responsive';
 
-::selection {
-	color: var(--color-sel-fg);
-	background-color: var(--color-sel-bg);
-}
-
-body {
-	background-color: var(--color-global-bg);
-}
-
-#metayeti {
+.sidebar-layout {
 	display: flex;
 	flex-direction: column;
-	min-width: 300px;
-	min-height: 100vh;
+	gap: 50px;
+
+	&--reverse {
+		flex-direction: column-reverse;
+	}
+
+	@include responsive.size('md') {
+		flex-direction: row;
+		gap: 30px;
+
+		> *:nth-child(1) {
+			flex-grow: 1;
+		}
+		> *:nth-child(2) {
+			width: 268px;
+		}
+	}
 }

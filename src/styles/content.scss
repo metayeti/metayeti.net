@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-04
-//  Updated:      2026-03-05
+//  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -30,6 +30,7 @@
 
 	background: var(--color-content-bg);
 	background-image: var(--gradient-content-bg);
+
 	// -- headings --
 	h2,
 	h3,
@@ -43,41 +44,37 @@
 	h2 {
 		position: relative;
 		width: fit-content;
+		font-size: 2.4rem;
+		font-weight: 500;
 		margin-top: 10px;
-		margin-left: -32px;
-		padding: 12px 30px;
-		color: var(--color-content-title);
-		font-size: 2.1rem;
-		font-weight: 200;
-		letter-spacing: 0.25em;
-		text-transform: uppercase;
-		border: 1px solid var(--color-content-title-border);
-		background: var(--gradient-content-title-bg);
-		text-shadow: var(--shadow-content-title-text);
-		box-shadow: var(--shadow-content-title-box);
 
-		/* corner tick marks */
-		&::before,
-		&::after {
+		&::before {
 			content: '';
 			position: absolute;
-			width: 10px;
-			height: 10px;
+			width: 150px;
+			height: 150px;
+			left: -95px;
+			top: -40px;
+			background-color: var(--color-content-flavor);
+			-webkit-mask-image: url('@/assets/images/heading.svg');
+			mask-image: url('@/assets/images/heading.svg');
+			-webkit-mask-repeat: no-repeat;
+			mask-repeat: no-repeat;
+			-webkit-mask-size: contain;
+			mask-size: contain;
+			-webkit-mask-position: center;
+			mask-position: center;
+
+			@media (width < 1060px) {
+				left: -110px;
+			}
 		}
-		&::before {
-			top: -1px;
-			left: -1px;
-			border-top: 2px solid var(--color-content-title-border--fancy);
-			border-left: 2px solid var(--color-content-title-border--fancy);
-			box-shadow: -2px -2px 8px var(--color-content-title-border--glow);
-		}
-		&::after {
-			bottom: -1px;
-			right: -1px;
-			border-bottom: 2px solid var(--color-content-title-border--fancy);
-			border-right: 2px solid var(--color-content-title-border--fancy);
-			box-shadow: 2px 2px 8px var(--color-content-title-border--glow);
-		}
+	}
+
+	h3 {
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin-top: 10px;
 	}
 
 	// -- section --
@@ -88,7 +85,7 @@
 	// -- paragraph --
 	p {
 		line-height: 1.7rem;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		font-weight: 300;
 		padding-bottom: 20px;
 	}
@@ -102,52 +99,14 @@
 		text-transform: uppercase;
 		font-family: 'Share Tech Mono', monospace;
 		position: relative;
-		display: inline-block;
-		transition: color 0.4s;
-		text-decoration: none;
+		transition:
+			color 0.2s ease,
+			text-shadow 0.2s ease;
+		text-decoration: underline;
+		text-underline-offset: 2px;
 		cursor: pointer;
-		&::before {
-			content: attr(data-label);
-			position: absolute;
-			inset: 0;
-			letter-spacing: 0.07em;
-			color: var(--color-content-link--hover);
-			text-shadow: 0 0 10px var(--color-content-link--glow);
-			clip-path: inset(0 100% 0 0);
-			transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		}
-		&:hover::before {
-			clip-path: inset(0 0% 0 0);
-		}
-	}
-
-	// pure CSS version, looks worse but works with word wrapping
-	/*
-	a {
-		color: transparent;
-		font-size: 1.15rem;
-		font-weight: 400;
-		letter-spacing: 0.07em;
-		text-transform: uppercase;
-		font-family: 'Share Tech Mono', monospace;
-		//display: inline-block;
-		text-decoration: none;
-		cursor: pointer;
-		background-image: linear-gradient(
-			to right,
-			var(--color-content-link--hover) 50%,
-			var(--color-content-link) 50%
-		);
-		background-size: 200% 100%;
-		background-position: 100% 0;
-		-webkit-background-clip: text;
-		background-clip: text;
-		transition: background-position 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-
 		&:hover {
-			background-position: 0% 0;
-			text-shadow: 0 0 5px var(--color-content-link--glow);
+			color: var(--color-content-link--hover);
 		}
 	}
-	*/
 }

@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-05
+//  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -35,13 +35,12 @@ export default function Home() {
 					<a data-label="videogames" href="#">
 						videogames
 					</a>
-					<br />
+					<br className="responsive-break" />
 					and{' '}
 					<a data-label="things that go whirrrr" href="#">
 						things that go whirrrr
 					</a>
-					. I sometimes write some
-					<br />
+					. I sometimes write some <br className="responsive-break" />
 					<a data-label="nonsense on my blog" href="#">
 						nonsense on my blog
 					</a>

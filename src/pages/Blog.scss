@@ -8,11 +8,11 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/styles/main.scss
-//  Description:  Main stylesheet. Defines global styles and imports main styles.
+//  File:         src/routes/Blog.scss
+//  Description:  Blog page styles.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-02-09
+//  Created:      2026-03-12
 //  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -21,25 +21,13 @@
 //  TODO:         -
 //
 
-@use './base';
-@use './fonts';
-@use './theme';
-@use './util';
-@use './content';
-@use './layout';
+.blog-page {
+	&__main {
+	}
 
-::selection {
-	color: var(--color-sel-fg);
-	background-color: var(--color-sel-bg);
-}
-
-body {
-	background-color: var(--color-global-bg);
-}
-
-#metayeti {
-	display: flex;
-	flex-direction: column;
-	min-width: 300px;
-	min-height: 100vh;
+	// -- sidebar --
+	&__side {
+		border: 1px solid var(--color-content-flavor);
+		border-radius: 4px;
+	}
 }

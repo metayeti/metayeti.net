@@ -27,6 +27,11 @@
 	--color-sel-bg: #686868;
 	--color-sel-fg: #0a0a0a;
 
+	// scrollbar
+	--color-scrollbar: #2a2a2a;
+	--color-scrollbar--hl: #3a3a3a;
+	--color-scrollbar--active: #4a4a4a;
+
 	// global
 	--color-global-bg: #171a1d;
 
@@ -62,7 +67,13 @@
 		radial-gradient(ellipse at 74% 40%, #0a1a2e 0%, transparent 70%),
 		repeating-linear-gradient(0deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px),
 		repeating-linear-gradient(90deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px);
+
 	--color-content-fg: #c4d2dd;
+	--color-content-flavor: #52dcff;
+
+	--color-content-link: #64748b;
+	--color-content-link--hover: #7dd3fc;
+	/*
 	--color-content-title: #e0f4ff;
 	--color-content-title-border: #1e6a9a66;
 	--color-content-title-border--fancy: #5bc8ff;
@@ -73,6 +84,7 @@
 	--color-content-link: #64748b;
 	--color-content-link--hover: #7dd3fc;
 	--color-content-link--glow: #7dd3fcaa;
+	*/
 
 	// footer
 	--color-footer-bg: #171a1d;
@@ -87,10 +99,10 @@
 	--color-sel-fg: #0f1923;
 
 	// global
-	/*
-	--color-global-bg: #dde3ec;
+	//--color-global-bg: #dde3ec;
 
 	// header
+	/*
 	--color-header-social-bg: #dde3ec;
 	--color-header-social-bg--hl: #c8d2df;
 	--color-header-social-fg: #4e6070;
@@ -105,8 +117,10 @@
 	--color-header-nav-indicator--hl: #f18d12;
 	--color-header-nav-notch: #c8d2db;
 	--shadow-header-nav: 0 1px 6px 3px rgba(0, 0, 0, 0.07);
+	*/
 
 	// special
+	/*
 	--color-rocker-border: rgb(160, 20, 20);
 	--color-rocker-dark: rgb(140, 10, 10);
 	--color-rocker-light: rgb(210, 40, 40);
@@ -118,10 +132,17 @@
 	// content
 	--color-content-bg: #f0f5fa;
 	--gradient-content-bg:
-		radial-gradient(ellipse at 74% 40%, #d6eaf8 0%, transparent 70%),
-		repeating-linear-gradient(0deg, transparent, transparent 30px, #dce8f2 30px, #dce8f2 31px),
-		repeating-linear-gradient(90deg, transparent, transparent 30px, #dce8f2 30px, #dce8f2 31px);
+		radial-gradient(ellipse at 74% 40%, #e8f0f5 0%, transparent 70%),
+		repeating-linear-gradient(0deg, transparent, transparent 30px, #e8f0f5 30px, #e8f0f5 31px),
+		repeating-linear-gradient(90deg, transparent, transparent 30px, #e8f0f5 30px, #e8f0f5 31px);
+
 	--color-content-fg: #2a3d4d;
+	--color-content-flavor: #06a9e9;
+
+	--color-content-link: #4a6880;
+	--color-content-link--hover: #2badfd;
+
+	/*
 	--color-content-title: #0a1e2e;
 	--color-content-title-border: #2a88c466;
 	--color-content-title-border--fancy: #1a6a9a;
@@ -132,6 +153,7 @@
 	--color-content-link: #4a6880;
 	--color-content-link--hover: #1a6a9a;
 	--color-content-link--glow: #1a6a9a88;
+	*/
 
 	// footer
 	/*

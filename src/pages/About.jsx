@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-01
+//  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -24,8 +24,12 @@
 export default function About() {
 	return (
 		<div className="wrapped">
-			<h1>About</h1>
-			<p>This is the about page.</p>
+			<h2>About Me</h2>
+			<p>
+				Hi there! I'm Danijel. I'm a programmer with a passion for videogames. I combine my skills to create
+				games, software, websites and other kinds of interactive digital content. My main interests in life are
+				programming, mathematics, science, philosophy, music and art.
+			</p>
 		</div>
 	);
 }

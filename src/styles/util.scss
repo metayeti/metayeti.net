@@ -13,13 +13,15 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-03
+//  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
 //  TODO:         -
 //
+
+@use './responsive';
 
 /// Ensures pixel art stays pixelated. Add to any element displaying an image.
 .pixelated {
@@ -61,5 +63,13 @@
 		&--sm-pad-right-only {
 			padding: 0 $sm-pad 0 0;
 		}
+	}
+}
+
+/// Responsive line break. Only visible on medium screens and up.
+br.responsive-break {
+	display: none;
+	@include responsive.size('md') {
+		display: block;
 	}
 }
