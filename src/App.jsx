@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-05
+//  Updated:      2026-03-13
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -59,10 +59,6 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <Home />,
-			},
-			{
-				path: '/about',
-				element: <About />,
 			},
 			{
 				path: '/projects',

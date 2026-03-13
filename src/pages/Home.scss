@@ -43,6 +43,7 @@
 		}
 
 		:root.lightmode & {
+			// lightmode-friendly yeti
 			filter: invert(1);
 		}
 	}

@@ -21,6 +21,7 @@
 //  TODO:         -
 //
 
+import LatestPosts from '@/components/LatestPosts';
 import './Home.scss';
 
 export default function Home() {
@@ -35,8 +36,7 @@ export default function Home() {
 					<a data-label="videogames" href="#">
 						videogames
 					</a>
-					<br className="responsive-break" />
-					and{' '}
+					<br className="responsive-break" /> and{' '}
 					<a data-label="things that go whirrrr" href="#">
 						things that go whirrrr
 					</a>
@@ -50,6 +50,7 @@ export default function Home() {
 			</section>
 			<section>
 				<h2>Latest Posts</h2>
+				<LatestPosts />
 			</section>
 			<section>
 				<h2>Latest Projects</h2>
