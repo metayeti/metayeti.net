@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-13
-//  Updated:      2026-03-13
+//  Updated:      2026-03-14
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,8 +23,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { loadJSON, getHumanReadableDate } from '@/util';
-import { SRC_BLOG_LISTING } from '@/util';
+import { loadJSON, getHumanReadableDate, SRC_BLOG_LISTING } from '@/util';
 
 import './LatestPosts.scss';
 

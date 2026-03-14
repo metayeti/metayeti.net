@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-13
-//  Updated:      2026-03-13
+//  Updated:      2026-03-14
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -34,15 +34,13 @@
 	&__entry {
 		position: relative;
 		display: inline-block;
-		color: var(--my-content-text);
-		transition: transform 0.2s ease-in-out;
 
 		&:hover {
 			transform: translateX(2px);
 
 			.latest-posts__date {
-				color: var(--my-content-link-hover);
-				outline-color: var(--my-content-link);
+				transition: outline 0.2s ease;
+				outline: 2px solid var(--color-content-link--hover);
 			}
 
 			.latest-posts__title {
@@ -56,10 +54,7 @@
 		width: fit-content;
 		padding: 1px 13px;
 		line-height: 1.5;
-		outline: 2px solid transparent;
-		border-left: 2px solid var(--my-content-link);
-		background-color: var(--my-content-accent);
-		color: var(--my-content-accent-text);
+		//outline: 2px solid transparent;
 		font-family: var(--font-button);
 		font-size: 0.9rem;
 		font-weight: 700;
@@ -72,7 +67,6 @@
 	}
 
 	&__title {
-		color: var(--my-content-text-dimmed);
 		padding: 5px 0;
 	}
 

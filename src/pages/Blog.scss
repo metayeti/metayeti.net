@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-12
-//  Updated:      2026-03-13
+//  Updated:      2026-03-14
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,12 +22,264 @@
 //
 
 .blog-page {
-	&__main {
+	// -- year groups --
+	&__year-group {
+		padding-bottom: 60px;
+	}
+
+	// -- entries list --
+	&__entries {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	// -- entry tags --
+	&__entry-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-bottom: 2px;
+	}
+
+	&__entry-tag {
+		padding: 2px 10px;
+		font-size: 0.8rem;
+		font-weight: 400;
+		color: var(--color-content-link);
+		background: transparent;
+		border: 1px solid var(--color-blog-sidebar-border);
+		border-radius: 3px;
+		cursor: pointer;
+		transition:
+			color 0.15s,
+			border-color 0.15s;
+
+		&:hover {
+			color: var(--color-content-link--hover);
+			border-color: var(--color-content-link--hover);
+		}
+
+		&--active {
+			color: var(--color-content-flavor);
+			border-color: var(--color-content-flavor);
+		}
+	}
+
+	// -- entry link --
+	&__entry-link {
+		display: block;
+		border-top: 1px dotted var(--color-content-link);
+		border-bottom: 1px dotted var(--color-content-link);
+		border-right: 1px dotted var(--color-content-link);
+		border-left: 4px solid var(--color-content-link);
+		padding: 10px 12px 10px 15px;
+		transition:
+			border-color 0.15s,
+			transform 0.15s;
+
+		&:hover {
+			border-color: var(--color-content-link--hover);
+			transform: translateX(-1px);
+		}
+	}
+
+	&__entry-date {
+		font-family: var(--font-heading);
+		font-weight: 700;
+		font-size: 0.9rem;
+		color: var(--color-content-link);
+	}
+
+	&__entry-title {
+		padding-top: 8px;
+		font-size: 1.05rem;
+		color: var(--color-content-fg);
+		transition: color 0.15s;
+
+		.blog-page__entry-link:hover & {
+			color: var(--color-content-link--hover);
+		}
+	}
+
+	&__entry-desc {
+		font-size: 0.87rem;
+		opacity: 0.65;
+	}
+
+	&__entry-cta {
+		display: inline-block;
+		padding-top: 12px;
+		font-size: 0.87rem;
+		color: var(--color-content-link);
+		border-bottom: 2px solid transparent;
+		transition:
+			color 0.15s,
+			border-bottom-color 0.15s;
+
+		.blog-page__entry-link:hover & {
+			color: var(--color-content-link--hover);
+			border-bottom-color: var(--color-content-link);
+		}
+	}
+
+	// -- active filters --
+	&__active-filters {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-bottom: 30px;
+		font-size: 0.9rem;
+	}
+
+	&__active-filter {
+		padding: 4px 10px;
+		background-color: var(--color-blog-sidebar-searchbox);
+		border: 1px solid var(--color-blog-sidebar-border);
+		border-radius: 3px;
+	}
+
+	&__clear-filters {
+		padding: 4px 12px;
+		font-size: 0.85rem;
+		color: var(--color-content-link--hover);
+		background: transparent;
+		border: 1px solid var(--color-content-link--hover);
+		border-radius: 3px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--color-blog-sidebar-searchbox);
+		}
+	}
+
+	&__no-results {
+		color: var(--color-content-link);
+		font-style: italic;
 	}
 
 	// -- sidebar --
-	&__side {
-		border: 1px solid var(--color-content-flavor);
+	&__filters {
+		display: flex;
+		flex-direction: column;
+		padding: 12px;
+		border: 2px solid var(--color-blog-sidebar-border);
+		background-color: var(--color-blog-sidebar-bg);
 		border-radius: 4px;
+		gap: 30px;
+	}
+
+	// -- search box --
+	&__search-box {
+		display: flex;
+		flex-direction: row;
+		background-color: var(--color-blog-sidebar-searchbox);
+		border-radius: 3px;
+
+		&:has(input:focus),
+		&:has(input:hover),
+		&:has(button:focus),
+		&:has(button:hover) {
+			outline: 2px solid var(--color-content-flavor);
+		}
+	}
+
+	&__search-input {
+		flex: 1;
+		min-width: 0;
+		background-color: transparent;
+		border: 0;
+		color: var(--color-content-fg);
+		padding: 12px;
+		font-family: var(--font-heading);
+		font-size: 1rem;
+
+		&::placeholder {
+			opacity: 0.3;
+		}
+
+		&:focus {
+			background-color: rgba(0, 0, 0, 0.3);
+			outline: none;
+		}
+	}
+
+	&__search-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		aspect-ratio: 1/1;
+		padding: 0;
+		background-color: transparent;
+		color: var(--color-content-link);
+		cursor: pointer;
+		flex-shrink: 0;
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+
+		&:hover {
+			color: var(--color-content-link--hover);
+		}
+	}
+
+	// -- filter sections --
+	&__filter-section {
+		h5 {
+			font-size: 0.9rem;
+			font-weight: 600;
+			padding: 0;
+			margin: 0 0 10px 0 !important;
+		}
+	}
+
+	&__tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+
+	&__filter-tag {
+		display: inline-flex;
+		align-items: center;
+		padding: 0;
+		background-color: var(--color-blog-sidebar-searchbox);
+		border: 1px solid var(--color-blog-sidebar-border);
+		border-radius: 3px;
+		font-size: 0.8rem;
+		color: var(--color-content-fg);
+		cursor: pointer;
+		transition:
+			border-color 0.15s,
+			color 0.15s;
+
+		&:hover {
+			border-color: var(--color-content-link--hover);
+			color: var(--color-content-link--hover);
+		}
+
+		&--active {
+			border-color: var(--color-content-flavor);
+			color: var(--color-content-flavor);
+		}
+
+		&--static {
+			cursor: default;
+		}
+	}
+
+	&__filter-tag-name {
+		padding: 4px 8px;
+	}
+
+	&__filter-tag-count {
+		padding: 4px 8px;
+		background-color: var(--color-blog-sidebar-border);
+		font-weight: 700;
+		border-radius: 0 2px 2px 0;
 	}
 }
