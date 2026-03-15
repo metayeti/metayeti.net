@@ -12,6 +12,9 @@
 	},
 	"dependencies": {
 		"clsx": "^2.1.1",
+		"highlight.js": "^11.11.1",
+		"markdown-it": "^14.1.1",
+		"markdown-it-anchor": "^9.2.0",
 		"react": "^19.2.0",
 		"react-device-detect": "^2.2.3",
 		"react-dom": "^19.2.0",

@@ -1,0 +1,315 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         src/pages/BlogPost.scss
+//  Description:  Blog post page styles.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-03-15
+//  Updated:      2026-03-15
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+.blog-post {
+	// -- main content --
+	&__main {
+	}
+
+	// -- back button --
+	&__back {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		color: var(--color-content-fg);
+		border: 2px solid var(--color-content-link);
+		transform: skewX(-10deg);
+		cursor: pointer;
+		text-decoration: none !important;
+		font-size: 1rem;
+		transition:
+			border-color 0.15s,
+			transform 0.15s;
+
+		&:hover,
+		&:focus {
+			border-color: var(--color-content-link--hover);
+			transform: skewX(-10deg) translateX(-1px);
+		}
+	}
+
+	// -- tags --
+	&__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		padding-top: 50px;
+	}
+
+	&__tag {
+		color: var(--color-content-link);
+		background-color: var(--color-content-link);
+		padding: 2px 8px;
+		font-family: var(--font-heading);
+		font-size: 0.85rem;
+		transform: skewX(-10deg);
+
+		span {
+			display: inline-block;
+			transform: skewX(10deg);
+			color: var(--color-content-bg);
+		}
+	}
+
+	// -- title --
+	&__title {
+		border: 0 !important;
+		padding: 0 !important;
+		margin: 10px 0 5px 0 !important;
+		font-size: 2.2rem !important;
+		line-height: 2.4rem;
+
+		&::before {
+			content: none !important;
+		}
+
+		&::after {
+			content: none !important;
+		}
+	}
+
+	// -- description --
+	&__description {
+		color: var(--color-content-link);
+		font-size: 1rem;
+	}
+
+	// -- meta --
+	&__meta {
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+		padding: 12px 0;
+		font-size: 0.8rem;
+		color: var(--color-content-link);
+	}
+
+	// -- header section --
+	&__header {
+		//margin-bottom: 40px !important;
+	}
+
+	// -- article content --
+	&__article {
+		line-height: 1.8rem;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.caption {
+			font-size: 0.85rem;
+			color: var(--color-content-link);
+			font-style: italic;
+			margin-top: -15px;
+			padding-bottom: 15px;
+		}
+
+		pre {
+			background-color: rgba(0, 0, 0, 0.3);
+			padding: 16px;
+			overflow-x: auto;
+			margin-bottom: 20px;
+			border-radius: 3px;
+			font-size: 0.9rem;
+			line-height: 1.5;
+		}
+
+		code {
+			font-family: 'Share Tech Mono', monospace;
+			font-size: 0.9em;
+		}
+
+		:not(pre) > code {
+			background-color: rgba(0, 0, 0, 0.25);
+			padding: 2px 6px;
+			border-radius: 3px;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid var(--color-blog-sidebar-border);
+			margin: 30px 0;
+		}
+
+		.list {
+			padding-left: 24px;
+			margin-bottom: 20px;
+
+			li {
+				padding: 4px 0;
+				line-height: 1.7rem;
+			}
+		}
+	}
+
+	// -- footer --
+	&__footer {
+		margin-top: 40px;
+		margin-bottom: 0 !important;
+	}
+
+	&__footer-row {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__date-updated {
+		font-size: 0.8rem;
+		color: var(--color-content-link);
+
+		span {
+			padding-left: 8px;
+			color: var(--color-content-fg);
+		}
+	}
+
+	&__raw {
+		font-size: 0.8rem;
+
+		button {
+			position: relative;
+			color: var(--color-content-fg);
+			padding-bottom: 3px;
+			border-bottom: 2px solid transparent;
+			cursor: pointer;
+			transition:
+				border-bottom-color 0.15s,
+				color 0.15s;
+
+			span {
+				color: var(--color-content-link);
+				transition: color 0.15s;
+			}
+
+			&:hover {
+				left: -1px;
+				border-bottom-color: var(--color-content-link);
+				color: var(--color-content-link--hover);
+
+				span {
+					color: var(--color-content-link--hover);
+				}
+			}
+		}
+	}
+
+	// -- about author --
+	&__about-author {
+		border: 2px solid var(--color-blog-sidebar-border);
+		margin-top: 30px;
+		padding: 15px;
+
+		h5 {
+			font-size: 1rem;
+			padding: 0;
+			margin: 0 0 10px 0 !important;
+		}
+
+		p {
+			padding: 0 !important;
+			margin: 0;
+			font-size: 0.85rem !important;
+			line-height: 1.4rem;
+			color: var(--color-content-link);
+		}
+	}
+
+	&__author-link {
+		font-size: 0.85rem !important;
+	}
+
+	// -- sidebar --
+	&__side {
+	}
+
+	// -- sidebar table of contents --
+	&__toc {
+		position: sticky;
+		top: 20px;
+		display: flex;
+		flex-direction: column;
+		padding: 12px;
+		border: 2px solid var(--color-blog-sidebar-border);
+		background-color: var(--color-blog-sidebar-bg);
+		border-radius: 4px;
+
+		h5 {
+			font-size: 0.9rem;
+			font-weight: 600;
+			padding: 0;
+			margin: 0 0 10px 0 !important;
+		}
+	}
+
+	&__toc-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__toc-item {
+		a {
+			display: block;
+			padding: 4px 8px;
+			font-size: 0.8rem;
+			text-decoration: none;
+			text-transform: none;
+			letter-spacing: normal;
+			font-family: var(--font-base);
+			font-size: 1rem !important;
+			color: var(--color-content-fg);
+			border-left: 2px solid transparent;
+			transition:
+				color 0.15s,
+				border-color 0.15s;
+
+			&:hover {
+				color: var(--color-content-link--hover);
+				border-left-color: var(--color-content-link--hover);
+			}
+		}
+
+		// -- indentation by heading level --
+		&--h3 a {
+			padding-left: 20px;
+		}
+
+		&--h4 a {
+			padding-left: 32px;
+		}
+
+		&--h5 a {
+			padding-left: 44px;
+		}
+
+		&--h6 a {
+			padding-left: 56px;
+		}
+	}
+}
