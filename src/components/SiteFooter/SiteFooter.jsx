@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-03
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -30,7 +30,12 @@ function SiteFooter() {
 				<span>Created by Danijel Durakovic</span>
 				<span>
 					Powered by
-					<a href="https://react.dev" target="_blank" className="site-footer__react-link">
+					<a
+						href="https://react.dev"
+						className="site-footer__react-link"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<div className="site-footer__react-icon"></div> React
 					</a>
 				</span>

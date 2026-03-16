@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-04
-//  Updated:      2026-03-15
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -99,14 +99,54 @@
 		text-transform: uppercase;
 		font-family: 'Share Tech Mono', monospace;
 		position: relative;
+		/*
 		transition:
 			color 0.2s ease,
+			background-color 0.2s ease,
 			text-shadow 0.2s ease;
+			*/
 		text-decoration: underline;
 		text-underline-offset: 2px;
 		cursor: pointer;
 		&:hover {
 			color: var(--color-content-link--hover);
+		}
+
+		// external variant with icon
+		&.external {
+			&::before {
+				content: '';
+				display: inline-block;
+				margin-right: 5px;
+				margin-left: 3px;
+				background-color: var(--color-content-link);
+				-webkit-mask-image: url('@/assets/images/external.svg');
+				mask-image: url('@/assets/images/external.svg');
+				-webkit-mask-repeat: no-repeat;
+				mask-repeat: no-repeat;
+				-webkit-mask-size: contain;
+				mask-size: contain;
+				-webkit-mask-position: center;
+				mask-position: center;
+				padding: 5px;
+			}
+
+			// hover state for external link
+			&:hover::before {
+				background-color: var(--color-content-link--hover);
+
+				// bounce icon up and down on hover
+				animation: bounce 0.5s infinite;
+				@keyframes bounce {
+					0%,
+					100% {
+						transform: translateY(0);
+					}
+					50% {
+						transform: translateY(-2px);
+					}
+				}
+			}
 		}
 	}
 

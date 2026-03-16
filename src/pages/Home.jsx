@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-13
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,7 +21,9 @@
 //  TODO:         -
 //
 
+import { Link } from 'react-router-dom';
 import LatestPosts from '@/components/LatestPosts';
+
 import './Home.scss';
 
 export default function Home() {
@@ -29,22 +31,21 @@ export default function Home() {
 		<div className="home-page wrapped">
 			<div className="home-page__yeti"></div>
 			<section>
-				<h2>Hi! I'm Danijel.</h2>
-				<p>Welcome to my humble online abode.</p>
+				<h2>Hi!</h2>
+				<p>Ahoy there! I'm Danijel. Welcome to my online abode.</p>
 				<p>
-					I'm a game developer from Slovenia. I make{' '}
-					<a data-label="videogames" href="#">
-						videogames
-					</a>
+					I'm a game developer from Slovenia. I make <Link to="/projects">videogames</Link>
 					<br className="responsive-break" /> and{' '}
-					<a data-label="things that go whirrrr" href="#">
+					<a
+						href="https://github.com/metayeti"
+						className="external"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						things that go whirrrr
 					</a>
 					. I sometimes write some <br className="responsive-break" />
-					<a data-label="nonsense on my blog" href="#">
-						nonsense on my blog
-					</a>
-					. I like snow leopards, coding and tea.
+					<Link to="/blog">nonsense on my blog</Link>. I like snow leopards, coding and tea.
 				</p>
 				<p>Enjoy your stay!</p>
 			</section>
