@@ -13,15 +13,13 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-15
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
 //  TODO:         Remove console.log in final version.
 //
-
-import UnderConstruction from './components/extras/UnderConstruction';
 
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -40,13 +38,11 @@ console.log('Current mode:', import.meta.env.MODE);
 function RootLayout() {
 	return (
 		<>
-			{import.meta.env.MODE === 'production' && <UnderConstruction />}
 			<SiteHeader />
 			<main>
 				<Outlet />
 			</main>
 			<SiteFooter />
-			{import.meta.env.MODE === 'production' && <UnderConstruction />}
 		</>
 	);
 }

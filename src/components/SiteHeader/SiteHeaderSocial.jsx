@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-03
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,7 +21,6 @@
 //  TODO:         -
 //
 
-//import IconFacebook from '@/components/icons/IconFacebook';
 import IconLinkedIn from '@/components/icons/IconLinkedIn';
 import IconGitHub from '@/components/icons/IconGitHub';
 import IconX from '@/components/icons/IconX';
@@ -36,39 +35,66 @@ export default function SiteHeaderSocial() {
 	return (
 		<nav className="site-header-social">
 			<div className="site-header-social__links wrapped wrapped--sm-pad">
-				{/* <a
-					href="https://www.facebook.com/profile.php?id=100095050669741"
-					target="_blank"
+				<a
+					href="https://www.linkedin.com/in/danijel-durakovic-560a353a9/"
 					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
 				>
-					<IconFacebook />
-					<div className="site-header-social__link-tooltip">Facebook</div>
-				</a> */}
-				<a href="#" target="_blank" className="site-header-social__link">
 					<IconLinkedIn />
 					<div className="site-header-social__link-tooltip">LinkedIn</div>
 				</a>
-				<a href="#" target="_blank" className="site-header-social__link">
+				<a
+					href="https://x.com/metayetidev"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<IconX />
 					<div className="site-header-social__link-tooltip">X</div>
 				</a>
-				<a href="https://github.com/metayeti" target="_blank" className="site-header-social__link">
+				<a
+					href="https://github.com/metayeti"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<IconGitHub />
 					<div className="site-header-social__link-tooltip">GitHub</div>
 				</a>
-				<a href="#" target="_blank" className="site-header-social__link">
+				<a
+					href="https://steamcommunity.com/profiles/76561198783415213"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<IconSteam />
 					<div className="site-header-social__link-tooltip">Steam</div>
 				</a>
-				<a href="#" target="_blank" className="site-header-social__link">
+				<a
+					href="https://metayeti.itch.io/"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<IconItchIo />
 					<div className="site-header-social__link-tooltip">itch.io</div>
 				</a>
-				<a href="#" target="_blank" className="site-header-social__link">
+				<a
+					href="https://www.youtube.com/@metayetidev"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<IconYouTube />
 					<div className="site-header-social__link-tooltip">YouTube</div>
 				</a>
-				<a href="#" target="_blank" className="site-header-social__link">
+				<a
+					href="https://soundcloud.com/metayeti"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<IconSoundCloud />
 					<div className="site-header-social__link-tooltip site-header-social__link-tooltip--last">
 						SoundCloud
