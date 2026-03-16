@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/util/constants.js
-//  Description:  Constants used across the application.
+//  File:         src/components/RandomFunFact/index.js
+//  Description:  Entry point for the RandomFunFact component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-03-13
-//  Updated:      2026-03-17
+//  Created:      2026-03-16
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,9 +21,4 @@
 //  TODO:         -
 //
 
-// source paths for various content JSON files
-export const SRC_BLOG_LISTING = '/content/blog/listing.json';
-export const SRC_FUN_FACTS = '/content/static/fun_facts.json';
-
-// shortcode used in blog posts to indicate a page break (for pagination)
-export const PAGE_BREAK_SHORTCODE = '--PAGE BREAK--';
+export { default } from './RandomFunFact';

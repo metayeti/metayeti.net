@@ -34,7 +34,6 @@
 		width: 45px;
 		height: 45px;
 		padding: 10px;
-		//margin-bottom: 30px;
 		color: var(--color-content-fg);
 		border: 1px solid var(--color-content-link);
 		border-radius: 5px;
@@ -63,7 +62,6 @@
 	&__tag {
 		color: var(--color-content-link);
 		border: 1px solid var(--color-content-link);
-		//background-color: var(--color-content-link);
 		padding: 8px 12px;
 		font-family: var(--font-heading);
 		font-size: 0.9rem;
@@ -116,64 +114,11 @@
 
 	// -- article content --
 	&__article {
-		/*
-		img {
-			max-width: 100%;
-			height: auto;
-			border: 1px solid var(--color-content-flavor);
-			padding: 10px;
-		}
-
-		.caption {
-			font-size: 0.9rem !important;
-			color: var(--color-content-link);
-			font-style: italic;
-			margin-top: -5px;
-			padding-bottom: 15px;
-		}
-
-		pre {
-			background-color: rgba(0, 0, 0, 0.3);
-			padding: 16px;
-			overflow-x: auto;
-			margin-bottom: 20px;
-			border-radius: 3px;
-			font-size: 0.9rem;
-			line-height: 1.5;
-		}
-
-		code {
-			font-family: 'Share Tech Mono', monospace;
-			font-size: 0.9em;
-		}
-
-		:not(pre) > code {
-			background-color: rgba(0, 0, 0, 0.25);
-			padding: 2px 6px;
-			border-radius: 3px;
-		}
-
-		hr {
-			border: none;
-			border-top: 1px solid var(--color-blog-sidebar-border);
-			margin: 30px 0;
-		}
-
-		.list {
-			padding-left: 24px;
-			margin-bottom: 20px;
-
-			li {
-				padding: 4px 0;
-				line-height: 1.7rem;
-			}
-		}
-			*/
 	}
 
 	// -- footer --
 	&__footer {
-		margin-top: 85px;
+		margin-top: 130px;
 		margin-bottom: 0 !important;
 	}
 
@@ -255,8 +200,6 @@
 
 	// -- sidebar table of contents --
 	&__toc {
-		position: sticky;
-		top: 20px;
 		display: flex;
 		flex-direction: column;
 		padding: 12px;

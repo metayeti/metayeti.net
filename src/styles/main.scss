@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-13
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -31,6 +31,10 @@
 ::selection {
 	color: var(--color-sel-fg);
 	background-color: var(--color-sel-bg);
+}
+
+html {
+	scroll-padding-top: 90px; // to account for sticky header
 }
 
 body {

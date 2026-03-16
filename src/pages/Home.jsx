@@ -23,6 +23,7 @@
 
 import { Link } from 'react-router-dom';
 import LatestPosts from '@/components/LatestPosts';
+import RandomFunFact from '@/components/RandomFunFact';
 
 import './Home.scss';
 
@@ -55,6 +56,10 @@ export default function Home() {
 			</section>
 			<section>
 				<h2>Latest Projects</h2>
+			</section>
+			<section>
+				<h2>Fun Fact</h2>
+				<RandomFunFact />
 			</section>
 		</div>
 	);

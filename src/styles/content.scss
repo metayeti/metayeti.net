@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-04
-//  Updated:      2026-03-16
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -54,7 +54,6 @@
 			width: 150px;
 			height: 150px;
 			left: -95px;
-			//top: -40px;
 			bottom: -67px;
 			background-color: var(--color-content-flavor);
 			-webkit-mask-image: url('@/assets/images/heading.svg');
@@ -70,6 +69,10 @@
 				left: -110px;
 			}
 		}
+
+		&:nth-child(n + 2) {
+			margin-top: 7vh;
+		}
 	}
 
 	h3 {
@@ -81,6 +84,10 @@
 	// -- section --
 	section {
 		margin-bottom: 100px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	// -- paragraph --
