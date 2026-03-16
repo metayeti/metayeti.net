@@ -22,3 +22,5 @@
 //
 
 export const SRC_BLOG_LISTING = '/content/blog/listing.json';
+
+export const PAGE_BREAK_SHORTCODE = '--PAGE BREAK--';

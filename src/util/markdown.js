@@ -13,13 +13,15 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-15
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
 //  TODO:         -
 //
+
+import { PAGE_BREAK_SHORTCODE } from './constants';
 
 import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
@@ -52,7 +54,11 @@ const md = MarkdownIt({
 // -- add ids to headings for navigation --
 md.use(anchor, {
 	permalink: false,
-	slugify: (s) => s.toLowerCase().replace(/\s+/g, '-'),
+	slugify: (s) =>
+		s
+			.toLowerCase()
+			.replace(/[^\w\s-]/g, '')
+			.replace(/\s+/g, '-'),
 	tabIndex: false,
 });
 
@@ -108,16 +114,26 @@ export default md;
 export function extractHeadings(markdownText) {
 	const headings = [];
 	const lines = markdownText.split('\n');
-	for (const line of lines) {
+	let pageIndex = 0;
+	lines.forEach((line) => {
+		if (line.trim() === PAGE_BREAK_SHORTCODE) {
+			pageIndex++;
+			return;
+		}
+
 		const match = line.match(/^(#{1,6})\s+(.+)$/);
 		if (match) {
 			const originalLevel = match[1].length;
 			const level = Math.min(originalLevel + 1, 6); // shifted like in render
 			const text = match[2].trim();
-			const id = text.toLowerCase().replace(/\s+/g, '-');
-			headings.push({ id, text, level });
+			// eslint-disable-next-line no-useless-escape
+			const id = text
+				.toLowerCase()
+				.replace(/[^\w\s-]/g, '')
+				.replace(/\s+/g, '-');
+			headings.push({ id, text, level, pageIndex });
 		}
-	}
+	});
 	return headings;
 }
 

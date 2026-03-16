@@ -1,6 +1,13 @@
 {
 	"posts": [
 		{
+			"title": "Test post",
+			"slug": "test-post",
+			"date-published": "2026-03-16",
+			"tags": ["some", "test", "tags"],
+			"description": "Testing pages"
+		},
+		{
 			"title": "DRY, KISS and YAGNI",
 			"slug": "dry-kiss-and-yagni",
 			"date-published": "2025-06-19",

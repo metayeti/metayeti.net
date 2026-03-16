@@ -29,6 +29,7 @@ import {
 	loadText,
 	getHumanReadableDate,
 	SRC_BLOG_LISTING,
+	PAGE_BREAK_SHORTCODE,
 	md,
 	extractHeadings,
 	estimateReadingTime,
@@ -45,6 +46,11 @@ export default function BlogPost() {
 	const [headings, setHeadings] = useState([]);
 	const [readingTime, setReadingTime] = useState('');
 
+	// -- pagination state --
+	const [articlePages, setArticlePages] = useState([]);
+	const [pageIndex, setPageIndex] = useState(0);
+	const [pendingScrollToId, setPendingScrollToId] = useState(null);
+
 	useEffect(() => {
 		async function loadPost() {
 			try {
@@ -56,27 +62,93 @@ export default function BlogPost() {
 
 				// load article markdown
 				const articlePath = `/content/blog/${slug}/article.md`;
-				const articleMarkdown = await loadText(articlePath);
+				const fullMarkdown = await loadText(articlePath);
 
-				// render markdown
-				setRenderedHTML(md.render(articleMarkdown));
+				// split pages
+				const lines = fullMarkdown.split('\n');
+				const pages = [];
+				let buffer = [];
+				for (const line of lines) {
+					if (line.trim() === PAGE_BREAK_SHORTCODE) {
+						pages.push(buffer.join('\n'));
+						buffer = [];
+					} else {
+						buffer.push(line);
+					}
+				}
+				if (buffer.length > 0) pages.push(buffer.join('\n'));
+				setArticlePages(pages);
 
 				// extract headings for sidebar TOC
-				setHeadings(extractHeadings(articleMarkdown));
+				const extractedHeadings = extractHeadings(fullMarkdown);
+				setHeadings(extractedHeadings);
 
 				// estimate reading time
-				const plainText = articleMarkdown
+				const plainText = fullMarkdown
 					.replace(/[#*`~[\]()]/g, '')
 					.replace(/\s+/g, ' ')
 					.trim();
 				const minutes = estimateReadingTime(plainText);
 				setReadingTime(getReadingTimeLabel(minutes));
+
+				// initial hash handling
+				if (window.location.hash) {
+					const id = window.location.hash.slice(1);
+					const heading = extractedHeadings.find((h) => h.id === id);
+					if (heading) {
+						setPageIndex(heading.pageIndex);
+						setPendingScrollToId(heading.id);
+					}
+				}
 			} catch (error) {
 				console.error('Failed to load blog post:', error);
 			}
 		}
 		loadPost();
 	}, [slug]);
+
+	// -- render page content --
+	useEffect(() => {
+		if (articlePages.length > 0) {
+			const mdContent = articlePages[pageIndex] || '';
+			setRenderedHTML(md.render(mdContent));
+
+			// Handle scrolling
+			if (pendingScrollToId) {
+				// Wait for render to complete
+				setTimeout(() => {
+					const el = document.getElementById(pendingScrollToId);
+					if (el) {
+						el.scrollIntoView();
+						setPendingScrollToId(null);
+					}
+				}, 100);
+			} else {
+				// scroll to top on page change
+				window.scrollTo(0, 0);
+			}
+		}
+	}, [pageIndex, articlePages, pendingScrollToId]);
+
+	const handlePageChange = (newIndex) => {
+		if (newIndex >= 0 && newIndex < articlePages.length) {
+			setPageIndex(newIndex);
+			// clear hash if page change manually
+			window.history.pushState(null, '', window.location.pathname);
+		}
+	};
+
+	const handleHeadingClick = (e, heading) => {
+		e.preventDefault();
+		if (heading.pageIndex !== pageIndex) {
+			setPageIndex(heading.pageIndex);
+			setPendingScrollToId(heading.id);
+		} else {
+			const el = document.getElementById(heading.id);
+			if (el) el.scrollIntoView();
+		}
+		window.history.pushState(null, '', `#${heading.id}`);
+	};
 
 	// -- download raw markdown --
 	const handleDownloadRaw = useCallback(async () => {
@@ -147,6 +219,39 @@ by Danijel Durakovic (https://metayeti.net)
 				{/* -- article content -- */}
 				<article className="blog-post__article" dangerouslySetInnerHTML={{ __html: renderedHTML }} />
 
+				{/* -- pagination -- */}
+				{articlePages.length > 1 && (
+					<div className="blog-post__pagination">
+						<button
+							className="blog-post__pagination-btn"
+							disabled={pageIndex === 0}
+							onClick={() => handlePageChange(pageIndex - 1)}
+						>
+							&larr; Prev
+						</button>
+
+						<div className="blog-post__pagination-pages">
+							{articlePages.map((_, i) => (
+								<button
+									key={i}
+									className={`blog-post__pagination-page ${i === pageIndex ? 'active' : ''}`}
+									onClick={() => handlePageChange(i)}
+								>
+									{i + 1}
+								</button>
+							))}
+						</div>
+
+						<button
+							className="blog-post__pagination-btn"
+							disabled={pageIndex === articlePages.length - 1}
+							onClick={() => handlePageChange(pageIndex + 1)}
+						>
+							Next &rarr;
+						</button>
+					</div>
+				)}
+
 				{/* -- post footer -- */}
 				<section className="blog-post__footer">
 					<div className="blog-post__footer-row">
@@ -186,7 +291,9 @@ by Danijel Durakovic (https://metayeti.net)
 									key={heading.id}
 									className={`blog-post__toc-item blog-post__toc-item--h${heading.level}`}
 								>
-									<a href={`#${heading.id}`}>{heading.text}</a>
+									<a href={`#${heading.id}`} onClick={(e) => handleHeadingClick(e, heading)}>
+										{heading.text}
+									</a>
 								</li>
 							))}
 						</ul>
