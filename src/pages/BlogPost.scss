@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-15
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -31,11 +31,13 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
+		width: 45px;
+		height: 45px;
+		padding: 10px;
+		//margin-bottom: 30px;
 		color: var(--color-content-fg);
-		border: 2px solid var(--color-content-link);
-		transform: skewX(-10deg);
+		border: 1px solid var(--color-content-link);
+		border-radius: 5px;
 		cursor: pointer;
 		text-decoration: none !important;
 		font-size: 1rem;
@@ -46,7 +48,7 @@
 		&:hover,
 		&:focus {
 			border-color: var(--color-content-link--hover);
-			transform: skewX(-10deg) translateX(-1px);
+			transform: translateX(1px);
 		}
 	}
 
@@ -60,16 +62,17 @@
 
 	&__tag {
 		color: var(--color-content-link);
-		background-color: var(--color-content-link);
-		padding: 2px 8px;
+		border: 1px solid var(--color-content-link);
+		//background-color: var(--color-content-link);
+		padding: 8px 12px;
 		font-family: var(--font-heading);
-		font-size: 0.85rem;
-		transform: skewX(-10deg);
+		font-size: 0.9rem;
+		line-height: 1;
+		border-radius: 4px;
 
 		span {
 			display: inline-block;
-			transform: skewX(10deg);
-			color: var(--color-content-bg);
+			color: var(--color-content-fg);
 		}
 	}
 
@@ -113,18 +116,19 @@
 
 	// -- article content --
 	&__article {
-		line-height: 1.8rem;
-
+		/*
 		img {
 			max-width: 100%;
 			height: auto;
+			border: 1px solid var(--color-content-flavor);
+			padding: 10px;
 		}
 
 		.caption {
-			font-size: 0.85rem;
+			font-size: 0.9rem !important;
 			color: var(--color-content-link);
 			font-style: italic;
-			margin-top: -15px;
+			margin-top: -5px;
 			padding-bottom: 15px;
 		}
 
@@ -164,11 +168,12 @@
 				line-height: 1.7rem;
 			}
 		}
+			*/
 	}
 
 	// -- footer --
 	&__footer {
-		margin-top: 40px;
+		margin-top: 85px;
 		margin-bottom: 0 !important;
 	}
 

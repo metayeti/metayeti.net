@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-15
+//  Updated:      2026-03-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,6 +21,7 @@
 //  TODO:         Basic migration from previous site, needs a lot of fixes.
 //
 
+import IconBack from '@/components/icons/IconBack';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
@@ -119,14 +120,13 @@ by Danijel Durakovic (https://metayeti.net)
 	const lastUpdated = postData['date-updated'] || postData['date-published'];
 
 	return (
-		<div className="blog-post sidebar-layout wrapped">
+		<div className="blog-post sidebar-layout sidebar-layout--reversed wrapped">
 			<div className="blog-post__main">
+				<Link to="/blog" className="blog-post__back" aria-label="Back to blog">
+					<IconBack />
+				</Link>
 				{/* -- post header -- */}
 				<section className="blog-post__header">
-					<Link to="/blog" className="blog-post__back" aria-label="Back to blog">
-						&larr;
-					</Link>
-
 					<div className="blog-post__tags">
 						{postData.tags?.map((tag) => (
 							<span key={tag} className="blog-post__tag">

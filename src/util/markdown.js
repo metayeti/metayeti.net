@@ -77,11 +77,14 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
 	const token = tokens[idx];
 	const hrefIndex = token.attrIndex('href');
 	const href = hrefIndex >= 0 ? token.attrs[hrefIndex][1] : '';
-	token.attrPush(['class', 'link']);
+	let className = 'link';
 	if (!href.startsWith('/') && !href.startsWith('#')) {
 		token.attrPush(['target', '_blank']);
 		token.attrPush(['rel', 'noopener noreferrer']);
+		// add external class
+		className += ' external';
 	}
+	token.attrPush(['class', className]);
 	return self.renderToken(tokens, idx, options);
 };
 
