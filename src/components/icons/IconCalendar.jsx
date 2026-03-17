@@ -1,0 +1,12 @@
+// source: https://www.veryicon.com/icons/miscellaneous/practical-life-icon/calendar-210.html
+
+import * as React from 'react';
+const IconCalendar = (props) => (
+	<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" {...props}>
+		<path d="M279.1 243.3h71.6V64h-71.6v179.3" />
+		<path d="M350.7 64h-71.6v179.3h71.6V64M673.3 243.3h71.6V64h-71.6v179.3" />
+		<path d="M744.9 64h-71.6v179.3h71.6V64" />
+		<path d="M888.3 171.5H745v71.7h-71.7v-71.7H350.7v71.7H279v-71.7H135.7c-19.8 0-35.8 16.1-35.8 35.8V279h824.3v-71.7c-0.1-19.7-16.1-35.8-35.9-35.8M99.9 924.1c0 19.8 16.1 35.9 35.8 35.9h752.6c19.8 0 35.8-16.1 35.8-35.9V314.9H99.9v609.2z m609.2-537.5h143.4V530H709.1V386.6z m0 179.2h143.4v143.4H709.1V565.8z m0 179.2h143.4v143.3H709.1V745zM529.9 386.6h143.4V530H529.9V386.6z m0 179.2h143.4v143.4H529.9V565.8z m0 179.2h143.4v143.3H529.9V745zM350.7 386.6h143.4V530H350.7V386.6z m0 179.2h143.4v143.4H350.7V565.8z m0 179.2h143.4v143.3H350.7V745zM171.5 386.6h143.4V530H171.5V386.6z m0 179.2h143.4v143.4H171.5V565.8z m0 179.2h143.4v143.3H171.5V745z" />
+	</svg>
+);
+export default IconCalendar;

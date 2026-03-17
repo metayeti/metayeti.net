@@ -1,8 +1,14 @@
-This is an older article and uses some older style JavaScript syntax. One might say, with a vintage flavor. The code will work just fine with modern browsers, but don't reference it for your projects - prefer modern paradigms (for example, you should use `let` in your code instead of `var`). This article is for study and learning only.
+\* bzkt-bzkt \*
+
+-- transmission from the future --
+
+This is an older article. It uses some older style JavaScript syntax. One might say, with a vintage flavor. The code will work just fine with modern browsers, but for your own projects, you should prefer modern paradigms (for example, use `const` and `let` in your code instead of `var`).
 
 This tutorial is geared towards beginners who wish to grasp foundational concepts about JavaScript and game development.
 
 With that out of the way, enjoy the article!
+
+-- transmission end --
 
 ---
 
@@ -221,6 +227,14 @@ If we now run the game, we should see the following:
 
 
 Now that we have something to work with, we can move on to more interesting things. Proceed to the next page to continue.
+
+--PAGE BREAK--
+
+
+
+--PAGE BREAK--
+
+--PAGE BREAK--
 
 --PAGE BREAK--
 

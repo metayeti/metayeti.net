@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-14
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -124,7 +124,7 @@ export default function Blog() {
 	return (
 		<div className="blog-page sidebar-layout wrapped">
 			<div className="blog-page__main">
-				<h2>All Posts</h2>
+				<h2>Blog Index</h2>
 
 				{hasActiveFilters && (
 					<div className="blog-page__active-filters">

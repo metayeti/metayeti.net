@@ -24,8 +24,12 @@
 // -- Default Theme (dark) --
 :root {
 	// selection
-	--color-sel-bg: #686868;
-	--color-sel-fg: #0a0a0a;
+	//--color-sel-bg: #686868;
+	//--color-sel-fg: #0a0a0a;
+
+	// text selection
+	--color-sel-bg: #1e5181;
+	--color-sel-fg: #ebf7ff;
 
 	// global
 	--color-global-bg: #171a1d;

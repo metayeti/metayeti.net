@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-16
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -56,6 +56,7 @@ export default function Home() {
 			</section>
 			<section>
 				<h2>Latest Projects</h2>
+				<p>In construction.</p>
 			</section>
 			<section>
 				<h2>Fun Fact</h2>

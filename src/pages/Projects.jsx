@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-01
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -25,7 +25,7 @@ export default function Projects() {
 	return (
 		<div className="wrapped">
 			<h1>Projects</h1>
-			<p>This is the projects page.</p>
+			<p>In construction.</p>
 		</div>
 	);
 }

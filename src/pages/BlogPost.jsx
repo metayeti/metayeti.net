@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-16
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,6 +22,9 @@
 //
 
 import IconBack from '@/components/icons/IconBack';
+import IconCalendar from '@/components/icons/IconCalendar';
+import IconTime from '@/components/icons/IconTime';
+import IconDownload from '@/components/icons/IconDownload';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
@@ -211,8 +214,18 @@ by Danijel Durakovic (https://metayeti.net)
 					<span className="blog-post__description">{postData.description}</span>
 
 					<div className="blog-post__meta">
-						<span>{getHumanReadableDate(postData['date-published'])}</span>
-						{readingTime && <span>{readingTime} read</span>}
+						<div className="blog-post__meta-item">
+							<span className="blog-post__meta-icon">
+								<IconCalendar />
+							</span>
+							<span>{getHumanReadableDate(postData['date-published'])}</span>
+						</div>
+						<div className="blog-post__meta-item">
+							<span className="blog-post__meta-icon">
+								<IconTime />
+							</span>
+							{readingTime && <span>{readingTime} read</span>}
+						</div>
 					</div>
 				</section>
 
@@ -261,6 +274,9 @@ by Danijel Durakovic (https://metayeti.net)
 						</div>
 						<div className="blog-post__raw">
 							<button onClick={handleDownloadRaw}>
+								<span className="icon">
+									<IconDownload />
+								</span>
 								<span>raw</span>
 							</button>
 						</div>
@@ -273,7 +289,7 @@ by Danijel Durakovic (https://metayeti.net)
 								<Link to="/about" className="blog-post__author-link">
 									Danijel Durakovic
 								</Link>{' '}
-								&mdash; programmer, game developer, blogger, elemental shaman etc.
+								&mdash; programmer, game developer, blogger, digital shaman etc.
 							</p>
 						</div>
 					</div>
