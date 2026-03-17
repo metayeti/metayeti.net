@@ -1,0 +1,244 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         src/styles/highlights.scss
+//  Description:  Highlight.js styles for code blocks.
+//                Includes GitHub Dark (default/dark) and PureBASIC (light).
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-03-17
+//  Updated:      2026-03-17
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+// -- Common Layout --
+pre code.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+code.hljs {
+	padding: 3px 5px;
+}
+
+//
+// -- Dark Mode (Default) --
+//
+
+/*!
+  Theme: GitHub Dark
+  Description: Dark theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-dark
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+	color: #c9d1d9;
+	background: #0d1117;
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+	/* prettylights-syntax-keyword */
+	color: #ff7b72;
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+	/* prettylights-syntax-entity */
+	color: #d2a8ff;
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+	/* prettylights-syntax-constant */
+	color: #79c0ff;
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+	/* prettylights-syntax-string */
+	color: #a5d6ff;
+}
+.hljs-built_in,
+.hljs-symbol {
+	/* prettylights-syntax-variable */
+	color: #ffa657;
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+	/* prettylights-syntax-comment */
+	color: #8b949e;
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+	/* prettylights-syntax-entity-tag */
+	color: #7ee787;
+}
+.hljs-subst {
+	/* prettylights-syntax-storage-modifier-import */
+	color: #c9d1d9;
+}
+.hljs-section {
+	/* prettylights-syntax-markup-heading */
+	color: #1f6feb;
+	font-weight: bold;
+}
+.hljs-bullet {
+	/* prettylights-syntax-markup-list */
+	color: #f2cc60;
+}
+.hljs-emphasis {
+	/* prettylights-syntax-markup-italic */
+	color: #c9d1d9;
+	font-style: italic;
+}
+.hljs-strong {
+	/* prettylights-syntax-markup-bold */
+	color: #c9d1d9;
+	font-weight: bold;
+}
+.hljs-addition {
+	/* prettylights-syntax-markup-inserted */
+	color: #aff5b4;
+	background-color: #033a16;
+}
+.hljs-deletion {
+	/* prettylights-syntax-markup-deleted */
+	color: #ffdcd7;
+	background-color: #67060c;
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+	/* purposely ignored */
+}
+
+//
+// -- Light Mode --
+//
+
+:root.lightmode {
+	/*
+
+PureBASIC native IDE style ( version 1.0 - April 2016 )
+
+by Tristano Ajmone <tajmone@gmail.com>
+
+Public Domain
+
+NOTE_1:	PureBASIC code syntax highlighting only applies the following classes:
+			.hljs-comment
+			.hljs-function
+			.hljs-keywords
+			.hljs-string
+			.hljs-symbol
+
+		Other classes are added here for the benefit of styling other languages with the look and feel of PureBASIC native IDE style.
+		If you need to customize a stylesheet for PureBASIC only, remove all non-relevant classes -- PureBASIC-related classes are followed by
+		a "--- used for PureBASIC ... ---" comment on same line.
+
+NOTE_2:	Color names provided in comments were derived using "Name that Color" online tool:
+			http://chir.ag/projects/name-that-color
+*/
+	.hljs {
+		background: #ffffdf; /* Half and Half (approx.) */
+	}
+	/* --- used for PureBASIC base color --- */
+	/* --- used for PureBASIC Procedures return type --- */
+	/* --- used for wrapping PureBASIC Procedures definitions --- */
+	.hljs,
+	.hljs-type,
+	.hljs-function,
+	.hljs-name,
+	.hljs-number,
+	.hljs-attr,
+	.hljs-params,
+	.hljs-subst {
+		color: #000000; /* Black */
+	}
+	/* --- used for PureBASIC Comments --- */
+	.hljs-comment,
+	.hljs-regexp,
+	.hljs-section,
+	.hljs-selector-pseudo,
+	.hljs-addition {
+		color: #00aaaa; /* Persian Green (approx.) */
+	}
+	/* --- used for PureBASIC Keywords --- */
+	.hljs-keyword,
+	.hljs-class,
+	.hljs-meta .hljs-keyword,
+	.hljs-selector-class,
+	.hljs-built_in {
+		color: #006666;
+		/* Blue Stone (approx.) */
+		font-weight: bold;
+	}
+	/* --- used for PureBASIC Procedures Names --- */
+	.hljs-title,
+	.hljs-tag,
+	.hljs-variable,
+	.hljs-code {
+		color: #006666; /* Blue Stone (approx.) */
+	}
+	/* --- used for PureBASIC Strings --- */
+	.hljs-string,
+	.hljs-selector-attr {
+		color: #0080ff; /* Azure Radiance (approx.) */
+	}
+	/* --- used for PureBASIC Constants --- */
+	.hljs-symbol,
+	.hljs-link,
+	.hljs-deletion,
+	.hljs-attribute {
+		color: #924b72; /* Cannon Pink (approx.) */
+	}
+	.hljs-meta,
+	.hljs-literal,
+	.hljs-selector-id {
+		color: #924b72;
+		/* Cannon Pink (approx.) */
+		font-weight: bold;
+	}
+	.hljs-strong,
+	.hljs-name {
+		font-weight: bold;
+	}
+	.hljs-emphasis {
+		font-style: italic;
+	}
+}

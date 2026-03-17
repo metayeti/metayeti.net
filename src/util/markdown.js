@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-16
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -29,12 +29,15 @@ import hljs from 'highlight.js/lib/core';
 
 // -- import individual languages for hljs --
 import javascript from 'highlight.js/lib/languages/javascript';
-
-// -- import hljs styles --
-import 'highlight.js/styles/dark.css';
+import html from 'highlight.js/lib/languages/xml';
+import css from 'highlight.js/lib/languages/css';
+import json from 'highlight.js/lib/languages/json';
 
 // -- register languages --
 hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('html', html);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('json', json);
 
 // -- create markdown-it instance --
 const md = MarkdownIt({

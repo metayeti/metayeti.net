@@ -27,6 +27,7 @@
 @use './util';
 @use './content';
 @use './layout';
+@use './highlights';
 
 ::selection {
 	color: var(--color-sel-fg);
