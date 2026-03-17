@@ -12,7 +12,7 @@ In this tutorial we will write a simple clone of Snake on the HTML5 platform usi
 
 Our game won’t look very fancy, but through it we will learn the very basics of developing games using JavaScript. We will not be using any libraries, frameworks or advanced engines for this exercise. Instead, we will code everything from scratch using mostly plain JavaScript.
 
-This tutorial is aimed towards beginners but assumes you already know the basics of HTML, CSS, JavaScript, programming and/or computer wizardry in general. If you don’t then feel free to [brush up](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web) before reading on.
+This tutorial is aimed towards beginners but assumes you already know the basics of HTML, CSS, JavaScript, programming and/or computer wizardry in general. If you feel unsure, [brush up](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web) before reading on.
 
 I want to point out that writing code is not a linear process where you go from point A to point B in a straight line. Rather, it’s a process of gradually improving your code, crafting layer after layer – kind of like building an onion from the inside out. This tutorial will attempt to reflect a natural style of writing a program, which means that the reader needs to be actively involved in the process as we will be jumping around code quite a bit. Pay close attention to highlighted lines in code snippets throughout the tutorial – they indicate changes or additions to the code.
 
@@ -122,7 +122,7 @@ This part is straightforward enough. In the first line, we fetch our `<canvas>` 
 
 Let’s now expand our startGame function:
 
-```JS
+```JS {1,4-6,11}
 function startGame() {
 	// draw game state immediately
 	drawGame();
@@ -144,7 +144,7 @@ I feel I need to write down a few things about game loops and requestAnimationFr
 
 There’s a number of ways to do game loops and when you first start developing games, it can be very intimidating to start writing them. A game loop is basically what holds the game together and makes it run. There are several ways to write a game loop. One is a frame based approach, where you update your game logic with a fixed framerate. Another is a time based approach, where you calculate the time between ticks and update your animation through that. This is helpful if you’re writing something that is absolutely required to run at a certain speed. The real problem with game loops might not be immediately obvious – it is that the logic updates and the drawing updates aren’t necessarily running at the same speed, which can make the act of writing an advanced game loop and then fine tuning your solution a really difficult task.
 
-window.requestAnimationFrame is a function in HTML5 which lets the browser know you’re trying to do fast repaints, and since the browser can use more of the operating system than you can with JavaScript, this is usually the most optimal and recommended way to implement repainting. You can run your game logic through the same routine, although that’s not exactly recommended because your game might run at different speeds on different systems.
+[window.requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame) is a function in HTML5 which lets the browser know you’re trying to do fast repaints, and since the browser can use more of the operating system than you can with JavaScript, this is usually the most optimal and recommended way to implement repainting. You can run your game logic through the same routine, although that’s not exactly recommended because your game might run at different speeds on different systems.
 
 The loop we are using for this tutorial is a simplified version of the frame based game loop, where we’re actually updating logic and drawing things one after another once every 200 milliseconds (or 5 frames per second). While not exactly a shiny technical achievement, we can do this simply because the game doesn’t require any intermediate animations – in other words, we only need to display what happens after every frame and not what happens between those frames. This is also why we’re not using requestAnimationFrame in this particular tutorial. It’s just something to keep in mind and shouldn’t concern you if you’re just starting out. If you’re starting out a bigger project, consider using one of the many game engines that already solves game loops for you. Or if you want to learn more about them, your best bet is – experimentation.
 

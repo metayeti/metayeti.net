@@ -39,10 +39,30 @@ hljs.registerLanguage('html', html);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage('json', json);
 
+// -- helper: parse line ranges --
+const parseLineRanges = (rangeStr) => {
+	// format: {1,3-5}
+	const ranges = [];
+	if (!rangeStr) return ranges;
+
+	const content = rangeStr.replace(/^{|}$/g, '');
+	content.split(',').forEach((part) => {
+		const match = part.trim().match(/^(\d+)(?:-(\d+))?$/);
+		if (match) {
+			const start = parseInt(match[1], 10);
+			const end = match[2] ? parseInt(match[2], 10) : start;
+			ranges.push([start, end]);
+		}
+	});
+	return ranges;
+};
+
 // -- create markdown-it instance --
 const md = MarkdownIt({
 	html: true,
 	highlight: (str, lang) => {
+		// we handle highlighting manually in the fence renderer now
+		// but we keep this for inline code or other usages if needed
 		if (lang && hljs.getLanguage(lang)) {
 			try {
 				return hljs.highlight(str, { language: lang }).value;
@@ -53,6 +73,65 @@ const md = MarkdownIt({
 		return '';
 	},
 });
+
+// -- override fence renderer for line highlighting --
+md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+	const token = tokens[idx];
+	const info = token.info ? md.utils.unescapeAll(token.info).trim() : '';
+
+	let langName = '';
+	let lineRanges = [];
+
+	if (info) {
+		const split = info.split(/\s+/);
+		langName = split[0];
+
+		// check for ranges in the rest
+		const rangeMatch = info.match(/{([\d,-]+)}/);
+		if (rangeMatch) {
+			lineRanges = parseLineRanges(rangeMatch[0]);
+		}
+	}
+
+	let highlightedCode = '';
+	if (options.highlight) {
+		// pass clean language name
+		highlightedCode = options.highlight(token.content, langName) || md.utils.escapeHtml(token.content);
+	} else {
+		highlightedCode = md.utils.escapeHtml(token.content);
+	}
+
+	// If no highlighting needed, return standard structure (or close to it)
+	// if (lineRanges.length === 0) {
+	// 	return '<pre><code class="hljs language-' + langName + '">' + highlightedCode + '</code></pre>\n';
+	// }
+
+	// Generate highlighted lines overlay
+	const lines = token.content.split(/\r?\n/);
+	// remove last empty line if it exists (highlight.js usually ignores trailing newline)
+	if (lines[lines.length - 1] === '') {
+		lines.pop();
+	}
+
+	let lineBgHtml = '<div class="code-lines">';
+	for (let i = 0; i < lines.length; i++) {
+		const lineNum = i + 1;
+		const isHighlighted = lineRanges.some(([start, end]) => lineNum >= start && lineNum <= end);
+		lineBgHtml += `<div class="code-line${isHighlighted ? ' highlighted' : ''}" data-line="${lineNum}"></div>`;
+	}
+	lineBgHtml += '</div>';
+
+	return (
+		'<div class="code-block-wrapper">' +
+		lineBgHtml +
+		'<pre><code class="hljs language-' +
+		langName +
+		'">' +
+		highlightedCode +
+		'</code></pre>' +
+		'</div>\n'
+	);
+};
 
 // -- add ids to headings for navigation --
 md.use(anchor, {

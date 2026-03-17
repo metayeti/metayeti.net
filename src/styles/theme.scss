@@ -71,6 +71,7 @@
 	--color-content-link--hover: #7dd3fc;
 
 	--color-content-code-bg: rgba(0, 0, 0, 0.2);
+	--color-content-code-highlight: rgba(255, 255, 255, 0.08);
 
 	// blog
 	--color-blog-sidebar-border: rgba(255, 255, 255, 0.08);
@@ -129,11 +130,13 @@
 
 	--color-content-fg: #2a3d4d;
 	--color-content-flavor: #06a9e9;
+	--color-content-flavor--dim: rgba(6, 169, 233, 0.5);
 
 	--color-content-link: #4a6880;
 	--color-content-link--hover: #2badfd;
 
 	--color-content-code-bg: rgba(255, 255, 255, 0.6);
+	--color-content-code-highlight: rgba(0, 0, 0, 0.04);
 
 	// blog
 	--color-blog-sidebar-border: rgba(0, 0, 0, 0.08);

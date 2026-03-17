@@ -26,7 +26,6 @@
 pre code.hljs {
 	display: block;
 	overflow-x: auto;
-	padding: 1em;
 }
 
 code.hljs {
@@ -49,7 +48,7 @@ code.hljs {
 */
 .hljs {
 	color: #c9d1d9;
-	background: #0d1117;
+	//background: #0d1117;
 }
 .hljs-doctag,
 .hljs-keyword,
@@ -175,7 +174,7 @@ NOTE_2:	Color names provided in comments were derived using "Name that Color" on
 			http://chir.ag/projects/name-that-color
 */
 	.hljs {
-		background: #ffffdf; /* Half and Half (approx.) */
+		//background: #ffffdf; /* Half and Half (approx.) */
 	}
 	/* --- used for PureBASIC base color --- */
 	/* --- used for PureBASIC Procedures return type --- */

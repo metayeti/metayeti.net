@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-16
+//  Updated:      2026-03-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -33,10 +33,11 @@
 		justify-content: center;
 		width: 45px;
 		height: 45px;
-		padding: 10px;
+		padding: 11px;
 		color: var(--color-content-fg);
 		border: 1px solid var(--color-content-link);
 		border-radius: 5px;
+		background-color: rgba(0, 0, 0, 0.1);
 		cursor: pointer;
 		text-decoration: none !important;
 		font-size: 1rem;
@@ -48,6 +49,28 @@
 		&:focus {
 			border-color: var(--color-content-link--hover);
 			transform: translateX(1px);
+
+			// slide in a little label on hover
+			&::after {
+				content: 'Back to blog index';
+				position: absolute;
+				left: 100%;
+				margin-left: 8px;
+				padding: 4px 8px;
+				color: var(--color-bg);
+				font-size: 1rem;
+				border-radius: 4px;
+				white-space: nowrap;
+				opacity: 0;
+				animation: fadeIn 0.25s forwards;
+				transform: translateX(-50px);
+				@keyframes fadeIn {
+					to {
+						opacity: 1;
+						transform: translateX(0);
+					}
+				}
+			}
 		}
 	}
 
