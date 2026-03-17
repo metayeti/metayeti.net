@@ -230,7 +230,174 @@ Now that we have something to work with, we can move on to more interesting thin
 
 --PAGE BREAK--
 
+# Making things go
 
+The snake is being drawn, but it’s not yet alive. Let’s fix that!
+
+At this point, we need to start thinking about user input. Let’s add some keycode constants we’ll be using, which represent the arrow keys on the keyboard. Add this code immediately below the “directional constants”:
+
+```JS
+// keycode constants
+var KEY_UP = 38;
+var KEY_DOWN = 40;
+var KEY_LEFT = 37;
+var KEY_RIGHT = 39;
+```
+
+Now we also need to do something about that empty keyDown function. Let’s add some code to it:
+
+```JS
+function keyDown(e) {
+	// fetch the keycode
+	var key = e.keyCode || e.which;
+	switch (key) {
+		case KEY_UP:
+			direction = UP;
+			break;
+		case KEY_DOWN:
+			direction = DOWN;
+			break;
+		case KEY_LEFT:
+			direction = LEFT;
+			break;
+		case KEY_RIGHT:
+			direction = RIGHT;
+			break;
+	}
+}
+```
+
+Here, we are telling the browser to notify us of any keydown events that might happen. When events of this type happen, we check whether any of the arrow keys have been pressed and then adjust the direction variable to the corresponding value using our previously named direction constants. If you wish, you can change this function to check for any keycodes you like (for example if your keyboard lacks arrow keys or you just want a different control layout). To find keycodes, simply do console.log(key) and then press the key and check the console output.
+
+Finally, let’s expand our updateGame function. We want to achieve movement of the snake, so that it follows the pattern the user wants. If the user presses up, right, and then up again, we want the entire snake to zigzag along that path, while moving further in the last direction the user picked. So how do we do this? Does the programmer need to actually keep track of the cells that make up a snake, and then move every one individually on its path or does there exist a more elegant solution? After some brain-squeezing, we realize that what we could do is this: simply treat every cell in our snake as a static cell, except the last one – the tail one. If we take the last (tail) cell of the snake, and attach it in front of our snake (make it the head) in a given direction, and then repeat this for every frame, our snake’s tail would repeatedly get chopped and put in front of the snake, giving the impression that our snake is moving as a whole! Would this work? You bet. So let’s give it a shot.
+
+Add the following to the updateGame function:
+
+```JS
+function updateGame() {
+	// move the snake
+	var head = snake[snake.length - 1]; // the last element is the head
+	var next = [head[0], head[1]]; // our next head
+	switch (direction) {
+		case UP:
+			// move the snake along the y axis up
+			next[1]--;
+			break;
+		case DOWN:
+			// move the snake along the y axis down
+			next[1]++;
+			break;
+		case LEFT:
+			// move the snake along the x axis left
+			next[0]--;
+			break;
+		case RIGHT:
+			// move the snake along the x axis right
+			next[0]++;
+			break;
+	}
+	// push the new head into the snake
+	snake.push(next);
+	// cut the tail of the snake
+	snake.shift();
+}
+```
+
+This code may look complicated, but we are really doing quite simple and intuitive things here. We grab the head of the snake, which is represented by the last element of our array. Then we create a new element called next, and populate it with the coordinates of the current head. Now, we move this next element along an axis, either horizontally or vertically, and either into the negative or into the positive, depending on which direction we’re currently heading towards as decided by a simple switch statement. Then, we push the next element into our array, making it the new head (and making the previous head the 2nd element). And finally, we remove the tail of the snake by removing the first element from the array using Array.shift().
+
+When our timer repeatedly calls the update functions, we should see the snake move along its direction, and we can change this direction using the arrow keys on the keyboard. If we give our program a try now, something like this is what we should be seeing:
+
+
+
+# It lives … roughly
+
+But wait! There’s a problem. Well, there’s several. First of all, we can apparently exit the game area and reappear in the same area if we go back. That’s not what we want. We also seem to be able to change directions so that our snake reverses its way! Just look at this:
+
+
+
+I hope you will agree that this is definitely not what we want. It looks awkward and doesn’t play like Snake. Finally, we seem to be able to pass right through ourselves, but we’ll leave this problem for later when we’re dealing with collisions. Right now, let’s fix what we can.
+
+First, let’s tackle the issue of the disappearing snake. What’s happening is that the cells to our snake are allowed to wonder free into whatever value they want, including all the values the player will never be able to see because they’re outside of the playing area. So what do we actually want to do? I think ideally our snake would move along a space which is wrapped in on itself, so that when you exit a border on the right you reappear on the left. How do we achieve this? Let’s look at our updateGame function again. We are increasing or decreasing the new head’s x and y values, but we’re not giving any consideration to what happens when we reach the game border with our snake, or when we wonder beyond it.
+
+Let’s change the code so that every time the snake’s head goes beyond the border, it instead reappears on the other side! Change the code in the updateGame function to include the following:
+
+```JS
+function updateGame() {
+	// move the snake
+	var head = snake[snake.length - 1]; // the last element is the head
+	var next = [head[0], head[1]]; // our next head
+	switch (direction) {
+		case UP:
+			// move the snake along the y axis up
+			next[1]--;
+			if (next[1] < 0)
+				next[1] = GRID_H - 1;
+			break;
+		case DOWN:
+			// move the snake along the y axis down
+			next[1]++;
+			if (next[1] > GRID_H - 1)
+				next[1] = 0;
+			break;
+		case LEFT:
+			// move the snake along the x axis left
+			next[0]--;
+			if (next[0] < 0)
+				next[0] = GRID_W - 1;
+			break;
+		case RIGHT:
+			// move the snake along the x axis right
+			next[0]++;
+			if (next[0] > GRID_W - 1)
+				next[0] = 0;
+			break;
+	}
+	// push the new head into the snake
+	snake.push(next);
+	// cut the tail of the snake
+	snake.shift();
+}
+```
+
+When we’re decreasing a value along an axis, we are checking if the value has gone past 0, and if so, we set the value to the size of the grid minus one (minus one because the values run from 0 to 19, which makes a total of 20 elements). When we’re increasing a value along an axis, we are checking if the value has gone past the size of the grid minus one, and if so we set it to 0. The effect of this code is that the snake’s head can’t leave the game borders anymore, it will always simply reappear on the other side, with other cells following right behind and creating an illusion of continuous movement past the border.
+
+While we’re at it, let’s also fix the issue of the snake running into itself backwards. If we press a direction opposite to the current direction, the snake will reverse the direction and run through its own cells before it starts moving into the other direction again. This is unwanted, so let’s just block user input for when this happens. We won’t allow any changing of the direction into the opposite direction. For this, we’ll need to revisit our keyDown function once more. Update the code like so:
+
+```JS
+function keyDown(e) {
+	// fetch the keycode
+	var key = e.keyCode || e.which;
+	switch (key) {
+		case KEY_UP:
+			if (direction !== DOWN) {
+				direction = UP;
+			}
+			break;
+		case KEY_DOWN:
+			if (direction !== UP) {
+				direction = DOWN;
+			}
+			break;
+		case KEY_LEFT:
+			if (direction !== RIGHT) {
+				direction = LEFT;
+			}
+			break;
+		case KEY_RIGHT:
+			if (direction !== LEFT) {
+				direction = RIGHT;
+			}
+			break;
+	}
+}
+```
+
+This should do it. With this code in place, only three directions are ever allowed and the opposite direction to whatever the current direction is, is being blocked. Now the snake can’t run over itself in the opposite direction!
+
+With these updates in place, this is what the game should now play like:
+
+
+Walls? I can’t see any walls!
 
 --PAGE BREAK--
 

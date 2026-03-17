@@ -24,9 +24,10 @@
 import IconBack from '@/components/icons/IconBack';
 import IconCalendar from '@/components/icons/IconCalendar';
 import IconTime from '@/components/icons/IconTime';
+import IconPages from '@/components/icons/IconPages';
 import IconDownload from '@/components/icons/IconDownload';
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
 	loadJSON,
 	loadText,
@@ -42,7 +43,8 @@ import {
 import './BlogPost.scss';
 
 export default function BlogPost() {
-	const { slug } = useParams();
+	const { slug, page } = useParams();
+	const navigate = useNavigate();
 
 	const [postData, setPostData] = useState(null);
 	const [renderedHTML, setRenderedHTML] = useState('');
@@ -53,6 +55,16 @@ export default function BlogPost() {
 	const [articlePages, setArticlePages] = useState([]);
 	const [pageIndex, setPageIndex] = useState(0);
 	const [pendingScrollToId, setPendingScrollToId] = useState(null);
+
+	// sync page index with url param
+	useEffect(() => {
+		const p = parseInt(page);
+		if (!isNaN(p) && p > 0) {
+			setPageIndex(p - 1);
+		} else {
+			setPageIndex(0);
+		}
+	}, [page]);
 
 	useEffect(() => {
 		async function loadPost() {
@@ -135,22 +147,25 @@ export default function BlogPost() {
 
 	const handlePageChange = (newIndex) => {
 		if (newIndex >= 0 && newIndex < articlePages.length) {
-			setPageIndex(newIndex);
-			// clear hash if page change manually
-			window.history.pushState(null, '', window.location.pathname);
+			const pageNum = newIndex + 1;
+			const url = pageNum === 1 ? `/blog/${slug}` : `/blog/${slug}/${pageNum}`;
+			navigate(url);
 		}
 	};
 
 	const handleHeadingClick = (e, heading) => {
 		e.preventDefault();
+		const targetPage = heading.pageIndex + 1;
+		const targetUrl = targetPage === 1 ? `/blog/${slug}` : `/blog/${slug}/${targetPage}`;
+
 		if (heading.pageIndex !== pageIndex) {
-			setPageIndex(heading.pageIndex);
 			setPendingScrollToId(heading.id);
+			navigate(`${targetUrl}#${heading.id}`);
 		} else {
 			const el = document.getElementById(heading.id);
 			if (el) el.scrollIntoView();
+			navigate(`${targetUrl}#${heading.id}`, { replace: true });
 		}
-		window.history.pushState(null, '', `#${heading.id}`);
 	};
 
 	// -- download raw markdown --
@@ -226,6 +241,16 @@ by Danijel Durakovic (https://metayeti.net)
 							</span>
 							{readingTime && <span>{readingTime} read</span>}
 						</div>
+						{articlePages.length > 1 && (
+							<div className="blog-post__meta-item">
+								<span className="blog-post__meta-icon">
+									<IconPages />
+								</span>
+								<span>
+									Page {pageIndex + 1} of {articlePages.length}
+								</span>
+							</div>
+						)}
 					</div>
 				</section>
 
