@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-04
-//  Updated:      2026-03-17
+//  Updated:      2026-03-18
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -105,7 +105,7 @@
 		font-weight: 400;
 		letter-spacing: 0.07em;
 		text-transform: uppercase;
-		font-family: 'Share Tech Mono', monospace;
+		font-family: var(--font-link);
 		position: relative;
 		transition: color 0.2s ease;
 		text-decoration: underline;
@@ -118,6 +118,8 @@
 		&.nocaps {
 			text-transform: none;
 			letter-spacing: normal;
+			font-family: var(--font-base);
+			font-size: 1rem;
 		}
 
 		// external variant with icon

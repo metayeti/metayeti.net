@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-04
+//  Updated:      2026-03-18
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,9 +22,9 @@
 //
 
 // -- Google Fonts imports --
-//@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200;400&family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap');
 
 :root {
@@ -35,5 +35,6 @@
 	--font-base: 'Oxanium', sans-serif;
 	--font-heading: 'Exo 2', sans-serif;
 	--font-button: 'Oxanium', sans-serif;
+	--font-link: 'Share Tech Mono', monospace;
 	--font-code: 'M PLUS 1 Code', monospace;
 }
