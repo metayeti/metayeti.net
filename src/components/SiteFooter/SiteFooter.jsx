@@ -21,6 +21,7 @@
 //  TODO:         -
 //
 
+import { version } from '../../../package.json';
 import './SiteFooter.scss';
 
 function SiteFooter() {
@@ -41,6 +42,7 @@ function SiteFooter() {
 				</span>
 				<span>&copy; {new Date().getFullYear()} metayeti.net | All rights reserved.</span>
 			</div>
+			<div className="site-footer__version">v{version}</div>
 		</footer>
 	);
 }

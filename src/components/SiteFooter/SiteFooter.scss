@@ -24,6 +24,7 @@
 @use '@/styles/responsive.scss';
 
 .site-footer {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -81,5 +82,16 @@
 		margin: 0 5px;
 		background-size: contain;
 		background-repeat: no-repeat;
+	}
+
+	&__version {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 0.6rem;
+		color: var(--color-footer-fg);
+		opacity: 0.5;
 	}
 }
