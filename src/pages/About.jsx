@@ -168,145 +168,157 @@ export default function About() {
 						</a>
 					</p>
 				</div>
+
+				{/* -- PROGRAMMING JOURNEY (large) -- */}
+				<div className="about-page__card about-page__card--prog-journey">
+					<h3>Programming</h3>
+					<p>
+						I started programming at an early age of about 9. The very first thing I remember is trying to
+						figure out how timers work in{' '}
+						<a
+							href="https://winworldpc.com/product/microsoft-visual-bas/30"
+							className="external"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Visual Basic 3
+						</a>
+						. Later on, I weaved my way through VB5 and 6, then C, Pascal, and finally C++, C#, Java,
+						Python, PHP, JavaScript and many others.
+					</p>
+					{/* <div className="about-page__prog-visual">
+						<img className="bordered" src="/content/static/images/vb3.png" alt="VB3" />
+						<p className="about-page__caption">Visual Basic 3 &mdash; my earliest programming memory.</p>
+					</div> */}
+					<p>
+						Throughout my programming journey, I&apos;ve explored a wide range of technologies,
+						methodologies, frameworks, computer science concepts, mathematics, and related fields.
+					</p>
+				</div>
+
+				{/* -- HUMAN LANGUAGES (large) -- */}
+				<div className="about-page__card about-page__card--languages">
+					<h3>Human languages</h3>
+					<p>As an aspiring member of the human species, I&apos;ve learned some human languages.</p>
+					<ul className="about-page__list">
+						<li>Slovenian, my mother tongue. As perplexing as it is beautiful.</li>
+						<li>
+							Serbo-Croatian, my 2nd language, I rarely use it but I understand it more or less
+							flawlessly.
+						</li>
+						<li>English, my 3rd language. I would rate my level as advanced.</li>
+					</ul>
+					<p className="about-page__aside">
+						My attempts to learn German have been less than fruitful so far, although Duolingo had
+						successfully trained me to be able to ask for the whereabouts of horses, should I ever encounter
+						a situation in which that would become a pressing concern. My attempts to learn Russian have
+						been similar, even though I assure you I&apos;m capable of asking for the whereabouts of horses
+						in Russian as well. I&apos;m now trying to learn Japanese. I have not learned how to ask for the
+						whereabouts of horses in Japanese just yet, but I expect to be able to discuss it fluently soon.
+					</p>
+				</div>
+
+				{/* -- TECH PHILOSOPHY (medium) -- */}
+				<div className="about-page__card about-page__card--tech-phil">
+					<h4>Tech Philosophy</h4>
+					<p>
+						My favorite programming language is C++ with its raw power, expressivity and rock-like
+						stability. My second favorite programming language is JavaScript. It&apos;s moderately high
+						level but remains eloquent in its simplicity, yet highly expressive.
+					</p>
+					<p>
+						I like{' '}
+						<a
+							href="https://en.wikipedia.org/wiki/Open-source_software"
+							className="external"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							open source
+						</a>
+						. You can check out some of my projects on{' '}
+						<a
+							href="https://github.com/metayeti"
+							className="external"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							GitHub
+						</a>
+						.
+					</p>
+				</div>
+
+				{/* -- ART (medium/tall) -- */}
+				<div className="about-page__card about-page__card--art">
+					<h3>Art &amp; Music</h3>
+					<p>
+						I&apos;ve been interested in all manners of visual design ever since I can remember. In the very
+						early days I used to make interfaces in Visual Basic just for fun. In recent times I mostly work
+						with web interfaces.
+					</p>
+					<div className="about-page__art-showcase">
+						<div>
+							<img
+								className="about-page__skills-img about-page__skills-img--zakk pixelated"
+								src="/content/static/images/zakk.png"
+								alt="ZAKK"
+							/>
+							<p className="about-page__caption">This guy's name is Zakk.</p>
+						</div>
+						<div>
+							<img
+								className="about-page__skills-img pixelated"
+								src="/content/static/images/zakk_sprite.gif"
+								alt="ZAKK walk"
+							/>
+							<p className="about-page__caption">Doin' the walk.</p>
+						</div>
+					</div>
+					<p>
+						I have always been interested in art and music. I decided to focus mostly on pixel art as
+						that&apos;s my favorite graphical style.
+					</p>
+				</div>
+
+				{/* -- MUSIC PROD (medium) -- */}
+				<div className="about-page__card about-page__card--music-prod">
+					<h4>Music Production</h4>
+					<p>
+						Music-wise, I&apos;ve used a number of DAWs over the years, my current favorite is{' '}
+						<a
+							href="https://www.image-line.com/fl-studio"
+							className="external"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							FL Studio
+						</a>
+						. You can listen to some of my music on{' '}
+						<a
+							href="https://soundcloud.com/metayeti"
+							className="external"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							SoundCloud
+						</a>
+						.
+					</p>
+				</div>
+
+				{/* -- CONTACT (wide) -- */}
+				<div className="about-page__card about-page__card--contact">
+					<h3>Contact</h3>
+					<p>
+						For business inquiries, please contact me at{' '}
+						<a href="mailto:metayetidev@gmail.com" className="email nocaps">
+							metayetidev@gmail.com
+						</a>
+						.
+					</p>
+				</div>
 			</div>
-
-			{/* =================== SKILLS =================== */}
-			<section className="about-page__skills">
-				<h2>Skills</h2>
-
-				<h3>Programming</h3>
-				<p>
-					I started programming at an early age of about 10. The very first thing I remember is trying to
-					figure out how timers work in{' '}
-					<a
-						href="https://winworldpc.com/product/microsoft-visual-bas/30"
-						className="external"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Visual Basic 3
-					</a>
-					. Later on, I weaved my way through VB5 and 6, then C, Pascal, and finally C++, C#, Java, Python,
-					PHP, JavaScript and many others.
-				</p>
-
-				<img className="about-page__skills-img bordered" src="/content/static/images/vb3.png" alt="VB3" />
-				<p className="about-page__caption">Visual Basic 3 &mdash; my earliest programming memory.</p>
-
-				<p>
-					Throughout my programming journey, I&apos;ve explored a wide range of technologies, methodologies,
-					frameworks, computer science concepts, mathematics, and related fields.
-				</p>
-				<p>
-					My favorite programming language is C++ with its raw power, expressivity and rock-like stability. My
-					second favorite programming language is JavaScript. It&apos;s moderately high level but remains
-					eloquent in its simplicity, yet highly expressive.
-				</p>
-				<p>
-					I like{' '}
-					<a
-						href="https://en.wikipedia.org/wiki/Open-source_software"
-						className="external"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						open source
-					</a>
-					. You can check out some of my projects on{' '}
-					<a
-						href="https://github.com/metayeti"
-						className="external"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						GitHub
-					</a>
-					.
-				</p>
-
-				<h3>Human languages</h3>
-				<p>As an aspiring member of the human species, I&apos;ve learned some human languages.</p>
-				<ul className="about-page__list">
-					<li>Slovenian, my mother tongue. As perplexing as it is beautiful.</li>
-					<li>
-						Serbo-Croatian, my 2nd language, I rarely use it but I understand it more or less flawlessly.
-					</li>
-					<li>English, my 3rd language. I would rate my level as advanced.</li>
-				</ul>
-				<p className="about-page__aside">
-					My attempts to learn German have been less than fruitful so far, although Duolingo had successfully
-					trained me to be able to ask for the whereabouts of horses, should I ever encounter a situation in
-					which that would become a pressing concern. My attempts to learn Russian have been similar, and I
-					assure you I&apos;m capable of asking for the whereabouts of horses in Russian as well. I&apos;m now
-					trying to learn Japanese. I have not learned how to ask for the whereabouts of horses in Japanese
-					just yet, but I expect to be able to discuss it fluently soon.
-				</p>
-
-				<h3>Art &amp; Music</h3>
-				<p>
-					I&apos;ve been interested in all manners of visual design ever since I can remember. In the very
-					early days I used to make interfaces in Visual Basic just for fun. In recent times I mostly work
-					with web interfaces.
-				</p>
-				<p>
-					I have always been interested in art and music. I tried to learn the guitar at an early age (and
-					persisted for quite a while). I&apos;ve been interested in drawing since I can remember, although
-					it&apos;s only the last decade or so when I took it upon myself to get good enough at it to be able
-					to use it for higher goals. For games, I decided to focus mostly on pixel art as that&apos;s my
-					favorite graphical style (no doubt inspired by the games I used to play).
-				</p>
-
-				<img
-					className="about-page__skills-img about-page__skills-img--zakk pixelated"
-					src="/content/static/images/zakk.png"
-					alt="ZAKK"
-				/>
-				<p className="about-page__caption">
-					This guy&apos;s name is Zakk. I made this titlescreen for a demo game that remains unreleased.
-				</p>
-
-				<img
-					className="about-page__skills-img pixelated"
-					src="/content/static/images/zakk_sprite.gif"
-					alt="ZAKK walk"
-				/>
-				<p className="about-page__caption">Zakk doin&apos; the walk. Look at him go!</p>
-
-				<p>
-					Music-wise, I&apos;ve been getting better at composing my own for my game projects. I&apos;ve used a
-					number of DAWs over the years, my current favorite is{' '}
-					<a
-						href="https://www.image-line.com/fl-studio"
-						className="external"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						FL Studio
-					</a>
-					. You can listen to some of my music on{' '}
-					<a
-						href="https://soundcloud.com/metayeti"
-						className="external"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						SoundCloud
-					</a>
-					.
-				</p>
-			</section>
-
-			{/* =================== CONTACT =================== */}
-			<section className="about-page__contact">
-				<h2>Contact</h2>
-				<p>
-					For business inquiries, please contact me at{' '}
-					<a href="mailto:metayetidev@gmail.com" className="email nocaps">
-						metayetidev@gmail.com
-					</a>
-					.
-				</p>
-			</section>
 		</div>
 	);
 }
