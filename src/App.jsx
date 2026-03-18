@@ -24,7 +24,7 @@
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, useLocation } from 'react-router-dom';
 //import { createHashRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Home from '@/pages/Home';
 import Projects from '@/pages/Projects';
@@ -33,12 +33,22 @@ import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import About from '@/pages/About';
 import NotFound from './pages/NotFound';
+import { useEffect } from 'react';
 
 console.log('Current mode:', import.meta.env.MODE);
+
+function ScrollToTop() {
+	const { pathname } = useLocation();
+	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}, [pathname]);
+	return null;
+}
 
 function RootLayout() {
 	return (
 		<>
+			<ScrollToTop />
 			<SiteHeader />
 			<main>
 				<Outlet />
