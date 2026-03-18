@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-17
+//  Updated:      2026-03-18
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -26,6 +26,8 @@ import IconCalendar from '@/components/icons/IconCalendar';
 import IconTime from '@/components/icons/IconTime';
 import IconPages from '@/components/icons/IconPages';
 import IconDownload from '@/components/icons/IconDownload';
+import IconChevronLeft from '@/components/icons/IconChevronLeft';
+import IconChevronRight from '@/components/icons/IconChevronRight';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
@@ -248,7 +250,25 @@ by Danijel Durakovic (https://metayeti.net)
 								</span>
 								<span>
 									Page {pageIndex + 1} of {articlePages.length}
-								</span>
+								</span>{' '}
+								<span className="blog-post__meta-page-nav">
+									<button
+										className="blog-post__meta-page-btn"
+										disabled={pageIndex === 0}
+										onClick={() => handlePageChange(pageIndex - 1)}
+										aria-label="Previous page"
+									>
+										<IconChevronLeft />
+									</button>
+									<button
+										className="blog-post__meta-page-btn"
+										disabled={pageIndex === articlePages.length - 1}
+										onClick={() => handlePageChange(pageIndex + 1)}
+										aria-label="Next page"
+									>
+										<IconChevronRight />
+									</button>
+								</span>{' '}
 							</div>
 						)}
 					</div>
