@@ -21,6 +21,8 @@
 //  TODO:         -
 //
 
+@use '@/styles/responsive';
+
 .blog-post {
 	// -- main content --
 	&__main {
@@ -124,37 +126,44 @@
 	&__meta {
 		display: flex;
 		flex-direction: row;
-		gap: 19px;
+		flex-wrap: wrap;
+		gap: 18px;
 		padding: 12px 0;
-		font-size: 0.8rem;
+		font-size: 0.88rem;
 		color: var(--color-content-link);
 
 		&-item {
 			display: flex;
 			flex-direction: row;
 			gap: 7px;
+			flex: 0 0 auto;
 		}
 
 		&-icon {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
 			width: 16px;
 			height: 16px;
 			color: var(--color-content-link);
-			transform: translateY(-2px);
 		}
 
 		&-page-nav {
-			display: inline-flex;
+			display: flex;
 			align-items: center;
-			gap: 2px;
+
+			// add a little more room to mobile for fat fingers
+			margin-left: 5px;
+			gap: 10px;
+
+			// gradually reduce gap on larger screens
+			@include responsive.size('sm') {
+				margin-left: 0;
+				gap: 6px;
+			}
+			@include responsive.size('lg') {
+				gap: 4px;
+			}
 		}
 
 		&-page-btn {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
 			width: 14px;
 			height: 14px;
 			padding: 0;
@@ -162,7 +171,7 @@
 			background: none;
 			color: var(--color-content-link);
 			cursor: pointer;
-			transform: translateY(-2px);
+			transform: translateY(-1px);
 
 			&:disabled {
 				color: var(--color-content-link);

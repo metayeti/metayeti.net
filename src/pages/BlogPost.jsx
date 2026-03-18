@@ -212,7 +212,7 @@ by Danijel Durakovic (https://metayeti.net)
 	const lastUpdated = postData['date-updated'] || postData['date-published'];
 
 	return (
-		<div className="blog-post sidebar-layout sidebar-layout--reversed wrapped">
+		<div className="blog-post sidebar-layout sidebar-layout--hidden wrapped">
 			<div className="blog-post__main">
 				<Link to="/blog" className="blog-post__back" aria-label="Back to blog">
 					<IconBack />

@@ -137,18 +137,42 @@
 			// hover state for external link
 			&:hover::before {
 				background-color: var(--color-content-link--hover);
-
 				// bounce icon up and down on hover
 				animation: bounce 0.5s infinite;
-				@keyframes bounce {
-					0%,
-					100% {
-						transform: translateY(0);
-					}
-					50% {
-						transform: translateY(-2px);
-					}
-				}
+			}
+		}
+
+		// save variant with icon
+		&.save {
+			&::before {
+				content: '';
+				display: inline-block;
+				margin-right: 5px;
+				margin-left: 3px;
+				background-color: var(--color-content-link);
+				-webkit-mask-image: url('@/assets/images/save.svg');
+				mask-image: url('@/assets/images/save.svg');
+				-webkit-mask-repeat: no-repeat;
+				mask-repeat: no-repeat;
+				-webkit-mask-size: contain;
+				mask-size: contain;
+				-webkit-mask-position: center;
+				mask-position: center;
+				padding: 5px;
+			}
+
+			&:hover::before {
+				background-color: var(--color-content-link--hover);
+				animation: bounce 0.5s infinite;
+			}
+		}
+		@keyframes bounce {
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-2px);
 			}
 		}
 	}
@@ -157,8 +181,13 @@
 	img {
 		max-width: 100%;
 		height: auto;
-		border: 1px solid var(--color-content-flavor--dim);
-		padding: 10px;
+
+		&.bordered {
+			border: 1px solid var(--color-content-flavor--dim);
+			background-color: rgba(0, 0, 0, 0.15);
+			border-radius: 2px;
+			padding: 10px;
+		}
 	}
 
 	// -- image caption --
@@ -180,7 +209,7 @@
 
 		pre {
 			background-color: transparent;
-			padding-left: 3.5rem; // extra space for line numbers
+			padding-left: 3rem; // extra space for line numbers
 			overflow-x: auto;
 			border: none;
 			margin-bottom: 0;

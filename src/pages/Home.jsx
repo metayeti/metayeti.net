@@ -59,7 +59,7 @@ export default function Home() {
 				<p>In construction.</p>
 			</section>
 			<section>
-				<h2>Fun Fact</h2>
+				<h2>Nerd Fact</h2>
 				<RandomFunFact />
 			</section>
 		</div>

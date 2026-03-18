@@ -32,6 +32,12 @@
 		flex-direction: column-reverse;
 	}
 
+	&--hidden {
+		> *:nth-child(2) {
+			display: none;
+		}
+	}
+
 	@include responsive.size('lg') {
 		flex-direction: row;
 		gap: 30px;
@@ -41,6 +47,7 @@
 			min-width: 0;
 		}
 		> *:nth-child(2) {
+			display: block;
 			flex-shrink: 0;
 			width: 268px;
 		}

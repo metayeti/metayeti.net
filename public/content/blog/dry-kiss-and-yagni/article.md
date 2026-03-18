@@ -4,7 +4,7 @@ These principles hardly need an introduction, let alone a description, but perha
 
 I must strongly warn against taking these principles as absolutes. They are for guidance and suggestion - they are advisory.
 
-<img src="/content/blog/dry-kiss-and-yagni/images/obiwan.webp" alt="obi-wan">
+<img src="/content/blog/dry-kiss-and-yagni/images/obiwan.webp" class="bordered" alt="obi-wan">
 <p class="caption">Obi-Wan Kenobi keeping it real.</p>
 
 # DRY - Don't Repeat Yourself
