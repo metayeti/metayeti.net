@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-16
+//  Updated:      2026-03-18
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -28,6 +28,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 //import { createHashRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Home from '@/pages/Home';
 import Projects from '@/pages/Projects';
+import ProjectPage from '@/pages/ProjectPage';
 import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import About from '@/pages/About';
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
 			{
 				path: '/projects',
 				element: <Projects />,
+			},
+			{
+				path: '/projects/:slug',
+				element: <ProjectPage />,
 			},
 			{
 				path: '/blog',

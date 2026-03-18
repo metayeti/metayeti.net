@@ -99,8 +99,7 @@ export default function About() {
 					<h3>Videogames</h3>
 					<p>
 						<span className="about-page__flavor">Commander Keen</span>, Quake, Command &amp; Conquer,
-						Fallout 1, WoW Classic &mdash; these are some of the games that shaped my childhood and
-						ultimately my career.
+						Fallout 1, WoW Classic any many more.
 					</p>
 					<img
 						className="about-page__blooguard pixelated"
@@ -123,7 +122,7 @@ export default function About() {
 				{/* -- HEROES (small) -- */}
 				<div className="about-page__card about-page__card--heroes">
 					<h4>Personal heroes</h4>
-					<p>Bugs Bunny, Asterix</p>
+					<p>Bugs Bunny, Asterix, Zvitorepec</p>
 				</div>
 
 				{/* -- IDOLS (small) -- */}
@@ -134,14 +133,9 @@ export default function About() {
 
 				{/* -- PROGRAMMING LANGS (medium) -- */}
 				<div className="about-page__card about-page__card--langs">
-					<h4>Favorite stack</h4>
-					<div className="about-page__tag-list">
-						<span className="about-page__tag">C++</span>
-						<span className="about-page__tag">JavaScript</span>
-						<span className="about-page__tag">Vim</span>
-						<span className="about-page__tag">VS Code</span>
-						<span className="about-page__tag">Notepad3</span>
-					</div>
+					<h4>Favorite programming languages</h4>
+					<p>C++</p>
+					<p>JavaScript</p>
 				</div>
 
 				{/* -- OS (medium) -- */}
@@ -172,15 +166,6 @@ export default function About() {
 								src="/content/static/images/linux.png"
 							/>
 						</a>
-					</p>
-				</div>
-
-				{/* -- BOOKS / THINKERS (small) -- */}
-				<div className="about-page__card about-page__card--books">
-					<h4>Thinkers &amp; authors</h4>
-					<p>
-						Roald Dahl, Frank Herbert, Terry Pratchett, Freeman Dyson, Richard Feynman, Alan Watts, Bernardo
-						Kastrup
 					</p>
 				</div>
 			</div>
@@ -316,7 +301,10 @@ export default function About() {
 				<h2>Contact</h2>
 				<p>
 					For business inquiries, please contact me at{' '}
-					<a href="mailto:metayetidev@gmail.com">metayetidev@gmail.com</a>.
+					<a href="mailto:metayetidev@gmail.com" className="email nocaps">
+						metayetidev@gmail.com
+					</a>
+					.
 				</p>
 			</section>
 		</div>

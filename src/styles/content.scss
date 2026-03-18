@@ -115,6 +115,11 @@
 			color: var(--color-content-link--hover);
 		}
 
+		&.nocaps {
+			text-transform: none;
+			letter-spacing: normal;
+		}
+
 		// external variant with icon
 		&.external {
 			&::before {
@@ -166,6 +171,31 @@
 				animation: bounce 0.5s infinite;
 			}
 		}
+
+		// email variant with icon
+		&.email {
+			&::before {
+				content: '';
+				display: inline-block;
+				margin-right: 5px;
+				margin-left: 3px;
+				background-color: var(--color-content-link);
+				-webkit-mask-image: url('@/assets/images/email.svg');
+				mask-image: url('@/assets/images/email.svg');
+				-webkit-mask-repeat: no-repeat;
+				mask-repeat: no-repeat;
+				-webkit-mask-size: contain;
+				mask-size: contain;
+				-webkit-mask-position: center;
+				mask-position: center;
+				padding: 5px;
+			}
+			&:hover::before {
+				background-color: var(--color-content-link--hover);
+				animation: bounce 0.5s infinite;
+			}
+		}
+
 		@keyframes bounce {
 			0%,
 			100% {
