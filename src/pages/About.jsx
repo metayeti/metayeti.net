@@ -21,7 +21,14 @@
 //  TODO:         -
 //
 
+import { useState } from 'react';
+import { goodMusic, goodGameMusic } from '@/extras/musicLinks';
 import './About.scss';
+
+function pickRandom(list, exclude = null) {
+	const filtered = exclude !== null ? list.filter((x) => x !== exclude) : list;
+	return filtered[Math.floor(Math.random() * filtered.length)];
+}
 
 /**
  * Get age (in years) from a specific birth date.
@@ -32,6 +39,8 @@ function getAge(birthDate) {
 
 export default function About() {
 	const age = getAge('1988-01-05');
+	const [goodMusicUrl, setGoodMusicUrl] = useState(() => pickRandom(goodMusic));
+	const [gameMusicUrl, setGameMusicUrl] = useState(() => pickRandom(goodGameMusic));
 
 	return (
 		<div className="about-page wrapped">
@@ -124,11 +133,23 @@ export default function About() {
 							<span className="about-page__factoid-label">Favorite music</span>
 							<span className="about-page__factoid-value">
 								I love all{' '}
-								<a href="https://soundcloud.com/metayeti" target="_blank" rel="noreferrer">
+								<a
+									href={goodMusicUrl}
+									className="external"
+									target="_blank"
+									rel="noreferrer"
+									onClick={() => setGoodMusicUrl(pickRandom(goodMusic, goodMusicUrl))}
+								>
 									good music
 								</a>{' '}
 								and I have a special place in my heart for{' '}
-								<a href="https://soundcloud.com/metayeti" target="_blank" rel="noreferrer">
+								<a
+									href={gameMusicUrl}
+									className="external"
+									target="_blank"
+									rel="noreferrer"
+									onClick={() => setGameMusicUrl(pickRandom(goodGameMusic, gameMusicUrl))}
+								>
 									videogame music
 								</a>
 							</span>
@@ -144,15 +165,25 @@ export default function About() {
 						<li>
 							<span className="about-page__factoid-label">Favorite editors</span>
 							<span className="about-page__factoid-value">
-								<a href="https://www.vim.org/" target="_blank" rel="noreferrer">
+								<a href="https://www.vim.org/" className="external" target="_blank" rel="noreferrer">
 									Vim
 								</a>
 								,{' '}
-								<a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
+								<a
+									href="https://code.visualstudio.com/"
+									className="external"
+									target="_blank"
+									rel="noreferrer"
+								>
 									VS Code
 								</a>
 								,{' '}
-								<a href="https://rizonesoft.com/downloads/notepad3/" target="_blank" rel="noreferrer">
+								<a
+									href="https://rizonesoft.com/downloads/notepad3/"
+									className="external"
+									target="_blank"
+									rel="noreferrer"
+								>
 									Notepad3
 								</a>
 							</span>
@@ -164,23 +195,34 @@ export default function About() {
 						<li>
 							<span className="about-page__factoid-label">Favorite operating systems</span>
 							<span className="about-page__factoid-value">
-								<a href="https://winworldpc.com/product/ms-dos/622" target="_blank" rel="noreferrer">
+								<a
+									href="https://winworldpc.com/product/ms-dos/622"
+									className="external"
+									target="_blank"
+									rel="noreferrer"
+								>
 									MS-DOS 6.22
 								</a>
 								,{' '}
 								<a
 									href="https://winworldpc.com/product/windows-98/98-second-edition"
+									className="external"
 									target="_blank"
 									rel="noreferrer"
 								>
 									Windows 98
 								</a>{' '}
 								(with{' '}
-								<a href="https://winworldpc.com/product/plus/1998" target="_blank" rel="noreferrer">
+								<a
+									href="https://winworldpc.com/product/plus/1998"
+									className="external"
+									target="_blank"
+									rel="noreferrer"
+								>
 									Plus!
 								</a>
 								), most flavors of{' '}
-								<a href="https://www.linux.org/" target="_blank" rel="noreferrer">
+								<a href="https://www.linux.org/" className="external" target="_blank" rel="noreferrer">
 									Linux
 								</a>
 							</span>
@@ -249,11 +291,22 @@ export default function About() {
 				</p>
 				<p>
 					I like{' '}
-					<a href="https://en.wikipedia.org/wiki/Open-source_software" target="_blank" rel="noreferrer">
+					<a
+						href="https://en.wikipedia.org/wiki/Open-source_software"
+						className="external"
+						target="_blank"
+						rel="noreferrer"
+					>
 						open source software
 					</a>
 					. You can check out some of my projects on{' '}
-					<a href="https://github.com/metayeti" target="_blank" rel="noreferrer" className="external">
+					<a
+						href="https://github.com/metayeti"
+						className="external"
+						target="_blank"
+						rel="noreferrer"
+						className="external"
+					>
 						GitHub
 					</a>
 					.
@@ -304,11 +357,16 @@ export default function About() {
 				<p>
 					Music-wise, I&apos;ve been getting better at composing my own for my game projects. I&apos;ve used a
 					number of DAWs over the years, my current favorite is{' '}
-					<a href="https://www.image-line.com/fl-studio" target="_blank" rel="noreferrer">
+					<a
+						href="https://www.image-line.com/fl-studio"
+						className="external"
+						target="_blank"
+						rel="noreferrer"
+					>
 						FL Studio
 					</a>
 					. You can listen to some of my music on{' '}
-					<a href="https://soundcloud.com/metayeti" target="_blank" rel="noreferrer">
+					<a href="https://soundcloud.com/metayeti" className="external" target="_blank" rel="noreferrer">
 						SoundCloud
 					</a>
 					.
