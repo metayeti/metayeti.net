@@ -75,7 +75,6 @@ export default function About() {
 					personal portfolio and blog. The website is based on my own custom codebase that works on
 					markdown-driven content.
 				</p>
-				<p>This website uses no cookies, stores exactly 1 bit of data*, and has 0 (zero) ads.</p>
 				<p>
 					The full source for this website is available on{' '}
 					<a
@@ -91,10 +90,6 @@ export default function About() {
 				<p>
 					While you&apos;re here, you can check out my <a href="/blog">blog</a> or take a look at the{' '}
 					<a href="/projects">projects</a> page to see what I&apos;ve been working on.
-				</p>
-				<p className="about-page__footnote">
-					* Technically a single character &mdash; <code>1</code> or <code>0</code>, indicating whether or not
-					light mode is on.
 				</p>
 			</section>
 
