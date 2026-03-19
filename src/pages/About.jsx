@@ -300,13 +300,7 @@ export default function About() {
 						open source software
 					</a>
 					. You can check out some of my projects on{' '}
-					<a
-						href="https://github.com/metayeti"
-						className="external"
-						target="_blank"
-						rel="noreferrer"
-						className="external"
-					>
+					<a href="https://github.com/metayeti" className="external" target="_blank" rel="noreferrer">
 						GitHub
 					</a>
 					.
