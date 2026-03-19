@@ -12,8 +12,8 @@
 //  Description:  Blog post page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-03-15
-//  Updated:      2026-03-18
+//  Created:      2026-03-20
+//  Updated:      2026-03-20
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -57,6 +57,16 @@ export default function BlogPost() {
 	const [articlePages, setArticlePages] = useState([]);
 	const [pageIndex, setPageIndex] = useState(0);
 	const [pendingScrollToId, setPendingScrollToId] = useState(null);
+
+	// update document title
+	useEffect(() => {
+		if (postData) {
+			document.title = `${postData.title} | metayeti.net`;
+			return () => {
+				document.title = 'metayeti.net';
+			};
+		}
+	}, [postData]);
 
 	// sync page index with url param
 	useEffect(() => {
@@ -317,14 +327,16 @@ by Danijel Durakovic (https://metayeti.net)
 							Article last updated:
 							<span>{getHumanReadableDate(lastUpdated)}</span>
 						</div>
-						<div className="blog-post__raw">
-							<button onClick={handleDownloadRaw}>
-								<span className="icon">
-									<IconDownload />
-								</span>
-								<span>raw</span>
-							</button>
-						</div>
+						{import.meta.env.MODE === 'development' && (
+							<div className="blog-post__raw">
+								<button onClick={handleDownloadRaw}>
+									<span className="icon">
+										<IconDownload />
+									</span>
+									<span>raw</span>
+								</button>
+							</div>
+						)}
 					</div>
 
 					<div className="blog-post__about-author">

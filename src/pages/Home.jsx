@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-18
+//  Updated:      2026-03-20
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -24,7 +24,6 @@
 import { Link } from 'react-router-dom';
 import LatestPosts from '@/components/LatestPosts';
 import LatestProjects from '@/components/LatestProjects';
-import RandomFunFact from '@/components/RandomFunFact';
 
 import './Home.scss';
 
@@ -58,10 +57,6 @@ export default function Home() {
 			<section>
 				<h2>Latest Projects</h2>
 				<LatestProjects />
-			</section>
-			<section>
-				<h2>Nerd Fact</h2>
-				<RandomFunFact />
 			</section>
 		</div>
 	);
