@@ -21,6 +21,8 @@
 //  TODO:         -
 //
 
+import IconLinkedIn from '@/components/icons/IconLinkedIn';
+import IconX from '@/components/icons/IconX';
 import IconGitHub from '@/components/icons/IconGitHub';
 import IconSteam from '@/components/icons/IconSteam';
 import IconItchIo from '@/components/icons/IconItchIo';
@@ -33,6 +35,24 @@ export default function SiteHeaderSocial() {
 	return (
 		<nav className="site-header-social">
 			<div className="site-header-social__links wrapped wrapped--sm-pad">
+				<a
+					href="https://www.linkedin.com/in/danijel-durakovic-560a353a9/"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<IconLinkedIn />
+					<div className="site-header-social__link-tooltip">LinkedIn</div>
+				</a>
+				<a
+					href="https://x.com/metayetidev"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<IconX />
+					<div className="site-header-social__link-tooltip">X</div>
+				</a>
 				<a
 					href="https://github.com/metayeti"
 					className="site-header-social__link"
