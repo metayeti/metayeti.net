@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-18
-//  Updated:      2026-03-18
+//  Updated:      2026-03-19
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -43,7 +43,6 @@
 		// 4 columns on large screens with explicit placement
 		@include responsive.size('lg') {
 			grid-template-columns: repeat(3, 1fr) 1.3fr;
-			grid-template-rows: auto auto auto auto auto auto;
 		}
 	}
 
@@ -241,6 +240,159 @@
 
 		p {
 			font-size: 1.1rem;
+		}
+	}
+
+	// ============================
+	// Content sections
+	// ============================
+
+	// -- footnote --
+	&__footnote {
+		font-size: 0.85rem !important;
+		opacity: 0.6;
+		font-style: italic;
+		padding-top: 4px;
+	}
+
+	// -- aside / fancy-block --
+	&__aside {
+		border-left: 3px solid var(--color-content-flavor);
+		padding: 2px 18px !important;
+		//background: rgba(82, 220, 255, 0.04);
+		//border-radius: 0 6px 6px 0;
+		color: var(--color-content-fg);
+		font-size: 0.85rem !important;
+		line-height: 1.5rem !important;
+		//font-style: italic;
+		opacity: 0.9;
+
+		:root.lightmode & {
+			background: rgba(0, 0, 0, 0.03);
+		}
+
+		&::before {
+			content: '.:[ ';
+			color: var(--color-content-flavor);
+		}
+		&::after {
+			content: ' ]:.';
+			color: var(--color-content-flavor);
+		}
+	}
+
+	// -- pixelated images --
+	&__pixelated {
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+		max-width: 100%;
+		height: auto;
+		margin-bottom: 4px;
+	}
+
+	// ============================
+	// Factoids table
+	// ============================
+
+	&__factoids {
+		margin-bottom: 20px;
+
+		ul {
+			list-style: none;
+			padding: 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+			:root.lightmode & {
+				border-top-color: rgba(0, 0, 0, 0.08);
+			}
+		}
+
+		li {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			gap: 8px 16px;
+			padding: 10px 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+			line-height: 1.5;
+
+			:root.lightmode & {
+				border-bottom-color: rgba(0, 0, 0, 0.08);
+			}
+
+			@include responsive.size('sm') {
+				flex-wrap: nowrap;
+			}
+		}
+	}
+
+	&__factoid-label {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		font-family: 'Share Tech Mono', monospace;
+		color: var(--color-content-flavor);
+		white-space: nowrap;
+		flex-shrink: 0;
+		min-width: 200px;
+	}
+
+	&__factoid-value {
+		font-size: 0.95rem;
+		color: var(--color-content-fg);
+		line-height: 1.6;
+
+		a {
+			font-size: inherit;
+			text-transform: none;
+			font-family: inherit;
+			letter-spacing: normal;
+		}
+	}
+
+	&__flavor-text {
+		color: var(--color-content-flavor);
+		font-weight: 500;
+	}
+
+	// small inline image inside a factoid label (e.g. blooguard)
+	&__blooguard {
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+		height: 20px;
+		width: auto;
+		vertical-align: middle;
+		margin-left: 4px;
+	}
+
+	// small inline image inside running text (e.g. Linux logo)
+	&__inline-img {
+		display: inline-block;
+		height: 1.8em;
+		width: auto;
+		vertical-align: middle;
+		margin-left: 4px;
+	}
+
+	// small color swatch square
+	&__color-box {
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		margin: 4px;
+		border-radius: 3px;
+		vertical-align: middle;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+
+		:root.lightmode & {
+			border-color: rgba(0, 0, 0, 0.15);
+		}
+
+		transition: scale 0.2s ease;
+		&:hover {
+			scale: 1.1;
 		}
 	}
 }
