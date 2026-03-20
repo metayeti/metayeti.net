@@ -1,103 +1,262 @@
-//
-//  metayeti.net
-//
-//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//
-//  Copyright (c) 2026-present metayeti.net
-//  All rights reserved.
-//
-//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//
-//  File:         src/routes/About.scss
-//  Description:  About page component styles.
-//
-//  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-03-18
-//  Updated:      2026-03-19
-//
-//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//
-//  NOTE:         -
-//  TODO:         -
-//
-
 @use '../styles/responsive';
 
-// ============================
-// Bento Grid
-// ============================
+// ============================================================================
+//  HEX ABOUT PAGE — Sci-fi hexagonal node network
+// ============================================================================
 
-.about-page {
-	// -- bento grid container --
-	&__bento {
-		display: grid;
-		gap: 14px;
-		grid-template-columns: 1fr;
-		margin-bottom: 80px;
+// -- Clip-path shapes --
+$clip-wide: polygon(6% 0%, 94% 0%, 100% 50%, 94% 100%, 6% 100%, 0% 50%);
+$clip-satellite: polygon(12% 0%, 88% 0%, 100% 50%, 88% 100%, 12% 100%, 0% 50%);
+$clip-portrait: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+$clip-dot: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 
-		// 2 columns on small screens
-		@include responsive.size('sm') {
-			grid-template-columns: repeat(2, 1fr);
-		}
+// -- Surface colors --
+$hex-border-bright: rgba(82, 220, 255, 0.28);
+$hex-border-dim: rgba(82, 220, 255, 0.1);
+$hex-fill-primary: rgba(10, 14, 28, 0.82);
+$hex-fill-dark: rgba(6, 9, 18, 0.92);
+$hex-glow-color: rgba(82, 220, 255, 0.14);
 
-		// 4 columns on large screens with explicit placement
-		@include responsive.size('lg') {
-			grid-template-columns: repeat(3, 1fr) 1.3fr;
+// ==============================
+//  Keyframes
+// ==============================
+
+@keyframes hex-pulse {
+	0%,
+	100% {
+		filter: drop-shadow(0 0 12px rgba(82, 220, 255, 0.12));
+	}
+	50% {
+		filter: drop-shadow(0 0 24px rgba(82, 220, 255, 0.28));
+	}
+}
+
+@keyframes hex-drift {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-8px) rotate(2deg);
+	}
+}
+
+@keyframes hex-fadein {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes spine-flow {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 60px;
+	}
+}
+
+@keyframes data-flicker {
+	0%,
+	89%,
+	91%,
+	95%,
+	97%,
+	100% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 0.35;
+	}
+	96% {
+		opacity: 0.55;
+	}
+}
+
+// ==============================
+//  Page container
+// ==============================
+
+.hex-about {
+	position: relative;
+	padding-top: 30px;
+	padding-bottom: 100px;
+	overflow: hidden;
+
+	// ── scanline overlay ──
+	&__scanlines {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 50;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent 0px,
+			transparent 3px,
+			rgba(0, 0, 0, 0.035) 3px,
+			rgba(0, 0, 0, 0.035) 4px
+		);
+
+		:root.lightmode & {
+			background: repeating-linear-gradient(
+				0deg,
+				transparent 0px,
+				transparent 3px,
+				rgba(0, 0, 0, 0.018) 3px,
+				rgba(0, 0, 0, 0.018) 4px
+			);
 		}
 	}
 
-	// -- card base --
-	&__card {
-		position: relative;
-		padding: 18px 24px;
-		border-radius: 12px;
-		background: rgba(255, 255, 255, 0.03);
-		border: 1px solid rgba(255, 255, 255, 0.06);
-		backdrop-filter: blur(8px);
-		transition:
-			box-shadow 0.25s ease,
-			border-color 0.3s ease;
-		overflow: hidden;
-		display: flex;
-		flex-direction: column;
+	// ── central spine ──
+	&__spine {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		transform: translateX(-50%);
+		z-index: 0;
+		background: repeating-linear-gradient(to bottom, $hex-border-bright 0px, transparent 2px, transparent 8px);
+		animation: spine-flow 2s linear infinite;
+		mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 0;
+			width: 8px;
+			height: 100%;
+			transform: translateX(-50%);
+			background: rgba(82, 220, 255, 0.04);
+			filter: blur(6px);
+		}
 
 		:root.lightmode & {
-			background: rgba(0, 0, 0, 0.02);
-			border-color: rgba(0, 0, 0, 0.07);
-		}
+			background: repeating-linear-gradient(
+				to bottom,
+				rgba(6, 169, 233, 0.25) 0px,
+				transparent 2px,
+				transparent 8px
+			);
 
-		&:hover {
-			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-			border-color: rgba(255, 255, 255, 0.12);
-
-			:root.lightmode & {
-				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-				border-color: rgba(0, 0, 0, 0.12);
+			&::after {
+				background: rgba(6, 169, 233, 0.03);
 			}
 		}
+	}
 
-		h2 {
-			font-family: var(--font-heading);
-			font-size: 1.8rem;
-			margin-bottom: 14px;
-			// override the default heading ::before decoration inside cards
-			&::before {
-				display: none !important;
-			}
+	// ── spine junction node ──
+	&__spine-node {
+		position: relative;
+		z-index: 2;
+		width: 14px;
+		height: 16px;
+		margin: 0 auto;
+		clip-path: $clip-dot;
+		background: var(--color-content-flavor);
+		opacity: 0.5;
+		animation: data-flicker 6s infinite;
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 3px;
+			clip-path: $clip-dot;
+			background: var(--color-content-bg);
 		}
+	}
 
-		h3 {
-			font-family: var(--font-heading);
-			font-size: 1.15rem;
-			font-weight: 600;
-			margin-bottom: 10px;
-			color: var(--color-content-flavor);
+	// ── cluster: a primary hex + optional satellites ──
+	&__cluster {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 30px 0;
+
+		// scroll-reveal
+		opacity: 0;
+		transform: translateY(40px);
+		transition:
+			opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+		&.hex--visible {
+			opacity: 1;
+			transform: translateY(0);
 		}
+	}
 
-		p {
-			font-size: 0.9rem;
-			line-height: 1.55;
-			padding-bottom: 6px;
+	// ── branch line from primary to satellites ──
+	&__branch {
+		width: 2px;
+		height: 30px;
+		background: $hex-border-dim;
+		margin: 0 auto;
+		position: relative;
+		flex-shrink: 0;
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: -1px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 60%;
+			height: 1px;
+			// horizontal fan
+		}
+	}
+
+	// ── satellites row ──
+	&__satellites {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	// ── system label ("SYS.IDENTITY") ──
+	&__sys-label {
+		display: inline-block;
+		font-family: 'Share Tech Mono', monospace;
+		font-size: 0.65rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-content-flavor);
+		margin-bottom: 10px;
+		animation: data-flicker 7s infinite;
+		user-select: none;
+	}
+
+	// ── satellite tag labels / values ──
+	&__tag-label {
+		display: block;
+		font-family: 'Share Tech Mono', monospace;
+		font-size: 0.6rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-content-flavor);
+		opacity: 0.7;
+		margin-bottom: 2px;
+	}
+
+	&__tag-value {
+		display: block;
+		font-family: var(--font-base);
+		font-size: 0.82rem;
+		color: var(--color-content-fg);
+
+		&--tiny {
+			font-size: 0.72rem;
 		}
 
 		a {
@@ -108,291 +267,366 @@
 		}
 	}
 
-	// ============================
-	// Card variants — Desktop grid placement
-	// ============================
+	// ── favorites grid inside large hex ──
+	&__fav-grid {
+		text-align: left;
+		margin-top: 10px;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 6px 20px;
 
-	// INTRO: large, cols 1-3, rows 1-2
-	&__card--intro {
 		@include responsive.size('sm') {
-			grid-column: span 2;
-		}
-		@include responsive.size('lg') {
-			grid-column: 1 / 4;
-			grid-row: 1 / 2;
-		}
-
-		// subtle gradient accent
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: linear-gradient(135deg, rgba(82, 220, 255, 0.04) 0%, transparent 60%);
-			pointer-events: none;
-			border-radius: inherit;
-		}
-
-		h2 {
-			font-size: 2.2rem;
-			background: linear-gradient(135deg, var(--color-content-fg), var(--color-content-flavor));
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-		}
-
-		p {
-			font-size: 1.05rem;
-			line-height: 1.8;
-			max-width: 600px;
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 
-	// PHOTO: col 4, row 1 (beside intro)
-	&__card--photo {
-		position: relative;
-		padding: 0;
-		overflow: hidden;
-		min-height: 280px;
+	&__fav-item {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		padding: 6px 0;
+		border-bottom: 1px solid rgba(82, 220, 255, 0.06);
+
+		:root.lightmode & {
+			border-bottom-color: rgba(6, 169, 233, 0.08);
+		}
+	}
+
+	&__fav-key {
+		font-family: 'Share Tech Mono', monospace;
+		font-size: 0.6rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-content-flavor);
+		opacity: 0.7;
+	}
+
+	&__fav-val {
+		font-size: 0.88rem;
+		line-height: 1.5;
+		color: var(--color-content-fg);
+
+		a {
+			font-size: inherit;
+			text-transform: none;
+			font-family: inherit;
+			letter-spacing: normal;
+		}
+	}
+
+	// ── inline color dots ──
+	&__colors {
+		display: flex;
+		gap: 5px;
+		margin-top: 4px;
+		justify-content: center;
+	}
+
+	&__color-dot {
+		display: block;
+		width: 16px;
+		height: 16px;
+		border-radius: 2px;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		transition: transform 0.2s ease;
+
+		:root.lightmode & {
+			border-color: rgba(0, 0, 0, 0.12);
+		}
+
+		&:hover {
+			transform: scale(1.25);
+		}
+	}
+
+	// ── decorative floating hexes ──
+	&__deco {
+		position: absolute;
+		z-index: 0;
+		clip-path: $clip-dot;
+		opacity: 0.06;
+		pointer-events: none;
+		background: var(--color-content-flavor);
+		animation: hex-drift 12s ease-in-out infinite;
+
+		:root.lightmode & {
+			opacity: 0.04;
+		}
+
+		&--1 {
+			width: 60px;
+			height: 68px;
+			top: 8%;
+			left: 6%;
+			animation-delay: 0s;
+		}
+		&--2 {
+			width: 40px;
+			height: 46px;
+			top: 25%;
+			right: 8%;
+			animation-delay: -3s;
+		}
+		&--3 {
+			width: 50px;
+			height: 57px;
+			top: 55%;
+			left: 3%;
+			animation-delay: -6s;
+		}
+		&--4 {
+			width: 35px;
+			height: 40px;
+			top: 75%;
+			right: 5%;
+			animation-delay: -9s;
+		}
+		&--5 {
+			width: 28px;
+			height: 32px;
+			top: 42%;
+			left: 12%;
+			animation-delay: -4.5s;
+		}
+		&--6 {
+			width: 45px;
+			height: 52px;
+			top: 88%;
+			left: 8%;
+			animation-delay: -7.5s;
+		}
+	}
+}
+
+// ============================================================================
+//  Hex node — the hexagonal container
+// ============================================================================
+
+.hex-node {
+	position: relative;
+
+	// ── headings ──
+	h2 {
+		font-family: var(--font-heading);
+		font-size: 1.9rem;
+		font-weight: 200;
+		margin-bottom: 14px;
+		background: linear-gradient(135deg, var(--color-content-fg), var(--color-content-flavor));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+
+		// suppress content.scss heading decoration
+		&::before {
+			display: none !important;
+		}
+	}
+
+	h3 {
+		font-family: var(--font-heading);
+		font-size: 1.25rem;
+		font-weight: 400;
+		margin-bottom: 10px;
+		color: var(--color-content-flavor);
+
+		&::before {
+			display: none !important;
+		}
+	}
+
+	p {
+		font-size: 0.92rem;
+		line-height: 1.65;
+		padding-bottom: 6px;
+		color: var(--color-content-fg);
+		opacity: 0.92;
+	}
+
+	a {
+		font-size: inherit;
+		text-transform: none;
+		font-family: inherit;
+		letter-spacing: normal;
+	}
+
+	// ── border layer: clip-path + bg = border color ──
+	&__border {
+		transition: filter 0.4s ease;
+	}
+
+	// ── inner layer: clip-path + bg = fill ──
+	&__inner {
+		transition: background-color 0.4s ease;
+	}
+
+	// ============================
+	//  Size variants
+	// ============================
+
+	// -- Large --
+	&--lg {
+		width: 100%;
+		max-width: 680px;
+		animation: hex-pulse 5s ease-in-out infinite;
+
+		.hex-node__border {
+			clip-path: $clip-wide;
+			padding: 2px;
+			background: $hex-border-bright;
+		}
+
+		.hex-node__inner {
+			clip-path: $clip-wide;
+			background: $hex-fill-primary;
+			backdrop-filter: blur(14px);
+			padding: 55px 70px;
+			text-align: center;
+
+			@media (width < 640px) {
+				padding: 45px 36px;
+			}
+		}
+	}
+
+	// -- Medium --
+	&--md {
+		width: 100%;
+		max-width: 520px;
+
+		.hex-node__border {
+			clip-path: $clip-wide;
+			padding: 2px;
+			background: $hex-border-bright;
+		}
+
+		.hex-node__inner {
+			clip-path: $clip-wide;
+			background: $hex-fill-primary;
+			backdrop-filter: blur(14px);
+			padding: 45px 60px;
+			text-align: center;
+
+			@media (width < 640px) {
+				padding: 38px 30px;
+			}
+		}
+	}
+
+	// -- Small (satellite) --
+	&--sm {
+		width: 155px;
+		flex-shrink: 0;
+
+		.hex-node__border {
+			clip-path: $clip-satellite;
+			padding: 1px;
+			background: $hex-border-dim;
+		}
+
+		.hex-node__inner {
+			clip-path: $clip-satellite;
+			background: $hex-fill-dark;
+			backdrop-filter: blur(10px);
+			padding: 22px 30px;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 80px;
+		}
+
+		&:hover .hex-node__border {
+			background: $hex-border-bright;
+		}
+	}
+
+	// -- Photo (pointy-top hex) --
+	&--photo {
+		width: 250px;
+		height: 288px;
+
+		@include responsive.size('sm') {
+			width: 280px;
+			height: 323px;
+		}
+
+		.hex-node__border {
+			clip-path: $clip-portrait;
+			padding: 2px;
+			background: $hex-border-bright;
+			height: 100%;
+		}
+
+		.hex-node__inner {
+			clip-path: $clip-portrait;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+			background: $hex-fill-dark;
+		}
 
 		img {
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			width: 140%;
-			height: 140%;
+			width: 130%;
+			height: 130%;
 			object-fit: cover;
-			display: block;
-		}
-
-		@include responsive.size('sm') {
-			grid-column: span 2;
-			min-height: 0;
-
-			img {
-				position: static;
-				width: 100%;
-				height: auto;
-				transform: none;
-			}
-		}
-
-		@include responsive.size('lg') {
-			grid-column: 4 / 5;
-			grid-row: 1 / 2;
-			min-height: 280px;
-
-			img {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 140%;
-				height: 140%;
-			}
 		}
 	}
 
 	// ============================
-	// Card inner elements
+	//  Style modifiers
 	// ============================
 
-	// meta tags (location, age, etc.)
-	&__card-meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		margin-top: 16px;
-	}
+	&--glow {
+		filter: drop-shadow(0 0 14px $hex-glow-color);
 
-	&__tag {
-		display: inline-block;
-		padding: 4px 14px;
-		font-size: 0.8rem;
-		font-weight: 600;
-		font-family: 'Share Tech Mono', monospace;
-		color: var(--color-content-flavor);
-		border: 1px solid var(--color-content-flavor--dim);
-		border-radius: 20px;
-		user-select: none;
-	}
-
-	// CONTACT
-	&__card--contact {
-		@include responsive.size('sm') {
-			grid-column: span 2;
-		}
-		@include responsive.size('lg') {
-			grid-column: 1 / 5;
-		}
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		min-height: 160px;
-
-		h3 {
-			margin-bottom: 12px;
-			font-size: 1.6rem;
-		}
-
-		p {
-			font-size: 1.1rem;
-		}
-	}
-
-	// ============================
-	// Content sections
-	// ============================
-
-	// -- footnote --
-	&__footnote {
-		font-size: 0.85rem !important;
-		opacity: 0.6;
-		font-style: italic;
-		padding-top: 4px;
-	}
-
-	// -- aside / fancy-block --
-	&__aside {
-		border-left: 3px solid var(--color-content-flavor);
-		padding: 2px 18px !important;
-		//background: rgba(82, 220, 255, 0.04);
-		//border-radius: 0 6px 6px 0;
-		color: var(--color-content-fg);
-		font-size: 0.85rem !important;
-		line-height: 1.5rem !important;
-		//font-style: italic;
-		opacity: 0.9;
-
-		:root.lightmode & {
-			background: rgba(0, 0, 0, 0.03);
-		}
-
-		&::before {
-			content: '.:[ ';
-			color: var(--color-content-flavor);
-		}
-		&::after {
-			content: ' ]:.';
-			color: var(--color-content-flavor);
-		}
-	}
-
-	// -- pixelated images --
-	&__pixelated {
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
-		max-width: 100%;
-		height: auto;
-		margin-bottom: 4px;
-	}
-
-	// ============================
-	// Factoids table
-	// ============================
-
-	&__factoids {
-		margin-bottom: 20px;
-
-		ul {
-			list-style: none;
-			padding: 0;
-			border-top: 1px solid rgba(255, 255, 255, 0.07);
-
-			:root.lightmode & {
-				border-top-color: rgba(0, 0, 0, 0.08);
-			}
-		}
-
-		li {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: baseline;
-			gap: 8px 16px;
-			padding: 10px 0;
-			border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-			line-height: 1.5;
-
-			:root.lightmode & {
-				border-bottom-color: rgba(0, 0, 0, 0.08);
-			}
-
-			@include responsive.size('sm') {
-				flex-wrap: nowrap;
-			}
-		}
-	}
-
-	&__factoid-label {
-		display: flex;
-		align-items: center;
-		gap: 6px;
-		font-size: 0.85rem;
-		font-weight: 600;
-		font-family: 'Share Tech Mono', monospace;
-		color: var(--color-content-flavor);
-		white-space: nowrap;
-		flex-shrink: 0;
-		min-width: 200px;
-	}
-
-	&__factoid-value {
-		font-size: 0.95rem;
-		color: var(--color-content-fg);
-		line-height: 1.6;
-
-		a {
-			font-size: inherit;
-			text-transform: none;
-			font-family: inherit;
-			letter-spacing: normal;
-		}
-	}
-
-	&__flavor-text {
-		color: var(--color-content-flavor);
-		font-weight: 500;
-	}
-
-	// small inline image inside a factoid label (e.g. blooguard)
-	&__blooguard {
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
-		height: 20px;
-		width: auto;
-		vertical-align: middle;
-		margin-left: 4px;
-	}
-
-	// small inline image inside running text (e.g. Linux logo)
-	&__inline-img {
-		display: inline-block;
-		height: 1.8em;
-		width: auto;
-		vertical-align: middle;
-		margin-left: 4px;
-	}
-
-	// small color swatch square
-	&__color-box {
-		display: inline-block;
-		width: 2em;
-		height: 2em;
-		margin: 4px;
-		border-radius: 3px;
-		vertical-align: middle;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-
-		:root.lightmode & {
-			border-color: rgba(0, 0, 0, 0.15);
-		}
-
-		transition: scale 0.2s ease;
 		&:hover {
-			scale: 1.1;
+			filter: drop-shadow(0 0 28px rgba(82, 220, 255, 0.22));
+		}
+	}
+
+	&--dark {
+		.hex-node__border {
+			background: $hex-border-dim;
+		}
+
+		.hex-node__inner {
+			background: $hex-fill-dark;
+		}
+	}
+
+	// ============================
+	//  Light-mode overrides
+	// ============================
+
+	:root.lightmode & {
+		&__border {
+			background: rgba(6, 169, 233, 0.22);
+		}
+
+		&__inner {
+			background: rgba(240, 245, 250, 0.88);
+			backdrop-filter: blur(14px);
+		}
+
+		h2 {
+			background: linear-gradient(135deg, var(--color-content-fg), var(--color-content-flavor));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+	}
+
+	:root.lightmode &--dark {
+		.hex-node__border {
+			background: rgba(6, 169, 233, 0.1);
+		}
+		.hex-node__inner {
+			background: rgba(230, 238, 246, 0.92);
 		}
 	}
 }

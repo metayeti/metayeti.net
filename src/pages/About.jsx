@@ -1,27 +1,4 @@
-//
-//  metayeti.net
-//
-//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//
-//  Copyright (c) 2026-present metayeti.net
-//  All rights reserved.
-//
-//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//
-//  File:         src/routes/About.jsx
-//  Description:  About page component.
-//
-//  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-03-01
-//  Updated:      2026-03-19
-//
-//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//
-//  NOTE:         -
-//  TODO:         -
-//
-
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { goodMusic, goodGameMusic } from '@/extras/musicLinks';
 import './About.scss';
 
@@ -30,114 +7,162 @@ function pickRandom(list, exclude = null) {
 	return filtered[Math.floor(Math.random() * filtered.length)];
 }
 
-/**
- * Get age (in years) from a specific birth date.
- */
 function getAge(birthDate) {
 	return Math.floor((Date.now() - new Date(birthDate).getTime()) / 31557600000);
 }
 
+function HexNode({ children, size = 'lg', glow, dark, className = '' }) {
+	const sizeClass = `hex-node--${size}`;
+	return (
+		<div
+			className={`hex-node ${sizeClass}${glow ? ' hex-node--glow' : ''}${dark ? ' hex-node--dark' : ''}${className ? ` ${className}` : ''}`}
+		>
+			<div className="hex-node__border">
+				<div className="hex-node__inner">{children}</div>
+			</div>
+		</div>
+	);
+}
+
 export default function About() {
 	const age = getAge('1988-01-05');
-	const [goodMusicUrl, setGoodMusicUrl] = useState(() => pickRandom(goodMusic));
+	const [musicUrl, setMusicUrl] = useState(() => pickRandom(goodMusic));
 	const [gameMusicUrl, setGameMusicUrl] = useState(() => pickRandom(goodGameMusic));
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) =>
+				entries.forEach((e) => {
+					if (e.isIntersecting) e.target.classList.add('hex--visible');
+				}),
+			{ threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
+		);
+
+		containerRef.current?.querySelectorAll('.hex-reveal').forEach((el) => observer.observe(el));
+		return () => observer.disconnect();
+	}, []);
 
 	return (
-		<div className="about-page wrapped">
-			{/* =================== BENTO GRID =================== */}
-			<div className="about-page__bento">
-				{/* -- INTRO (large) -- */}
-				<div className="about-page__card about-page__card--intro">
-					<h2>Hi, I&apos;m Danijel</h2>
-					<p>
-						I&apos;m a programmer with a passion for videogames. I combine my skills to create games,
-						software, websites and other kinds of interactive digital content.
-					</p>
-					<p>My main interests in life are programming, mathematics, science, philosophy, music and art.</p>
-					<div className="about-page__card-meta">
-						<span className="about-page__tag">Slovenia</span>
-						<span className="about-page__tag">Age {age}</span>
-						<span className="about-page__tag">Planet Earth</span>
-					</div>
-				</div>
+		<div className="hex-about wrapped" ref={containerRef}>
+			<div className="hex-about__scanlines" />
+			<div className="hex-about__spine" />
 
-				{/* -- PHOTO (large) -- */}
-				<div className="about-page__card about-page__card--photo">
-					<img src="/content/static/images/me.jpg" alt="me" />
+			{/* Decorative floating hexes */}
+			<div className="hex-about__deco hex-about__deco--1" />
+			<div className="hex-about__deco hex-about__deco--2" />
+			<div className="hex-about__deco hex-about__deco--3" />
+			<div className="hex-about__deco hex-about__deco--4" />
+			<div className="hex-about__deco hex-about__deco--5" />
+			<div className="hex-about__deco hex-about__deco--6" />
+
+			{/* ─── IDENTITY ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="lg" glow>
+					<span className="hex-about__sys-label">SYS.IDENTITY</span>
+					<h2>Danijel</h2>
+					<p>
+						Programmer with a passion for videogames. I build games, software, websites and interactive
+						digital content.
+					</p>
+					<p>Core interests: programming, mathematics, science, philosophy, music &amp; art.</p>
+				</HexNode>
+				<div className="hex-about__branch" />
+				<div className="hex-about__satellites">
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">LOC</span>
+						<span className="hex-about__tag-value">Slovenia</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">AGE</span>
+						<span className="hex-about__tag-value">{age}</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">ROLE</span>
+						<span className="hex-about__tag-value">Developer</span>
+					</HexNode>
 				</div>
 			</div>
 
-			{/* =================== ABOUT THIS WEBSITE =================== */}
-			<section>
-				<h2>About this website</h2>
-				<p>
-					This website is a little digital garden of my own within the cyberspace. It also serves as my
-					personal portfolio and blog. The website is based on my own custom codebase that works on
-					markdown-driven content.
-				</p>
-				<p>
-					The full source for this website is available on{' '}
-					<a
-						href="https://github.com/metayeti/metayeti.net"
-						className="external"
-						target="_blank"
-						rel="noreferrer"
-					>
-						GitHub
-					</a>
-					.
-				</p>
-				<p>
-					While you&apos;re here, you can check out my <a href="/blog">blog</a> or take a look at the{' '}
-					<a href="/projects">projects</a> page to see what I&apos;ve been working on.
-				</p>
-			</section>
+			<div className="hex-about__spine-node" />
 
-			{/* =================== RANDOM FACTOIDS =================== */}
-			<section>
-				<h2>Random factoids</h2>
-				<div className="about-page__factoids">
-					<ul>
-						<li>
-							<span className="about-page__factoid-label">Home planet</span>
-							<span className="about-page__factoid-value">Earth</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Home country</span>
-							<span className="about-page__factoid-value">Slovenia</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Current age</span>
-							<span className="about-page__factoid-value">{age}</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">
-								Favorite videogames
-								<img
-									className="about-page__blooguard"
-									src="/content/static/images/blooguard.gif"
-									alt="Blooguard"
-								/>
+			{/* ─── PHOTO ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="photo" glow>
+					<img src="/content/static/images/me.jpg" alt="me" />
+				</HexNode>
+			</div>
+
+			<div className="hex-about__spine-node" />
+
+			{/* ─── ABOUT THIS SITE ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="md" glow>
+					<span className="hex-about__sys-label">NET.INFO</span>
+					<h2>This Website</h2>
+					<p>
+						A digital garden within the cyberspace. Portfolio, blog, and markdown-driven content on a custom
+						codebase.
+					</p>
+				</HexNode>
+				<div className="hex-about__branch" />
+				<div className="hex-about__satellites">
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">SRC</span>
+						<span className="hex-about__tag-value">
+							<a
+								href="https://github.com/metayeti/metayeti.net"
+								className="external"
+								target="_blank"
+								rel="noreferrer"
+							>
+								GitHub
+							</a>
+						</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">BLOG</span>
+						<span className="hex-about__tag-value">
+							<a href="/blog">Posts</a>
+						</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">WORK</span>
+						<span className="hex-about__tag-value">
+							<a href="/projects">Projects</a>
+						</span>
+					</HexNode>
+				</div>
+			</div>
+
+			<div className="hex-about__spine-node" />
+
+			{/* ─── FAVORITES ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="lg" glow>
+					<span className="hex-about__sys-label">FAV.DAT</span>
+					<h2>Favorites</h2>
+					<div className="hex-about__fav-grid">
+						<div className="hex-about__fav-item">
+							<span className="hex-about__fav-key">GAMES</span>
+							<span className="hex-about__fav-val">
+								Commander Keen, Quake, C&amp;C, Fallout&nbsp;1, WoW&nbsp;Classic
 							</span>
-							<span className="about-page__factoid-value">
-								<span className="about-page__flavor-text">Commander Keen</span>, Quake, Command &amp;
-								Conquer, Fallout 1, WoW Classic
-							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite music</span>
-							<span className="about-page__factoid-value">
-								I love all{' '}
+						</div>
+						<div className="hex-about__fav-item">
+							<span className="hex-about__fav-key">MUSIC</span>
+							<span className="hex-about__fav-val">
+								All{' '}
 								<a
-									href={goodMusicUrl}
+									href={musicUrl}
 									className="external"
 									target="_blank"
 									rel="noreferrer"
-									onClick={() => setGoodMusicUrl(pickRandom(goodMusic, goodMusicUrl))}
+									onClick={() => setMusicUrl(pickRandom(goodMusic, musicUrl))}
 								>
 									good music
 								</a>{' '}
-								and I have a special place in my heart for{' '}
+								&amp;{' '}
 								<a
 									href={gameMusicUrl}
 									className="external"
@@ -145,238 +170,124 @@ export default function About() {
 									rel="noreferrer"
 									onClick={() => setGameMusicUrl(pickRandom(goodGameMusic, gameMusicUrl))}
 								>
-									videogame music
+									game soundtracks
 								</a>
 							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite colors</span>
-							<span className="about-page__factoid-value">
-								<span className="about-page__color-box" style={{ backgroundColor: '#77776b' }} />,{' '}
-								<span className="about-page__color-box" style={{ backgroundColor: '#47d6ab' }} /> and{' '}
-								<span className="about-page__color-box" style={{ backgroundColor: '#645892' }} />
-							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite editors</span>
-							<span className="about-page__factoid-value">
-								<a href="https://www.vim.org/" className="external" target="_blank" rel="noreferrer">
-									Vim
-								</a>
-								,{' '}
-								<a
-									href="https://code.visualstudio.com/"
-									className="external"
-									target="_blank"
-									rel="noreferrer"
-								>
-									VS Code
-								</a>
-								,{' '}
-								<a
-									href="https://rizonesoft.com/downloads/notepad3/"
-									className="external"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Notepad3
-								</a>
-							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite programming languages</span>
-							<span className="about-page__factoid-value">C++, JavaScript</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite operating systems</span>
-							<span className="about-page__factoid-value">
-								<a
-									href="https://winworldpc.com/product/ms-dos/622"
-									className="external"
-									target="_blank"
-									rel="noreferrer"
-								>
-									MS-DOS 6.22
-								</a>
-								,{' '}
-								<a
-									href="https://winworldpc.com/product/windows-98/98-second-edition"
-									className="external"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Windows 98
-								</a>{' '}
-								(with{' '}
-								<a
-									href="https://winworldpc.com/product/plus/1998"
-									className="external"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Plus!
-								</a>
-								), most flavors of{' '}
-								<a href="https://www.linux.org/" className="external" target="_blank" rel="noreferrer">
-									Linux
-								</a>
-							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Personal idols</span>
-							<span className="about-page__factoid-value">
-								John Romero, John Carmack, Chris Sawyer, that guy from Spiderweb Software
-							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite composers</span>
-							<span className="about-page__factoid-value">Frank Klepacki, Glenn Stafford</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Personal heroes</span>
-							<span className="about-page__factoid-value">Bugs Bunny, Asterix</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite authors</span>
-							<span className="about-page__factoid-value">
-								Roald Dahl, Frank Herbert, Terry Pratchett
-							</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite scientists</span>
-							<span className="about-page__factoid-value">Freeman Dyson, Richard Feynman</span>
-						</li>
-						<li>
-							<span className="about-page__factoid-label">Favorite philosophers</span>
-							<span className="about-page__factoid-value">Alan Watts, Bernardo Kastrup</span>
-						</li>
-					</ul>
+						</div>
+						<div className="hex-about__fav-item">
+							<span className="hex-about__fav-key">LANG</span>
+							<span className="hex-about__fav-val">C++, JavaScript</span>
+						</div>
+						<div className="hex-about__fav-item">
+							<span className="hex-about__fav-key">EDITORS</span>
+							<span className="hex-about__fav-val">Vim, VS Code, Notepad3</span>
+						</div>
+						<div className="hex-about__fav-item">
+							<span className="hex-about__fav-key">AUTHORS</span>
+							<span className="hex-about__fav-val">Roald Dahl, Frank Herbert, Terry Pratchett</span>
+						</div>
+						<div className="hex-about__fav-item">
+							<span className="hex-about__fav-key">IDOLS</span>
+							<span className="hex-about__fav-val">John Romero, John Carmack, Chris Sawyer</span>
+						</div>
+					</div>
+				</HexNode>
+				<div className="hex-about__branch" />
+				<div className="hex-about__satellites">
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">COLORS</span>
+						<div className="hex-about__colors">
+							<span className="hex-about__color-dot" style={{ backgroundColor: '#77776b' }} />
+							<span className="hex-about__color-dot" style={{ backgroundColor: '#47d6ab' }} />
+							<span className="hex-about__color-dot" style={{ backgroundColor: '#645892' }} />
+						</div>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">COMPOSERS</span>
+						<span className="hex-about__tag-value hex-about__tag-value--tiny">Klepacki, Stafford</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">HEROES</span>
+						<span className="hex-about__tag-value hex-about__tag-value--tiny">Bugs Bunny, Asterix</span>
+					</HexNode>
 				</div>
-			</section>
+			</div>
 
-			{/* =================== SKILLS =================== */}
-			<section>
-				<h2>Skills</h2>
+			<div className="hex-about__spine-node" />
 
-				<h3>Programming</h3>
-				<p>
-					I started programming at an early age of about 9. The very first thing I remember is trying to
-					figure out how timers work in{' '}
-					<a
-						href="https://winworldpc.com/product/microsoft-visual-bas/30"
-						className="external"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Visual Basic 3
-					</a>
-					. Later on, I weaved my way through VB5 and 6, then C, Pascal, and finally C++, C#, Java, Python,
-					PHP, JavaScript and many others.
-				</p>
-				<img src="/content/static/images/vb3.png" className="bordered" alt="VB3" />
-				<p className="caption">Visual Basic 3 - my earliest programming memory.</p>
-				<p>
-					Throughout my programming journey, I&apos;ve explored a wide range of technologies, methodologies,
-					frameworks, computer science concepts, mathematics, and related fields.
-				</p>
-				<p>
-					My favorite programming language is C++ with its raw power, expressivity and rock-like stability. My
-					second favorite programming language is JavaScript. It&apos;s moderately high level but remains
-					eloquent in its simplicity, yet highly expressive.
-				</p>
-				<p>
-					I like{' '}
-					<a
-						href="https://en.wikipedia.org/wiki/Open-source_software"
-						className="external"
-						target="_blank"
-						rel="noreferrer"
-					>
-						open source software
-					</a>
-					. You can check out some of my projects on{' '}
-					<a href="https://github.com/metayeti" className="external" target="_blank" rel="noreferrer">
-						GitHub
-					</a>
-					.
-				</p>
-
-				<h3>Human languages</h3>
-				<p>As an aspiring member of the human species, I&apos;ve learned some human languages.</p>
-				<ul className="list">
-					<li>Slovenian, my mother tongue. As perplexing as it is beautiful.</li>
-					<li>
-						Serbo-Croatian, my 2nd language, I rarely use it but I understand it more or less flawlessly.
-					</li>
-					<li>English, my 3rd language. I would rate my level as advanced.</li>
-				</ul>
-				<p className="about-page__aside">
-					My attempts to learn German have been less than fruitful so far, although Duolingo had successfully
-					trained me to be able to ask for the whereabout of horses, should I ever encounter a situation in
-					which that would become a pressing concern. My attempts to learn Russian have been similar, and I
-					assure you I&apos;m capable of asking for the whereabouts of horses in Russian as well. I&apos;m now
-					trying to learn Japanese. I have not learned how to ask for the whereabouts of horses in Japanese
-					just yet, but I expect to be able to discuss it fluently soon.
-				</p>
-
-				<h3>Art &amp; Music</h3>
-				<p>
-					I&apos;ve been interested in all manners of visual design ever since I can remember. In the very
-					early days I used to make interfaces in Visual Basic just for fun. In recent times I mostly work
-					with web interfaces.
-				</p>
-				<p>
-					I have always been interested in art and music. I tried to learn the guitar at an early age (and
-					persisted for quite a while). I&apos;ve been interested in drawing since I can remember, although
-					it&apos;s only the last decade or so when I took it upon myself to get good enough at it to be able
-					to use it for higher goals. For games, I decided to focus mostly on pixel art as that&apos;s my
-					favorite graphical style (no doubt inspired by the games I used to play).
-				</p>
-				<img
-					className="about-page__pixelated"
-					style={{ width: '420px' }}
-					src="/content/static/images/zakk.png"
-					alt="ZAKK"
-				/>
-				<p className="caption">
-					This guy&apos;s name is Zakk. I made this titlescreen for a demo game that remains unreleased.
-				</p>
-				<img className="about-page__pixelated" src="/content/static/images/zakk_sprite.gif" alt="ZAKK walk" />
-				<p className="caption">Zakk doin&apos; the walk. Look at him go!</p>
-				<p>
-					Music-wise, I&apos;ve been getting better at composing my own for my game projects. I&apos;ve used a
-					number of DAWs over the years, my current favorite is{' '}
-					<a
-						href="https://www.image-line.com/fl-studio"
-						className="external"
-						target="_blank"
-						rel="noreferrer"
-					>
-						FL Studio
-					</a>
-					. You can listen to some of my music on{' '}
-					<a href="https://soundcloud.com/metayeti" className="external" target="_blank" rel="noreferrer">
-						SoundCloud
-					</a>
-					.
-				</p>
-				<div>
-					<audio controls src="/content/static/audio/game_track.mp3" />
+			{/* ─── SKILLS ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="lg" glow>
+					<span className="hex-about__sys-label">SKILL.LOG</span>
+					<h2>Skills</h2>
+					<p>
+						Started programming at age 9 in Visual Basic 3. Evolved through VB5/6, C, Pascal, C++, C#, Java,
+						Python, PHP, JavaScript and many others.
+					</p>
+					<p>
+						Favorite languages: C++ for raw power, JavaScript for eloquent simplicity. Pixel art for games,
+						FL Studio for composing tracks.
+					</p>
+				</HexNode>
+				<div className="hex-about__branch" />
+				<div className="hex-about__satellites">
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">ART</span>
+						<span className="hex-about__tag-value">Pixel Art</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">DAW</span>
+						<span className="hex-about__tag-value">FL Studio</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">OPEN SRC</span>
+						<span className="hex-about__tag-value">
+							<a href="https://github.com/metayeti" className="external" target="_blank" rel="noreferrer">
+								GitHub
+							</a>
+						</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">AUDIO</span>
+						<span className="hex-about__tag-value">
+							<a
+								href="https://soundcloud.com/metayeti"
+								className="external"
+								target="_blank"
+								rel="noreferrer"
+							>
+								SoundCloud
+							</a>
+						</span>
+					</HexNode>
 				</div>
-				<p className="caption">A basic game track I&apos;ve composed.</p>
-			</section>
+			</div>
 
-			{/* =================== CONTACT =================== */}
-			<section>
-				<h2>Contact</h2>
-				<p>
-					For business inquiries, please contact me at{' '}
-					<a href="mailto:metayetidev@gmail.com" className="email nocaps">
-						metayetidev@gmail.com
-					</a>
-					.
-				</p>
-			</section>
+			<div className="hex-about__spine-node" />
+
+			{/* ─── LANGUAGES ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="md">
+					<span className="hex-about__sys-label">LANG.HUMAN</span>
+					<h2>Languages</h2>
+					<p>Slovenian &middot; Serbo-Croatian &middot; English</p>
+				</HexNode>
+			</div>
+
+			<div className="hex-about__spine-node" />
+
+			{/* ─── CONTACT ─── */}
+			<div className="hex-about__cluster hex-reveal">
+				<HexNode size="md" glow>
+					<span className="hex-about__sys-label">COMMS.SYS</span>
+					<h2>Contact</h2>
+					<p>
+						<a href="mailto:metayetidev@gmail.com" className="nocaps email">
+							metayetidev@gmail.com
+						</a>
+					</p>
+				</HexNode>
+			</div>
 		</div>
 	);
 }
