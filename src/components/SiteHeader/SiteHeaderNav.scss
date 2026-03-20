@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-13
+//  Updated:      2026-03-20
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,19 +23,78 @@
 
 @use '@/styles/responsive.scss';
 
+// -- Alien/Hex shapes & colors (matching About page aesthetic) --
+$nav-hex-dot: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+$nav-border-bright: rgba(82, 220, 255, 0.28);
+$nav-border-dim: rgba(82, 220, 255, 0.08);
+
+@keyframes nav-data-flicker {
+	0%,
+	89%,
+	91%,
+	95%,
+	97%,
+	100% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 0.35;
+	}
+	96% {
+		opacity: 0.55;
+	}
+}
+
+@keyframes nav-trace-flow {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 200px 0;
+	}
+}
+
 .site-header-nav {
 	position: sticky;
 	top: 0;
 	height: 60px;
 	background-color: var(--color-header-nav-bg);
-	box-shadow: var(--shadow-header-nav);
 	z-index: 99;
+	overflow: hidden;
+
+	// Scanline overlay
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 2;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent 0px,
+			transparent 3px,
+			rgba(0, 0, 0, 0.05) 3px,
+			rgba(0, 0, 0, 0.05) 4px
+		);
+
+		:root.lightmode & {
+			background: repeating-linear-gradient(
+				0deg,
+				transparent 0px,
+				transparent 3px,
+				rgba(0, 0, 0, 0.02) 3px,
+				rgba(0, 0, 0, 0.02) 4px
+			);
+		}
+	}
 
 	&__main {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		height: 100%;
 		gap: 5px;
+		z-index: 1;
 	}
 
 	// -- buttons area --
@@ -68,54 +127,49 @@
 		height: 100%;
 		background-color: var(--color-header-nav-bg);
 		color: var(--color-header-nav-fg);
-		font-family: var(--font-button);
-		font-size: 0.8rem;
+		font-family: var(--font-link);
+		font-size: 0.72rem;
 		font-weight: 600;
 		text-decoration: none;
 		text-transform: uppercase;
+		letter-spacing: 0.14em;
 
 		&--active,
 		&:hover {
 			background-color: var(--color-header-nav-bg--hl);
-			color: var(--color-header-nav-fg--hl);
+			color: var(--color-content-flavor);
 		}
 		&:hover {
 			transition:
 				background-color 130ms ease-in-out,
 				color 130ms ease-in-out;
+			text-shadow: 0 0 8px var(--color-content-flavor--dim);
 		}
 
-		&::before {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			width: 1px;
-			height: 15px;
-			background-color: var(--color-header-nav-notch);
-		}
 		li:first-child &::before {
 			display: none;
 		}
 
+		// Hexagonal active indicator
 		&::after {
 			content: '';
 			position: absolute;
-			width: 6px;
-			height: 6px;
+			width: 8px;
+			height: 10px;
 			left: 0;
 			right: 0;
 			margin: 0 auto;
-			bottom: 13px;
-			border-radius: 50%;
+			bottom: 10px;
+			clip-path: $nav-hex-dot;
 			background-color: var(--color-header-nav-light);
 			transition:
 				background-color 130ms ease-in-out,
-				box-shadow 130ms ease-in-out;
+				filter 130ms ease-in-out;
 		}
 		&--active::after {
-			background-color: var(--color-header-nav-light--hl);
-			box-shadow: 0 0 10px 2px var(--color-header-nav-light--hl);
+			background-color: var(--color-content-flavor);
+			filter: drop-shadow(0 0 6px var(--color-content-flavor));
+			animation: nav-data-flicker 6s infinite;
 		}
 
 		&-text-container {
@@ -124,6 +178,11 @@
 			white-space: nowrap;
 			transform: translateY(-5px);
 		}
+		&--active &-text-container::before,
+		&:hover &-text-container::before {
+			opacity: 1;
+		}
+
 		&-text {
 			display: inline-block;
 			position: absolute;
@@ -143,6 +202,8 @@
 		&-caret {
 			display: inline-block;
 			margin-left: 2px;
+			color: var(--color-content-flavor);
+			text-shadow: 0 0 6px var(--color-content-flavor--dim);
 			animation: nav-link-caret-blink 0.6s infinite;
 
 			@keyframes nav-link-caret-blink {
@@ -158,10 +219,10 @@
 		}
 
 		@include responsive.size('xs') {
-			font-size: 0.85rem;
+			font-size: 0.76rem;
 		}
 		@include responsive.size('sm') {
-			font-size: 0.9rem;
+			font-size: 0.84rem;
 			padding: 0 32px;
 			&-text-container {
 				padding-bottom: 0;
