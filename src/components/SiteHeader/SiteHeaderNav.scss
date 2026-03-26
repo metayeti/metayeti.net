@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-20
+//  Updated:      2026-03-26
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,7 +23,7 @@
 
 @use '@/styles/responsive.scss';
 
-// -- Alien/Hex shapes & colors (matching About page aesthetic) --
+// hex shapes & colors
 $nav-hex-dot: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 $nav-border-bright: rgba(82, 220, 255, 0.28);
 $nav-border-dim: rgba(82, 220, 255, 0.08);
@@ -54,21 +54,13 @@ $nav-border-dim: rgba(82, 220, 255, 0.08);
 	}
 }
 
-.site-header-nav {
-	position: sticky;
-	top: 0;
-	height: 60px;
-	background-color: var(--color-header-nav-bg);
-	z-index: 99;
-	overflow: hidden;
-
-	// Scanline overlay
+@mixin scanline-overlay() {
 	&::before {
 		content: '';
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		z-index: 2;
+		//z-index: 2;
 		background: repeating-linear-gradient(
 			0deg,
 			transparent 0px,
@@ -87,6 +79,17 @@ $nav-border-dim: rgba(82, 220, 255, 0.08);
 			);
 		}
 	}
+}
+
+.site-header-nav {
+	position: sticky;
+	top: 0;
+	height: 60px;
+	background-color: var(--color-header-nav-bg);
+	z-index: 99;
+	overflow: hidden;
+
+	@include scanline-overlay();
 
 	&__main {
 		position: relative;
@@ -133,6 +136,8 @@ $nav-border-dim: rgba(82, 220, 255, 0.08);
 		text-decoration: none;
 		text-transform: uppercase;
 		letter-spacing: 0.14em;
+
+		@include scanline-overlay();
 
 		&--active,
 		&:hover {
