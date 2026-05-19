@@ -9,7 +9,7 @@ Unfortunately, it's also dumb:
 Worse yet, it makes *you* dumb:  
 - [AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical Thinking](https://www.mdpi.com/2075-4698/15/1/6)
 - [Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task](https://arxiv.org/pdf/2506.08872)
-- [AIAssistanceReducesPersistenceandHurtsIndependentPerformance](https://arxiv.org/pdf/2604.04721)
+- [AI Assistance Reduces Persistence and Hurts Independent Performance](https://arxiv.org/pdf/2604.04721)
  
 It exploits your psychology:  
 - [LLMs aren’t very bright. Why are so many people fooled?](https://garymarcus.substack.com/p/llms-arent-very-bright-why-are-so)
