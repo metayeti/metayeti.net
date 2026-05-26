@@ -27,4 +27,5 @@ dist_reference
 # Environment variables
 .env
 
-public/ads.txt
+# Ignored folders
+/temp/
