@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-03-18
+//  Updated:      2026-06-08
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -290,6 +290,8 @@
 
 	// -- sidebar table of contents --
 	&__toc {
+		position: sticky;
+		top: 90px;
 		display: flex;
 		flex-direction: column;
 		padding: 12px;
