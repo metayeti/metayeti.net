@@ -13,19 +13,18 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-09
-//  Updated:      2026-03-18
+//  Updated:      2026-06-08
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
-//  TODO:         Remove console.log in final version.
+//  TODO:         -
 //
 
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
 import { createBrowserRouter, RouterProvider, Outlet, useLocation } from 'react-router-dom';
-//import { createHashRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Home from '@/pages/Home';
 import Projects from '@/pages/Projects';
 import ProjectPage from '@/pages/ProjectPage';
@@ -34,8 +33,6 @@ import BlogPost from '@/pages/BlogPost';
 import About from '@/pages/About';
 import NotFound from './pages/NotFound';
 import { useEffect } from 'react';
-
-console.log('Current mode:', import.meta.env.MODE);
 
 function ScrollToTop() {
 	const { pathname } = useLocation();
@@ -59,7 +56,6 @@ function RootLayout() {
 }
 
 const router = createBrowserRouter([
-	//const router = createHashRouter([
 	{
 		path: '/',
 		element: <RootLayout />,

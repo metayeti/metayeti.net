@@ -327,16 +327,14 @@ by Danijel Durakovic (https://metayeti.net)
 							Article last updated:
 							<span>{getHumanReadableDate(lastUpdated)}</span>
 						</div>
-						{import.meta.env.MODE === 'development' && (
-							<div className="blog-post__raw">
-								<button onClick={handleDownloadRaw}>
-									<span className="icon">
-										<IconDownload />
-									</span>
-									<span>raw</span>
-								</button>
-							</div>
-						)}
+						<div className="blog-post__raw">
+							<button onClick={handleDownloadRaw}>
+								<span className="icon">
+									<IconDownload />
+								</span>
+								<span>raw</span>
+							</button>
+						</div>
 					</div>
 
 					<div className="blog-post__about-author">
