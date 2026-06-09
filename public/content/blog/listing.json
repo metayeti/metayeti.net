@@ -1,6 +1,14 @@
 {
 	"posts": [
 		{
+			"title": "The problem with generative AI",
+			"slug": "the-problem-with-generative-ai",
+			"date-published": "2026-06-09",
+			"date-updated": "2026-06-09",
+			"tags": ["generative-ai"],
+			"description": "It's a dream machine."
+		},
+		{
 			"title": "DRY, KISS and YAGNI",
 			"slug": "dry-kiss-and-yagni",
 			"date-published": "2025-06-19",
