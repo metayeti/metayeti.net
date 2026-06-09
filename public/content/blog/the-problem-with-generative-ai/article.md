@@ -40,7 +40,7 @@ This is the sort of periodic table I would expect to see in a dream - it's funny
 
 On the other hand, the details absolutely do matter if I want to make an accurate poster of the periodic table of elements. The lesson here is that things that look right aren't always right, and things that command attention were also made with attention.
 
-With generative AI, humanity has unlocked dreaming on demand. It's a cool technology. But maybe we shouldn't be treating it as a thinking machine (trying to substitute our own lucidity of thought in futile attempts to make the AI behave in ways it can't) and instead use it like we would any other type of dream, for inspiration. And then we can use for good.
+With generative AI, humanity has unlocked dreaming on demand. It's a cool technology. But maybe we shouldn't be treating it as a thinking machine (trying to substitute our own lucidity of thought in futile attempts to make the AI behave in ways it can't) and instead use it like we would any other type of dream, for inspiration. And then we can use it for good.
 
 # What generative AI is not
 
