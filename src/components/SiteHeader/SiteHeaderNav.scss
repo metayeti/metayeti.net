@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-26
+//  Updated:      2026-06-11
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -60,7 +60,6 @@ $nav-border-dim: rgba(82, 220, 255, 0.08);
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		//z-index: 2;
 		background: repeating-linear-gradient(
 			0deg,
 			transparent 0px,
@@ -131,7 +130,7 @@ $nav-border-dim: rgba(82, 220, 255, 0.08);
 		background-color: var(--color-header-nav-bg);
 		color: var(--color-header-nav-fg);
 		font-family: var(--font-link);
-		font-size: 0.72rem;
+		font-size: 0.78rem;
 		font-weight: 600;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -224,11 +223,11 @@ $nav-border-dim: rgba(82, 220, 255, 0.08);
 		}
 
 		@include responsive.size('xs') {
-			font-size: 0.76rem;
+			font-size: 0.84rem;
 		}
 		@include responsive.size('sm') {
-			font-size: 0.84rem;
-			padding: 0 32px;
+			font-size: 0.9rem;
+			padding: 0 34px;
 			&-text-container {
 				padding-bottom: 0;
 				transform: none;
