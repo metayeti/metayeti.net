@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-04
-//  Updated:      2026-06-11
+//  Updated:      2026-06-14
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -28,8 +28,23 @@
 	color: var(--color-content-fg);
 	overflow: clip;
 
-	background: var(--color-content-bg);
-	background-image: var(--gradient-content-bg);
+	background-color: var(--color-content-bg);
+	background-image:
+		linear-gradient(
+			to bottom,
+			transparent 0,
+			transparent calc(var(--grid-size) - 1px),
+			var(--grid-color) calc(var(--grid-size) - 1px),
+			var(--grid-color) var(--grid-size)
+		),
+		linear-gradient(
+			to right,
+			transparent 0,
+			transparent calc(var(--grid-size) - 1px),
+			var(--grid-color) calc(var(--grid-size) - 1px),
+			var(--grid-color) var(--grid-size)
+		);
+	background-size: var(--grid-size) var(--grid-size);
 
 	// -- headings --
 	h2,

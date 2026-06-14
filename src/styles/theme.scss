@@ -23,10 +23,6 @@
 
 // -- Default Theme (dark) --
 :root {
-	// selection
-	//--color-sel-bg: #686868;
-	//--color-sel-fg: #0a0a0a;
-
 	// text selection
 	--color-sel-bg: #1e5181;
 	--color-sel-fg: #ebf7ff;
@@ -62,10 +58,8 @@
 
 	// content
 	--color-content-bg: #0e1120;
-	--gradient-content-bg:
-		radial-gradient(ellipse at 74% 40%, #0a1a2e 0%, transparent 70%),
-		repeating-linear-gradient(0deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px),
-		repeating-linear-gradient(90deg, transparent, transparent 30px, #0a1830 30px, #0a1830 31px);
+	--grid-color: #0a1830;
+	--grid-size: 30px;
 
 	--color-content-fg: #c4d2dd;
 	--color-content-flavor: #52dcff;
@@ -90,47 +84,11 @@
 
 // -- Alternate Theme (light) --
 :root.lightmode {
-	// selection
-	--color-sel-bg: #b8d4e8;
-	--color-sel-fg: #0f1923;
-
-	// global
-	//--color-global-bg: #dde3ec;
-
-	// header
-	/*
-	--color-header-social-bg: #dde3ec;
-	--color-header-social-bg--hl: #c8d2df;
-	--color-header-social-fg: #4e6070;
-	--color-header-social-fg--hl: #0d1a26;
-	--color-header-nav-bg: #e4e9f0;
-	--color-header-nav-bg--hl: #dde3ec;
-	--color-header-nav-fg: #3d5060;
-	--color-header-nav-fg--hl: #0d1a26;
-	--color-header-nav-light: #aaa;
-	--color-header-nav-light--hl: #1a8c1a;
-	--color-header-nav-indicator: #8fa5b5;
-	--color-header-nav-indicator--hl: #f18d12;
-	--color-header-nav-notch: #c8d2db;
-	--shadow-header-nav: 0 1px 6px 3px rgba(0, 0, 0, 0.07);
-	*/
-
-	// special
-	/*
-	--color-rocker-border: rgb(160, 20, 20);
-	--color-rocker-dark: rgb(140, 10, 10);
-	--color-rocker-light: rgb(210, 40, 40);
-	--color-rocker-symbol: rgba(255, 255, 255, 0.7);
-	--color-rocker-bg: #3f3f3f;
-	--color-rocker-outline--hl: var(--color-header-nav-indicator--hl);
-	*/
-
 	// content
-	--color-content-bg: #f0f5fa;
-	--gradient-content-bg:
-		radial-gradient(ellipse at 74% 40%, #e8f0f5 0%, transparent 70%),
-		repeating-linear-gradient(0deg, transparent, transparent 30px, #e8f0f5 30px, #e8f0f5 31px),
-		repeating-linear-gradient(90deg, transparent, transparent 30px, #e8f0f5 30px, #e8f0f5 31px);
+	--color-content-bg: #f8fcff;
+
+	--grid-color: #f5f7fc;
+	--grid-size: 30px;
 
 	--color-content-fg: #2a3d4d;
 	--color-content-flavor: #06a9e9;
@@ -146,11 +104,4 @@
 	--color-blog-sidebar-border: rgba(0, 0, 0, 0.08);
 	--color-blog-sidebar-bg: rgba(0, 0, 0, 0.02);
 	--color-blog-sidebar-searchbox: rgba(0, 0, 0, 0.04);
-
-	// footer
-	/*
-	--color-footer-bg: #dde3ec;
-	--color-footer-fg: #5a7080;
-	--color-react-blue: #0a80a0;
-	*/
 }
