@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/routes/Blog.jsx
+//  File:         src/pages/Blog.jsx
 //  Description:  Blog page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-17
+//  Updated:      2026-06-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

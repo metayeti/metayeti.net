@@ -1,3 +1,26 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         src/pages/About.jsx
+//  Description:  About page component.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      n/a
+//  Updated:      2026-06-16
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         A lot of this page is AI code, general cleanup is in order.
+//  TODO:         Needs better light-theme colors
+//
+
 import { useState, useEffect, useRef } from 'react';
 import { goodMusic, goodGameMusic } from '@/extras/musicLinks';
 import './About.scss';
@@ -59,13 +82,12 @@ export default function About() {
 			{/* ─── IDENTITY ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="lg" glow>
-					<span className="hex-about__sys-label">SYS.IDENTITY</span>
+					<span className="hex-about__sys-label">SYS.ID</span>
 					<h2>Danijel</h2>
 					<p>
-						Programmer with a passion for videogames. I build games, software, websites and interactive
-						digital content.
+						I'm a programmer with a passion for videogames. I build games, software, websites and
+						interactive digital content.
 					</p>
-					<p>Core interests: programming, mathematics, science, philosophy, music &amp; art.</p>
 				</HexNode>
 				<div className="hex-about__branch" />
 				<div className="hex-about__satellites">
@@ -100,10 +122,8 @@ export default function About() {
 				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">NET.INFO</span>
 					<h2>This Website</h2>
-					<p>
-						A digital garden within the cyberspace. Portfolio, blog, and markdown-driven content on a custom
-						codebase.
-					</p>
+					<p>My own little digital garden within the cyberspace.</p>
+					<p>Runs on a custom markdown-driven codebase.</p>
 				</HexNode>
 				<div className="hex-about__branch" />
 				<div className="hex-about__satellites">
@@ -232,15 +252,7 @@ export default function About() {
 				<div className="hex-about__branch" />
 				<div className="hex-about__satellites">
 					<HexNode size="sm" dark>
-						<span className="hex-about__tag-label">ART</span>
-						<span className="hex-about__tag-value">Pixel Art</span>
-					</HexNode>
-					<HexNode size="sm" dark>
-						<span className="hex-about__tag-label">DAW</span>
-						<span className="hex-about__tag-value">FL Studio</span>
-					</HexNode>
-					<HexNode size="sm" dark>
-						<span className="hex-about__tag-label">OPEN SRC</span>
+						<span className="hex-about__tag-label">CODE</span>
 						<span className="hex-about__tag-value">
 							<a href="https://github.com/metayeti" className="external" target="_blank" rel="noreferrer">
 								GitHub
@@ -248,17 +260,12 @@ export default function About() {
 						</span>
 					</HexNode>
 					<HexNode size="sm" dark>
-						<span className="hex-about__tag-label">AUDIO</span>
-						<span className="hex-about__tag-value">
-							<a
-								href="https://soundcloud.com/metayeti"
-								className="external"
-								target="_blank"
-								rel="noreferrer"
-							>
-								SoundCloud
-							</a>
-						</span>
+						<span className="hex-about__tag-label">ART</span>
+						<span className="hex-about__tag-value">Pixel Art</span>
+					</HexNode>
+					<HexNode size="sm" dark>
+						<span className="hex-about__tag-label">DAW</span>
+						<span className="hex-about__tag-value">FL Studio</span>
 					</HexNode>
 				</div>
 			</div>

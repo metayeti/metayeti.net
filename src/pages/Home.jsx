@@ -8,12 +8,12 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/routes/Home.jsx
+//  File:         src/pages/Home.jsx
 //  Description:  Home page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-03-20
+//  Updated:      2026-06-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
