@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-06-08
+//  Updated:      2026-06-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -39,7 +39,7 @@
 		color: var(--color-content-fg);
 		border: 1px solid var(--color-content-link);
 		border-radius: 5px;
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: var(--color-blog-button-bg);
 		cursor: pointer;
 		text-decoration: none !important;
 		font-size: 1rem;
