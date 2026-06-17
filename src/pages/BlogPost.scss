@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-15
-//  Updated:      2026-06-16
+//  Updated:      2026-06-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -333,6 +333,12 @@
 				color: var(--color-content-link--hover);
 				border-left-color: var(--color-content-link--hover);
 			}
+		}
+
+		&--active a {
+			color: var(--color-content-link);
+			border-left-color: var(--color-content-link--hover);
+			font-weight: bold;
 		}
 
 		// -- indentation by heading level --

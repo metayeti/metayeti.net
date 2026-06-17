@@ -13,12 +13,12 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-20
-//  Updated:      2026-06-08
+//  Updated:      2026-06-17
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         -
-//  TODO:         Basic migration from previous site, needs a lot of fixes.
+//  TODO:         -
 //
 
 import IconBack from '@/components/icons/IconBack';
@@ -51,6 +51,7 @@ export default function BlogPost() {
 	const [postData, setPostData] = useState(null);
 	const [renderedHTML, setRenderedHTML] = useState('');
 	const [headings, setHeadings] = useState([]);
+	const [activeHeadingId, setActiveHeadingId] = useState(null);
 	const [readingTime, setReadingTime] = useState('');
 
 	// -- pagination state --
@@ -134,25 +135,75 @@ export default function BlogPost() {
 		loadPost();
 	}, [slug]);
 
+	// use a throttled scroll handler (via requestAnimationFrame) to compute the active heading
+	// TODO: this could be optimized by pre-computing heading positions on render and only updating on resize
+	useEffect(() => {
+		if (!headings || headings.length === 0 || articlePages.length === 0) return;
+
+		const articleEl = document.querySelector('.blog-post__article');
+		if (!articleEl) return;
+
+		let ticking = false;
+
+		const computeActive = () => {
+			const headingEls = Array.from(articleEl.querySelectorAll('h2,h3,h4,h5,h6'))
+				.map((el) => ({ el, id: el.id, top: el.getBoundingClientRect().top }))
+				.filter((h) => h.id);
+
+			if (headingEls.length === 0) {
+				setActiveHeadingId(null);
+				return;
+			}
+
+			const viewportTarget = window.innerHeight * 0.2;
+			const aboveTarget = headingEls.filter((h) => h.top <= viewportTarget).sort((a, b) => b.top - a.top);
+			if (aboveTarget.length > 0) {
+				setActiveHeadingId(aboveTarget[0].id);
+				return;
+			}
+
+			// nothing has reached target yet; select first heading
+			setActiveHeadingId(headingEls[0].id);
+		};
+
+		const onScroll = () => {
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(() => {
+					computeActive();
+					ticking = false;
+				});
+			}
+		};
+
+		// run initially to set correct state
+		computeActive();
+
+		window.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('resize', onScroll);
+
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+			window.removeEventListener('resize', onScroll);
+		};
+	}, [headings, pageIndex, articlePages, renderedHTML]);
+
 	// -- render page content --
 	useEffect(() => {
 		if (articlePages.length > 0) {
 			const mdContent = articlePages[pageIndex] || '';
 			setRenderedHTML(md.render(mdContent));
 
-			// Handle scrolling
+			// handle scrolling
 			if (pendingScrollToId) {
-				// Wait for render to complete
+				// wait for render to complete
 				setTimeout(() => {
-					const el = document.getElementById(pendingScrollToId);
+					let el = document.getElementById(pendingScrollToId);
 					if (el) {
 						el.scrollIntoView();
 						setPendingScrollToId(null);
 					}
 				}, 100);
-			} else {
-				// scroll to top on page change
-				window.scrollTo(0, 0);
 			}
 		}
 	}, [pageIndex, articlePages, pendingScrollToId]);
@@ -360,7 +411,9 @@ by Danijel Durakovic (https://metayeti.net)
 							{headings.map((heading) => (
 								<li
 									key={heading.id}
-									className={`blog-post__toc-item blog-post__toc-item--h${heading.level}`}
+									className={`blog-post__toc-item blog-post__toc-item--h${heading.level} ${
+										heading.id === activeHeadingId ? 'blog-post__toc-item--active' : ''
+									}`}
 								>
 									<a href={`#${heading.id}`} onClick={(e) => handleHeadingClick(e, heading)}>
 										{heading.text}
