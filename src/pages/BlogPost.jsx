@@ -28,7 +28,7 @@ import IconPages from '@/components/icons/IconPages';
 import IconDownload from '@/components/icons/IconDownload';
 import IconChevronLeft from '@/components/icons/IconChevronLeft';
 import IconChevronRight from '@/components/icons/IconChevronRight';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
 	loadJSON,
@@ -53,6 +53,7 @@ export default function BlogPost() {
 	const [headings, setHeadings] = useState([]);
 	const [activeHeadingId, setActiveHeadingId] = useState(null);
 	const [readingTime, setReadingTime] = useState('');
+	const headingPositionsRef = useRef([]);
 
 	// -- pagination state --
 	const [articlePages, setArticlePages] = useState([]);
@@ -135,58 +136,76 @@ export default function BlogPost() {
 		loadPost();
 	}, [slug]);
 
-	// use a throttled scroll handler (via requestAnimationFrame) to compute the active heading
-	// TODO: this could be optimized by pre-computing heading positions on render and only updating on resize
+	const updateHeadingPositions = useCallback(() => {
+		const articleEl = document.querySelector('.blog-post__article');
+		if (!articleEl) {
+			headingPositionsRef.current = [];
+			return [];
+		}
+
+		const positions = Array.from(articleEl.querySelectorAll('h2,h3,h4,h5,h6'))
+			.filter((el) => el.id)
+			.map((el) => ({
+				id: el.id,
+				top: window.scrollY + el.getBoundingClientRect().top,
+			}));
+
+		headingPositionsRef.current = positions;
+		return positions;
+	}, []);
+
+	const computeActiveHeading = useCallback(() => {
+		const positions = headingPositionsRef.current;
+		if (!positions || positions.length === 0) {
+			setActiveHeadingId(null);
+			return;
+		}
+
+		const viewportTarget = window.scrollY + window.innerHeight * 0.2;
+		const aboveTarget = positions.filter((h) => h.top <= viewportTarget).sort((a, b) => b.top - a.top);
+		if (aboveTarget.length > 0) {
+			setActiveHeadingId(aboveTarget[0].id);
+			return;
+		}
+
+		setActiveHeadingId(positions[0].id);
+	}, []);
+
 	useEffect(() => {
 		if (!headings || headings.length === 0 || articlePages.length === 0) return;
 
-		const articleEl = document.querySelector('.blog-post__article');
-		if (!articleEl) return;
+		updateHeadingPositions();
+		computeActiveHeading();
+	}, [headings, articlePages, pageIndex, renderedHTML, updateHeadingPositions, computeActiveHeading]);
+
+	useEffect(() => {
+		if (!headings || headings.length === 0 || articlePages.length === 0) return;
 
 		let ticking = false;
-
-		const computeActive = () => {
-			const headingEls = Array.from(articleEl.querySelectorAll('h2,h3,h4,h5,h6'))
-				.map((el) => ({ el, id: el.id, top: el.getBoundingClientRect().top }))
-				.filter((h) => h.id);
-
-			if (headingEls.length === 0) {
-				setActiveHeadingId(null);
-				return;
-			}
-
-			const viewportTarget = window.innerHeight * 0.2;
-			const aboveTarget = headingEls.filter((h) => h.top <= viewportTarget).sort((a, b) => b.top - a.top);
-			if (aboveTarget.length > 0) {
-				setActiveHeadingId(aboveTarget[0].id);
-				return;
-			}
-
-			// nothing has reached target yet; select first heading
-			setActiveHeadingId(headingEls[0].id);
-		};
 
 		const onScroll = () => {
 			if (!ticking) {
 				ticking = true;
 				requestAnimationFrame(() => {
-					computeActive();
+					computeActiveHeading();
 					ticking = false;
 				});
 			}
 		};
 
-		// run initially to set correct state
-		computeActive();
+		const onResize = () => {
+			updateHeadingPositions();
+			computeActiveHeading();
+		};
 
 		window.addEventListener('scroll', onScroll, { passive: true });
-		window.addEventListener('resize', onScroll);
+		window.addEventListener('resize', onResize);
 
 		return () => {
 			window.removeEventListener('scroll', onScroll);
-			window.removeEventListener('resize', onScroll);
+			window.removeEventListener('resize', onResize);
 		};
-	}, [headings, pageIndex, articlePages, renderedHTML]);
+	}, [headings, articlePages, computeActiveHeading, updateHeadingPositions]);
 
 	// -- render page content --
 	useEffect(() => {
