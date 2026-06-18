@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-20
-//  Updated:      2026-06-17
+//  Updated:      2026-06-18
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -53,14 +53,17 @@ export default function BlogPost() {
 	const [headings, setHeadings] = useState([]);
 	const [activeHeadingId, setActiveHeadingId] = useState(null);
 	const [readingTime, setReadingTime] = useState('');
-	const headingPositionsRef = useRef([]);
 
 	// -- pagination state --
 	const [articlePages, setArticlePages] = useState([]);
 	const [pageIndex, setPageIndex] = useState(0);
 	const [pendingScrollToId, setPendingScrollToId] = useState(null);
 
-	// update document title
+	// Refs to guard against race conditions during programmatic scrolls
+	const isClickScrollingRef = useRef(false);
+	const scrollTimeoutRef = useRef(null);
+
+	// Update document title
 	useEffect(() => {
 		if (postData) {
 			document.title = `${postData.title} | metayeti.net`;
@@ -70,7 +73,7 @@ export default function BlogPost() {
 		}
 	}, [postData]);
 
-	// sync page index with url param
+	// Sync page index with url param
 	useEffect(() => {
 		const p = parseInt(page);
 		if (!isNaN(p) && p > 0) {
@@ -80,6 +83,7 @@ export default function BlogPost() {
 		}
 	}, [page]);
 
+	// Load post data and markdown structure
 	useEffect(() => {
 		async function loadPost() {
 			try {
@@ -136,54 +140,56 @@ export default function BlogPost() {
 		loadPost();
 	}, [slug]);
 
-	const updateHeadingPositions = useCallback(() => {
-		const articleEl = document.querySelector('.blog-post__article');
-		if (!articleEl) {
-			headingPositionsRef.current = [];
-			return [];
-		}
-
-		const positions = Array.from(articleEl.querySelectorAll('h2,h3,h4,h5,h6'))
-			.filter((el) => el.id)
-			.map((el) => ({
-				id: el.id,
-				top: window.scrollY + el.getBoundingClientRect().top,
-			}));
-
-		headingPositionsRef.current = positions;
-		return positions;
+	// Clean up timeouts on unmount
+	useEffect(() => {
+		return () => {
+			if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+		};
 	}, []);
 
+	// Calculate active heading using viewport-relative coordinates
 	const computeActiveHeading = useCallback(() => {
-		const positions = headingPositionsRef.current;
-		if (!positions || positions.length === 0) {
+		// Absolute safety: do not calculate if a programmatic click-scroll is active
+		if (isClickScrollingRef.current) return;
+
+		const articleEl = document.querySelector('.blog-post__article');
+		if (!articleEl) {
 			setActiveHeadingId(null);
 			return;
 		}
 
-		const viewportTarget = window.scrollY + window.innerHeight * 0.2;
-		const aboveTarget = positions.filter((h) => h.top <= viewportTarget).sort((a, b) => b.top - a.top);
-		if (aboveTarget.length > 0) {
-			setActiveHeadingId(aboveTarget[0].id);
+		const headingElements = Array.from(articleEl.querySelectorAll('h2,h3,h4,h5,h6')).filter((el) => el.id);
+		if (headingElements.length === 0) {
+			setActiveHeadingId(null);
 			return;
 		}
 
-		setActiveHeadingId(positions[0].id);
+		// The target trigger line is 20% down from the top of the viewport
+		const viewportTarget = window.innerHeight * 0.2;
+
+		// Filter for elements that have scrolled past or reached our target line
+		const aboveTarget = headingElements
+			.map((el) => ({ el, rect: el.getBoundingClientRect() }))
+			.filter(({ rect }) => rect.top <= viewportTarget)
+			.sort((a, b) => b.rect.top - a.rect.top); // The largest rect.top is closest to the line
+
+		if (aboveTarget.length > 0) {
+			setActiveHeadingId(aboveTarget[0].el.id);
+			return;
+		}
+
+		// Fallback: if we haven't scrolled past any headings yet, highlight the first one
+		setActiveHeadingId(headingElements[0].id);
 	}, []);
 
+	// Hook to manage event listeners cleanly
 	useEffect(() => {
-		if (!headings || headings.length === 0 || articlePages.length === 0) return;
-
-		updateHeadingPositions();
-		computeActiveHeading();
-	}, [headings, articlePages, pageIndex, renderedHTML, updateHeadingPositions, computeActiveHeading]);
-
-	useEffect(() => {
-		if (!headings || headings.length === 0 || articlePages.length === 0) return;
+		if (!headings || headings.length === 0 || articlePages.length === 0 || !renderedHTML) return;
 
 		let ticking = false;
 
 		const onScroll = () => {
+			if (isClickScrollingRef.current) return; // Ignore natural scroll events caused by TOC clicks
 			if (!ticking) {
 				ticking = true;
 				requestAnimationFrame(() => {
@@ -193,39 +199,48 @@ export default function BlogPost() {
 			}
 		};
 
-		const onResize = () => {
-			updateHeadingPositions();
-			computeActiveHeading();
-		};
-
 		window.addEventListener('scroll', onScroll, { passive: true });
-		window.addEventListener('resize', onResize);
+		window.addEventListener('resize', onScroll);
+
+		// Initialize position matching once layout settles
+		computeActiveHeading();
 
 		return () => {
 			window.removeEventListener('scroll', onScroll);
-			window.removeEventListener('resize', onResize);
+			window.removeEventListener('resize', onScroll);
 		};
-	}, [headings, articlePages, computeActiveHeading, updateHeadingPositions]);
+	}, [headings, articlePages, pageIndex, renderedHTML, computeActiveHeading]);
 
-	// -- render page content --
+	// Hook A: Transforms markdown to HTML when pages alter
 	useEffect(() => {
 		if (articlePages.length > 0) {
 			const mdContent = articlePages[pageIndex] || '';
 			setRenderedHTML(md.render(mdContent));
-
-			// handle scrolling
-			if (pendingScrollToId) {
-				// wait for render to complete
-				setTimeout(() => {
-					let el = document.getElementById(pendingScrollToId);
-					if (el) {
-						el.scrollIntoView();
-						setPendingScrollToId(null);
-					}
-				}, 100);
-			}
 		}
-	}, [pageIndex, articlePages, pendingScrollToId]);
+	}, [pageIndex, articlePages]);
+
+	// Hook B: Manages cross-page automated scrolling via URL hashes cleanly
+	useEffect(() => {
+		if (pendingScrollToId && renderedHTML) {
+			const timer = setTimeout(() => {
+				const el = document.getElementById(pendingScrollToId);
+				if (el) {
+					isClickScrollingRef.current = true;
+					setActiveHeadingId(pendingScrollToId);
+					el.scrollIntoView();
+					setPendingScrollToId(null);
+
+					if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+					scrollTimeoutRef.current = setTimeout(() => {
+						isClickScrollingRef.current = false;
+						computeActiveHeading();
+					}, 800); // 800ms buffer gives late layout adjustments plenty of time to finish
+				}
+			}, 100);
+
+			return () => clearTimeout(timer);
+		}
+	}, [pendingScrollToId, renderedHTML, computeActiveHeading]);
 
 	const handlePageChange = (newIndex) => {
 		if (newIndex >= 0 && newIndex < articlePages.length) {
@@ -245,7 +260,19 @@ export default function BlogPost() {
 			navigate(`${targetUrl}#${heading.id}`);
 		} else {
 			const el = document.getElementById(heading.id);
-			if (el) el.scrollIntoView();
+			if (el) {
+				// Activate the guard instantly and forcefully assign the highlight class
+				isClickScrollingRef.current = true;
+				setActiveHeadingId(heading.id);
+
+				el.scrollIntoView();
+
+				if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+				scrollTimeoutRef.current = setTimeout(() => {
+					isClickScrollingRef.current = false;
+					computeActiveHeading(); // Safe recalculation once layout pop settles
+				}, 800);
+			}
 			navigate(`${targetUrl}#${heading.id}`, { replace: true });
 		}
 	};
