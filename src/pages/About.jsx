@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      n/a
-//  Updated:      2026-06-16
+//  Updated:      2026-06-18
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -22,12 +22,11 @@
 //
 
 import { useState, useEffect, useRef } from 'react';
-import { goodMusic, goodGameMusic } from '@/extras/musicLinks';
 import './About.scss';
 
 function pickRandom(list, exclude = null) {
 	const filtered = exclude !== null ? list.filter((x) => x !== exclude) : list;
-	return filtered[Math.floor(Math.random() * filtered.length)];
+	return filtered.length ? filtered[Math.floor(Math.random() * filtered.length)] : '';
 }
 
 function getAge(birthDate) {
@@ -49,11 +48,27 @@ function HexNode({ children, size = 'lg', glow, dark, className = '' }) {
 
 export default function About() {
 	const age = getAge('1988-01-05');
-	const [musicUrl, setMusicUrl] = useState(() => pickRandom(goodMusic));
-	const [gameMusicUrl, setGameMusicUrl] = useState(() => pickRandom(goodGameMusic));
+	const [musicUrl, setMusicUrl] = useState('');
+	const [gameMusicUrl, setGameMusicUrl] = useState('');
+	const musicLinksRef = useRef({ goodMusic: [], goodGameMusic: [] });
 	const containerRef = useRef(null);
 
 	useEffect(() => {
+		let isMounted = true;
+
+		async function loadMusicLinks() {
+			const module = await import('@/extras/musicLinks');
+			if (!isMounted) return;
+			musicLinksRef.current = {
+				goodMusic: module.goodMusic,
+				goodGameMusic: module.goodGameMusic,
+			};
+			setMusicUrl(pickRandom(module.goodMusic));
+			setGameMusicUrl(pickRandom(module.goodGameMusic));
+		}
+
+		loadMusicLinks();
+
 		const observer = new IntersectionObserver(
 			(entries) =>
 				entries.forEach((e) => {
@@ -63,7 +78,10 @@ export default function About() {
 		);
 
 		containerRef.current?.querySelectorAll('.hex-reveal').forEach((el) => observer.observe(el));
-		return () => observer.disconnect();
+		return () => {
+			isMounted = false;
+			observer.disconnect();
+		};
 	}, []);
 
 	return (
@@ -128,7 +146,7 @@ export default function About() {
 				<div className="hex-about__branch" />
 				<div className="hex-about__satellites">
 					<HexNode size="sm" dark>
-						<span className="hex-about__tag-label">SRC</span>
+						<span className="hex-about__tag-label">SOURCE</span>
 						<span className="hex-about__tag-value">
 							<a
 								href="https://github.com/metayeti/metayeti.net"
@@ -178,7 +196,7 @@ export default function About() {
 									className="external"
 									target="_blank"
 									rel="noreferrer"
-									onClick={() => setMusicUrl(pickRandom(goodMusic, musicUrl))}
+									onClick={() => setMusicUrl(pickRandom(musicLinksRef.current.goodMusic, musicUrl))}
 								>
 									good music
 								</a>{' '}
@@ -188,7 +206,9 @@ export default function About() {
 									className="external"
 									target="_blank"
 									rel="noreferrer"
-									onClick={() => setGameMusicUrl(pickRandom(goodGameMusic, gameMusicUrl))}
+									onClick={() =>
+										setGameMusicUrl(pickRandom(musicLinksRef.current.goodGameMusic, gameMusicUrl))
+									}
 								>
 									game soundtracks
 								</a>
@@ -208,7 +228,9 @@ export default function About() {
 						</div>
 						<div className="hex-about__fav-item">
 							<span className="hex-about__fav-key">IDOLS</span>
-							<span className="hex-about__fav-val">John Romero, John Carmack, Chris Sawyer</span>
+							<span className="hex-about__fav-val">
+								John Romero, John Carmack, Chris Sawyer, Miki Muster
+							</span>
 						</div>
 					</div>
 				</HexNode>
