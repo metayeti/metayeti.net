@@ -402,7 +402,7 @@ by Danijel Durakovic (https://metayeti.net)
 								{articlePages.map((_, i) => (
 									<button
 										key={i}
-										className={`blog-post__pagination-page ${i === pageIndex ? 'active' : ''}`}
+										className={`blog-post__pagination-page ${i === pageIndex ? 'blog-post__pagination-page--active' : ''}`}
 										onClick={() => handlePageChange(i)}
 									>
 										{i + 1}
