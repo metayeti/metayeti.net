@@ -42,6 +42,8 @@ import {
 	getReadingTimeLabel,
 } from '@/util';
 
+import BlogComments from '@/components/extras/BlogComments';
+
 import './BlogPost.scss';
 
 export default function BlogPost() {
@@ -319,156 +321,161 @@ by Danijel Durakovic (https://metayeti.net)
 	const lastUpdated = postData['date-updated'] || postData['date-published'];
 
 	return (
-		<div className="blog-post sidebar-layout sidebar-layout--hidden wrapped">
-			<div className="blog-post__main">
-				<Link to="/blog" className="blog-post__back" aria-label="Back to blog">
-					<IconBack />
-				</Link>
-				{/* -- post header -- */}
-				<section className="blog-post__header">
-					<div className="blog-post__tags">
-						{postData.tags?.map((tag) => (
-							<span key={tag} className="blog-post__tag">
-								<span>{tag}</span>
-							</span>
-						))}
-					</div>
-
-					<h2 className="blog-post__title">{postData.title}</h2>
-					<span className="blog-post__description">{postData.description}</span>
-
-					<div className="blog-post__meta">
-						<div className="blog-post__meta-item">
-							<span className="blog-post__meta-icon">
-								<IconCalendar />
-							</span>
-							<span>{getHumanReadableDate(postData['date-published'])}</span>
+		<div className="blog-post wrapped">
+			<div className="blog-post__content sidebar-layout sidebar-layout--hidden">
+				<div className="blog-post__main">
+					<Link to="/blog" className="blog-post__back" aria-label="Back to blog">
+						<IconBack />
+					</Link>
+					{/* -- post header -- */}
+					<section className="blog-post__header">
+						<div className="blog-post__tags">
+							{postData.tags?.map((tag) => (
+								<span key={tag} className="blog-post__tag">
+									<span>{tag}</span>
+								</span>
+							))}
 						</div>
-						<div className="blog-post__meta-item">
-							<span className="blog-post__meta-icon">
-								<IconTime />
-							</span>
-							{readingTime && <span>{readingTime} read</span>}
-						</div>
-						{articlePages.length > 1 && (
+
+						<h2 className="blog-post__title">{postData.title}</h2>
+						<span className="blog-post__description">{postData.description}</span>
+
+						<div className="blog-post__meta">
 							<div className="blog-post__meta-item">
 								<span className="blog-post__meta-icon">
-									<IconPages />
+									<IconCalendar />
 								</span>
-								<span>
-									Page {pageIndex + 1} of {articlePages.length}
-								</span>{' '}
-								<span className="blog-post__meta-page-nav">
-									<button
-										className="blog-post__meta-page-btn"
-										disabled={pageIndex === 0}
-										onClick={() => handlePageChange(pageIndex - 1)}
-										aria-label="Previous page"
-									>
-										<IconChevronLeft />
-									</button>
-									<button
-										className="blog-post__meta-page-btn"
-										disabled={pageIndex === articlePages.length - 1}
-										onClick={() => handlePageChange(pageIndex + 1)}
-										aria-label="Next page"
-									>
-										<IconChevronRight />
-									</button>
-								</span>{' '}
+								<span>{getHumanReadableDate(postData['date-published'])}</span>
 							</div>
-						)}
-					</div>
-				</section>
-
-				{/* -- article content -- */}
-				<article className="blog-post__article" dangerouslySetInnerHTML={{ __html: renderedHTML }} />
-
-				{/* -- pagination -- */}
-				{articlePages.length > 1 && (
-					<div className="blog-post__pagination">
-						<button
-							className="blog-post__pagination-btn"
-							disabled={pageIndex === 0}
-							onClick={() => handlePageChange(pageIndex - 1)}
-						>
-							&larr; Prev
-						</button>
-
-						<div className="blog-post__pagination-pages">
-							{articlePages.map((_, i) => (
-								<button
-									key={i}
-									className={`blog-post__pagination-page ${i === pageIndex ? 'active' : ''}`}
-									onClick={() => handlePageChange(i)}
-								>
-									{i + 1}
-								</button>
-							))}
-						</div>
-
-						<button
-							className="blog-post__pagination-btn"
-							disabled={pageIndex === articlePages.length - 1}
-							onClick={() => handlePageChange(pageIndex + 1)}
-						>
-							Next &rarr;
-						</button>
-					</div>
-				)}
-
-				{/* -- post footer -- */}
-				<section className="blog-post__footer">
-					<div className="blog-post__footer-row">
-						<div className="blog-post__date-updated">
-							Article last updated:
-							<span>{getHumanReadableDate(lastUpdated)}</span>
-						</div>
-						<div className="blog-post__raw">
-							<button onClick={handleDownloadRaw}>
-								<span className="icon">
-									<IconDownload />
+							<div className="blog-post__meta-item">
+								<span className="blog-post__meta-icon">
+									<IconTime />
 								</span>
-								<span>raw</span>
+								{readingTime && <span>{readingTime} read</span>}
+							</div>
+							{articlePages.length > 1 && (
+								<div className="blog-post__meta-item">
+									<span className="blog-post__meta-icon">
+										<IconPages />
+									</span>
+									<span>
+										Page {pageIndex + 1} of {articlePages.length}
+									</span>{' '}
+									<span className="blog-post__meta-page-nav">
+										<button
+											className="blog-post__meta-page-btn"
+											disabled={pageIndex === 0}
+											onClick={() => handlePageChange(pageIndex - 1)}
+											aria-label="Previous page"
+										>
+											<IconChevronLeft />
+										</button>
+										<button
+											className="blog-post__meta-page-btn"
+											disabled={pageIndex === articlePages.length - 1}
+											onClick={() => handlePageChange(pageIndex + 1)}
+											aria-label="Next page"
+										>
+											<IconChevronRight />
+										</button>
+									</span>{' '}
+								</div>
+							)}
+						</div>
+					</section>
+
+					{/* -- article content -- */}
+					<article className="blog-post__article" dangerouslySetInnerHTML={{ __html: renderedHTML }} />
+
+					{/* -- pagination -- */}
+					{articlePages.length > 1 && (
+						<div className="blog-post__pagination">
+							<button
+								className="blog-post__pagination-btn"
+								disabled={pageIndex === 0}
+								onClick={() => handlePageChange(pageIndex - 1)}
+							>
+								&larr; Prev
+							</button>
+
+							<div className="blog-post__pagination-pages">
+								{articlePages.map((_, i) => (
+									<button
+										key={i}
+										className={`blog-post__pagination-page ${i === pageIndex ? 'active' : ''}`}
+										onClick={() => handlePageChange(i)}
+									>
+										{i + 1}
+									</button>
+								))}
+							</div>
+
+							<button
+								className="blog-post__pagination-btn"
+								disabled={pageIndex === articlePages.length - 1}
+								onClick={() => handlePageChange(pageIndex + 1)}
+							>
+								Next &rarr;
 							</button>
 						</div>
-					</div>
+					)}
 
-					<div className="blog-post__about-author">
-						<div>
-							<h5>About the author</h5>
-							<p>
-								<Link to="/about" className="blog-post__author-link">
-									Danijel Durakovic
-								</Link>{' '}
-								&mdash; programmer, game developer, blogger, digital shaman etc.
-							</p>
+					{/* -- post footer -- */}
+					<section className="blog-post__footer">
+						<div className="blog-post__footer-row">
+							<div className="blog-post__date-updated">
+								Article last updated:
+								<span>{getHumanReadableDate(lastUpdated)}</span>
+							</div>
+							<div className="blog-post__raw">
+								<button onClick={handleDownloadRaw}>
+									<span className="icon">
+										<IconDownload />
+									</span>
+									<span>raw</span>
+								</button>
+							</div>
 						</div>
-					</div>
-				</section>
-			</div>
 
-			{/* -- sidebar table of contents -- */}
-			<div className="blog-post__side">
-				{headings.length > 0 && (
-					<nav className="blog-post__toc">
-						<h5>Contents</h5>
-						<ul className="blog-post__toc-list">
-							{headings.map((heading) => (
-								<li
-									key={heading.id}
-									className={`blog-post__toc-item blog-post__toc-item--h${heading.level} ${
-										heading.id === activeHeadingId ? 'blog-post__toc-item--active' : ''
-									}`}
-								>
-									<a href={`#${heading.id}`} onClick={(e) => handleHeadingClick(e, heading)}>
-										{heading.text}
-									</a>
-								</li>
-							))}
-						</ul>
-					</nav>
-				)}
+						<div className="blog-post__about-author">
+							<div>
+								<h5>About the author</h5>
+								<p>
+									<Link to="/about" className="blog-post__author-link">
+										Danijel Durakovic
+									</Link>{' '}
+									&mdash; programmer, game developer, blogger, digital shaman etc.
+								</p>
+							</div>
+						</div>
+					</section>
+				</div>
+
+				{/* -- sidebar table of contents -- */}
+				<div className="blog-post__side">
+					{headings.length > 0 && (
+						<nav className="blog-post__toc">
+							<h5>Contents</h5>
+							<ul className="blog-post__toc-list">
+								{headings.map((heading) => (
+									<li
+										key={heading.id}
+										className={`blog-post__toc-item blog-post__toc-item--h${heading.level} ${
+											heading.id === activeHeadingId ? 'blog-post__toc-item--active' : ''
+										}`}
+									>
+										<a href={`#${heading.id}`} onClick={(e) => handleHeadingClick(e, heading)}>
+											{heading.text}
+										</a>
+									</li>
+								))}
+							</ul>
+						</nav>
+					)}
+				</div>
+			</div>
+			<div className="blog-post__comments">
+				<BlogComments />
 			</div>
 		</div>
 	);
