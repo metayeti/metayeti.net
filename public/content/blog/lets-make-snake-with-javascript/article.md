@@ -907,7 +907,7 @@ We can now test the game and marvel at the snake’s newly gained ability to eat
 
 As you can observe, our snake grows as the player eats food. However, food seems to reappear immediately after it is eaten. Also we can observe that at the start of the game the food is generated 5 times in a sequence of frames.
 
-Let’s add some code into our `resetGame` function so that we generate some food items the game begins:
+Let’s add some code into our `resetGame` function so we generate some food items when the game begins:
 
 ```JS {5-6}
 function resetGame() {
