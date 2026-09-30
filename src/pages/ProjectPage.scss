@@ -194,7 +194,7 @@
 		dt {
 			color: var(--color-content-link);
 			font-family: var(--font-code);
-			font-size: 0.68rem;
+			font-size: 0.75rem;
 			text-transform: uppercase;
 		}
 
@@ -213,14 +213,14 @@
 		progress {
 			width: 100%;
 			min-width: 0;
-			height: 9px;
+			height: 12px;
 			accent-color: var(--color-content-flavor);
 		}
 
 		span {
 			flex: 0 0 auto;
-			font-family: var(--font-code);
-			font-size: 0.8rem;
+			font-family: var(--font-base);
+			font-size: 0.9rem;
 		}
 	}
 
