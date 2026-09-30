@@ -161,6 +161,7 @@
 
 		&__stage {
 			min-height: 180px;
+			touch-action: pan-y;
 		}
 
 		&__arrow {

@@ -15,6 +15,7 @@ export default function ImageGallery({
 	const [activeIndex, setActiveIndex] = useState(0);
 	const thumbnailsRef = useRef(null);
 	const activeThumbnailRef = useRef(null);
+	const touchStartRef = useRef(null);
 
 	useEffect(() => {
 		const container = thumbnailsRef.current;
@@ -37,13 +38,38 @@ export default function ImageGallery({
 
 	const activeImage = images[activeIndex];
 	const selectImage = (index) => setActiveIndex(index);
+	const handleTouchStart = (event) => {
+		if (
+			!window.matchMedia('(width < 640px) and (pointer: coarse)').matches ||
+			event.target.closest('button') ||
+			event.touches.length !== 1
+		) {
+			touchStartRef.current = null;
+			return;
+		}
+
+		const touch = event.touches[0];
+		touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+	};
+	const handleTouchEnd = (event) => {
+		const start = touchStartRef.current;
+		touchStartRef.current = null;
+		if (!start || event.changedTouches.length !== 1) return;
+
+		const touch = event.changedTouches[0];
+		const deltaX = touch.clientX - start.x;
+		const deltaY = touch.clientY - start.y;
+		if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) return;
+
+		selectImage(Math.max(0, Math.min(images.length - 1, activeIndex + (deltaX < 0 ? 1 : -1))));
+	};
 
 	return (
 		<section
 			className={`image-gallery${stageMode !== 'fixed' ? ` image-gallery--${stageMode}` : ''}`}
 			aria-label={label}
 		>
-			<div className="image-gallery__stage">
+			<div className="image-gallery__stage" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
 				<img src={activeImage.src} alt={activeImage.alt || `${title} ${itemLabel} ${activeIndex + 1}`} />
 				{images.length > 1 && (
 					<>
