@@ -82,7 +82,7 @@
 	}
 
 	&__section-title {
-		margin: 0 0 24px;
+		margin: 0 0 12px;
 		color: var(--color-content-fg);
 		font-family: var(--font-heading);
 		font-size: 1.5rem;
@@ -90,18 +90,10 @@
 		line-height: 1.2;
 	}
 
-	&__category-heading {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 8px;
-		margin-bottom: 28px;
-
-		p {
-			margin: 0;
-			padding: 0;
-			opacity: 0.72;
-		}
+	&__section-description {
+		margin: 0 0 28px;
+		padding: 0;
+		opacity: 0.72;
 	}
 
 	&__projects {

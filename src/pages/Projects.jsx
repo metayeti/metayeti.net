@@ -264,10 +264,6 @@ export default function Projects() {
 						aria-labelledby={`projects-tab-${activeCategory.id}`}
 						tabIndex={0}
 					>
-						<header className="projects-page__category-heading">
-							<p>{activeCategory.description}</p>
-						</header>
-
 						<div ref={projectsLayoutRef} className="projects-page__sections">
 							{sections.map((section) => (
 								<div key={section.id} className="projects-page__section">
@@ -278,6 +274,9 @@ export default function Projects() {
 										>
 											{section.title}
 										</h3>
+									)}
+									{section.description && (
+										<p className="projects-page__section-description">{section.description}</p>
 									)}
 									{section.projects.length > 0 ? (
 										<div

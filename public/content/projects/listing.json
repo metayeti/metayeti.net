@@ -3,10 +3,10 @@
 		{
 			"id": "games",
 			"title": "Games",
-			"description": "Full-featured games I've made or I am currently working on.",
 			"sections": [
 				{
 					"id": "games",
+					"description": "Full-featured games I've made or I'm currently working on.",
 					"display": "full",
 					"projects": [
 						{
@@ -35,11 +35,11 @@
 		{
 			"id": "legacy",
 			"title": "Legacy",
-			"description": "Some legacy web games and experiments I've made in the past. Based on my own HTML5 engine.",
 			"sections": [
 				{
 					"id": "html5-games",
 					"title": "HTML5 games",
+					"description": "Some legacy web games and experiments. Based on my own HTML5 engine.",
 					"display": "vertical-stack",
 					"projects": [
 						{
@@ -103,11 +103,11 @@
 		{
 			"id": "misc",
 			"title": "Misc",
-			"description": "Other projects.",
 			"sections": [
 				{
 					"id": "fheroes2-maps",
 					"title": "fheroes2 maps",
+					"description": "Some maps I made for the open-source Heroes of Might and Magic II adaptation, fheroes2.",
 					"display": "vertical-stack",
 					"projects": []
 				}
