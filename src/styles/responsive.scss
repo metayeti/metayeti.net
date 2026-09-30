@@ -55,6 +55,19 @@ $breakpoints: (
 	}
 }
 
+/// Responsive breakpoint mixin for widths below a breakpoint.
+/// @param {String} $size - Breakpoint size (xs, sm, md, lg, xl, or 2xl)
+/// @content Styles to apply below this breakpoint.
+@mixin below($size) {
+	@if map.has-key($breakpoints, $size) {
+		@media (width < #{map.get($breakpoints, $size)}) {
+			@content;
+		}
+	} @else {
+		@error 'Invalid breakpoint: #{$size}. Valid sizes are: xs, sm, md, lg, xl, or 2xl';
+	}
+}
+
 /// Convenience mixin for defining multiple breakpoints at once.
 /// @param {Map} $styles - Map of breakpoint sizes to style maps.
 /// @example scss

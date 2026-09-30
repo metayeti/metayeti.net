@@ -97,6 +97,21 @@
 				height: 100%;
 				object-fit: contain;
 			}
+
+			@include responsive.below('sm') {
+				.projects-page__project {
+					flex-direction: column;
+				}
+
+				.projects-page__image {
+					flex: none;
+					align-self: auto;
+				}
+
+				.projects-page__image img {
+					height: auto;
+				}
+			}
 		}
 
 		&--vertical-stack {
