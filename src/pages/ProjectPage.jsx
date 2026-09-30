@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-18
-//  Updated:      2026-03-18
+//  Updated:      2026-09-30
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -21,11 +21,204 @@
 //  TODO:         -
 //
 
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import ImageGallery from '@/components/ImageGallery/ImageGallery';
+import IconDownload from '@/components/icons/IconDownload';
+import IconBack from '@/components/icons/IconBack';
+import { getHumanReadableDate, loadJSON, loadText, md, SRC_PROJECTS_LISTING } from '@/util';
+
+import './ProjectPage.scss';
+
 export default function ProjectPage() {
+	const { path, slug } = useParams();
+	const [projectData, setProjectData] = useState(null);
+	const [pageState, setPageState] = useState('loading');
+
+	useEffect(() => {
+		let isCurrent = true;
+
+		async function loadProject() {
+			setProjectData(null);
+			setPageState('loading');
+
+			try {
+				const listing = await loadJSON(SRC_PROJECTS_LISTING);
+				const projects = (listing.categories ?? []).flatMap((category) =>
+					(category.sections ?? []).flatMap((section) => section.projects ?? []),
+				);
+				const project = projects.find((item) => item.slug === slug && (!path || (item.path ?? '') === path));
+
+				if (!project) {
+					if (isCurrent) setPageState('not-found');
+					return;
+				}
+
+				const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
+				let markdown = '';
+				try {
+					markdown = await loadText(`/content/projects/${projectPath}/project.md`);
+				} catch (error) {
+					console.warn(`No project post found for ${project.slug}:`, error);
+				}
+
+				if (isCurrent) {
+					setProjectData({ project, projectPath, markdown });
+					setPageState('ready');
+				}
+			} catch (error) {
+				console.error('Failed to load project:', error);
+				if (isCurrent) setPageState('error');
+			}
+		}
+
+		loadProject();
+		return () => {
+			isCurrent = false;
+		};
+	}, [path, slug]);
+
+	useEffect(() => {
+		if (!projectData) return undefined;
+		document.title = `${projectData.project.title} | metayeti.net`;
+		return () => {
+			document.title = 'metayeti.net';
+		};
+	}, [projectData]);
+
+	if (pageState === 'loading') {
+		return (
+			<div className="project-page wrapped" role="status">
+				Loading project...
+			</div>
+		);
+	}
+
+	if (pageState === 'not-found') {
+		return (
+			<div className="project-page wrapped">
+				<p role="alert">Project not found.</p>
+				<Link className="project-page__back" to="/projects" aria-label="Back to project index">
+					<IconBack aria-hidden="true" />
+				</Link>
+			</div>
+		);
+	}
+
+	if (pageState === 'error' || !projectData) {
+		return (
+			<div className="project-page wrapped" role="alert">
+				This project could not be loaded.
+			</div>
+		);
+	}
+
+	const { project, projectPath, markdown } = projectData;
+	const lastChanged = project['date-updated'];
+	const statusLabels = {
+		'in-dev': 'In development',
+		'in-production': 'In production',
+	};
+	const statusLabel = statusLabels[project.status] ?? project.status ?? 'Not specified';
+	const isInProgress = ['in-dev', 'in-production'].includes(project.status);
+	const hasProgress = Number.isFinite(project.progress) && project.progress >= 0 && project.progress <= 100;
+	const screenshots = (project.screenshots ?? []).map((filename) => ({
+		filename,
+		src: `/content/projects/${projectPath}/screenshots/${filename}`,
+	}));
+
 	return (
-		<>
-			<h3>Projects</h3>
-			<p>In construction</p>
-		</>
+		<div className="project-page wrapped">
+			<Link className="project-page__back" to="/projects" aria-label="Back to project index">
+				<IconBack aria-hidden="true" />
+			</Link>
+
+			<header className="project-page__header">
+				<div className="project-page__eyebrow">
+					<span>Project</span>
+				</div>
+				<h2 className="project-page__title">{project.title}</h2>
+				<div className="project-page__meta">
+					{lastChanged && (
+						<div>
+							<span>Last updated</span>
+							<time dateTime={lastChanged}>{getHumanReadableDate(lastChanged)}</time>
+						</div>
+					)}
+				</div>
+			</header>
+
+			<div className="project-page__overview">
+				<ImageGallery key={projectPath} images={screenshots} title={project.title} />
+
+				<aside className="project-page__info" aria-label="Project details">
+					<h3>Project details</h3>
+					<p className="project-page__description">{project.description}</p>
+					<dl>
+						<div>
+							<dt>Status</dt>
+							<dd>{statusLabel}</dd>
+						</div>
+						{isInProgress && (
+							<div className="project-page__progress-row">
+								<dt>Progress</dt>
+								<dd>
+									{hasProgress ? (
+										<>
+											<progress max="100" value={project.progress}>
+												{project.progress}%
+											</progress>
+											<span>{project.progress}%</span>
+										</>
+									) : (
+										<span>Not set</span>
+									)}
+								</dd>
+							</div>
+						)}
+						<div>
+							<dt>Version</dt>
+							<dd>{project.version ?? 'Not announced'}</dd>
+						</div>
+						{project.platforms?.length > 0 && (
+							<div>
+								<dt>Platforms</dt>
+								<dd>{project.platforms.join(', ')}</dd>
+							</div>
+						)}
+						{project.engine && (
+							<div>
+								<dt>Engine</dt>
+								<dd>{project.engine}</dd>
+							</div>
+						)}
+						{project.releaseWindow && (
+							<div>
+								<dt>Release window</dt>
+								<dd>{project.releaseWindow}</dd>
+							</div>
+						)}
+					</dl>
+					{project.downloadUrl ? (
+						<a className="project-page__download" href={project.downloadUrl}>
+							<IconDownload aria-hidden="true" />
+							Download
+						</a>
+					) : (
+						<button className="project-page__download" type="button" disabled>
+							<IconDownload aria-hidden="true" />
+							Download
+						</button>
+					)}
+					{!project.downloadUrl && <p className="project-page__download-note">No build available yet.</p>}
+				</aside>
+			</div>
+
+			{markdown && (
+				<article className="project-page__article">
+					<div dangerouslySetInnerHTML={{ __html: md.render(markdown) }} />
+				</article>
+			)}
+		</div>
 	);
 }

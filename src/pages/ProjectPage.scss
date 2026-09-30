@@ -1,0 +1,279 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         src/pages/ProjectPage.scss
+//  Description:  Individual project page styles.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-03-18
+//  Updated:      2026-09-30
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
+@use '@/styles/responsive';
+
+#metayeti > main .project-page__overview > .image-gallery {
+	margin-bottom: 0;
+}
+
+.project-page {
+	max-width: 1120px;
+
+	&__back {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 42px;
+		height: 42px;
+		padding: 9px;
+		margin-bottom: 34px;
+		color: var(--color-content-fg);
+		border: 1px solid var(--color-content-link);
+		border-radius: 5px;
+		background-color: var(--color-blog-button-bg);
+		cursor: pointer;
+		text-decoration: none !important;
+		font-size: 1rem;
+		transition:
+			border-color 0.15s,
+			transform 0.15s;
+
+		&:hover,
+		&:focus {
+			border-color: var(--color-content-link--hover);
+			transform: translateX(1px);
+
+			&::after {
+				content: 'Back to project index';
+				position: absolute;
+				left: 100%;
+				z-index: 1;
+				margin-left: 13px;
+				padding: 4px 8px;
+				color: var(--color-bg);
+				font-size: 0.85rem;
+				border-radius: 4px;
+				white-space: nowrap;
+				opacity: 0;
+				animation: fadeIn 0.25s forwards;
+				transform: translateX(-50px);
+
+				@keyframes fadeIn {
+					to {
+						opacity: 1;
+						transform: translateX(0);
+					}
+				}
+			}
+		}
+	}
+
+	&__header {
+		position: relative;
+		padding: 8px 0 24px;
+		border-bottom: 1px solid var(--color-blog-sidebar-border);
+	}
+
+	&__eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		color: var(--color-content-flavor);
+		font-family: var(--font-code);
+		font-size: 0.78rem;
+		text-transform: uppercase;
+	}
+
+	&__title {
+		width: auto !important;
+		margin: 16px 0 10px !important;
+		color: var(--color-content-fg);
+		font-size: 3rem !important;
+		font-weight: 500 !important;
+		line-height: 1.08;
+
+		&::before,
+		&::after {
+			content: none !important;
+		}
+	}
+
+	&__description {
+		margin: 0 0 18px;
+		padding: 0 !important;
+		color: var(--color-content-link);
+		font-size: 0.95rem !important;
+		line-height: 1.5 !important;
+	}
+
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		margin-top: 20px;
+
+		> div {
+			display: grid;
+			gap: 4px;
+		}
+
+		span {
+			color: var(--color-content-link);
+			font-family: var(--font-code);
+			font-size: 0.68rem;
+			text-transform: uppercase;
+		}
+
+		time {
+			color: var(--color-content-fg);
+			font-size: 0.88rem;
+		}
+	}
+
+	&__overview {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 24px;
+		margin: 32px 0 24px;
+
+		.image-gallery {
+			min-width: 0;
+			margin: 0;
+		}
+
+		@include responsive.size('lg') {
+			grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+			align-items: start;
+			gap: 30px;
+
+			.image-gallery__stage {
+				aspect-ratio: 1.3 / 1;
+			}
+		}
+	}
+
+	&__info {
+		min-width: 0;
+		padding: 20px;
+		border: 1px solid var(--color-blog-sidebar-border);
+		background: color-mix(in srgb, var(--color-content-bg) 94%, var(--color-content-flavor) 6%);
+
+		h3 {
+			margin: 0 0 18px;
+			color: var(--color-content-fg);
+			font-family: var(--font-heading);
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+
+		dl {
+			display: grid;
+			gap: 14px;
+			margin: 0;
+		}
+
+		dl > div {
+			display: grid;
+			gap: 5px;
+		}
+
+		dt {
+			color: var(--color-content-link);
+			font-family: var(--font-code);
+			font-size: 0.68rem;
+			text-transform: uppercase;
+		}
+
+		dd {
+			margin: 0;
+			color: var(--color-content-fg);
+			font-size: 0.9rem;
+		}
+	}
+
+	&__progress-row dd {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		progress {
+			width: 100%;
+			min-width: 0;
+			height: 9px;
+			accent-color: var(--color-content-flavor);
+		}
+
+		span {
+			flex: 0 0 auto;
+			font-family: var(--font-code);
+			font-size: 0.8rem;
+		}
+	}
+
+	&__download {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		min-height: 42px;
+		margin-top: 22px;
+		padding: 8px 14px;
+		border: 1px solid var(--color-content-flavor--dim);
+		border-radius: 2px;
+		background: var(--color-content-flavor);
+		color: var(--color-content-bg);
+		font-family: var(--font-button);
+		font-size: 0.9rem;
+		text-decoration: none;
+		cursor: pointer;
+
+		svg {
+			width: 16px;
+			height: 16px;
+		}
+
+		&:disabled {
+			border-color: var(--color-blog-sidebar-border);
+			background: color-mix(in srgb, var(--color-content-bg) 82%, var(--color-content-fg) 18%);
+			color: var(--color-content-link);
+			cursor: not-allowed;
+		}
+	}
+
+	&__download-note {
+		margin: 8px 0 0;
+		color: var(--color-content-link);
+		font-size: 0.78rem;
+	}
+
+	&__article {
+		max-width: 760px;
+		padding-bottom: 24px;
+
+		> div > :first-child {
+			margin-top: 0;
+		}
+	}
+
+	@include responsive.below('sm') {
+		&__title {
+			font-size: 2.25rem !important;
+		}
+
+		&__meta {
+			gap: 16px;
+		}
+	}
+}
