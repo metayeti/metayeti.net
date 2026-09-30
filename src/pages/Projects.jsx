@@ -31,6 +31,61 @@ const MASONRY_CARD_WIDTH = 240;
 const MASONRY_COLUMN_GAP = 40;
 const MASONRY_ROW_GAP = 40;
 
+function ProjectCard({ project }) {
+	const [isHovered, setIsHovered] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
+	const [animationFailed, setAnimationFailed] = useState(false);
+	const screenshot = project.screenshots?.[0];
+	const screenshotUrl = screenshot ? `/content/projects/${project.slug}/screenshots/${screenshot}` : null;
+	const animatedUrl = project.animated ? `/content/projects/${project.slug}/screenshots/${project.animated}` : null;
+	const isPreviewActive = (isHovered || isFocused) && animatedUrl && !animationFailed;
+	const imageUrl = isPreviewActive ? animatedUrl : screenshotUrl;
+
+	return (
+		<div className="projects-page__entry">
+			<Link
+				className={`projects-page__project${screenshotUrl ? ' projects-page__project--with-image' : ''}`}
+				to={`/projects/${project.slug}`}
+				onPointerEnter={() => setIsHovered(true)}
+				onPointerLeave={() => setIsHovered(false)}
+				onFocus={() => setIsFocused(true)}
+				onBlur={() => setIsFocused(false)}
+			>
+				{project.status && (
+					<div className="projects-page__status">
+						{project.status === 'in-dev' ? 'In development' : project.status}
+					</div>
+				)}
+				{imageUrl && (
+					<div className="projects-page__image">
+						<img
+							src={imageUrl}
+							alt={`${project.title} screenshot`}
+							loading="lazy"
+							onError={(event) => {
+								if (isPreviewActive) {
+									setAnimationFailed(true);
+									return;
+								}
+								event.currentTarget.hidden = true;
+							}}
+						/>
+					</div>
+				)}
+				<div className="projects-page__project-content">
+					<div className="projects-page__project-copy">
+						<h4 className="projects-page__project-title">{project.title}</h4>
+						<p className="projects-page__project-description">{project.description}</p>
+					</div>
+					<span className="projects-page__link">
+						More <span aria-hidden="true">&rarr;</span>
+					</span>
+				</div>
+			</Link>
+		</div>
+	);
+}
+
 export default function Projects() {
 	const [projectListing, setProjectListing] = useState(null);
 	const [activeCategoryId, setActiveCategoryId] = useState(null);
@@ -206,52 +261,7 @@ export default function Projects() {
 								className={`projects-page__projects projects-page__projects--${activeCategory.display}`}
 							>
 								{projects.map((project) => {
-									const screenshot = project.screenshots?.[0];
-									const screenshotUrl = screenshot
-										? `/content/projects/${project.slug}/screenshots/${screenshot}`
-										: null;
-
-									return (
-										<div key={project.slug} className="projects-page__entry">
-											<Link
-												className={`projects-page__project${screenshotUrl ? ' projects-page__project--with-image' : ''}`}
-												to={`/projects/${project.slug}`}
-											>
-												{project.status && (
-													<div className="projects-page__status">
-														{project.status === 'in-dev'
-															? 'In development'
-															: project.status}
-													</div>
-												)}
-												{screenshotUrl && (
-													<div className="projects-page__image">
-														<img
-															src={screenshotUrl}
-															alt={`${project.title} screenshot`}
-															loading="lazy"
-															onError={(event) => {
-																event.currentTarget.hidden = true;
-															}}
-														/>
-													</div>
-												)}
-												<div className="projects-page__project-content">
-													<div className="projects-page__project-copy">
-														<h4 className="projects-page__project-title">
-															{project.title}
-														</h4>
-														<p className="projects-page__project-description">
-															{project.description}
-														</p>
-													</div>
-													<span className="projects-page__link">
-														More <span aria-hidden="true">&rarr;</span>
-													</span>
-												</div>
-											</Link>
-										</div>
-									);
+									return <ProjectCard key={project.slug} project={project} />;
 								})}
 							</div>
 						) : (

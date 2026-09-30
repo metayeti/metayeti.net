@@ -22,7 +22,8 @@
 				"date-updated": "2026-07-08",
 				"description": "Retro-inspired 2D puzzle game.",
 				"status": "in-dev",
-				"screenshots": ["1.png"]
+				"screenshots": ["1.png"],
+				"animated": "1.gif"
 			},
 			{
 				"title": "Zorlax: The Undying",
