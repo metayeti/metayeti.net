@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      n/a
-//  Updated:      2026-06-16
+//  Updated:      2026-09-30
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,36 +23,16 @@
 
 @use '../styles/responsive';
 
-// ============================================================================
-//  HEX ABOUT PAGE — Sci-fi hexagonal node network
-// ============================================================================
-
-// -- Clip-path shapes --
 $clip-wide: polygon(6% 0%, 94% 0%, 100% 50%, 94% 100%, 6% 100%, 0% 50%);
 $clip-satellite: polygon(12% 0%, 88% 0%, 100% 50%, 88% 100%, 12% 100%, 0% 50%);
 $clip-portrait: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 $clip-dot: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 
-// -- Surface colors --
 $hex-border-bright: rgba(82, 220, 255, 0.28);
 $hex-border-dim: rgba(82, 220, 255, 0.1);
 $hex-fill-primary: rgba(10, 14, 28, 0.82);
 $hex-fill-dark: rgba(6, 9, 18, 0.92);
 $hex-glow-color: rgba(82, 220, 255, 0.14);
-
-// ==============================
-//  Keyframes
-// ==============================
-
-@keyframes hex-pulse {
-	0%,
-	100% {
-		filter: drop-shadow(0 0 12px rgba(82, 220, 255, 0.12));
-	}
-	50% {
-		filter: drop-shadow(0 0 24px rgba(82, 220, 255, 0.28));
-	}
-}
 
 @keyframes hex-drift {
 	0%,
@@ -101,17 +81,12 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 	}
 }
 
-// ==============================
-//  Page container
-// ==============================
-
 .hex-about {
 	position: relative;
 	padding-top: 30px;
 	padding-bottom: 100px;
 	overflow: hidden;
 
-	// ── scanline overlay ──
 	&__scanlines {
 		position: fixed;
 		inset: 0;
@@ -136,7 +111,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── central spine ──
 	&__spine {
 		position: absolute;
 		left: 50%;
@@ -175,7 +149,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── spine junction node ──
 	&__spine-node {
 		position: relative;
 		z-index: 2;
@@ -196,7 +169,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── cluster: a primary hex + optional satellites ──
 	&__cluster {
 		position: relative;
 		z-index: 1;
@@ -205,7 +177,7 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		align-items: center;
 		padding: 30px 0;
 
-		// scroll-reveal
+		// fade clusters in as they enter the viewport.
 		opacity: 0;
 		transform: translateY(40px);
 		transition:
@@ -218,7 +190,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── branch line from primary to satellites ──
 	&__branch {
 		width: 2px;
 		height: 30px;
@@ -235,11 +206,9 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 			transform: translateX(-50%);
 			width: 60%;
 			height: 1px;
-			// horizontal fan
 		}
 	}
 
-	// ── satellites row ──
 	&__satellites {
 		display: flex;
 		justify-content: center;
@@ -247,7 +216,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		gap: 10px;
 	}
 
-	// ── system label ("SYS.IDENTITY") ──
 	&__sys-label {
 		display: inline-block;
 		font-family: 'Share Tech Mono', monospace;
@@ -260,7 +228,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		user-select: none;
 	}
 
-	// ── satellite tag labels / values ──
 	&__tag-label {
 		display: block;
 		font-family: 'Share Tech Mono', monospace;
@@ -290,7 +257,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── favorites grid inside large hex ──
 	&__fav-grid {
 		text-align: left;
 		margin-top: 10px;
@@ -337,7 +303,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── inline color dots ──
 	&__colors {
 		display: flex;
 		gap: 5px;
@@ -362,7 +327,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ── decorative floating hexes ──
 	&__deco {
 		position: absolute;
 		z-index: 0;
@@ -421,14 +385,9 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 	}
 }
 
-// ============================================================================
-//  Hex node — the hexagonal container
-// ============================================================================
-
 .hex-node {
 	position: relative;
 
-	// ── headings ──
 	h2 {
 		font-family: var(--font-heading);
 		font-size: 1.9rem;
@@ -439,7 +398,7 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 
-		// suppress content.scss heading decoration
+		// hide the global heading decoration on these panels.
 		&::before {
 			display: none !important;
 		}
@@ -472,25 +431,17 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		letter-spacing: normal;
 	}
 
-	// ── border layer: clip-path + bg = border color ──
 	&__border {
 		transition: filter 0.4s ease;
 	}
 
-	// ── inner layer: clip-path + bg = fill ──
 	&__inner {
 		transition: background-color 0.4s ease;
 	}
 
-	// ============================
-	//  Size variants
-	// ============================
-
-	// -- Large --
 	&--lg {
 		width: 100%;
 		max-width: 680px;
-		animation: hex-pulse 5s ease-in-out infinite;
 
 		.hex-node__border {
 			clip-path: $clip-wide;
@@ -501,7 +452,7 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		.hex-node__inner {
 			clip-path: $clip-wide;
 			background: $hex-fill-primary;
-			backdrop-filter: blur(14px);
+			backdrop-filter: blur(4px);
 			padding: 55px 70px;
 			text-align: center;
 
@@ -511,7 +462,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// -- Medium --
 	&--md {
 		width: 100%;
 		max-width: 520px;
@@ -525,7 +475,7 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		.hex-node__inner {
 			clip-path: $clip-wide;
 			background: $hex-fill-primary;
-			backdrop-filter: blur(14px);
+			backdrop-filter: blur(4px);
 			padding: 45px 60px;
 			text-align: center;
 
@@ -535,7 +485,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// -- Small (satellite) --
 	&--sm {
 		width: 155px;
 		flex-shrink: 0;
@@ -549,7 +498,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		.hex-node__inner {
 			clip-path: $clip-satellite;
 			background: $hex-fill-dark;
-			backdrop-filter: blur(10px);
 			padding: 22px 30px;
 			text-align: center;
 			display: flex;
@@ -564,7 +512,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// -- Photo (pointy-top hex) --
 	&--photo {
 		width: 250px;
 		height: 288px;
@@ -600,10 +547,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ============================
-	//  Style modifiers
-	// ============================
-
 	&--glow {
 		filter: drop-shadow(0 0 14px $hex-glow-color);
 
@@ -622,10 +565,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 		}
 	}
 
-	// ============================
-	//  Light-mode overrides
-	// ============================
-
 	:root.lightmode & {
 		&__border {
 			background: rgba(6, 169, 233, 0.22);
@@ -633,7 +572,6 @@ $hex-glow-color: rgba(82, 220, 255, 0.14);
 
 		&__inner {
 			background: rgba(240, 245, 250, 0.88);
-			backdrop-filter: blur(14px);
 		}
 
 		h2 {

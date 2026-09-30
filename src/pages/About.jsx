@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      n/a
-//  Updated:      2026-06-18
+//  Updated:      2026-09-30
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -89,7 +89,6 @@ export default function About() {
 			<div className="hex-about__scanlines" />
 			<div className="hex-about__spine" />
 
-			{/* Decorative floating hexes */}
 			<div className="hex-about__deco hex-about__deco--1" />
 			<div className="hex-about__deco hex-about__deco--2" />
 			<div className="hex-about__deco hex-about__deco--3" />
@@ -97,7 +96,6 @@ export default function About() {
 			<div className="hex-about__deco hex-about__deco--5" />
 			<div className="hex-about__deco hex-about__deco--6" />
 
-			{/* ─── IDENTITY ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="lg" glow>
 					<span className="hex-about__sys-label">SYS.ID</span>
@@ -126,7 +124,6 @@ export default function About() {
 
 			<div className="hex-about__spine-node" />
 
-			{/* ─── PHOTO ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="photo" glow>
 					<img src="/content/static/images/me.jpg" alt="me" />
@@ -135,7 +132,6 @@ export default function About() {
 
 			<div className="hex-about__spine-node" />
 
-			{/* ─── ABOUT THIS SITE ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">NET.INFO</span>
@@ -175,7 +171,6 @@ export default function About() {
 
 			<div className="hex-about__spine-node" />
 
-			{/* ─── FAVORITES ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="lg" glow>
 					<span className="hex-about__sys-label">FAV.DAT</span>
@@ -257,7 +252,6 @@ export default function About() {
 
 			<div className="hex-about__spine-node" />
 
-			{/* ─── SKILLS ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="lg" glow>
 					<span className="hex-about__sys-label">SKILL.LOG</span>
@@ -294,9 +288,8 @@ export default function About() {
 
 			<div className="hex-about__spine-node" />
 
-			{/* ─── LANGUAGES ─── */}
 			<div className="hex-about__cluster hex-reveal">
-				<HexNode size="md">
+				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">LANG.HUMAN</span>
 					<h2>Languages</h2>
 					<p>Slovenian &middot; Serbo-Croatian &middot; English</p>
@@ -305,7 +298,6 @@ export default function About() {
 
 			<div className="hex-about__spine-node" />
 
-			{/* ─── CONTACT ─── */}
 			<div className="hex-about__cluster hex-reveal">
 				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">COMMS.SYS</span>
