@@ -4,6 +4,29 @@
 	width: 100%;
 	margin: 32px 0 58px;
 
+	&--natural &__stage {
+		aspect-ratio: auto;
+		min-height: 0;
+		overflow: visible;
+		border: 0;
+		background: transparent;
+		box-shadow: none;
+
+		> img {
+			position: relative;
+			inset: auto;
+			width: 100%;
+			height: auto !important;
+			max-height: 80vh;
+		}
+	}
+
+	&--fixed-height &__stage {
+		aspect-ratio: auto;
+		height: 480px;
+		min-height: 0;
+	}
+
 	&__stage {
 		position: relative;
 		display: grid;
@@ -91,6 +114,10 @@
 		padding: 2px 2px 8px;
 		scrollbar-color: var(--color-content-flavor--dim) transparent;
 		scrollbar-width: thin;
+
+		&--contain .image-gallery__thumbnail img {
+			object-fit: contain;
+		}
 	}
 
 	&__thumbnail {
@@ -128,6 +155,10 @@
 	}
 
 	@include responsive.below('sm') {
+		&--fixed-height &__stage {
+			height: 320px;
+		}
+
 		&__stage {
 			min-height: 180px;
 		}

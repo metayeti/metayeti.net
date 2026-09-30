@@ -28,6 +28,7 @@ import IconPages from '@/components/icons/IconPages';
 import IconDownload from '@/components/icons/IconDownload';
 import IconChevronLeft from '@/components/icons/IconChevronLeft';
 import IconChevronRight from '@/components/icons/IconChevronRight';
+import ImageGallery from '@/components/ImageGallery/ImageGallery';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
@@ -46,12 +47,93 @@ import BlogComments from '@/components/extras/BlogComments';
 
 import './BlogPost.scss';
 
+function parseArticleContent(markdown, slug) {
+	const lines = markdown.split('\n');
+	const blocks = [];
+	let markdownBuffer = [];
+	let codeFence = null;
+
+	const flushMarkdown = () => {
+		const content = markdownBuffer.join('\n');
+		if (content.trim()) blocks.push({ type: 'markdown', html: md.render(content) });
+		markdownBuffer = [];
+	};
+
+	for (let lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+		const fenceMatch = lines[lineIndex].match(/^\s*(`{3,}|~{3,})/);
+		if (codeFence) {
+			markdownBuffer.push(lines[lineIndex]);
+			if (fenceMatch && fenceMatch[1][0] === codeFence.character && fenceMatch[1].length >= codeFence.length) {
+				codeFence = null;
+			}
+			continue;
+		}
+		if (fenceMatch) {
+			codeFence = { character: fenceMatch[1][0], length: fenceMatch[1].length };
+			markdownBuffer.push(lines[lineIndex]);
+			continue;
+		}
+		if (lines[lineIndex].trim() !== ':::gallery') {
+			markdownBuffer.push(lines[lineIndex]);
+			continue;
+		}
+
+		let closingLineIndex = -1;
+		for (let index = lineIndex + 1; index < lines.length; index += 1) {
+			const innerFenceMatch = lines[index].match(/^\s*(`{3,}|~{3,})/);
+			if (innerFenceMatch) {
+				const character = innerFenceMatch[1][0];
+				const length = innerFenceMatch[1].length;
+				if (!codeFence) codeFence = { character, length };
+				else if (character === codeFence.character && length >= codeFence.length) codeFence = null;
+				continue;
+			}
+			if (!codeFence && lines[index].trim() === ':::') {
+				closingLineIndex = index;
+				break;
+			}
+		}
+		if (closingLineIndex < 0) {
+			codeFence = null;
+			markdownBuffer.push(lines[lineIndex]);
+			continue;
+		}
+		codeFence = null;
+
+		flushMarkdown();
+		const galleryMarkdown = lines.slice(lineIndex + 1, closingLineIndex).join('\n');
+		const tokens = md.parse(galleryMarkdown, {});
+		const images = tokens
+			.flatMap((token) => token.children ?? [])
+			.filter((token) => token.type === 'image')
+			.map((token) => {
+				const imageSrc = token.attrGet('src');
+				if (!imageSrc) return null;
+				const src = /^(?:[a-z][a-z\d+.-]*:|\/|#)/i.test(imageSrc)
+					? imageSrc
+					: `/content/blog/${slug}/${imageSrc.replace(/^\.\//, '')}`;
+				return { src, alt: token.content, filename: src.split('/').pop() };
+			})
+			.filter(Boolean);
+
+		if (images.length > 0) {
+			blocks.push({ type: 'gallery', images });
+		} else {
+			blocks.push({ type: 'markdown', html: md.render(lines.slice(lineIndex, closingLineIndex + 1).join('\n')) });
+		}
+		lineIndex = closingLineIndex;
+	}
+
+	flushMarkdown();
+	return blocks;
+}
+
 export default function BlogPost() {
 	const { slug, page } = useParams();
 	const navigate = useNavigate();
 
 	const [postData, setPostData] = useState(null);
-	const [renderedHTML, setRenderedHTML] = useState('');
+	const [renderedContent, setRenderedContent] = useState([]);
 	const [headings, setHeadings] = useState([]);
 	const [activeHeadingId, setActiveHeadingId] = useState(null);
 	const [readingTime, setReadingTime] = useState('');
@@ -186,7 +268,7 @@ export default function BlogPost() {
 
 	// Hook to manage event listeners cleanly
 	useEffect(() => {
-		if (!headings || headings.length === 0 || articlePages.length === 0 || !renderedHTML) return;
+		if (!headings || headings.length === 0 || articlePages.length === 0 || renderedContent.length === 0) return;
 
 		let ticking = false;
 
@@ -211,19 +293,19 @@ export default function BlogPost() {
 			window.removeEventListener('scroll', onScroll);
 			window.removeEventListener('resize', onScroll);
 		};
-	}, [headings, articlePages, pageIndex, renderedHTML, computeActiveHeading]);
+	}, [headings, articlePages, pageIndex, renderedContent, computeActiveHeading]);
 
 	// Hook A: Transforms markdown to HTML when pages alter
 	useEffect(() => {
 		if (articlePages.length > 0) {
 			const mdContent = articlePages[pageIndex] || '';
-			setRenderedHTML(md.render(mdContent));
+			setRenderedContent(parseArticleContent(mdContent, slug));
 		}
-	}, [pageIndex, articlePages]);
+	}, [pageIndex, articlePages, slug]);
 
 	// Hook B: Manages cross-page automated scrolling via URL hashes cleanly
 	useEffect(() => {
-		if (pendingScrollToId && renderedHTML) {
+		if (pendingScrollToId && renderedContent.length > 0) {
 			const timer = setTimeout(() => {
 				const el = document.getElementById(pendingScrollToId);
 				if (el) {
@@ -242,7 +324,7 @@ export default function BlogPost() {
 
 			return () => clearTimeout(timer);
 		}
-	}, [pendingScrollToId, renderedHTML, computeActiveHeading]);
+	}, [pendingScrollToId, renderedContent, computeActiveHeading]);
 
 	const handlePageChange = (newIndex) => {
 		if (newIndex >= 0 && newIndex < articlePages.length) {
@@ -322,7 +404,9 @@ by Danijel Durakovic (https://metayeti.net)
 
 	return (
 		<div className="blog-post wrapped">
-			<div className="blog-post__content sidebar-layout sidebar-layout--hidden">
+			<div
+				className={`blog-post__content sidebar-layout sidebar-layout--hidden${headings.length === 0 ? ' sidebar-layout--no-sidebar' : ''}`}
+			>
 				<div className="blog-post__main">
 					<Link to="/blog" className="blog-post__back" aria-label="Back to blog">
 						<IconBack />
@@ -385,7 +469,27 @@ by Danijel Durakovic (https://metayeti.net)
 					</section>
 
 					{/* -- article content -- */}
-					<article className="blog-post__article" dangerouslySetInnerHTML={{ __html: renderedHTML }} />
+					<article className="blog-post__article">
+						{renderedContent.map((block, index) =>
+							block.type === 'gallery' ? (
+								<ImageGallery
+									key={`gallery-${slug}-${pageIndex}-${index}`}
+									images={block.images}
+									title={postData.title}
+									label={`${postData.title} image gallery`}
+									itemLabel="image"
+									stageMode="fixed-height"
+									thumbnailFit="contain"
+								/>
+							) : (
+								<div
+									key={`markdown-${index}`}
+									className="blog-post__markdown"
+									dangerouslySetInnerHTML={{ __html: block.html }}
+								/>
+							),
+						)}
+					</article>
 
 					{/* -- pagination -- */}
 					{articlePages.length > 1 && (

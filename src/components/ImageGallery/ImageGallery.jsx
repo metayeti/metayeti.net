@@ -1,11 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import IconChevronLeft from '@/components/icons/IconChevronLeft';
 import IconChevronRight from '@/components/icons/IconChevronRight';
 
 import './ImageGallery.scss';
 
-export default function ImageGallery({ images, title }) {
+export default function ImageGallery({
+	images,
+	title,
+	label = `${title} screenshots`,
+	itemLabel = 'screenshot',
+	stageMode = 'fixed',
+	thumbnailFit = 'cover',
+}) {
 	const [activeIndex, setActiveIndex] = useState(0);
+	const thumbnailsRef = useRef(null);
+	const activeThumbnailRef = useRef(null);
+
+	useEffect(() => {
+		const container = thumbnailsRef.current;
+		const thumbnail = activeThumbnailRef.current;
+		if (!container || !thumbnail) return;
+
+		const containerRect = container.getBoundingClientRect();
+		const thumbnailRect = thumbnail.getBoundingClientRect();
+		const visibleLeft = containerRect.left + container.clientLeft;
+		const visibleRight = visibleLeft + container.clientWidth;
+
+		if (thumbnailRect.left < visibleLeft) {
+			container.scrollBy({ left: thumbnailRect.left - visibleLeft, behavior: 'smooth' });
+		} else if (thumbnailRect.right > visibleRight) {
+			container.scrollBy({ left: thumbnailRect.right - visibleRight, behavior: 'smooth' });
+		}
+	}, [activeIndex]);
 
 	if (!images?.length) return null;
 
@@ -13,15 +39,18 @@ export default function ImageGallery({ images, title }) {
 	const selectImage = (index) => setActiveIndex(index);
 
 	return (
-		<section className="image-gallery" aria-label={`${title} screenshots`}>
+		<section
+			className={`image-gallery${stageMode !== 'fixed' ? ` image-gallery--${stageMode}` : ''}`}
+			aria-label={label}
+		>
 			<div className="image-gallery__stage">
-				<img src={activeImage.src} alt={`${title} screenshot ${activeIndex + 1}`} />
+				<img src={activeImage.src} alt={activeImage.alt || `${title} ${itemLabel} ${activeIndex + 1}`} />
 				{images.length > 1 && (
 					<>
 						<button
 							className="image-gallery__arrow image-gallery__arrow--previous"
 							type="button"
-							aria-label="Previous screenshot"
+							aria-label={`Previous ${itemLabel}`}
 							disabled={activeIndex === 0}
 							onClick={() => selectImage(activeIndex - 1)}
 						>
@@ -30,7 +59,7 @@ export default function ImageGallery({ images, title }) {
 						<button
 							className="image-gallery__arrow image-gallery__arrow--next"
 							type="button"
-							aria-label="Next screenshot"
+							aria-label={`Next ${itemLabel}`}
 							disabled={activeIndex === images.length - 1}
 							onClick={() => selectImage(activeIndex + 1)}
 						>
@@ -43,13 +72,18 @@ export default function ImageGallery({ images, title }) {
 				)}
 			</div>
 			{images.length > 1 && (
-				<div className="image-gallery__thumbnails" aria-label="Choose screenshot">
+				<div
+					ref={thumbnailsRef}
+					className={`image-gallery__thumbnails${thumbnailFit === 'contain' ? ' image-gallery__thumbnails--contain' : ''}`}
+					aria-label={`Choose ${itemLabel}`}
+				>
 					{images.map((image, index) => (
 						<button
-							key={image.filename}
+							key={image.filename || image.src}
+							ref={index === activeIndex ? activeThumbnailRef : null}
 							className={`image-gallery__thumbnail${index === activeIndex ? ' image-gallery__thumbnail--active' : ''}`}
 							type="button"
-							aria-label={`Show screenshot ${index + 1}`}
+							aria-label={`Show ${itemLabel} ${index + 1}`}
 							aria-pressed={index === activeIndex}
 							onClick={() => selectImage(index)}
 						>

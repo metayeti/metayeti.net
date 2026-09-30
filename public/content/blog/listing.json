@@ -1,6 +1,13 @@
 {
 	"posts": [
 		{
+			"title": "Random pixel art #1",
+			"slug": "random-pixel-art-1",
+			"date-published": "2026-09-30",
+			"tags": ["pixel-art"],
+			"description": "Some random pixel art pieces."
+		},
+		{
 			"title": "The problem with generative AI",
 			"slug": "the-problem-with-generative-ai",
 			"date-published": "2026-06-09",

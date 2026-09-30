@@ -23,6 +23,22 @@
 
 @use '@/styles/responsive';
 
+#metayeti > main .blog-post__article .image-gallery {
+	margin: 32px 0 58px;
+}
+
+#metayeti > main .blog-post__article .blog-post__markdown:not(:first-child) > h2:first-child {
+	margin-top: 7vh;
+}
+
+#metayeti > main .blog-post__article .blog-post__markdown:not(:first-child) > h3:first-child {
+	margin-top: 4vh;
+}
+
+.blog-post__content.sidebar-layout--no-sidebar > .blog-post__side {
+	display: none;
+}
+
 .blog-post {
 	// -- main content --
 	&__main {
