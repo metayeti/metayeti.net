@@ -109,13 +109,14 @@ export default function Projects() {
 
 	const categories = projectListing?.categories ?? [];
 	const activeCategory = categories.find((category) => category.id === activeCategoryId);
-	const projects = projectListing?.projects?.[activeCategoryId] ?? [];
+	const sections = activeCategory?.sections ?? [];
 
 	useLayoutEffect(() => {
-		if (activeCategory?.display !== 'vertical-stack') return undefined;
+		const root = projectsLayoutRef.current;
+		if (!root) return undefined;
 
-		const container = projectsLayoutRef.current;
-		if (!container) return undefined;
+		const containers = Array.from(root.querySelectorAll('.projects-page__projects--vertical-stack'));
+		if (containers.length === 0) return undefined;
 
 		let animationFrame = null;
 		let resizeTimeout = null;
@@ -123,41 +124,43 @@ export default function Projects() {
 
 		function layoutProjects() {
 			animationFrame = null;
-			const containerWidth = container.clientWidth;
-			const entries = Array.from(container.children);
+			containers.forEach((container) => {
+				const containerWidth = container.clientWidth;
+				const entries = Array.from(container.children);
 
-			if (!containerWidth || entries.length === 0) {
-				container.style.height = '0px';
-				return;
-			}
-
-			const cardWidth = Math.min(MASONRY_CARD_WIDTH, containerWidth);
-			const columnCount = Math.min(
-				MASONRY_MAX_COLUMNS,
-				Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP))),
-			);
-			const contentWidth = columnCount * cardWidth + (columnCount - 1) * MASONRY_COLUMN_GAP;
-			const leftOffset = (containerWidth - contentWidth) / 2;
-			const columnHeights = Array(columnCount).fill(0);
-
-			entries.forEach((entry) => {
-				entry.style.width = `${cardWidth}px`;
-			});
-
-			entries.forEach((entry) => {
-				let shortestColumn = 0;
-				for (let index = 1; index < columnCount; index += 1) {
-					if (columnHeights[index] < columnHeights[shortestColumn]) {
-						shortestColumn = index;
-					}
+				if (!containerWidth || entries.length === 0) {
+					container.style.height = '0px';
+					return;
 				}
 
-				entry.style.left = `${leftOffset + shortestColumn * (cardWidth + MASONRY_COLUMN_GAP)}px`;
-				entry.style.top = `${columnHeights[shortestColumn] + MASONRY_ROW_GAP / 2}px`;
-				columnHeights[shortestColumn] += entry.offsetHeight + MASONRY_ROW_GAP;
-			});
+				const cardWidth = Math.min(MASONRY_CARD_WIDTH, containerWidth);
+				const columnCount = Math.min(
+					MASONRY_MAX_COLUMNS,
+					Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP))),
+				);
+				const contentWidth = columnCount * cardWidth + (columnCount - 1) * MASONRY_COLUMN_GAP;
+				const leftOffset = (containerWidth - contentWidth) / 2;
+				const columnHeights = Array(columnCount).fill(0);
 
-			container.style.height = `${Math.max(...columnHeights)}px`;
+				entries.forEach((entry) => {
+					entry.style.width = `${cardWidth}px`;
+				});
+
+				entries.forEach((entry) => {
+					let shortestColumn = 0;
+					for (let index = 1; index < columnCount; index += 1) {
+						if (columnHeights[index] < columnHeights[shortestColumn]) {
+							shortestColumn = index;
+						}
+					}
+
+					entry.style.left = `${leftOffset + shortestColumn * (cardWidth + MASONRY_COLUMN_GAP)}px`;
+					entry.style.top = `${columnHeights[shortestColumn] + MASONRY_ROW_GAP / 2}px`;
+					columnHeights[shortestColumn] += entry.offsetHeight + MASONRY_ROW_GAP;
+				});
+
+				container.style.height = `${Math.max(...columnHeights)}px`;
+			});
 		}
 
 		function scheduleLayout() {
@@ -185,27 +188,33 @@ export default function Projects() {
 				: new ResizeObserver(() => {
 						if (!isWindowResizing) scheduleLayout();
 					});
-		resizeObserver?.observe(container);
-		Array.from(container.children).forEach((entry) => resizeObserver?.observe(entry));
+		containers.forEach((container) => {
+			resizeObserver?.observe(container);
+			Array.from(container.children).forEach((entry) => resizeObserver?.observe(entry));
+			container.classList.add('projects-page__projects--instant');
+		});
 		window.addEventListener('resize', handleWindowResize);
-		container.classList.add('projects-page__projects--instant');
 		layoutProjects();
-		container.offsetHeight;
-		container.classList.remove('projects-page__projects--instant');
+		containers.forEach((container) => {
+			container.offsetHeight;
+			container.classList.remove('projects-page__projects--instant');
+		});
 
 		return () => {
 			if (animationFrame !== null) cancelAnimationFrame(animationFrame);
 			if (resizeTimeout !== null) clearTimeout(resizeTimeout);
 			resizeObserver?.disconnect();
 			window.removeEventListener('resize', handleWindowResize);
-			container.style.height = '';
-			Array.from(container.children).forEach((entry) => {
-				entry.style.width = '';
-				entry.style.left = '';
-				entry.style.top = '';
+			containers.forEach((container) => {
+				container.style.height = '';
+				Array.from(container.children).forEach((entry) => {
+					entry.style.width = '';
+					entry.style.left = '';
+					entry.style.top = '';
+				});
 			});
 		};
-	}, [activeCategory?.display, projects]);
+	}, [activeCategory?.id, activeCategory?.sections]);
 
 	function handleTabKeyDown(event, index) {
 		let nextIndex;
@@ -259,18 +268,31 @@ export default function Projects() {
 							<p>{activeCategory.description}</p>
 						</header>
 
-						{projects.length > 0 ? (
-							<div
-								ref={projectsLayoutRef}
-								className={`projects-page__projects projects-page__projects--${activeCategory.display}`}
-							>
-								{projects.map((project) => {
-									return <ProjectCard key={project.slug} project={project} />;
-								})}
-							</div>
-						) : (
-							<p className="projects-page__empty">No projects in this category yet.</p>
-						)}
+						<div ref={projectsLayoutRef} className="projects-page__sections">
+							{sections.map((section) => (
+								<div key={section.id} className="projects-page__section">
+									{section.title && (
+										<h3
+											id={`projects-section-${section.id}`}
+											className="projects-page__section-title"
+										>
+											{section.title}
+										</h3>
+									)}
+									{section.projects.length > 0 ? (
+										<div
+											className={`projects-page__projects projects-page__projects--${section.display}`}
+										>
+											{section.projects.map((project) => (
+												<ProjectCard key={project.slug} project={project} />
+											))}
+										</div>
+									) : (
+										<p className="projects-page__empty">No projects in this section yet.</p>
+									)}
+								</div>
+							))}
+						</div>
 					</section>
 				</>
 			)}

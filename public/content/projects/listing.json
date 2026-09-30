@@ -4,92 +4,114 @@
 			"id": "games",
 			"title": "Games",
 			"description": "Full-featured games I've made or I am currently working on.",
-			"display": "full"
+			"sections": [
+				{
+					"id": "games",
+					"display": "full",
+					"projects": [
+						{
+							"title": "Adventures of Zooz",
+							"slug": "adventures-of-zooz",
+							"date-published": "2026-07-08",
+							"date-updated": "2026-07-08",
+							"description": "Retro-inspired 2D puzzle game.",
+							"status": "in-dev",
+							"screenshots": ["1.png"],
+							"animated": "1.gif"
+						},
+						{
+							"title": "Zorlax: The Undying",
+							"slug": "zorlax-the-undying",
+							"date-published": "2026-07-08",
+							"date-updated": "2026-07-08",
+							"description": "Retro-inspired 2D platformer game.",
+							"status": "in-dev",
+							"screenshots": ["1.png"]
+						}
+					]
+				}
+			]
 		},
 		{
 			"id": "legacy",
 			"title": "Legacy",
 			"description": "Some legacy web games and experiments I've made in the past. Based on my own HTML5 engine.",
-			"display": "vertical-stack"
+			"sections": [
+				{
+					"id": "html5-games",
+					"title": "HTML5 games",
+					"display": "vertical-stack",
+					"projects": [
+						{
+							"title": "Tronix II",
+							"slug": "tronix-ii",
+							"description": "A graph-based puzzle game, greatly improved from the original.",
+							"screenshots": ["tronix-ii.jpg"]
+						},
+						{
+							"title": "Powerblocks",
+							"slug": "powerblocks",
+							"description": "Game where you arrange blocks to form a full piece.",
+							"screenshots": ["powerblocks.jpg"]
+						},
+						{
+							"title": "Sumagi",
+							"slug": "sumagi",
+							"description": "Simple game where you're looking for a sum of numbers.",
+							"screenshots": ["sumagi.jpg"]
+						},
+						{
+							"title": "Tonality",
+							"slug": "tonality",
+							"description": "Memory game, but you're looking for matching tones instead of images.",
+							"screenshots": ["tonality.jpg"]
+						},
+						{
+							"title": "uVibes",
+							"slug": "uvibes",
+							"description": "Experimental project. A very basic melody maker.",
+							"screenshots": ["uvibes.jpg"]
+						},
+						{
+							"title": "Tronix",
+							"slug": "tronix",
+							"description": "Graph-based puzzle game.",
+							"screenshots": ["tronix.jpg"]
+						},
+						{
+							"title": "Blobby",
+							"slug": "blobby",
+							"description": "A puzzle adventure where you guide Blobby to rescue his friends.",
+							"screenshots": ["blobby.jpg"]
+						},
+						{
+							"title": "Precision",
+							"slug": "precision",
+							"description": "A game where you guide your mouse cursor very precisely through a maze of obstacles.",
+							"screenshots": ["precision.jpg"]
+						},
+						{
+							"title": "Aquatica",
+							"slug": "aquatica",
+							"description": "A simple fish clicker game.",
+							"screenshots": ["aquatica.jpg"]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "misc",
+			"title": "Misc",
+			"description": "Other projects.",
+			"sections": [
+				{
+					"id": "fheroes2-maps",
+					"title": "fheroes2 maps",
+					"display": "vertical-stack",
+					"projects": []
+				}
+			]
 		}
-	],
-	"projects": {
-		"games": [
-			{
-				"title": "Adventures of Zooz",
-				"slug": "adventures-of-zooz",
-				"date-published": "2026-07-08",
-				"date-updated": "2026-07-08",
-				"description": "Retro-inspired 2D puzzle game.",
-				"status": "in-dev",
-				"screenshots": ["1.png"],
-				"animated": "1.gif"
-			},
-			{
-				"title": "Zorlax: The Undying",
-				"slug": "zorlax-the-undying",
-				"date-published": "2026-07-08",
-				"date-updated": "2026-07-08",
-				"description": "Retro-inspired 2D platformer game.",
-				"status": "in-dev",
-				"screenshots": ["1.png"]
-			}
-		],
-		"legacy": [
-			{
-				"title": "Tronix II",
-				"slug": "tronix-ii",
-				"description": "A graph-based puzzle game, greatly improved from the original.",
-				"screenshots": ["tronix-ii.jpg"]
-			},
-			{
-				"title": "Powerblocks",
-				"slug": "powerblocks",
-				"description": "Game where you arrange blocks to form a full piece.",
-				"screenshots": ["powerblocks.jpg"]
-			},
-			{
-				"title": "Sumagi",
-				"slug": "sumagi",
-				"description": "Simple game where you're looking for a sum of numbers.",
-				"screenshots": ["sumagi.jpg"]
-			},
-			{
-				"title": "Tonality",
-				"slug": "tonality",
-				"description": "Memory game, but you're looking for matching tones instead of images.",
-				"screenshots": ["tonality.jpg"]
-			},
-			{
-				"title": "uVibes",
-				"slug": "uvibes",
-				"description": "Experimental project. A very basic melody maker.",
-				"screenshots": ["uvibes.jpg"]
-			},
-			{
-				"title": "Tronix",
-				"slug": "tronix",
-				"description": "Graph-based puzzle game.",
-				"screenshots": ["tronix.jpg"]
-			},
-			{
-				"title": "Blobby",
-				"slug": "blobby",
-				"description": "A puzzle adventure where you guide Blobby to rescue his friends.",
-				"screenshots": ["blobby.jpg"]
-			},
-			{
-				"title": "Precision",
-				"slug": "precision",
-				"description": "A game where you guide your mouse cursor very precisely through a maze of obstacles.",
-				"screenshots": ["precision.jpg"]
-			},
-			{
-				"title": "Aquatica",
-				"slug": "aquatica",
-				"description": "A simple fish clicker game.",
-				"screenshots": ["aquatica.jpg"]
-			}
-		]
-	}
+	]
 }

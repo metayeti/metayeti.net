@@ -77,6 +77,19 @@
 		min-width: 0;
 	}
 
+	&__section + &__section {
+		margin-top: 40px;
+	}
+
+	&__section-title {
+		margin: 0 0 24px;
+		color: var(--color-content-fg);
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+
 	&__category-heading {
 		display: flex;
 		flex-direction: column;
