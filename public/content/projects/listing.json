@@ -3,14 +3,14 @@
 		{
 			"id": "games",
 			"title": "Games",
-			"description": "Games I've made or I'm currently working on.",
-			"stack": "horizontal"
+			"description": "Full-featured games I've made or I am currently working on.",
+			"display": "full"
 		},
 		{
 			"id": "old",
 			"title": "Old",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			"stack": "vertical"
+			"display": "vertical-stack"
 		}
 	],
 	"projects": {

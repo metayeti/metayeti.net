@@ -61,11 +61,6 @@
 		gap: 8px;
 		margin-bottom: 28px;
 
-		h3 {
-			margin: 0;
-			color: var(--color-content-flavor);
-		}
-
 		p {
 			max-width: 58ch;
 			margin: 0;
@@ -77,23 +72,33 @@
 	&__projects {
 		margin-inline: auto;
 
-		&--horizontal {
+		&--full {
 			display: grid;
 			grid-template-columns: minmax(0, 1fr);
-			gap: 24px 18px;
-			max-width: 760px;
+			gap: 24px;
 
 			.projects-page__entry {
-				max-width: 380px;
-				margin-inline: auto;
+				width: 100%;
 			}
 
-			@include responsive.size('md') {
-				grid-template-columns: repeat(2, minmax(0, 1fr));
+			.projects-page__project {
+				flex-direction: row;
+			}
+
+			.projects-page__image {
+				flex: 0 0 40%;
+				align-self: stretch;
+				border: 0;
+			}
+
+			.projects-page__image img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
 			}
 		}
 
-		&--vertical {
+		&--vertical-stack {
 			position: relative;
 			width: 100vw;
 			margin-left: calc(50% - 50vw);
@@ -110,7 +115,7 @@
 			}
 		}
 
-		&--vertical.projects-page__projects--instant {
+		&--vertical-stack.projects-page__projects--instant {
 			.projects-page__entry {
 				transition: none;
 			}
@@ -139,10 +144,17 @@
 		letter-spacing: 0;
 		text-decoration: none;
 		text-transform: none;
+		scale: 1;
+		overflow: hidden;
+		transition:
+			scale 0.15s ease-in,
+			border-color 0.2s ease,
+			background-color 0.2s ease;
 
 		&:hover,
 		&:focus-visible {
 			z-index: 1;
+			scale: 102%;
 			border-color: var(--color-content-flavor);
 			background-color: color-mix(in srgb, var(--projects-surface) 94%, var(--color-content-flavor) 6%);
 		}

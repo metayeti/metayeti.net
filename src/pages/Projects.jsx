@@ -56,7 +56,7 @@ export default function Projects() {
 	const projects = projectListing?.projects?.[activeCategoryId] ?? [];
 
 	useLayoutEffect(() => {
-		if (activeCategory?.stack !== 'vertical') return undefined;
+		if (activeCategory?.display !== 'vertical-stack') return undefined;
 
 		const container = projectsLayoutRef.current;
 		if (!container) return undefined;
@@ -146,7 +146,7 @@ export default function Projects() {
 				entry.style.top = '';
 			});
 		};
-	}, [activeCategory?.stack, projects]);
+	}, [activeCategory?.display, projects]);
 
 	function handleTabKeyDown(event, index) {
 		let nextIndex;
@@ -197,14 +197,13 @@ export default function Projects() {
 						tabIndex={0}
 					>
 						<header className="projects-page__category-heading">
-							<h3>{activeCategory.title}</h3>
 							<p>{activeCategory.description}</p>
 						</header>
 
 						{projects.length > 0 ? (
 							<div
 								ref={projectsLayoutRef}
-								className={`projects-page__projects projects-page__projects--${activeCategory.stack}`}
+								className={`projects-page__projects projects-page__projects--${activeCategory.display}`}
 							>
 								{projects.map((project) => {
 									const screenshot = project.screenshots?.[0];
