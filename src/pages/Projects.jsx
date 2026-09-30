@@ -21,16 +21,21 @@
 //  TODO:         -
 //
 
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
 
 import './Projects.scss';
 
+const MASONRY_CARD_WIDTH = 240;
+const MASONRY_COLUMN_GAP = 40;
+const MASONRY_ROW_GAP = 40;
+
 export default function Projects() {
 	const [projectListing, setProjectListing] = useState(null);
 	const [activeCategoryId, setActiveCategoryId] = useState(null);
 	const [loadError, setLoadError] = useState(false);
+	const projectsLayoutRef = useRef(null);
 
 	useEffect(() => {
 		async function fetchProjects() {
@@ -49,6 +54,99 @@ export default function Projects() {
 	const categories = projectListing?.categories ?? [];
 	const activeCategory = categories.find((category) => category.id === activeCategoryId);
 	const projects = projectListing?.projects?.[activeCategoryId] ?? [];
+
+	useLayoutEffect(() => {
+		if (activeCategory?.stack !== 'vertical') return undefined;
+
+		const container = projectsLayoutRef.current;
+		if (!container) return undefined;
+
+		let animationFrame = null;
+		let resizeTimeout = null;
+		let isWindowResizing = false;
+
+		function layoutProjects() {
+			animationFrame = null;
+			const containerWidth = container.clientWidth;
+			const entries = Array.from(container.children);
+
+			if (!containerWidth || entries.length === 0) {
+				container.style.height = '0px';
+				return;
+			}
+
+			const cardWidth = Math.min(MASONRY_CARD_WIDTH, containerWidth);
+			const columnCount = Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP)));
+			const contentWidth = columnCount * cardWidth + (columnCount - 1) * MASONRY_COLUMN_GAP;
+			const leftOffset = (containerWidth - contentWidth) / 2;
+			const columnHeights = Array(columnCount).fill(0);
+
+			entries.forEach((entry) => {
+				entry.style.width = `${cardWidth}px`;
+			});
+
+			entries.forEach((entry) => {
+				let shortestColumn = 0;
+				for (let index = 1; index < columnCount; index += 1) {
+					if (columnHeights[index] < columnHeights[shortestColumn]) {
+						shortestColumn = index;
+					}
+				}
+
+				entry.style.left = `${leftOffset + shortestColumn * (cardWidth + MASONRY_COLUMN_GAP)}px`;
+				entry.style.top = `${columnHeights[shortestColumn] + MASONRY_ROW_GAP / 2}px`;
+				columnHeights[shortestColumn] += entry.offsetHeight + MASONRY_ROW_GAP;
+			});
+
+			container.style.height = `${Math.max(...columnHeights)}px`;
+		}
+
+		function scheduleLayout() {
+			if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+			animationFrame = requestAnimationFrame(layoutProjects);
+		}
+
+		function handleWindowResize() {
+			isWindowResizing = true;
+			if (animationFrame !== null) {
+				cancelAnimationFrame(animationFrame);
+				animationFrame = null;
+			}
+			if (resizeTimeout !== null) clearTimeout(resizeTimeout);
+			resizeTimeout = window.setTimeout(() => {
+				resizeTimeout = null;
+				isWindowResizing = false;
+				layoutProjects();
+			}, 50);
+		}
+
+		const resizeObserver =
+			typeof ResizeObserver === 'undefined'
+				? null
+				: new ResizeObserver(() => {
+						if (!isWindowResizing) scheduleLayout();
+					});
+		resizeObserver?.observe(container);
+		Array.from(container.children).forEach((entry) => resizeObserver?.observe(entry));
+		window.addEventListener('resize', handleWindowResize);
+		container.classList.add('projects-page__projects--instant');
+		layoutProjects();
+		container.offsetHeight;
+		container.classList.remove('projects-page__projects--instant');
+
+		return () => {
+			if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+			if (resizeTimeout !== null) clearTimeout(resizeTimeout);
+			resizeObserver?.disconnect();
+			window.removeEventListener('resize', handleWindowResize);
+			container.style.height = '';
+			Array.from(container.children).forEach((entry) => {
+				entry.style.width = '';
+				entry.style.left = '';
+				entry.style.top = '';
+			});
+		};
+	}, [activeCategory?.stack, projects]);
 
 	function handleTabKeyDown(event, index) {
 		let nextIndex;
@@ -104,7 +202,10 @@ export default function Projects() {
 						</header>
 
 						{projects.length > 0 ? (
-							<div className={`projects-page__projects projects-page__projects--${activeCategory.stack}`}>
+							<div
+								ref={projectsLayoutRef}
+								className={`projects-page__projects projects-page__projects--${activeCategory.stack}`}
+							>
 								{projects.map((project) => {
 									const screenshot = project.screenshots?.[0];
 									const screenshotUrl = screenshot
