@@ -28,6 +28,7 @@ import IconDownload from '@/components/icons/IconDownload';
 import IconBack from '@/components/icons/IconBack';
 import IconCalendar from '@/components/icons/IconCalendar';
 import IconPages from '@/components/icons/IconPages';
+import ProjectComments from '@/components/extras/ProjectComments';
 import { getHumanReadableDate, loadJSON, loadText, md, SRC_PROJECTS_LISTING } from '@/util';
 
 import './ProjectPage.scss';
@@ -254,6 +255,8 @@ export default function ProjectPage() {
 					</div>
 				</section>
 			)}
+
+			{project.comments && <ProjectComments key={projectPath} />}
 		</div>
 	);
 }

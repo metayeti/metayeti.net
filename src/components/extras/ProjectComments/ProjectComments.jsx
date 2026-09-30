@@ -8,11 +8,11 @@
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
-//  File:         src/components/extras/BlogComments/BlogComments.jsx
-//  Description:  Blog comments component.
+//  File:         src/components/extras/ProjectComments/ProjectComments.jsx
+//  Description:  Project comments component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-06-18
+//  Created:      2026-09-30
 //  Updated:      2026-09-30
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -21,18 +21,17 @@
 //  TODO:         -
 //
 
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Giscus from '@giscus/react';
 
-import './BlogComments.scss';
+import './ProjectComments.scss';
 
-const BLOG_GISCUS_REPO = 'metayeti/blog-comments';
-const BLOG_GISCUS_REPO_ID = 'R_kgDOS-rQ5w';
-const BLOG_GISCUS_CATEGORY = 'General';
-const BLOG_GISCUS_CATEGORY_ID = 'DIC_kwDOS-rQ584C_bfv';
+const PROJECT_GISCUS_REPO = 'metayeti/project-comments';
+const PROJECT_GISCUS_REPO_ID = 'R_kgDOU16myQ';
+const PROJECT_GISCUS_CATEGORY = 'General';
+const PROJECT_GISCUS_CATEGORY_ID = 'DIC_kwDOU16myc4DGxFc';
 
-const BlogComments = () => {
-	// handle themes
+const ProjectComments = () => {
 	const [giscusTheme, setGiscusTheme] = useState('dark');
 
 	useEffect(() => {
@@ -43,22 +42,20 @@ const BlogComments = () => {
 
 		checkTheme();
 
-		// observe changes to :root
 		const observer = new MutationObserver(checkTheme);
 		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
-		// cleanup
 		return () => observer.disconnect();
 	}, []);
 
 	return (
-		<div className="comments-container">
+		<div className="project-comments-container">
 			<Giscus
-				id="comments"
-				repo={BLOG_GISCUS_REPO}
-				repoId={BLOG_GISCUS_REPO_ID}
-				category={BLOG_GISCUS_CATEGORY}
-				categoryId={BLOG_GISCUS_CATEGORY_ID}
+				id="project-comments"
+				repo={PROJECT_GISCUS_REPO}
+				repoId={PROJECT_GISCUS_REPO_ID}
+				category={PROJECT_GISCUS_CATEGORY}
+				categoryId={PROJECT_GISCUS_CATEGORY_ID}
 				mapping="pathname"
 				strict="0"
 				reactionsEnabled="1"
@@ -72,4 +69,4 @@ const BlogComments = () => {
 	);
 };
 
-export default BlogComments;
+export default ProjectComments;
