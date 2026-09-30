@@ -151,16 +151,17 @@
 		.image-gallery {
 			min-width: 0;
 			margin: 0;
+
+			.image-gallery__stage {
+				aspect-ratio: 4 / 3;
+				min-height: 0;
+			}
 		}
 
 		@include responsive.size('lg') {
 			grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
 			align-items: start;
 			gap: 30px;
-
-			.image-gallery__stage {
-				aspect-ratio: 1.3 / 1;
-			}
 		}
 	}
 

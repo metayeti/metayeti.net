@@ -1,11 +1,7 @@
 {
 	"featured": [
 		{ "path": "games", "slug": "adventures-of-zooz" },
-		{ "path": "games", "slug": "zorlax-the-undying" },
-		{ "path": "legacy", "slug": "tronix-ii" },
-		{ "path": "legacy", "slug": "powerblocks" },
-		{ "path": "legacy", "slug": "tonality" },
-		{ "path": "legacy", "slug": "aquatica" }
+		{ "path": "games", "slug": "zorlax-the-undying" }
 	],
 	"categories": [
 		{
@@ -23,33 +19,35 @@
 							"path": "games",
 							"devlog": true,
 							"comments": true,
-							"date-updated": "2026-07-08",
+							"date-updated": "2026-10-01",
 							"description": "Retro-inspired 2D puzzle game.",
 							"status": "in-dev",
-							"progress": null,
+							"progress": 40,
 							"version": null,
 							"platforms": [],
 							"engine": null,
 							"releaseWindow": null,
 							"downloadUrl": null,
-							"screenshots": ["1.png", "2.png", "3.png"],
-							"animated": "1.gif"
+							"screenshots": ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"],
+							"animated": "anim.gif"
 						},
 						{
 							"title": "Zorlax: The Undying",
 							"slug": "zorlax-the-undying",
 							"path": "games",
+							"devlog": true,
 							"comments": true,
-							"date-updated": "2026-07-08",
+							"date-updated": "2026-10-01",
 							"description": "Retro-inspired 2D platformer game.",
 							"status": "in-dev",
-							"progress": null,
+							"progress": 20,
 							"version": null,
 							"platforms": [],
 							"engine": null,
 							"releaseWindow": null,
 							"downloadUrl": null,
-							"screenshots": ["1.png"]
+							"screenshots": ["1.png", "2.gif", "3.png"],
+							"animated": "anim.gif"
 						}
 					]
 				}
