@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-02-27
-//  Updated:      2026-03-18
+//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -28,6 +28,7 @@ import IconSteam from '@/components/icons/IconSteam';
 import IconItchIo from '@/components/icons/IconItchIo';
 import IconYouTube from '@/components/icons/IconYouTube';
 import IconSoundCloud from '@/components/icons/IconSoundCloud';
+import IconEmail from '@/components/icons/IconEmail';
 
 import './SiteHeaderSocial.scss';
 
@@ -35,15 +36,6 @@ export default function SiteHeaderSocial() {
 	return (
 		<nav className="site-header-social">
 			<div className="site-header-social__links wrapped wrapped--sm-pad">
-				<a
-					href="https://www.linkedin.com/in/danijel-durakovic-560a353a9/"
-					className="site-header-social__link"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<IconLinkedIn />
-					<div className="site-header-social__link-tooltip">LinkedIn</div>
-				</a>
 				<a
 					href="https://x.com/metayetidev"
 					className="site-header-social__link"
@@ -72,15 +64,6 @@ export default function SiteHeaderSocial() {
 					<div className="site-header-social__link-tooltip">Steam</div>
 				</a>
 				<a
-					href="https://metayeti.itch.io/"
-					className="site-header-social__link"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<IconItchIo />
-					<div className="site-header-social__link-tooltip">itch.io</div>
-				</a>
-				<a
 					href="https://www.youtube.com/@metayetidev"
 					className="site-header-social__link"
 					target="_blank"
@@ -98,6 +81,17 @@ export default function SiteHeaderSocial() {
 					<IconSoundCloud />
 					<div className="site-header-social__link-tooltip site-header-social__link-tooltip--last">
 						SoundCloud
+					</div>
+				</a>
+				<a
+					href="mailto:metayetidev@gmail.com"
+					className="site-header-social__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<IconEmail />
+					<div className="site-header-social__link-tooltip site-header-social__link-tooltip--last">
+						E-Mail
 					</div>
 				</a>
 			</div>

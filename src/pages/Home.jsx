@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-06-16
+//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -32,10 +32,10 @@ export default function Home() {
 		<div className="home-page wrapped">
 			<div className="home-page__yeti"></div>
 			<section>
-				<h2>Hi!</h2>
-				<p>Ahoy there! I'm Danijel. Welcome to my online abode.</p>
+				<h2>Ahoy!</h2>
+				<p>Hey there! I'm Danijel. Welcome to my online abode.</p>
 				<p>
-					I'm a game developer from Slovenia. I make <Link to="/projects">videogames</Link>
+					I'm a game developer from Slovenia. I create <Link to="/projects">videogames</Link>
 					<br className="responsive-break" /> and{' '}
 					<a
 						href="https://github.com/metayeti"
@@ -46,16 +46,16 @@ export default function Home() {
 						things that go whirrrr
 					</a>
 					. I sometimes write some <br className="responsive-break" />
-					<Link to="/blog">nonsense on my blog</Link>. I like snow leopards, coding and tea.
+					nonsense on <Link to="/blog">my blog</Link>. I like snow leopards, coding and tea.
 				</p>
 				<p>Enjoy your stay!</p>
 			</section>
 			<section>
-				<h2>Latest Posts</h2>
+				<h2>Latest posts</h2>
 				<LatestPosts />
 			</section>
 			<section>
-				<h2>Latest Projects</h2>
+				<h2>Latest projects</h2>
 				<LatestProjects />
 			</section>
 		</div>

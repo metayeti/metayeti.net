@@ -60,9 +60,9 @@
 			"title": "More",
 			"sections": [
 				{
-					"id": "Open Source projects",
-					"title": "Open Source projects",
-					"description": "Libraries and tools I've published on GitHub.",
+					"id": "open-source-projects",
+					"title": "Open source projects",
+					"description": "Open source libraries and tools I've published on GitHub.",
 					"display": "full",
 					"projects": [
 						{
