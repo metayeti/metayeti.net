@@ -28,8 +28,9 @@ import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
 import './Projects.scss';
 
 const MASONRY_CARD_WIDTH = 240;
-const MASONRY_COLUMN_GAP = 40;
-const MASONRY_ROW_GAP = 40;
+const MASONRY_MAX_COLUMNS = 5;
+const MASONRY_COLUMN_GAP = 32;
+const MASONRY_ROW_GAP = 32;
 
 function ProjectCard({ project }) {
 	const [isHovered, setIsHovered] = useState(false);
@@ -131,7 +132,10 @@ export default function Projects() {
 			}
 
 			const cardWidth = Math.min(MASONRY_CARD_WIDTH, containerWidth);
-			const columnCount = Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP)));
+			const columnCount = Math.min(
+				MASONRY_MAX_COLUMNS,
+				Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP))),
+			);
 			const contentWidth = columnCount * cardWidth + (columnCount - 1) * MASONRY_COLUMN_GAP;
 			const leftOffset = (containerWidth - contentWidth) / 2;
 			const columnHeights = Array(columnCount).fill(0);

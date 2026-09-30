@@ -7,9 +7,9 @@
 			"display": "full"
 		},
 		{
-			"id": "old",
-			"title": "Old",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			"id": "legacy",
+			"title": "Legacy",
+			"description": "Some legacy web games and experiments I've made in the past. Based on my own HTML5 engine.",
 			"display": "vertical-stack"
 		}
 	],
@@ -35,59 +35,59 @@
 				"screenshots": ["1.png"]
 			}
 		],
-		"old": [
+		"legacy": [
 			{
 				"title": "Tronix II",
 				"slug": "tronix-ii",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "A graph-based puzzle game, greatly improved from the original.",
 				"screenshots": ["tronix-ii.jpg"]
 			},
 			{
 				"title": "Powerblocks",
 				"slug": "powerblocks",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "Game where you arrange blocks to form a full piece.",
 				"screenshots": ["powerblocks.jpg"]
 			},
 			{
 				"title": "Sumagi",
 				"slug": "sumagi",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "Simple game where you're looking for a sum of numbers.",
 				"screenshots": ["sumagi.jpg"]
 			},
 			{
 				"title": "Tonality",
 				"slug": "tonality",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "Memory game, but you're looking for matching tones instead of images.",
 				"screenshots": ["tonality.jpg"]
 			},
 			{
 				"title": "uVibes",
 				"slug": "uvibes",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "Experimental project. A very basic melody maker.",
 				"screenshots": ["uvibes.jpg"]
 			},
 			{
 				"title": "Tronix",
 				"slug": "tronix",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "Graph-based puzzle game.",
 				"screenshots": ["tronix.jpg"]
 			},
 			{
 				"title": "Blobby",
 				"slug": "blobby",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "A puzzle adventure where you guide Blobby to rescue his friends.",
 				"screenshots": ["blobby.jpg"]
 			},
 			{
 				"title": "Precision",
 				"slug": "precision",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "A game where you guide your mouse cursor very precisely through a maze of obstacles.",
 				"screenshots": ["precision.jpg"]
 			},
 			{
 				"title": "Aquatica",
 				"slug": "aquatica",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"description": "A simple fish clicker game.",
 				"screenshots": ["aquatica.jpg"]
 			}
 		]
