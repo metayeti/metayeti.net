@@ -37,8 +37,9 @@ function ProjectCard({ project }) {
 	const [isFocused, setIsFocused] = useState(false);
 	const [animationFailed, setAnimationFailed] = useState(false);
 	const screenshot = project.screenshots?.[0];
-	const screenshotUrl = screenshot ? `/content/projects/${project.slug}/screenshots/${screenshot}` : null;
-	const animatedUrl = project.animated ? `/content/projects/${project.slug}/screenshots/${project.animated}` : null;
+	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
+	const screenshotUrl = screenshot ? `/content/projects/${projectPath}/screenshots/${screenshot}` : null;
+	const animatedUrl = project.animated ? `/content/projects/${projectPath}/screenshots/${project.animated}` : null;
 	const isPreviewActive = (isHovered || isFocused) && animatedUrl && !animationFailed;
 	const imageUrl = isPreviewActive ? animatedUrl : screenshotUrl;
 
@@ -46,7 +47,7 @@ function ProjectCard({ project }) {
 		<div className="projects-page__entry">
 			<Link
 				className={`projects-page__project${screenshotUrl ? ' projects-page__project--with-image' : ''}`}
-				to={`/projects/${project.slug}`}
+				to={`/projects/${projectPath}`}
 				onPointerEnter={() => setIsHovered(true)}
 				onPointerLeave={() => setIsHovered(false)}
 				onFocus={() => setIsFocused(true)}
@@ -136,6 +137,7 @@ export default function Projects() {
 				const cardWidth = Math.min(MASONRY_CARD_WIDTH, containerWidth);
 				const columnCount = Math.min(
 					MASONRY_MAX_COLUMNS,
+					entries.length,
 					Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP))),
 				);
 				const contentWidth = columnCount * cardWidth + (columnCount - 1) * MASONRY_COLUMN_GAP;

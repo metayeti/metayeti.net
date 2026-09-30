@@ -12,6 +12,7 @@
 						{
 							"title": "Adventures of Zooz",
 							"slug": "adventures-of-zooz",
+							"path": "games",
 							"date-published": "2026-07-08",
 							"date-updated": "2026-07-08",
 							"description": "Retro-inspired 2D puzzle game.",
@@ -22,6 +23,7 @@
 						{
 							"title": "Zorlax: The Undying",
 							"slug": "zorlax-the-undying",
+							"path": "games",
 							"date-published": "2026-07-08",
 							"date-updated": "2026-07-08",
 							"description": "Retro-inspired 2D platformer game.",
@@ -37,73 +39,75 @@
 			"title": "More",
 			"sections": [
 				{
-					"id": "html5-games",
-					"title": "HTML5 games",
+					"id": "legacy-html5-games",
+					"title": "Legacy HTML5 games",
 					"description": "Some legacy web games and experiments. Based on my own HTML5 engine.",
 					"display": "vertical-stack",
 					"projects": [
 						{
 							"title": "Tronix II",
 							"slug": "tronix-ii",
+							"path": "legacy",
 							"description": "A graph-based puzzle game, greatly improved from the original.",
 							"screenshots": ["tronix-ii.jpg"]
 						},
 						{
 							"title": "Powerblocks",
 							"slug": "powerblocks",
+							"path": "legacy",
 							"description": "Game where you arrange blocks to form a full piece.",
 							"screenshots": ["powerblocks.jpg"]
 						},
 						{
 							"title": "Sumagi",
 							"slug": "sumagi",
+							"path": "legacy",
 							"description": "Simple game where you're looking for a sum of numbers.",
 							"screenshots": ["sumagi.jpg"]
 						},
 						{
 							"title": "Tonality",
 							"slug": "tonality",
+							"path": "legacy",
 							"description": "Memory game, but you're looking for matching tones instead of images.",
 							"screenshots": ["tonality.jpg"]
 						},
 						{
 							"title": "uVibes",
 							"slug": "uvibes",
+							"path": "legacy",
 							"description": "Experimental project. A very basic melody maker.",
 							"screenshots": ["uvibes.jpg"]
 						},
 						{
 							"title": "Tronix",
 							"slug": "tronix",
+							"path": "legacy",
 							"description": "Graph-based puzzle game.",
 							"screenshots": ["tronix.jpg"]
 						},
 						{
 							"title": "Blobby",
 							"slug": "blobby",
+							"path": "legacy",
 							"description": "A puzzle adventure where you guide Blobby to rescue his friends.",
 							"screenshots": ["blobby.jpg"]
 						},
 						{
 							"title": "Precision",
 							"slug": "precision",
+							"path": "legacy",
 							"description": "A game where you guide your mouse cursor very precisely through a maze of obstacles.",
 							"screenshots": ["precision.jpg"]
 						},
 						{
 							"title": "Aquatica",
 							"slug": "aquatica",
+							"path": "legacy",
 							"description": "A simple fish clicker game.",
 							"screenshots": ["aquatica.jpg"]
 						}
 					]
-				},
-				{
-					"id": "fheroes2-maps",
-					"title": "fheroes2 maps",
-					"description": "Some maps I made for the open-source Heroes of Might and Magic II adaptation, fheroes2.",
-					"display": "vertical-stack",
-					"projects": []
 				}
 			]
 		}
