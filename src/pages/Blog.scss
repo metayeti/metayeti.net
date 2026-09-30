@@ -163,6 +163,8 @@
 
 	// -- sidebar --
 	&__filters {
+		position: sticky;
+		top: 90px;
 		display: flex;
 		flex-direction: column;
 		padding: 12px;
