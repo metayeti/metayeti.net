@@ -33,8 +33,8 @@
 			]
 		},
 		{
-			"id": "legacy",
-			"title": "Legacy",
+			"id": "more",
+			"title": "More",
 			"sections": [
 				{
 					"id": "html5-games",
@@ -97,13 +97,7 @@
 							"screenshots": ["aquatica.jpg"]
 						}
 					]
-				}
-			]
-		},
-		{
-			"id": "misc",
-			"title": "Misc",
-			"sections": [
+				},
 				{
 					"id": "fheroes2-maps",
 					"title": "fheroes2 maps",
