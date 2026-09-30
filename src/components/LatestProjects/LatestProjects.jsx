@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-18
-//  Updated:      2026-03-18
+//  Updated:      2026-09-30
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -30,11 +30,24 @@ import './LatestProjects.scss';
 function FeaturedProjectCard({ project, index }) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
+	const [isPreviewReady, setIsPreviewReady] = useState(false);
 	const [animationFailed, setAnimationFailed] = useState(false);
 	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
 	const screenshotUrl = `/content/projects/${projectPath}/screenshots/${project.screenshots[0]}`;
 	const animatedUrl = project.animated ? `/content/projects/${projectPath}/screenshots/${project.animated}` : null;
-	const isPreviewActive = (isHovered || isFocused) && animatedUrl && !animationFailed;
+	const isEngaged = isHovered || isFocused;
+
+	useEffect(() => {
+		if (!isEngaged || !animatedUrl || animationFailed) {
+			setIsPreviewReady(false);
+			return undefined;
+		}
+
+		const timeoutId = window.setTimeout(() => setIsPreviewReady(true), 500);
+		return () => window.clearTimeout(timeoutId);
+	}, [isEngaged, animatedUrl, animationFailed]);
+
+	const isPreviewActive = isPreviewReady && animatedUrl && !animationFailed;
 	const imageUrl = isPreviewActive ? animatedUrl : screenshotUrl;
 
 	return (

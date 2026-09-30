@@ -36,12 +36,25 @@ const MASONRY_ROW_GAP = 32;
 function ProjectCard({ project }) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
+	const [isPreviewReady, setIsPreviewReady] = useState(false);
 	const [animationFailed, setAnimationFailed] = useState(false);
 	const screenshot = project.screenshots?.[0];
 	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
 	const screenshotUrl = screenshot ? `/content/projects/${projectPath}/screenshots/${screenshot}` : null;
 	const animatedUrl = project.animated ? `/content/projects/${projectPath}/screenshots/${project.animated}` : null;
-	const isPreviewActive = (isHovered || isFocused) && animatedUrl && !animationFailed;
+	const isEngaged = isHovered || isFocused;
+
+	useEffect(() => {
+		if (!isEngaged || !animatedUrl || animationFailed) {
+			setIsPreviewReady(false);
+			return undefined;
+		}
+
+		const timeoutId = window.setTimeout(() => setIsPreviewReady(true), 500);
+		return () => window.clearTimeout(timeoutId);
+	}, [isEngaged, animatedUrl, animationFailed]);
+
+	const isPreviewActive = isPreviewReady && animatedUrl && !animationFailed;
 	const imageUrl = isPreviewActive ? animatedUrl : screenshotUrl;
 
 	return (
