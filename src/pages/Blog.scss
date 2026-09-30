@@ -39,15 +39,15 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 6px;
-		margin-bottom: 2px;
+		margin-bottom: 6px;
 	}
 
 	&__entry-tag {
-		padding: 2px 10px;
+		padding: 4px 8px;
 		font-size: 0.8rem;
 		font-weight: 400;
-		color: var(--color-content-link);
-		background: transparent;
+		color: var(--color-content-fg);
+		background-color: var(--color-blog-sidebar-searchbox);
 		border: 1px solid var(--color-blog-sidebar-border);
 		border-radius: 3px;
 		cursor: pointer;
@@ -69,17 +69,19 @@
 	// -- entry link --
 	&__entry-link {
 		display: block;
-		border-top: 1px dotted var(--color-content-link);
-		border-bottom: 1px dotted var(--color-content-link);
-		border-right: 1px dotted var(--color-content-link);
-		border-left: 4px solid var(--color-content-link);
-		padding: 10px 12px 10px 15px;
+		border: 1px solid var(--color-blog-sidebar-border);
+		border-left: 3px solid var(--color-content-link);
+		border-radius: 3px;
+		background-color: var(--color-blog-sidebar-bg);
+		padding: 12px 14px;
 		transition:
 			border-color 0.15s,
+			background-color 0.15s,
 			transform 0.15s;
 
 		&:hover {
 			border-color: var(--color-content-link--hover);
+			background-color: var(--color-blog-sidebar-searchbox);
 			transform: translateX(-1px);
 		}
 	}

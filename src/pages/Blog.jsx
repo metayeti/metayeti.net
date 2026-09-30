@@ -37,6 +37,7 @@ export default function Blog() {
 	const [blogListing, setBlogListing] = useState([]);
 	const [searchQuery, setSearchQuery] = useState('');
 	const [activeTag, setActiveTag] = useState(null);
+	const [activeYear, setActiveYear] = useState(null);
 	const searchInputRef = useRef(null);
 
 	useEffect(() => {
@@ -57,6 +58,9 @@ export default function Blog() {
 		if (activeTag) {
 			posts = posts.filter((post) => post.tags?.includes(activeTag));
 		}
+		if (activeYear) {
+			posts = posts.filter((post) => new Date(post['date-published']).getFullYear() === activeYear);
+		}
 		if (searchQuery.trim()) {
 			const query = searchQuery.toLowerCase();
 			posts = posts.filter(
@@ -67,7 +71,7 @@ export default function Blog() {
 			);
 		}
 		return posts;
-	}, [blogListing, activeTag, searchQuery]);
+	}, [blogListing, activeTag, activeYear, searchQuery]);
 
 	// -- posts grouped by year --
 	const postsByYear = useMemo(() => {
@@ -114,12 +118,17 @@ export default function Blog() {
 		setActiveTag((prev) => (prev === tag ? null : tag));
 	}
 
+	function handleYearClick(year) {
+		setActiveYear((prev) => (prev === year ? null : year));
+	}
+
 	function handleClearFilters() {
 		setActiveTag(null);
+		setActiveYear(null);
 		setSearchQuery('');
 	}
 
-	const hasActiveFilters = activeTag || searchQuery.trim();
+	const hasActiveFilters = activeTag || activeYear || searchQuery.trim();
 
 	return (
 		<div className="blog-page sidebar-layout wrapped">
@@ -129,6 +138,7 @@ export default function Blog() {
 				{hasActiveFilters && (
 					<div className="blog-page__active-filters">
 						{activeTag && <span className="blog-page__active-filter">Tag: {activeTag}</span>}
+						{activeYear && <span className="blog-page__active-filter">Year: {activeYear}</span>}
 						{searchQuery.trim() && (
 							<span className="blog-page__active-filter">Search: &ldquo;{searchQuery}&rdquo;</span>
 						)}
@@ -212,10 +222,15 @@ export default function Blog() {
 						<h5>Years</h5>
 						<div className="blog-page__tag-list">
 							{yearList.map(([year, count]) => (
-								<span key={year} className="blog-page__filter-tag blog-page__filter-tag--static">
+								<button
+									key={year}
+									type="button"
+									className={`blog-page__filter-tag${activeYear === year ? ' blog-page__filter-tag--active' : ''}`}
+									onClick={() => handleYearClick(year)}
+								>
 									<span className="blog-page__filter-tag-name">{year}</span>
 									<span className="blog-page__filter-tag-count">{count}</span>
-								</span>
+								</button>
 							))}
 						</div>
 					</div>
