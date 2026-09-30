@@ -26,6 +26,8 @@ import { Link, useParams } from 'react-router-dom';
 import ImageGallery from '@/components/ImageGallery/ImageGallery';
 import IconDownload from '@/components/icons/IconDownload';
 import IconBack from '@/components/icons/IconBack';
+import IconCalendar from '@/components/icons/IconCalendar';
+import IconPages from '@/components/icons/IconPages';
 import { getHumanReadableDate, loadJSON, loadText, md, SRC_PROJECTS_LISTING } from '@/util';
 
 import './ProjectPage.scss';
@@ -55,15 +57,26 @@ export default function ProjectPage() {
 				}
 
 				const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
-				let markdown = '';
-				try {
-					markdown = await loadText(`/content/projects/${projectPath}/project.md`);
-				} catch (error) {
-					console.warn(`No project post found for ${project.slug}:`, error);
+				let devlogs = [];
+				if (project.devlog) {
+					try {
+						const listing = await loadJSON(`/content/projects/${projectPath}/devlog/listing.json`);
+						const posts = [...(listing.posts ?? [])].sort((a, b) =>
+							b['date-published'].localeCompare(a['date-published']),
+						);
+						devlogs = await Promise.all(
+							posts.map(async (post) => ({
+								...post,
+								markdown: await loadText(`/content/projects/${projectPath}/devlog/${post.slug}.md`),
+							})),
+						);
+					} catch (error) {
+						console.warn(`Failed to load devlog for ${project.slug}:`, error);
+					}
 				}
 
 				if (isCurrent) {
-					setProjectData({ project, projectPath, markdown });
+					setProjectData({ project, projectPath, devlogs });
 					setPageState('ready');
 				}
 			} catch (error) {
@@ -113,7 +126,7 @@ export default function ProjectPage() {
 		);
 	}
 
-	const { project, projectPath, markdown } = projectData;
+	const { project, projectPath, devlogs } = projectData;
 	const lastChanged = project['date-updated'];
 	const statusLabels = {
 		'in-dev': 'In development',
@@ -214,10 +227,32 @@ export default function ProjectPage() {
 				</aside>
 			</div>
 
-			{markdown && (
-				<article className="project-page__article">
-					<div dangerouslySetInnerHTML={{ __html: md.render(markdown) }} />
-				</article>
+			{project.devlog && (
+				<section className="project-page__devlog" aria-labelledby="project-devlog-title">
+					<h3 id="project-devlog-title">
+						<IconPages aria-hidden="true" />
+						Devlog
+					</h3>
+					<div className="project-page__devlog-list">
+						{devlogs.map((post) => (
+							<article className="project-page__devlog-post" key={post.slug}>
+								<header className="project-page__devlog-post-header">
+									<h4>
+										<IconCalendar aria-hidden="true" />
+										{post.title}
+									</h4>
+									<time dateTime={post['date-published']}>
+										{getHumanReadableDate(post['date-published'])}
+									</time>
+								</header>
+								<div
+									className="project-page__devlog-post-body"
+									dangerouslySetInnerHTML={{ __html: md.render(post.markdown) }}
+								/>
+							</article>
+						))}
+					</div>
+				</section>
 			)}
 		</div>
 	);

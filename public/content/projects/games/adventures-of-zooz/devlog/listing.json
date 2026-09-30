@@ -1,0 +1,19 @@
+{
+	"posts": [
+		{
+			"title": "The first full loop",
+			"slug": "3",
+			"date-published": "2026-09-30"
+		},
+		{
+			"title": "A better feel for movement",
+			"slug": "2",
+			"date-published": "2026-09-18"
+		},
+		{
+			"title": "Building the first rooms",
+			"slug": "1",
+			"date-published": "2026-08-30"
+		}
+	]
+}

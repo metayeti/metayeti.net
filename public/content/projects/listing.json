@@ -21,6 +21,7 @@
 							"title": "Adventures of Zooz",
 							"slug": "adventures-of-zooz",
 							"path": "games",
+							"devlog": true,
 							"date-updated": "2026-07-08",
 							"description": "Retro-inspired 2D puzzle game.",
 							"status": "in-dev",

@@ -168,7 +168,8 @@
 		min-width: 0;
 		padding: 20px;
 		border: 1px solid var(--color-blog-sidebar-border);
-		background: color-mix(in srgb, var(--color-content-bg) 94%, var(--color-content-flavor) 6%);
+		border-radius: 3px;
+		background-color: var(--color-blog-sidebar-bg);
 
 		h3 {
 			margin: 0 0 18px;
@@ -258,12 +259,85 @@
 		font-size: 0.78rem;
 	}
 
-	&__article {
-		max-width: 760px;
-		padding-bottom: 24px;
+	&__devlog {
+		margin: 36px 0 24px;
 
-		> div > :first-child {
+		> h3 {
+			margin: 0 0 16px;
+			color: var(--color-content-fg);
+			font-family: var(--font-heading);
+			font-size: 1.25rem;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			gap: 9px;
+
+			svg {
+				width: 19px;
+				height: 19px;
+				color: var(--color-content-flavor);
+			}
+		}
+	}
+
+	&__devlog-list {
+		display: grid;
+		gap: 12px;
+	}
+
+	&__devlog-post {
+		min-width: 0;
+		padding: 20px;
+		border: 1px solid var(--color-blog-sidebar-border);
+		border-radius: 3px;
+		background-color: var(--color-blog-sidebar-bg);
+	}
+
+	&__devlog-post-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 4px 14px;
+
+		h4 {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin: 0;
+			color: var(--color-content-fg);
+			font-family: var(--font-heading);
+			font-size: 1rem;
+			font-weight: 500;
+
+			svg {
+				flex: 0 0 auto;
+				width: 15px;
+				height: 15px;
+				color: var(--color-content-link);
+			}
+		}
+
+		time {
+			color: var(--color-content-link);
+			font-family: var(--font-code);
+			font-size: 0.82rem;
+			white-space: nowrap;
+		}
+	}
+
+	&__devlog-post-body {
+		margin-top: 8px;
+		color: var(--color-content-fg);
+		font-size: 0.88rem;
+		line-height: 1.55;
+
+		> :first-child {
 			margin-top: 0;
+		}
+
+		> :last-child {
+			margin-bottom: 0;
 		}
 	}
 
@@ -275,16 +349,16 @@
 		&__meta {
 			gap: 16px;
 		}
+
+		&__devlog-post {
+			padding: 18px;
+		}
 	}
 }
 
 :root.lightmode .project-page {
 	&__eyebrow {
 		color: var(--color-content-link);
-	}
-
-	&__info {
-		background: var(--color-blog-sidebar-bg);
 	}
 
 	&__download:not(:disabled) {
