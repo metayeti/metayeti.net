@@ -23,6 +23,7 @@
 
 // source paths for various content JSON files
 export const SRC_BLOG_LISTING = '/content/blog/listing.json';
+export const SRC_PROJECTS_LISTING = '/content/projects/listing.json';
 export const SRC_FUN_FACTS = '/content/static/fun_facts.json';
 
 // shortcode used in blog posts to indicate a page break (for pagination)

@@ -1,11 +1,94 @@
 {
-	"projects": [
+	"categories": [
 		{
-			"title": "Zorlax: The Undying",
-			"slug": "zorlax-the-undying",
-			"date-published": "2026-07-08",
-			"date-updated": "2026-07-08",
-			"description": "Retro-inspired 2D platformer game."
+			"id": "games",
+			"title": "Games",
+			"description": "Games I've made or I'm currently working on.",
+			"stack": "horizontal"
+		},
+		{
+			"id": "old",
+			"title": "Old",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			"stack": "vertical"
 		}
-	]
+	],
+	"projects": {
+		"games": [
+			{
+				"title": "Adventures of Zooz",
+				"slug": "adventures-of-zooz",
+				"date-published": "2026-07-08",
+				"date-updated": "2026-07-08",
+				"description": "Retro-inspired 2D puzzle game.",
+				"status": "in-dev",
+				"screenshots": ["1.png"]
+			},
+			{
+				"title": "Zorlax: The Undying",
+				"slug": "zorlax-the-undying",
+				"date-published": "2026-07-08",
+				"date-updated": "2026-07-08",
+				"description": "Retro-inspired 2D platformer game.",
+				"status": "in-dev",
+				"screenshots": ["1.png"]
+			}
+		],
+		"old": [
+			{
+				"title": "Tronix II",
+				"slug": "tronix-ii",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["tronix-ii.jpg"]
+			},
+			{
+				"title": "Powerblocks",
+				"slug": "powerblocks",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["powerblocks.jpg"]
+			},
+			{
+				"title": "Sumagi",
+				"slug": "sumagi",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["sumagi.jpg"]
+			},
+			{
+				"title": "Tonality",
+				"slug": "tonality",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["tonality.jpg"]
+			},
+			{
+				"title": "uVibes",
+				"slug": "uvibes",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["uvibes.jpg"]
+			},
+			{
+				"title": "Tronix",
+				"slug": "tronix",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["tronix.jpg"]
+			},
+			{
+				"title": "Blobby",
+				"slug": "blobby",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["blobby.jpg"]
+			},
+			{
+				"title": "Precision",
+				"slug": "precision",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["precision.jpg"]
+			},
+			{
+				"title": "Aquatica",
+				"slug": "aquatica",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				"screenshots": ["aquatica.jpg"]
+			}
+		]
+	}
 }
