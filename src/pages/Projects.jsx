@@ -23,6 +23,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import IconForward from '@/components/icons/IconForward';
 import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
 
 import './Projects.scss';
@@ -80,7 +81,7 @@ function ProjectCard({ project }) {
 						<p className="projects-page__project-description">{project.description}</p>
 					</div>
 					<span className="projects-page__link">
-						More <span aria-hidden="true">&rarr;</span>
+						More <IconForward aria-hidden="true" width="16" height="16" />
 					</span>
 				</div>
 			</Link>
