@@ -114,14 +114,14 @@
 							"title": "Eternal Winter",
 							"slug": "eternal-winter",
 							"path": "fheroes2",
-							"description": "A single-player adventure across a frozen wasteland to confront the wizard who cursed it.",
+							"description": "A single-player adventure map across a frozen wasteland to confront the wizard who cursed it.",
 							"screenshots": ["1.png", "2.png"]
 						},
 						{
 							"title": "Of Lands Unknown",
 							"slug": "of-lands-unknown",
 							"path": "fheroes2",
-							"description": "A single-player adventure following Sir Lyle, shipwrecked on an unknown shore and tasked with surviving and claiming new lands.",
+							"description": "A single-player adventure map following the story of Sir Lyle, shipwrecked on an unknown shore and tasked with surviving and claiming new lands.",
 							"screenshots": ["1.png", "2.png"]
 						}
 					]
