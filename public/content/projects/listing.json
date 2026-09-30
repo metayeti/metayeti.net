@@ -98,6 +98,86 @@
 					]
 				},
 				{
+					"id": "legacy-html5-games",
+					"title": "Legacy HTML5 games",
+					"description": "Some legacy web games and experiments, based on my own HTML5 engine.",
+					"display": "vertical-stack",
+					"projects": [
+						{
+							"title": "Tronix II",
+							"slug": "tronix-ii",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/tronix2/",
+							"description": "A graph-based puzzle game, greatly improved from the original.",
+							"screenshots": ["tronix-ii.jpg"]
+						},
+						{
+							"title": "Powerblocks",
+							"slug": "powerblocks",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/powerblocks/",
+							"description": "Game where you arrange blocks to form a full piece.",
+							"screenshots": ["powerblocks.jpg"]
+						},
+						{
+							"title": "Sumagi",
+							"slug": "sumagi",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/sumagi/",
+							"description": "Simple game where you're looking for a sum of numbers.",
+							"screenshots": ["sumagi.jpg"]
+						},
+						{
+							"title": "Tonality",
+							"slug": "tonality",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/tonality/",
+							"description": "Memory game, but you're looking for matching tones instead of images.",
+							"screenshots": ["tonality.jpg"]
+						},
+						{
+							"title": "uVibes",
+							"slug": "uvibes",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/uvibes11/",
+							"description": "Experimental project. A very basic melody maker.",
+							"screenshots": ["uvibes.jpg"]
+						},
+						{
+							"title": "Tronix",
+							"slug": "tronix",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/tronix11/",
+							"description": "Graph-based puzzle game.",
+							"screenshots": ["tronix.jpg"]
+						},
+						{
+							"title": "Blobby",
+							"slug": "blobby",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/blobby/",
+							"description": "A puzzle adventure where you guide Blobby to rescue his friends.",
+							"screenshots": ["blobby.jpg"]
+						},
+						{
+							"title": "Precision",
+							"slug": "precision",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/precision/",
+							"description": "A game where you guide your mouse cursor very precisely through a maze of obstacles.",
+							"screenshots": ["precision.jpg"]
+						},
+						{
+							"title": "Aquatica",
+							"slug": "aquatica",
+							"path": "legacy",
+							"playUrl": "https://pulzed.com/demo/aquatica/",
+							"description": "A simple fish clicker game.",
+							"screenshots": ["aquatica.jpg"]
+						}
+					]
+				},
+				{
 					"id": "fheroes2 maps",
 					"title": "fheroes2 maps",
 					"description": "Custom maps for fheroes2 (open source Heroes of Might and Magic II adaptation).",
@@ -123,77 +203,6 @@
 							"path": "fheroes2",
 							"description": "A single-player adventure map following the story of Sir Lyle, shipwrecked on an unknown shore and tasked with surviving and claiming new lands.",
 							"screenshots": ["1.png", "2.png"]
-						}
-					]
-				},
-				{
-					"id": "legacy-html5-games",
-					"title": "Legacy HTML5 games",
-					"description": "Some legacy web games and experiments, based on my own HTML5 engine.",
-					"display": "vertical-stack",
-					"projects": [
-						{
-							"title": "Tronix II",
-							"slug": "tronix-ii",
-							"path": "legacy",
-							"description": "A graph-based puzzle game, greatly improved from the original.",
-							"screenshots": ["tronix-ii.jpg"]
-						},
-						{
-							"title": "Powerblocks",
-							"slug": "powerblocks",
-							"path": "legacy",
-							"description": "Game where you arrange blocks to form a full piece.",
-							"screenshots": ["powerblocks.jpg"]
-						},
-						{
-							"title": "Sumagi",
-							"slug": "sumagi",
-							"path": "legacy",
-							"description": "Simple game where you're looking for a sum of numbers.",
-							"screenshots": ["sumagi.jpg"]
-						},
-						{
-							"title": "Tonality",
-							"slug": "tonality",
-							"path": "legacy",
-							"description": "Memory game, but you're looking for matching tones instead of images.",
-							"screenshots": ["tonality.jpg"]
-						},
-						{
-							"title": "uVibes",
-							"slug": "uvibes",
-							"path": "legacy",
-							"description": "Experimental project. A very basic melody maker.",
-							"screenshots": ["uvibes.jpg"]
-						},
-						{
-							"title": "Tronix",
-							"slug": "tronix",
-							"path": "legacy",
-							"description": "Graph-based puzzle game.",
-							"screenshots": ["tronix.jpg"]
-						},
-						{
-							"title": "Blobby",
-							"slug": "blobby",
-							"path": "legacy",
-							"description": "A puzzle adventure where you guide Blobby to rescue his friends.",
-							"screenshots": ["blobby.jpg"]
-						},
-						{
-							"title": "Precision",
-							"slug": "precision",
-							"path": "legacy",
-							"description": "A game where you guide your mouse cursor very precisely through a maze of obstacles.",
-							"screenshots": ["precision.jpg"]
-						},
-						{
-							"title": "Aquatica",
-							"slug": "aquatica",
-							"path": "legacy",
-							"description": "A simple fish clicker game.",
-							"screenshots": ["aquatica.jpg"]
 						}
 					]
 				}

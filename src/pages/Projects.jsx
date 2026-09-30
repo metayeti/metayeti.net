@@ -25,6 +25,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import IconForward from '@/components/icons/IconForward';
 import IconGitHub from '@/components/icons/IconGitHub';
+import IconPlay from '@/components/icons/IconPlay';
 import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
 
 import './Projects.scss';
@@ -41,9 +42,10 @@ function ProjectCard({ project }) {
 	const [animationFailed, setAnimationFailed] = useState(false);
 	const screenshot = project.screenshots?.[0];
 	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
-	const CardLink = project.githubUrl ? 'a' : Link;
-	const cardLinkProps = project.githubUrl
-		? { href: project.githubUrl, target: '_blank', rel: 'noopener noreferrer' }
+	const externalUrl = project.githubUrl || project.playUrl;
+	const CardLink = externalUrl ? 'a' : Link;
+	const cardLinkProps = externalUrl
+		? { href: externalUrl, target: '_blank', rel: 'noopener noreferrer' }
 		: { to: `/projects/${projectPath}` };
 	const screenshotUrl = screenshot ? `/content/projects/${projectPath}/screenshots/${screenshot}` : null;
 	const animatedUrl = project.animated ? `/content/projects/${projectPath}/screenshots/${project.animated}` : null;
@@ -102,6 +104,10 @@ function ProjectCard({ project }) {
 						{project.githubUrl ? (
 							<>
 								GitHub <IconGitHub aria-hidden="true" width="16" height="16" />
+							</>
+						) : project.playUrl ? (
+							<>
+								Play <IconPlay aria-hidden="true" width="16" height="16" />
 							</>
 						) : (
 							<>
