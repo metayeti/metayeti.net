@@ -60,9 +60,76 @@
 			"title": "More",
 			"sections": [
 				{
-					"id": "html5-games",
-					"title": "HTML5 games",
-					"description": "Some older web games and experiments. Based on my own HTML5 engine.",
+					"id": "Open Source projects",
+					"title": "Open Source projects",
+					"description": "Libraries and tools I've published on GitHub.",
+					"display": "full",
+					"projects": [
+						{
+							"title": "mINI",
+							"slug": "mini",
+							"githubUrl": "https://github.com/metayeti/mINI",
+							"description": "Popular header-only C++ library for reading and writing INI files."
+						},
+						{
+							"title": "Lime",
+							"slug": "lime",
+							"githubUrl": "https://github.com/metayeti/Lime",
+							"description": "A data asset packer for C++ game development."
+						},
+						{
+							"title": "YABS.js",
+							"slug": "yabs-js",
+							"githubUrl": "https://github.com/metayeti/YABS.js",
+							"description": "A dumb build system for legacy JavaScript projects and task automation."
+						},
+						{
+							"title": "stint",
+							"slug": "stint",
+							"githubUrl": "https://github.com/metayeti/stint",
+							"description": "A simple console-based time tracker with text file output."
+						},
+						{
+							"title": "MIDIFileWriter.js",
+							"slug": "midifilewriter-js",
+							"githubUrl": "https://github.com/metayeti/MIDIFileWriter.js",
+							"description": "A basic MIDI file writer that runs in the browser."
+						}
+					]
+				},
+				{
+					"id": "fheroes2 maps",
+					"title": "fheroes2 maps",
+					"description": "Custom maps for fheroes2 (open source Heroes of Might and Magic II adaptation).",
+					"display": "vertical-stack",
+					"projects": [
+						{
+							"title": "Lone Shore",
+							"slug": "lone-shore",
+							"path": "fheroes2",
+							"description": "A large multiplayer map set along a vast shoreline, where four kingdoms compete for dominance.",
+							"screenshots": ["1.png", "2.png", "3.png"]
+						},
+						{
+							"title": "Eternal Winter",
+							"slug": "eternal-winter",
+							"path": "fheroes2",
+							"description": "A single-player adventure across a frozen wasteland to confront the wizard who cursed it.",
+							"screenshots": ["1.png", "2.png"]
+						},
+						{
+							"title": "Of Lands Unknown",
+							"slug": "of-lands-unknown",
+							"path": "fheroes2",
+							"description": "A single-player adventure following Sir Lyle, shipwrecked on an unknown shore and tasked with surviving and claiming new lands.",
+							"screenshots": ["1.png", "2.png"]
+						}
+					]
+				},
+				{
+					"id": "legacy-html5-games",
+					"title": "Legacy HTML5 games",
+					"description": "Some legacy web games and experiments, based on my own HTML5 engine.",
 					"display": "vertical-stack",
 					"projects": [
 						{
