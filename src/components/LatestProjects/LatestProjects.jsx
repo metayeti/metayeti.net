@@ -21,21 +21,96 @@
 //  TODO:         -
 //
 
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
 
 import './LatestProjects.scss';
 
+function FeaturedProjectCard({ project, index }) {
+	const [isHovered, setIsHovered] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
+	const [animationFailed, setAnimationFailed] = useState(false);
+	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
+	const screenshotUrl = `/content/projects/${projectPath}/screenshots/${project.screenshots[0]}`;
+	const animatedUrl = project.animated ? `/content/projects/${projectPath}/screenshots/${project.animated}` : null;
+	const isPreviewActive = (isHovered || isFocused) && animatedUrl && !animationFailed;
+	const imageUrl = isPreviewActive ? animatedUrl : screenshotUrl;
+
+	return (
+		<Link
+			className="latest-projects__card"
+			to={`/projects/${projectPath}`}
+			style={{ '--card-index': index }}
+			onPointerEnter={() => setIsHovered(true)}
+			onPointerLeave={() => setIsHovered(false)}
+			onFocus={() => setIsFocused(true)}
+			onBlur={() => setIsFocused(false)}
+		>
+			<img
+				src={imageUrl}
+				alt={`${project.title} screenshot`}
+				loading="lazy"
+				onError={(event) => {
+					if (isPreviewActive) {
+						setAnimationFailed(true);
+						return;
+					}
+					event.currentTarget.hidden = true;
+				}}
+			/>
+		</Link>
+	);
+}
+
 export default function LatestProjects() {
-	const projectsToShow = 3;
+	const [projects, setProjects] = useState([]);
+
+	useEffect(() => {
+		let isCurrent = true;
+
+		async function loadFeaturedProjects() {
+			try {
+				const listing = await loadJSON(SRC_PROJECTS_LISTING);
+				const allProjects = (listing.categories ?? []).flatMap((category) =>
+					(category.sections ?? []).flatMap((section) => section.projects ?? []),
+				);
+				const featuredProjects = (listing.featured ?? [])
+					.map((featured) =>
+						allProjects.find(
+							(project) =>
+								project.slug === featured.slug && (project.path ?? '') === (featured.path ?? ''),
+						),
+					)
+					.filter((project) => project?.screenshots?.[0])
+					.slice(0, 6);
+
+				if (isCurrent) setProjects(featuredProjects);
+			} catch (error) {
+				console.error('Failed to load featured projects:', error);
+			}
+		}
+
+		loadFeaturedProjects();
+		return () => {
+			isCurrent = false;
+		};
+	}, []);
 
 	return (
 		<div className="latest-projects">
-			<div>Under construction.</div>
-			{/* {MOCK_PROJECTS.length > projectsToShow && ( */}
+			<div className="latest-projects__stack">
+				{projects.map((project, index) => (
+					<FeaturedProjectCard
+						key={`${project.path ?? ''}/${project.slug}`}
+						project={project}
+						index={index}
+					/>
+				))}
+			</div>
 			<div className="latest-projects__more">
 				<Link to="/projects">More &middot;&middot;&middot;</Link>
 			</div>
-			{/* )} */}
 		</div>
 	);
 }

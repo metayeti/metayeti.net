@@ -3,112 +3,95 @@
 .latest-projects {
 	&__stack {
 		display: flex;
-		flex-direction: row-reverse;
-		justify-content: flex-end;
-		gap: 0;
-		padding: 10px 0 20px;
+		align-items: center;
+		margin: 0;
+		padding: 10px 0 16px;
+		list-style: none;
+		overflow: visible;
 	}
 
 	&__card {
 		position: relative;
-		display: flex;
-		flex-direction: column;
-		width: 200px;
-		flex-shrink: 0;
-		margin-right: -60px;
-		border: 1px solid var(--color-blog-sidebar-border);
-		border-radius: 6px;
+		display: block;
+		flex: 0 0 auto;
+		width: max-content;
+		margin-left: -20px;
+		border: 3px solid var(--color-blog-sidebar-border);
 		background-color: var(--color-content-bg);
-		overflow: hidden;
+		cursor: pointer;
 		text-decoration: none !important;
-		box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.3);
-		z-index: calc(10 - var(--card-index));
-		transition:
-			transform 0.25s ease,
-			box-shadow 0.25s ease,
-			border-color 0.2s;
-
-		@include responsive.size('sm') {
-			width: 230px;
-			margin-right: -70px;
-		}
-
-		@include responsive.size('md') {
-			width: 260px;
-			margin-right: -80px;
-		}
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+		z-index: calc(10 - var(--card-index, 0));
+		transition: scale 80ms ease-in-out;
 
 		&:first-child {
-			margin-right: 0;
+			margin-left: 0;
+			scale: 1.1;
 		}
 
-		&:hover {
-			transform: translateY(-10px);
-			box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.45);
-			border-color: var(--color-content-link--hover);
-			z-index: 20;
+		&:hover,
+		&:focus-visible {
+			scale: 1.2;
+			z-index: 99;
 		}
-	}
 
-	&__card-img {
-		width: 100%;
-		aspect-ratio: 16 / 9;
-		background: linear-gradient(145deg, #16192a 0%, #0c1020 50%, #1a2538 100%);
-		border-bottom: 1px solid var(--color-blog-sidebar-border);
-		flex-shrink: 0;
-	}
+		&:focus-visible {
+			outline: 2px solid var(--color-content-flavor);
+			outline-offset: 3px;
+		}
 
-	&__card-body {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-		padding: 10px 12px;
-	}
-
-	&__card-title {
-		font-family: var(--font-heading);
-		font-size: 0.95rem;
-		font-weight: 600;
-		color: var(--color-content-fg);
-		margin: 0 0 4px 0 !important;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		transition: color 0.15s;
-
-		.latest-projects__card:hover & {
-			color: var(--color-content-link--hover);
+		img {
+			display: block;
+			height: auto;
+			width: auto;
+			max-width: none;
+			max-height: 130px;
 		}
 	}
 
-	&__card-desc {
-		font-size: 0.78rem;
-		line-height: 1.25rem;
-		opacity: 0.6;
-		padding-bottom: 6px !important;
-		flex-grow: 1;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
+	@include responsive.size('sm') {
+		&__card img {
+			max-height: 150px;
+		}
 	}
 
-	&__card-tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 4px;
+	@include responsive.size('md') {
+		&__card img {
+			max-height: 170px;
+		}
 	}
 
-	&__card-tag {
-		padding: 1px 7px;
-		font-size: 0.7rem;
-		color: var(--color-content-link);
-		border: 1px solid var(--color-blog-sidebar-border);
-		border-radius: 3px;
+	@include responsive.size('lg') {
+		&__card img {
+			max-height: 185px;
+		}
+	}
+
+	@include responsive.size('xl') {
+		&__card img {
+			max-height: 200px;
+		}
+	}
+
+	@include responsive.below('lg') {
+		&__card:nth-child(n + 6) {
+			display: none;
+		}
+	}
+
+	@include responsive.below('md') {
+		&__card:nth-child(n + 5) {
+			display: none;
+		}
+	}
+
+	@include responsive.below('sm') {
+		&__card:nth-child(n + 3) {
+			display: none;
+		}
 	}
 
 	&__more {
-		margin-top: 42px;
+		margin-top: 40px;
 	}
 }
