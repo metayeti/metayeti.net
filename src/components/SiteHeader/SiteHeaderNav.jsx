@@ -27,6 +27,7 @@ import clsx from 'clsx';
 import { isMobile } from 'react-device-detect';
 import RockerSwitch from '@/components/ui/RockerSwitch';
 import IconFlame from '@/components/icons/IconFlame';
+import { THEME_ROCKER_ON } from '@/util';
 import './SiteHeaderNav.scss';
 
 const LINKS = [
@@ -120,18 +121,17 @@ function NavLinkButton({ to, label }) {
 }
 
 export default function SiteHeaderNav() {
-	const [isLit, setIsLit] = useState(() => {
+	const [isAltDark, setIsAltDark] = useState(() => {
 		if (typeof window !== 'undefined') {
-			const saved = localStorage.getItem('lightmode');
-			return saved === '1';
+			return localStorage.getItem('site-theme') === THEME_ROCKER_ON;
 		}
 		return false;
 	});
 
 	useEffect(() => {
-		document.documentElement.classList.toggle('lightmode', isLit);
-		localStorage.setItem('lightmode', isLit ? '1' : '0');
-	}, [isLit]);
+		document.documentElement.classList.toggle(THEME_ROCKER_ON, isAltDark);
+		localStorage.setItem('site-theme', isAltDark ? THEME_ROCKER_ON : 'default');
+	}, [isAltDark]);
 
 	return (
 		<nav className="site-header-nav">
@@ -144,11 +144,16 @@ export default function SiteHeaderNav() {
 					</ul>
 				</div>
 				<div className="site-header-nav__side">
-					<div className={clsx('site-header-nav__side-icon', isLit && 'site-header-nav__side-icon--active')}>
+					<div
+						className={clsx(
+							'site-header-nav__side-icon',
+							isAltDark && 'site-header-nav__side-icon--active',
+						)}
+					>
 						<IconFlame />
 					</div>
 					<div className="site-header-nav__side-switch">
-						<RockerSwitch initialToggled={isLit} onSwitchToggle={setIsLit} />
+						<RockerSwitch initialToggled={isAltDark} onSwitchToggle={setIsAltDark} />
 					</div>
 				</div>
 			</div>
