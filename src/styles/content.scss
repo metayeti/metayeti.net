@@ -253,6 +253,10 @@
 		}
 	}
 
+	:root.lightmode & img.bordered {
+		background-color: var(--color-content-code-bg);
+	}
+
 	// -- image caption --
 	.caption {
 		font-size: 1rem;

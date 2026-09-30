@@ -72,6 +72,10 @@
 		}
 	}
 
+	:root.lightmode &__card {
+		border-color: #fff;
+	}
+
 	@include responsive.size('sm') {
 		&__card img {
 			max-height: 150px;

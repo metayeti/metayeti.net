@@ -353,3 +353,61 @@
 #metayeti > main .projects-page__link:hover {
 	color: var(--color-content-fg);
 }
+
+:root.lightmode .projects-page {
+	--projects-surface: var(--color-blog-sidebar-bg);
+
+	.projects-page__tabs {
+		border-color: var(--color-blog-sidebar-border);
+		background: var(--color-blog-sidebar-bg);
+		backdrop-filter: none;
+	}
+
+	.projects-page__tab {
+		border-color: var(--color-blog-sidebar-border);
+		border-radius: 3px;
+		background-color: var(--color-blog-sidebar-searchbox);
+
+		&:hover {
+			border-color: var(--color-content-link--hover);
+			background-color: var(--color-blog-sidebar-searchbox);
+			color: var(--color-content-link--hover);
+		}
+
+		&--active {
+			border-color: var(--color-content-flavor);
+			background-color: var(--color-blog-sidebar-searchbox);
+			color: var(--color-content-flavor);
+		}
+	}
+
+	.projects-page__project {
+		background: var(--color-blog-sidebar-bg);
+
+		&:hover,
+		&:focus-visible {
+			border-color: var(--color-content-link--hover);
+			background-color: var(--color-blog-sidebar-searchbox);
+		}
+	}
+
+	.projects-page__status {
+		border-color: var(--color-blog-sidebar-border);
+		background: var(--color-blog-sidebar-searchbox);
+		color: var(--color-content-link);
+		opacity: 1;
+	}
+
+	.projects-page__image {
+		background-color: var(--color-blog-sidebar-searchbox);
+		background-image: none;
+	}
+}
+
+:root.lightmode #metayeti > main .projects-page__link {
+	color: var(--color-content-link);
+
+	&:hover {
+		color: var(--color-content-link--hover);
+	}
+}

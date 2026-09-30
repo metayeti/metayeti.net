@@ -277,3 +277,45 @@
 		}
 	}
 }
+
+:root.lightmode .project-page {
+	&__eyebrow {
+		color: var(--color-content-link);
+	}
+
+	&__info {
+		background: var(--color-blog-sidebar-bg);
+	}
+
+	&__download:not(:disabled) {
+		border-color: var(--color-blog-sidebar-border);
+		background: var(--color-blog-sidebar-searchbox);
+		color: var(--color-content-fg);
+
+		&:hover {
+			border-color: var(--color-content-link--hover);
+			color: var(--color-content-link--hover);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--color-content-flavor);
+			outline-offset: 2px;
+		}
+	}
+
+	.image-gallery__stage {
+		border-color: var(--color-blog-sidebar-border);
+		background: var(--color-content-code-bg);
+		box-shadow: 0 8px 24px rgba(42, 61, 77, 0.08);
+	}
+
+	.image-gallery__arrow:hover:not(:disabled),
+	.image-gallery__count {
+		color: var(--color-content-link);
+	}
+
+	.image-gallery__thumbnail {
+		background: var(--color-content-bg);
+		opacity: 0.8;
+	}
+}

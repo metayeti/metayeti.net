@@ -22,6 +22,17 @@
 //
 
 .blog-page {
+	:root.lightmode &__search-input {
+		&::placeholder {
+			color: var(--color-content-link);
+			opacity: 0.75;
+		}
+
+		&:focus {
+			background-color: var(--color-content-bg);
+		}
+	}
+
 	// -- year groups --
 	&__year-group {
 		padding-bottom: 60px;
