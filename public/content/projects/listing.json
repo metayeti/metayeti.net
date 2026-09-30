@@ -39,9 +39,9 @@
 			"title": "More",
 			"sections": [
 				{
-					"id": "legacy-html5-games",
-					"title": "Legacy HTML5 games",
-					"description": "Some legacy web games and experiments. Based on my own HTML5 engine.",
+					"id": "html5-games",
+					"title": "HTML5 games",
+					"description": "Some older web games and experiments. Based on my own HTML5 engine.",
 					"display": "vertical-stack",
 					"projects": [
 						{

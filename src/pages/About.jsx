@@ -101,8 +101,8 @@ export default function About() {
 					<span className="hex-about__sys-label">SYS.ID</span>
 					<h2>Danijel</h2>
 					<p>
-						I'm a programmer with a passion for videogames. I build games, software, websites and
-						interactive digital content.
+						I'm a programmer and an artist with a passion for videogames. I build games, software, websites
+						and interactive digital content.
 					</p>
 				</HexNode>
 				<div className="hex-about__branch" />
@@ -136,8 +136,9 @@ export default function About() {
 				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">NET.INFO</span>
 					<h2>This Website</h2>
-					<p>My own little digital garden within the cyberspace.</p>
-					<p>Runs on a custom markdown-driven codebase.</p>
+					<p>My own little digital garden inside cyberspace.</p>
+					<p>React-based SPA on a custom, markdown-driven codebase. Source is available on GitHub.</p>
+					<p>Zero ads, zero tracking.</p>
 				</HexNode>
 				<div className="hex-about__branch" />
 				<div className="hex-about__satellites">
@@ -257,12 +258,12 @@ export default function About() {
 					<span className="hex-about__sys-label">SKILL.LOG</span>
 					<h2>Skills</h2>
 					<p>
-						Started programming at age 9 in Visual Basic 3. Evolved through VB5/6, C, Pascal, C++, C#, Java,
-						Python, PHP, JavaScript and many others.
+						I started programming at the age of 9 in Visual Basic 3. I then evolved through VB5/6, C,
+						Pascal, C++, C#, Java, Python, PHP, JavaScript and many others.
 					</p>
 					<p>
-						Favorite languages: C++ for raw power, JavaScript for eloquent simplicity. Pixel art for games,
-						FL Studio for composing tracks.
+						My favorite languages are C++ for raw power, and JavaScript for eloquent simplicity. I also make
+						pixel art, compose music and write.
 					</p>
 				</HexNode>
 				<div className="hex-about__branch" />
@@ -302,6 +303,7 @@ export default function About() {
 				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">COMMS.SYS</span>
 					<h2>Contact</h2>
+					<p>If you wish to hire me, send an email to:</p>
 					<p>
 						<a href="mailto:metayetidev@gmail.com" className="nocaps email">
 							metayetidev@gmail.com
