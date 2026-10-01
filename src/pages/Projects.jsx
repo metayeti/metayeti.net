@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-01
-//  Updated:      2026-09-30
+//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -41,6 +41,7 @@ function ProjectCard({ project }) {
 	const [isPreviewReady, setIsPreviewReady] = useState(false);
 	const [animationFailed, setAnimationFailed] = useState(false);
 	const screenshot = project.screenshots?.[0];
+	const progress = Number.isFinite(project.progress) ? Math.min(100, Math.max(0, project.progress)) : null;
 	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
 	const externalUrl = project.githubUrl || project.playUrl;
 	const CardLink = externalUrl ? 'a' : Link;
@@ -100,6 +101,26 @@ function ProjectCard({ project }) {
 						<h4 className="projects-page__project-title">{project.title}</h4>
 						<p className="projects-page__project-description">{project.description}</p>
 					</div>
+					{progress !== null && (
+						<div
+							className="projects-page__progress"
+							role="meter"
+							aria-label={`${project.title} development progress`}
+							aria-valuemin="0"
+							aria-valuemax="100"
+							aria-valuenow={progress}
+						>
+							<span className="projects-page__progress-label" aria-hidden="true">
+								Progress
+							</span>
+							<span className="projects-page__progress-track" aria-hidden="true">
+								<span style={{ width: `${progress}%` }} />
+							</span>
+							<span className="projects-page__progress-value" aria-hidden="true">
+								{progress}%
+							</span>
+						</div>
+					)}
 					<span className="projects-page__link">
 						{project.githubUrl ? (
 							<>
@@ -111,7 +132,8 @@ function ProjectCard({ project }) {
 							</>
 						) : (
 							<>
-								More <IconForward aria-hidden="true" width="16" height="16" />
+								More
+								<IconForward aria-hidden="true" width="16" height="16" />
 							</>
 						)}
 					</span>

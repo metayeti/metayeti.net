@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-18
-//  Updated:      2026-09-30
+//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -141,6 +141,60 @@
 				width: 100%;
 				height: 100%;
 				object-fit: contain;
+				transition: transform 0.25s ease;
+			}
+
+			.projects-page__project:hover .projects-page__image img,
+			.projects-page__project:focus-visible .projects-page__image img {
+				transform: scale(1.015);
+			}
+
+			.projects-page__project-title::after {
+				display: block;
+				width: 22px;
+				height: 1px;
+				margin-top: 8px;
+				background-color: var(--color-content-flavor);
+				content: '';
+				opacity: 0.55;
+				transition:
+					width 0.2s ease,
+					opacity 0.2s ease;
+			}
+
+			.projects-page__project:hover .projects-page__project-title::after,
+			.projects-page__project:focus-visible .projects-page__project-title::after {
+				width: 34px;
+				opacity: 0.85;
+			}
+
+			.projects-page__progress {
+				display: grid;
+				grid-template-columns: auto minmax(2rem, 1fr) auto;
+				align-items: center;
+				gap: 10px;
+				width: 100%;
+				color: var(--color-content-link);
+				font-family: var(--font-code);
+				font-size: 0.68rem;
+				line-height: 1;
+				text-transform: uppercase;
+			}
+
+			.projects-page__progress-track {
+				display: block;
+				height: 2px;
+				background-color: var(--color-blog-sidebar-border);
+
+				span {
+					display: block;
+					height: 100%;
+					background-color: var(--color-content-flavor);
+				}
+			}
+
+			.projects-page__progress-value {
+				color: var(--color-content-flavor);
 			}
 
 			@include responsive.below('sm') {
@@ -337,6 +391,7 @@
 		}
 	}
 }
+
 #metayeti > main .projects-page__project-title {
 	margin: 0;
 }
