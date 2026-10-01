@@ -32,8 +32,8 @@ export default function Home() {
 		<div className="home-page wrapped">
 			<div className="home-page__yeti"></div>
 			<section>
-				<h2>Ahoy!</h2>
-				<p>Hey there! I'm Danijel. Welcome to my online abode.</p>
+				<h2>Hi!</h2>
+				<p>Ahoy there! I'm Danijel. Welcome to my online abode.</p>
 				<p>
 					I'm a game developer from Slovenia. I create <Link to="/projects">videogames</Link>
 					<br className="responsive-break" /> and{' '}
