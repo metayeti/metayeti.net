@@ -7,4 +7,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 </IfModule>
+<IfModule mod_headers.c>
+    <FilesMatch "^(index\.html|listing\.json)$">
+        Header always set Cache-Control "no-cache, max-age=0, must-revalidate"
+    </FilesMatch>
+</IfModule>
 # END metayeti.net
