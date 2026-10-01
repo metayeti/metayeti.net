@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-20
-//  Updated:      2026-06-18
+//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -28,7 +28,7 @@ import IconPages from '@/components/icons/IconPages';
 import IconDownload from '@/components/icons/IconDownload';
 import IconChevronLeft from '@/components/icons/IconChevronLeft';
 import IconChevronRight from '@/components/icons/IconChevronRight';
-import ImageGallery from '@/components/ImageGallery/ImageGallery';
+import ImageGallery from '@/components/ImageGallery';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {

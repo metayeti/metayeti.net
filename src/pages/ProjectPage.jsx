@@ -13,7 +13,7 @@
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
 //  Created:      2026-03-18
-//  Updated:      2026-09-30
+//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -23,7 +23,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import ImageGallery from '@/components/ImageGallery/ImageGallery';
+import ImageGallery from '@/components/ImageGallery';
 import IconDownload from '@/components/icons/IconDownload';
 import IconBack from '@/components/icons/IconBack';
 import IconCalendar from '@/components/icons/IconCalendar';

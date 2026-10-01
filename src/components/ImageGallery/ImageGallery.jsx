@@ -1,3 +1,26 @@
+//
+//  metayeti.net
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  Copyright (c) 2026-present metayeti.net
+//  All rights reserved.
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  File:         src/components/ImageGallery/ImageGallery.jsx
+//  Description:  Image gallery component.
+//
+//  Author:       Danijel Durakovic <metayetidev@gmail.com>
+//  Created:      2026-09-30
+//  Updated:      2026-10-01
+//
+//  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  NOTE:         -
+//  TODO:         -
+//
+
 import { useEffect, useRef, useState } from 'react';
 import IconChevronLeft from '@/components/icons/IconChevronLeft';
 import IconChevronRight from '@/components/icons/IconChevronRight';
