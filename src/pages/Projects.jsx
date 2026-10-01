@@ -128,12 +128,23 @@ function ProjectCard({ project }) {
 							</>
 						) : project.playUrl ? (
 							<>
-								Play <IconPlay aria-hidden="true" width="16" height="16" />
+								Play{' '}
+								<IconPlay
+									className="projects-page__link-icon--bounce"
+									aria-hidden="true"
+									width="16"
+									height="16"
+								/>
 							</>
 						) : (
 							<>
 								More
-								<IconForward aria-hidden="true" width="16" height="16" />
+								<IconForward
+									className="projects-page__link-icon--bounce"
+									aria-hidden="true"
+									width="16"
+									height="16"
+								/>
 							</>
 						)}
 					</span>

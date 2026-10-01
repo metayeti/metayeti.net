@@ -274,9 +274,24 @@
 			background-color: color-mix(in srgb, var(--projects-surface) 94%, var(--color-content-flavor) 6%);
 		}
 
+		&:hover .projects-page__link-icon--bounce,
+		&:focus-visible .projects-page__link-icon--bounce {
+			animation: project-icon-bounce 0.75s ease-in-out infinite;
+		}
+
 		&:focus-visible {
 			outline: 2px solid var(--color-content-flavor);
 			outline-offset: 3px;
+		}
+	}
+
+	@keyframes project-icon-bounce {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+		50% {
+			transform: translateX(4px);
 		}
 	}
 
