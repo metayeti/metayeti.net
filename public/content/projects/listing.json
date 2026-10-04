@@ -1,10 +1,7 @@
 {
 	"featured": [
 		{ "path": "games", "slug": "adventures-of-zooz" },
-		{ "path": "games", "slug": "zorlax-the-undying" },
-		{ "path": "legacy", "slug": "tronix-ii" },
-		{ "path": "legacy", "slug": "powerblocks" },
-		{ "path": "legacy", "slug": "tonality" }
+		{ "path": "games", "slug": "zorlax-the-undying" }
 	],
 	"categories": [
 		{
