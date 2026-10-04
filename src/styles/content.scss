@@ -101,15 +101,16 @@
 			margin-top: 4vh;
 		}
 
-		// a short decorative line under h3 headings
+		// a decorative line in front of h3 headings
 		&::before {
 			content: '';
 			display: block;
 			position: absolute;
-			width: 19px;
-			height: 1px;
+			width: 2px;
+			height: 31px;
 			background-color: var(--color-content-flavor);
-			bottom: -4px;
+			left: -15px;
+			top: 5px;
 		}
 	}
 
