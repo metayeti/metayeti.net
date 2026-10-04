@@ -174,35 +174,6 @@
 							"screenshots": ["aquatica.jpg"]
 						}
 					]
-				},
-				{
-					"id": "fheroes2 maps",
-					"title": "fheroes2 maps",
-					"description": "Custom maps for fheroes2 (open source Heroes of Might and Magic II adaptation).",
-					"display": "vertical-stack",
-					"projects": [
-						{
-							"title": "Lone Shore",
-							"slug": "lone-shore",
-							"path": "fheroes2",
-							"description": "A large multiplayer map set along a vast shoreline, where four kingdoms compete for dominance.",
-							"screenshots": ["1.png", "2.png", "3.png"]
-						},
-						{
-							"title": "Eternal Winter",
-							"slug": "eternal-winter",
-							"path": "fheroes2",
-							"description": "A single-player adventure across a frozen wasteland to confront the wizard who cursed it.",
-							"screenshots": ["1.png", "2.png"]
-						},
-						{
-							"title": "Of Lands Unknown",
-							"slug": "of-lands-unknown",
-							"path": "fheroes2",
-							"description": "A single-player adventure map following the story of Sir Lyle, shipwrecked on an unknown shore and tasked with surviving and claiming new lands.",
-							"screenshots": ["1.png", "2.png"]
-						}
-					]
 				}
 			]
 		}
