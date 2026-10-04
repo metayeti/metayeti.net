@@ -26,8 +26,8 @@ import { Link, useParams } from 'react-router-dom';
 import ImageGallery from '@/components/ImageGallery';
 import IconDownload from '@/components/icons/IconDownload';
 import IconBack from '@/components/icons/IconBack';
-import IconCalendar from '@/components/icons/IconCalendar';
-import IconPages from '@/components/icons/IconPages';
+import IconCode from '@/components/icons/IconCode';
+import IconPost from '@/components/icons/IconPost';
 import ProjectComments from '@/components/extras/ProjectComments';
 import { getHumanReadableDate, loadJSON, loadText, md, SRC_PROJECTS_LISTING } from '@/util';
 
@@ -240,7 +240,7 @@ export default function ProjectPage() {
 			{project.devlog && (
 				<section className="project-page__devlog" aria-labelledby="project-devlog-title">
 					<h3 id="project-devlog-title">
-						<IconPages aria-hidden="true" />
+						<IconCode aria-hidden="true" />
 						Devlog
 					</h3>
 					<div className="project-page__devlog-list">
@@ -248,7 +248,7 @@ export default function ProjectPage() {
 							<article className="project-page__devlog-post" key={post.slug}>
 								<header className="project-page__devlog-post-header">
 									<h4>
-										<IconCalendar aria-hidden="true" />
+										<IconPost aria-hidden="true" />
 										{post.title}
 									</h4>
 									<time dateTime={post['date-published']}>
