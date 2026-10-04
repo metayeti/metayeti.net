@@ -120,6 +120,34 @@
 			grid-template-columns: minmax(0, 1fr);
 			gap: 24px;
 
+			.projects-page__project {
+				background-image: linear-gradient(
+					145deg,
+					color-mix(in srgb, var(--color-content-fg) 7%, transparent),
+					transparent 42%,
+					color-mix(in srgb, var(--color-content-flavor) 4%, transparent)
+				);
+				backdrop-filter: blur(10px) saturate(125%);
+
+				&::before {
+					position: absolute;
+					z-index: 1;
+					inset: 0;
+					border: 8px solid color-mix(in srgb, var(--color-content-fg) 6%, transparent);
+					box-shadow:
+						inset 0 1px 0 color-mix(in srgb, var(--color-content-fg) 18%, transparent),
+						inset 0 -1px 0 color-mix(in srgb, var(--color-content-fg) 6%, transparent);
+					content: '';
+					pointer-events: none;
+					transition: border-color 0.2s ease;
+				}
+
+				&:hover::before,
+				&:focus-visible::before {
+					border-color: color-mix(in srgb, var(--color-content-flavor) 12%, transparent);
+				}
+			}
+
 			.projects-page__entry {
 				width: 100%;
 			}
@@ -468,7 +496,7 @@
 	}
 
 	.projects-page__project {
-		background: var(--color-blog-sidebar-bg);
+		background-color: var(--color-blog-sidebar-bg);
 
 		&:hover,
 		&:focus-visible {
