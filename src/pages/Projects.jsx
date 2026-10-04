@@ -23,7 +23,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import IconForward from '@/components/icons/IconForward';
+import IconChevronRight from '@/components/icons/IconChevronRight';
 import IconGitHub from '@/components/icons/IconGitHub';
 import IconPlay from '@/components/icons/IconPlay';
 import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
@@ -139,7 +139,7 @@ function ProjectCard({ project }) {
 						) : (
 							<>
 								More
-								<IconForward
+								<IconChevronRight
 									className="projects-page__link-icon--bounce"
 									aria-hidden="true"
 									width="16"

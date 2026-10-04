@@ -178,12 +178,21 @@ export default function ProjectPage() {
 								<dt>Progress</dt>
 								<dd>
 									{hasProgress ? (
-										<>
-											<progress max="100" value={project.progress}>
+										<div
+											className="project-page__progress"
+											role="meter"
+											aria-label={`${project.title} development progress`}
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-valuenow={project.progress}
+										>
+											<span className="project-page__progress-track" aria-hidden="true">
+												<span style={{ width: `${project.progress}%` }} />
+											</span>
+											<span className="project-page__progress-value" aria-hidden="true">
 												{project.progress}%
-											</progress>
-											<span>{project.progress}%</span>
-										</>
+											</span>
+										</div>
 									) : (
 										<span>Not set</span>
 									)}

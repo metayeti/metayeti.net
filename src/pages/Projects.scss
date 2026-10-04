@@ -276,7 +276,7 @@
 
 		&:hover .projects-page__link-icon--bounce,
 		&:focus-visible .projects-page__link-icon--bounce {
-			animation: project-icon-bounce 0.75s ease-in-out infinite;
+			animation: project-icon-bounce 0.75s ease-in-out 0.4s infinite;
 		}
 
 		&:focus-visible {

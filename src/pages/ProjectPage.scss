@@ -205,23 +205,33 @@
 		}
 	}
 
-	&__progress-row dd {
-		display: flex;
+	&__progress {
+		display: grid;
+		grid-template-columns: minmax(2rem, 1fr) auto;
 		align-items: center;
 		gap: 10px;
+		width: 100%;
+		color: var(--color-content-link);
+		font-family: var(--font-code);
+		font-size: 0.68rem;
+		line-height: 1;
+		text-transform: uppercase;
+	}
 
-		progress {
-			width: 100%;
-			min-width: 0;
-			height: 12px;
-			accent-color: var(--color-content-flavor);
-		}
+	&__progress-track {
+		display: block;
+		height: 2px;
+		background-color: var(--color-blog-sidebar-border);
 
 		span {
-			flex: 0 0 auto;
-			font-family: var(--font-base);
-			font-size: 0.9rem;
+			display: block;
+			height: 100%;
+			background-color: var(--color-content-flavor);
 		}
+	}
+
+	&__progress-value {
+		color: var(--color-content-flavor);
 	}
 
 	&__download {
