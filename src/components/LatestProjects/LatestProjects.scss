@@ -37,13 +37,34 @@
 		flex: 0 0 auto;
 		width: max-content;
 		margin-left: -20px;
-		border: 3px solid var(--color-blog-sidebar-border);
+		padding: 8px;
+		border: 1px solid var(--color-content-flavor--dim);
+		border-radius: 2px;
 		background-color: var(--color-content-bg);
+		background-image: linear-gradient(
+			145deg,
+			color-mix(in srgb, var(--color-content-fg) 7%, transparent),
+			transparent 42%,
+			color-mix(in srgb, var(--color-content-flavor) 4%, transparent)
+		);
+		backdrop-filter: blur(10px) saturate(125%);
 		cursor: pointer;
 		text-decoration: none !important;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 		z-index: calc(10 - var(--card-index, 0));
-		transition: scale 80ms ease-in-out;
+		transition:
+			scale 80ms ease-in-out,
+			border-color 0.2s ease;
+
+		&::before {
+			position: absolute;
+			z-index: 1;
+			inset: 0;
+			border: 8px solid color-mix(in srgb, var(--color-content-fg) 6%, transparent);
+			content: '';
+			pointer-events: none;
+			transition: border-color 0.2s ease;
+		}
 
 		&:first-child {
 			margin-left: 0;
@@ -54,6 +75,12 @@
 		&:focus-visible {
 			scale: 1.2;
 			z-index: 99;
+			border-color: var(--color-content-flavor);
+		}
+
+		&:hover::before,
+		&:focus-visible::before {
+			border-color: color-mix(in srgb, var(--color-content-flavor) 12%, transparent);
 		}
 
 		&:focus-visible {
@@ -66,12 +93,19 @@
 			height: auto;
 			width: auto;
 			max-width: none;
-			max-height: 130px;
+			max-height: 122px;
 		}
 	}
 
-	:root.lightmode &__card {
-		border-color: var(--color-blog-sidebar-border);
+	:root.lightmode &__card:hover,
+	:root.lightmode &__card:focus-visible {
+		border-color: var(--color-content-link--hover);
+	}
+
+	@include responsive.size('xs') {
+		&__card img {
+			max-height: 130px;
+		}
 	}
 
 	@include responsive.size('sm') {
