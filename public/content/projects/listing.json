@@ -10,8 +10,8 @@
 			"sections": [
 				{
 					"id": "full-featured-games",
-					"title": "Full featured games",
-					"description": "Games I've made or I'm currently working on.",
+					"title": "Full-featured games",
+					"description": "Full-featured games I've made or I'm currently working on.",
 					"display": "full",
 					"projects": [
 						{
@@ -99,7 +99,7 @@
 				{
 					"id": "legacy-html5-games",
 					"title": "Legacy HTML5 games",
-					"description": "Some legacy web games and experiments, based on my own HTML5 engine.",
+					"description": "These are some older web-based games based on my own HTML5 engine.",
 					"display": "vertical-stack",
 					"projects": [
 						{
