@@ -25,6 +25,10 @@
 	margin-bottom: 0;
 }
 
+#metayeti > main .project-page__info h3::before {
+	content: none;
+}
+
 .project-page {
 	max-width: 1120px;
 
