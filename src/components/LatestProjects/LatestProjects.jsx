@@ -33,6 +33,10 @@ function FeaturedProjectCard({ project, index }) {
 	const [isPreviewReady, setIsPreviewReady] = useState(false);
 	const [animationFailed, setAnimationFailed] = useState(false);
 	const projectPath = project.path ? `${project.path}/${project.slug}` : project.slug;
+	const CardLink = project.playUrl ? 'a' : Link;
+	const cardLinkProps = project.playUrl
+		? { href: project.playUrl, target: '_blank', rel: 'noopener noreferrer' }
+		: { to: `/projects/${projectPath}` };
 	const screenshotUrl = `/content/projects/${projectPath}/screenshots/${project.screenshots[0]}`;
 	const animatedUrl = project.animated ? `/content/projects/${projectPath}/screenshots/${project.animated}` : null;
 	const isEngaged = isHovered || isFocused;
@@ -51,9 +55,9 @@ function FeaturedProjectCard({ project, index }) {
 	const imageUrl = isPreviewActive ? animatedUrl : screenshotUrl;
 
 	return (
-		<Link
+		<CardLink
 			className="latest-projects__card"
-			to={`/projects/${projectPath}`}
+			{...cardLinkProps}
 			style={{ '--card-index': index }}
 			onPointerEnter={() => setIsHovered(true)}
 			onPointerLeave={() => setIsHovered(false)}
@@ -72,7 +76,7 @@ function FeaturedProjectCard({ project, index }) {
 					event.currentTarget.hidden = true;
 				}}
 			/>
-		</Link>
+		</CardLink>
 	);
 }
 
