@@ -33,7 +33,7 @@ export default function Home() {
 			<div className="home-page__yeti"></div>
 			<section>
 				<h2>Hi!</h2>
-				<p>Ahoy there! I'm Danijel. Welcome to my online abode.</p>
+				<p>Ahoy there! I'm Danijel. Welcome to my humble online abode.</p>
 				<p>
 					I'm a game developer from Slovenia. I create <Link to="/projects">videogames</Link>
 					<br className="responsive-break" /> and{' '}
@@ -46,7 +46,7 @@ export default function Home() {
 						things that go whirrrr
 					</a>
 					. I sometimes write some <br className="responsive-break" />
-					nonsense on <Link to="/blog">my blog</Link>. I like snow leopards, coding and tea.
+					<Link to="/blog">nonsense on my blog</Link>. I like snow leopards, coding and tea.
 				</p>
 				<p>Enjoy your stay!</p>
 			</section>

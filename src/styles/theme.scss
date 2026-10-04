@@ -114,6 +114,7 @@
 	--color-global-bg: #e8eef1;
 
 	// header
+	/*
 	--color-header-banner-left: #d8e5eb;
 	--color-header-banner-right: #527d91;
 	--color-header-social-bg: #e0e9ed;
@@ -130,16 +131,17 @@
 	--color-header-nav-indicator--hl: #087f9b;
 	--color-header-nav-notch: #c7d5dc;
 	--shadow-header-nav: 0 1px 6px 3px rgba(34, 58, 72, 0.08);
+	*/
 
 	// content
 	--color-content-bg: #f4f7f8;
 	--grid-color: #e7eef1;
 	--grid-size: 30px;
 	--color-content-fg: #2b3d48;
-	--color-content-flavor: #087f9b;
+	--color-content-flavor: #07a9ce;
 	--color-content-flavor--dim: rgba(8, 127, 155, 0.28);
-	--color-content-link: #536b79;
-	--color-content-link--hover: #086b87;
+	--color-content-link: #4d7e9b;
+	--color-content-link--hover: #15b6e2;
 	--color-content-code-bg: rgba(222, 232, 237, 0.72);
 	--color-content-code-highlight: rgba(38, 61, 74, 0.06);
 
@@ -175,7 +177,9 @@
 	--color-pagination-active-border: var(--color-content-link--hover);
 
 	// footer
+	/*
 	--color-footer-bg: #e2eaee;
 	--color-footer-fg: #536b79;
 	--color-react-blue: #087f9b;
+	*/
 }
