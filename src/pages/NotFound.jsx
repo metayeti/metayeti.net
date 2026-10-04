@@ -12,8 +12,6 @@
 //  Description:  404 Not Found page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-03-01
-//  Updated:      2026-06-16
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

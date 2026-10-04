@@ -12,8 +12,6 @@
 //  Description:  Defines color variables and theme-related styles.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-02-09
-//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -113,26 +111,6 @@
 	// global
 	--color-global-bg: #e8eef1;
 
-	// header
-	/*
-	--color-header-banner-left: #d8e5eb;
-	--color-header-banner-right: #527d91;
-	--color-header-social-bg: #e0e9ed;
-	--color-header-social-bg--hl: #cfdde3;
-	--color-header-social-fg: #536b79;
-	--color-header-social-fg--hl: #203744;
-	--color-header-nav-bg: #e4ecef;
-	--color-header-nav-bg--hl: #d7e3e8;
-	--color-header-nav-fg: #506573;
-	--color-header-nav-fg--hl: #263d4a;
-	--color-header-nav-light: #9aabb4;
-	--color-header-nav-light--hl: #087f9b;
-	--color-header-nav-indicator: #788e99;
-	--color-header-nav-indicator--hl: #087f9b;
-	--color-header-nav-notch: #c7d5dc;
-	--shadow-header-nav: 0 1px 6px 3px rgba(34, 58, 72, 0.08);
-	*/
-
 	// content
 	--color-content-bg: #f4f7f8;
 	--grid-color: #e7eef1;
@@ -175,11 +153,4 @@
 	--color-pagination-active-bg: #dce9ed;
 	--color-pagination-active-fg: #263d4a;
 	--color-pagination-active-border: var(--color-content-link--hover);
-
-	// footer
-	/*
-	--color-footer-bg: #e2eaee;
-	--color-footer-fg: #536b79;
-	--color-react-blue: #087f9b;
-	*/
 }

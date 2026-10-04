@@ -12,8 +12,6 @@
 //  Description:  Individual project page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-03-18
-//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

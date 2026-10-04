@@ -12,8 +12,6 @@
 //  Description:  About page component.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      n/a
-//  Updated:      2026-09-30
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -136,7 +134,7 @@ export default function About() {
 				<HexNode size="md" glow>
 					<span className="hex-about__sys-label">NET.INFO</span>
 					<h2>This Website</h2>
-					<p>My own digital garden inside cyberspace.</p>
+					<p>My own digital garden within cyberspace.</p>
 					<p>Zero ads, zero tracking.</p>
 				</HexNode>
 				<div className="hex-about__branch" />

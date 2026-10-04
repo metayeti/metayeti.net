@@ -12,8 +12,6 @@
 //  Description:  Image gallery component export.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-09-30
-//  Updated:      2026-10-01
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //

@@ -13,8 +13,6 @@
 //                production-ready React components.
 //
 //  Author:       Danijel Durakovic <metayetidev@gmail.com>
-//  Created:      2026-02-28
-//  Updated:      2026-02-28
 //
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
