@@ -121,7 +121,7 @@ function NavLinkButton({ to, label }) {
 }
 
 export default function SiteHeaderNav() {
-	const [isAltDark, setIsAltDark] = useState(() => {
+	const [isLightMode, setIsLightMode] = useState(() => {
 		if (typeof window !== 'undefined') {
 			return localStorage.getItem('site-theme') === THEME_ROCKER_ON;
 		}
@@ -129,9 +129,9 @@ export default function SiteHeaderNav() {
 	});
 
 	useEffect(() => {
-		document.documentElement.classList.toggle(THEME_ROCKER_ON, isAltDark);
-		localStorage.setItem('site-theme', isAltDark ? THEME_ROCKER_ON : 'default');
-	}, [isAltDark]);
+		document.documentElement.classList.toggle(THEME_ROCKER_ON, isLightMode);
+		localStorage.setItem('site-theme', isLightMode ? THEME_ROCKER_ON : 'default');
+	}, [isLightMode]);
 
 	return (
 		<nav className="site-header-nav">
@@ -147,13 +147,13 @@ export default function SiteHeaderNav() {
 					<div
 						className={clsx(
 							'site-header-nav__side-icon',
-							isAltDark && 'site-header-nav__side-icon--active',
+							isLightMode && 'site-header-nav__side-icon--active',
 						)}
 					>
 						<IconFlame />
 					</div>
 					<div className="site-header-nav__side-switch">
-						<RockerSwitch initialToggled={isAltDark} onSwitchToggle={setIsAltDark} />
+						<RockerSwitch initialToggled={isLightMode} onSwitchToggle={setIsLightMode} />
 					</div>
 				</div>
 			</div>

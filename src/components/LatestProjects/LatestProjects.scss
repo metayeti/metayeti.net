@@ -73,7 +73,7 @@
 	}
 
 	:root.lightmode &__card {
-		border-color: #fff;
+		border-color: var(--color-blog-sidebar-border);
 	}
 
 	@include responsive.size('sm') {

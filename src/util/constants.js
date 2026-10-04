@@ -25,7 +25,7 @@
 export const SRC_BLOG_LISTING = '/content/blog/listing.json';
 export const SRC_PROJECTS_LISTING = '/content/projects/listing.json';
 export const SRC_FUN_FACTS = '/content/static/fun_facts.json';
-export const THEME_ROCKER_ON = 'altdark';
+export const THEME_ROCKER_ON = 'lightmode';
 
 // shortcode used in blog posts to indicate a page break (for pagination)
 export const PAGE_BREAK_SHORTCODE = '--PAGE BREAK--';

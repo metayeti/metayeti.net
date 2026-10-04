@@ -104,96 +104,78 @@
 	--color-react-blue: #61dafb;
 }
 
-// -- Alternate Theme (dark) --
-:root.altdark {
-	--color-global-bg: #171d1b;
-
-	--color-header-nav-bg: #202a27;
-	--color-header-nav-bg--hl: #17211e;
-	--color-header-nav-fg: #9aafa5;
-	--color-header-nav-fg--hl: #e2eee7;
-	--color-header-nav-light: #52615b;
-	--color-header-nav-light--hl: #b5dc7b;
-	--color-header-nav-indicator: #64756c;
-	--color-header-nav-indicator--hl: #e8a35c;
-	--color-header-nav-notch: #303a36;
-
-	--color-content-bg: #111a18;
-	--grid-color: #192a25;
-	--color-content-fg: #c8d8ce;
-	--color-content-flavor: #b5dc7b;
-	--color-content-flavor--dim: rgba(181, 220, 123, 0.5);
-	--color-content-link: #82998d;
-	--color-content-link--hover: #d5ed9e;
-	--color-content-code-bg: rgba(0, 0, 0, 0.24);
-	--color-content-code-highlight: rgba(255, 255, 255, 0.07);
-
-	// about
-	--color-about-scanline: rgba(0, 0, 0, 0.04);
-	--color-about-spine: rgba(181, 220, 123, 0.32);
-	--color-about-spine-glow: rgba(181, 220, 123, 0.05);
-	--color-about-hex-border-bright: rgba(181, 220, 123, 0.32);
-	--color-about-hex-border-dim: rgba(181, 220, 123, 0.12);
-	--color-about-hex-fill-primary: rgba(9, 16, 13, 0.86);
-	--color-about-hex-fill-dark: rgba(5, 10, 8, 0.94);
-	--color-about-hex-glow: rgba(181, 220, 123, 0.16);
-	--color-about-hex-glow-hover: rgba(181, 220, 123, 0.26);
-	--color-about-favorite-border: rgba(181, 220, 123, 0.08);
-
-	--color-blog-sidebar-border: rgba(220, 245, 229, 0.1);
-	--color-blog-sidebar-bg: rgba(220, 245, 229, 0.018);
-	--color-blog-sidebar-searchbox: rgba(220, 245, 229, 0.045);
-	--color-blog-button-bg: rgba(0, 0, 0, 0.12);
-
-	--color-pagination-hover-bg: rgba(220, 245, 229, 0.06);
-	--color-pagination-border: rgba(220, 245, 229, 0.12);
-	--color-pagination-active-bg: #26352e;
-	--color-pagination-active-fg: #e2eee7;
-	--color-pagination-active-border: var(--color-content-link--hover);
-
-	--color-footer-bg: #171d1b;
-	--color-footer-fg: #687a70;
-}
-
-// -- Alternate Theme (light, retained for reference) --
+// -- Light Theme --
 :root.lightmode {
+	// text selection
+	--color-sel-bg: #b9dce9;
+	--color-sel-fg: #1e3845;
+
+	// global
+	--color-global-bg: #e8eef1;
+
+	// header
+	--color-header-banner-left: #d8e5eb;
+	--color-header-banner-right: #527d91;
+	--color-header-social-bg: #e0e9ed;
+	--color-header-social-bg--hl: #cfdde3;
+	--color-header-social-fg: #536b79;
+	--color-header-social-fg--hl: #203744;
+	--color-header-nav-bg: #e4ecef;
+	--color-header-nav-bg--hl: #d7e3e8;
+	--color-header-nav-fg: #506573;
+	--color-header-nav-fg--hl: #263d4a;
+	--color-header-nav-light: #9aabb4;
+	--color-header-nav-light--hl: #087f9b;
+	--color-header-nav-indicator: #788e99;
+	--color-header-nav-indicator--hl: #087f9b;
+	--color-header-nav-notch: #c7d5dc;
+	--shadow-header-nav: 0 1px 6px 3px rgba(34, 58, 72, 0.08);
+
 	// content
-	--color-content-bg: #f8fcff;
-
-	--grid-color: #f5f7fc;
+	--color-content-bg: #f4f7f8;
+	--grid-color: #e7eef1;
 	--grid-size: 30px;
-
-	--color-content-fg: #2a3d4d;
-	--color-content-flavor: #2abce0;
-	--color-content-flavor--dim: rgba(82, 220, 255, 0.5);
-
-	--color-content-link: #64748b;
-	--color-content-link--hover: #07a0e7;
-
-	--color-content-code-bg: rgba(255, 255, 255, 0.6);
-	--color-content-code-highlight: rgba(0, 0, 0, 0.04);
+	--color-content-fg: #2b3d48;
+	--color-content-flavor: #087f9b;
+	--color-content-flavor--dim: rgba(8, 127, 155, 0.28);
+	--color-content-link: #536b79;
+	--color-content-link--hover: #086b87;
+	--color-content-code-bg: rgba(222, 232, 237, 0.72);
+	--color-content-code-highlight: rgba(38, 61, 74, 0.06);
 
 	// about
-	--color-about-scanline: rgba(0, 0, 0, 0.018);
-	--color-about-spine: rgba(6, 169, 233, 0.25);
-	--color-about-spine-glow: rgba(6, 169, 233, 0.03);
-	--color-about-favorite-border: rgba(6, 169, 233, 0.08);
-	--color-about-color-dot-border: rgba(0, 0, 0, 0.12);
-	--color-about-light-node-border: rgba(6, 169, 233, 0.22);
-	--color-about-light-node-fill: rgba(240, 245, 250, 0.88);
-	--color-about-light-node-dark-border: rgba(6, 169, 233, 0.1);
-	--color-about-light-node-dark-fill: rgba(230, 238, 246, 0.92);
+	--color-about-scanline: rgba(38, 61, 74, 0.025);
+	--color-about-spine: rgba(8, 127, 155, 0.3);
+	--color-about-spine-glow: rgba(8, 127, 155, 0.06);
+	--color-about-hex-border-bright: rgba(8, 127, 155, 0.3);
+	--color-about-hex-border-dim: rgba(8, 127, 155, 0.13);
+	--color-about-hex-fill-primary: rgba(248, 251, 252, 0.94);
+	--color-about-hex-fill-dark: rgba(233, 241, 244, 0.96);
+	--color-about-hex-glow: rgba(8, 127, 155, 0.1);
+	--color-about-hex-glow-hover: rgba(8, 127, 155, 0.18);
+	--color-about-favorite-border: rgba(8, 127, 155, 0.12);
+	--color-about-color-dot-border: rgba(38, 61, 74, 0.2);
+	--color-about-mask: #000;
+	--color-about-light-node-border: rgba(8, 127, 155, 0.3);
+	--color-about-light-node-fill: rgba(248, 251, 252, 0.96);
+	--color-about-light-node-dark-border: rgba(8, 127, 155, 0.16);
+	--color-about-light-node-dark-fill: rgba(233, 241, 244, 0.98);
 
 	// blog
-	--color-blog-sidebar-border: rgba(0, 0, 0, 0.1);
-	--color-blog-sidebar-bg: rgba(0, 0, 0, 0.008);
-	--color-blog-sidebar-searchbox: rgba(0, 0, 0, 0.025);
-	--color-blog-button-bg: rgba(0, 0, 0, 0.007);
+	--color-blog-sidebar-border: rgba(38, 61, 74, 0.16);
+	--color-blog-sidebar-bg: rgba(255, 255, 255, 0.56);
+	--color-blog-sidebar-searchbox: rgba(226, 235, 239, 0.8);
+	--color-blog-button-bg: rgba(222, 232, 237, 0.55);
 
 	// pagination
-	--color-pagination-hover-bg: rgba(0, 0, 0, 0.04);
-	--color-pagination-border: rgba(0, 0, 0, 0.1);
-	--color-pagination-active-bg: #e0e8f0;
-	--color-pagination-active-fg: #2a3d4d;
+	--color-pagination-hover-bg: rgba(38, 61, 74, 0.06);
+	--color-pagination-border: rgba(38, 61, 74, 0.16);
+	--color-pagination-active-bg: #dce9ed;
+	--color-pagination-active-fg: #263d4a;
 	--color-pagination-active-border: var(--color-content-link--hover);
+
+	// footer
+	--color-footer-bg: #e2eaee;
+	--color-footer-fg: #536b79;
+	--color-react-blue: #087f9b;
 }

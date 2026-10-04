@@ -18,7 +18,7 @@
 //  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
 //  NOTE:         A lot of this page is AI code, general cleanup is in order.
-//  TODO:         Needs better light-theme colors
+//  TODO:         -
 //
 
 import { useState, useEffect, useRef } from 'react';
