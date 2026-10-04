@@ -11,8 +11,9 @@
 			"title": "Games",
 			"sections": [
 				{
-					"id": "games",
-					"description": "Full-featured games I've made or I'm currently working on.",
+					"id": "full-featured-games",
+					"title": "Full featured games",
+					"description": "Games I've made or I'm currently working on.",
 					"display": "full",
 					"projects": [
 						{
