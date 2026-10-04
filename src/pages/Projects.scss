@@ -240,6 +240,10 @@
 			position: relative;
 			width: 100vw;
 			margin-left: calc(50% - 50vw);
+			--projects-masonry-card-width: 240px;
+			--projects-masonry-max-columns: 5;
+			--projects-masonry-column-gap: 32px;
+			--projects-masonry-row-gap: 32px;
 
 			.projects-page__entry {
 				position: absolute;
@@ -250,6 +254,33 @@
 
 			.projects-page__project {
 				max-width: none;
+			}
+
+			@media (width < 575px) {
+				--projects-masonry-card-width: 160px;
+				--projects-masonry-max-columns: 2;
+				--projects-masonry-column-gap: 16px;
+				--projects-masonry-row-gap: 16px;
+
+				.projects-page__project-content {
+					gap: 14px;
+					padding: 12px;
+				}
+
+				.projects-page__project-title {
+					font-size: 1.05rem;
+				}
+
+				.projects-page__project-description {
+					margin-top: 8px;
+					font-size: 0.85rem;
+					line-height: 1.4;
+				}
+
+				.projects-page__link {
+					padding-top: 8px;
+					font-size: 0.8rem;
+				}
 			}
 		}
 

@@ -28,11 +28,6 @@ import { loadJSON, SRC_PROJECTS_LISTING } from '@/util';
 
 import './Projects.scss';
 
-const MASONRY_CARD_WIDTH = 240;
-const MASONRY_MAX_COLUMNS = 5;
-const MASONRY_COLUMN_GAP = 32;
-const MASONRY_ROW_GAP = 32;
-
 function ProjectCard({ project }) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
@@ -198,13 +193,21 @@ export default function Projects() {
 					return;
 				}
 
-				const cardWidth = Math.min(MASONRY_CARD_WIDTH, containerWidth);
-				const columnCount = Math.min(
-					MASONRY_MAX_COLUMNS,
-					entries.length,
-					Math.max(1, Math.floor(containerWidth / (cardWidth + MASONRY_COLUMN_GAP))),
+				const styles = window.getComputedStyle(container);
+				const maxCardWidth = Number.parseFloat(styles.getPropertyValue('--projects-masonry-card-width'));
+				const maxColumns = Number.parseInt(styles.getPropertyValue('--projects-masonry-max-columns'), 10);
+				const columnGap = Number.parseFloat(styles.getPropertyValue('--projects-masonry-column-gap'));
+				const rowGap = Number.parseFloat(styles.getPropertyValue('--projects-masonry-row-gap'));
+				const cardWidth = Math.min(
+					maxCardWidth,
+					maxColumns === 2 ? Math.max(0, containerWidth / 2 - columnGap) : containerWidth,
 				);
-				const contentWidth = columnCount * cardWidth + (columnCount - 1) * MASONRY_COLUMN_GAP;
+				const columnCount = Math.min(
+					maxColumns,
+					entries.length,
+					Math.max(1, Math.floor(containerWidth / (cardWidth + columnGap))),
+				);
+				const contentWidth = columnCount * cardWidth + (columnCount - 1) * columnGap;
 				const leftOffset = (containerWidth - contentWidth) / 2;
 				const columnHeights = Array(columnCount).fill(0);
 
@@ -220,9 +223,9 @@ export default function Projects() {
 						}
 					}
 
-					entry.style.left = `${leftOffset + shortestColumn * (cardWidth + MASONRY_COLUMN_GAP)}px`;
-					entry.style.top = `${columnHeights[shortestColumn] + MASONRY_ROW_GAP / 2}px`;
-					columnHeights[shortestColumn] += entry.offsetHeight + MASONRY_ROW_GAP;
+					entry.style.left = `${leftOffset + shortestColumn * (cardWidth + columnGap)}px`;
+					entry.style.top = `${columnHeights[shortestColumn] + rowGap / 2}px`;
+					columnHeights[shortestColumn] += entry.offsetHeight + rowGap;
 				});
 
 				container.style.height = `${Math.max(...columnHeights)}px`;
