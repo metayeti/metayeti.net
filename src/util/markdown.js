@@ -55,6 +55,54 @@ const parseLineRanges = (rangeStr) => {
 	return ranges;
 };
 
+const getYoutubeVideoId = (value) => {
+	let url;
+	try {
+		url = new URL(value);
+	} catch {
+		return null;
+	}
+
+	if (!['http:', 'https:'].includes(url.protocol)) return null;
+
+	const host = url.hostname.toLowerCase();
+	const shortLinkHosts = ['youtu.be', 'www.youtu.be'];
+	const youtubeHosts = ['youtube.com', 'www.youtube.com', 'm.youtube.com'];
+	const noCookieHosts = ['youtube-nocookie.com', 'www.youtube-nocookie.com'];
+
+	let videoId = null;
+	if (shortLinkHosts.includes(host)) {
+		videoId = url.pathname.split('/').filter(Boolean)[0];
+	} else if (youtubeHosts.includes(host)) {
+		if (url.pathname === '/watch') {
+			videoId = url.searchParams.get('v');
+		} else {
+			videoId = url.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/)?.[1];
+		}
+	} else if (noCookieHosts.includes(host)) {
+		videoId = url.pathname.match(/^\/embed\/([^/]+)/)?.[1];
+	}
+
+	return videoId && /^[\w-]{11}$/.test(videoId) ? videoId : null;
+};
+
+const getStandaloneYoutubeVideoId = (inlineToken) => {
+	const value = inlineToken.content.trim().replace(/^<(.+)>$/, '$1');
+	const directVideoId = getYoutubeVideoId(value);
+	if (directVideoId) return directVideoId;
+
+	const children = inlineToken.children ?? [];
+	if (
+		children.length === 3 &&
+		children[0].type === 'link_open' &&
+		children[1].type === 'text' &&
+		children[2].type === 'link_close'
+	) {
+		return getYoutubeVideoId(children[0].attrGet('href') ?? '');
+	}
+	return null;
+};
+
 // -- create markdown-it instance --
 const md = MarkdownIt({
 	html: true,
@@ -70,6 +118,29 @@ const md = MarkdownIt({
 		}
 		return '';
 	},
+});
+
+// -- embed standalone YouTube links --
+md.core.ruler.after('inline', 'youtube_embed', (state) => {
+	for (let index = 0; index < state.tokens.length - 2; index += 1) {
+		const [open, inline, close] = state.tokens.slice(index, index + 3);
+		if (open.type !== 'paragraph_open' || inline.type !== 'inline' || close.type !== 'paragraph_close') continue;
+
+		const videoId = getStandaloneYoutubeVideoId(inline);
+		if (!videoId) continue;
+
+		inline.type = 'html_block';
+		inline.tag = '';
+		inline.nesting = 0;
+		inline.content =
+			`<div class="youtube-embed">` +
+			`<iframe src="https://www.youtube-nocookie.com/embed/${videoId}" title="YouTube video" ` +
+			`allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ` +
+			`referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>` +
+			`</div>\n`;
+		inline.children = null;
+		state.tokens.splice(index, 3, inline);
+	}
 });
 
 // -- override fence renderer for line highlighting --

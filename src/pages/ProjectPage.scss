@@ -313,16 +313,18 @@
 		align-items: baseline;
 		justify-content: space-between;
 		gap: 4px 14px;
+		height: 30px;
 
 		h4 {
 			display: flex;
 			align-items: center;
 			gap: 8px;
-			margin: 0;
+			margin: 0 !important;
 			color: var(--color-content-fg);
 			font-family: var(--font-heading);
 			font-size: 1rem;
 			font-weight: 500;
+			height: 100%;
 
 			svg {
 				flex: 0 0 auto;
@@ -341,7 +343,7 @@
 	}
 
 	&__devlog-post-body {
-		margin-top: 8px;
+		margin-top: 20px;
 		color: var(--color-content-fg);
 		font-size: 0.88rem;
 		line-height: 1.55;

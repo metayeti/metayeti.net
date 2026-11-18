@@ -1,6 +1,11 @@
 {
 	"posts": [
 		{
+			"title": "Pre-alpha footage",
+			"slug": "2",
+			"date-published": "2026-11-18"
+		},
+		{
 			"title": "Status",
 			"slug": "1",
 			"date-published": "2026-09-30"
